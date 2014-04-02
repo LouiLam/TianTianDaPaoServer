@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<retMsgConfig>
+	<retMsg ret="0" msg="登录成功" />
+	<retMsg ret="1" msg="帐号封停" />
+	<retMsg ret="2" msg="非法参数" />
+	<retMsg ret="3" msg="非法Token" />
+	<retMsg ret="4" msg="非法平台" />
+	<retMsg ret="5" msg="注册成功" />
+	<retMsg ret="6" msg="用户名重复-注册失败" />
+	<retMsg ret="7" msg="搜索失败" />
+	<retMsg ret="8" msg="搜索成功" />
+	<resMsg ret="9" msg="帐号格式非法" />
+	<resMsg ret="10" msg="密码格式非法" />
+	<resMsg ret="11" msg="登录请求：帐号不存在或密码错误" />
+	<resMsg ret="12" msg="竞技场请求数据成功" />
+	<resMsg ret="13" msg="竞技场数据请求失败：utoken非法或不存在" />
+	<resMsg ret="14" msg="竞技场挑战请求失败：utoken非法或不存在" />
+	<resMsg ret="15" msg="竞技场非法请求：被pk的用户uid不存在在" />
+	<resMsg ret="16" msg="竞技场非法请求：被pk的用户为自己的uid" />
+	<resMsg ret="17" msg="竞技场挑战请求成功,数据更新" />
+	<resMsg ret="18" msg="竞技场获取积分请求失败：utoken非法或不存在" />
+	<resMsg ret="19" msg="竞竞技场获取积分请求失败：该用户已领取过积分" />
+	<resMsg ret="20" msg="竞技场获取积分请求成功,数据更新" />
+	<resMsg ret="21" msg="登录奖励领取成功" />
+	<resMsg ret="22" msg="领取登录奖励领取失败：今天该用户已经领取过了" />
+	<resMsg ret="23" msg="领取登录奖励领取失败：utoken非法或不存在" />
+	<resMsg ret="24" msg="竞技场非法请求：今天挑战次数已到上限" />
+</retMsgConfig>

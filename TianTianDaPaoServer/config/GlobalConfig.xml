@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<globalConfig>
+	
+    <serverConfig>config/ServerConfig.xml</serverConfig>
+    
+	<httpRequestHandlerConfig>config/HttpRequestHandlerConfig.properties</httpRequestHandlerConfig>
+	
+	<loginCheckConfig>config/LoginCheckConfig.properties</loginCheckConfig>
+	
+	<dbDaoConfig>config/DBDaoConfig.properties</dbDaoConfig>
+	
+	<logConfig>config/Log4j.properties</logConfig>
+	
+	<databaseConfig>DatabaseConfig.xml</databaseConfig>
+	
+	<taskConfig>config/TaskConfig.xml</taskConfig>
+	
+	<retMsgConfig>config/RetMsgConfig.xml</retMsgConfig>
+	
+	<timerConfig>config/TimerConfig.properties</timerConfig>
+	
+	<regConfig>config/RegCheckConfig.properties</regConfig>
+	
+	<searchConfig>config/SearchCheckConfig.properties</searchConfig>
+	
+	<JJCConfig>config/JJCCheckConfig.properties</JJCConfig>
+	<CheckConfig>config/CheckConfig.Properties</CheckConfig>
+</globalConfig>

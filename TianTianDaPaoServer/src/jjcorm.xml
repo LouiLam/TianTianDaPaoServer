@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="client.jjc.DaPaoJJCDao">
+	<resultMap id="ormUser" type="User">
+	</resultMap>
+	<select id="selectJJCUserByUtoken" parameterType="Map"
+		resultType="Map">
+		select userjjc.* ,userinfo.id from userinfo,userjjc where userinfo.uid =
+		userjjc.uid and userinfo.utoken= #{utoken}
+	</select>
+	<select id="selectJJCUserByNum" parameterType="Map" resultType="Map">
+		select userjjc.* ,userinfo.id from userinfo,userjjc where userinfo.uid
+		= userjjc.uid and (userjjc.rank BETWEEN 1 and 3 or userjjc.rank
+		in(#{one},#{two})) order by userjjc.rank
+	</select>
+
+	<select id="selectJJC_PKUser" parameterType="Map" resultType="Map">
+		select userjjc.record,userjjc.rank,userjjc.uid from userjjc where userjjc.uid = #{pk_player_uid}
+	</select>
+
+	<select id="updateJJC_RankWin" parameterType="Map">
+		update userjjc set record=#{record},rank=#{rank_beidong},day_cur_times=day_cur_times+1,pk_win_count=pk_win_count+1,score=score+10 where userjjc.uid = #{uid} 
+	</select>
+	<select id="updateJJC_RankBeidong" parameterType="Map">
+		update userjjc set rank=#{rank_zhudong}
+		where uid = #{uid_beidong} 
+	</select>
+	<select id="updateJJC_RankLose" parameterType="Map">
+		update userjjc set record=#{record},day_cur_times=day_cur_times+1,pk_lost_count=pk_lost_count+1,score=score+5 where userjjc.uid = #{uid} 
+	</select>
+	<select id="updateJJC_RankDraw" parameterType="Map">
+		update userjjc set record=#{record},day_cur_times=day_cur_times+1,pk_draw_count=pk_draw_count+1,score=score+5 where userjjc.uid = #{uid} 
+	</select>
+	
+	<select id="updateJJC_GetScore" parameterType="Map">	
+	    update userjjc set  score=score_3day+score,score_3day=0 where userjjc.uid = #{uid}	
+	</select>
+	<select id="selectJJC_GetScore" parameterType="Map" resultType="Map">	
+	    select userjjc.* from userjjc where userjjc.uid = #{uid}	
+	</select>
+</mapper>

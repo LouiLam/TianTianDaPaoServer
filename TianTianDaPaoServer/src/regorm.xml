@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="client.reg.DaPaoRegDao" >
+
+    <resultMap id="ormUser" type="User" >
+    </resultMap>
+    <select id="selectUserByUid" parameterType="Map" resultType="Map" >
+		select userinfo.* from userinfo where id = #{id}
+    </select>
+    
+    <select id="insertUserIntoUserInfo" parameterType="Map" >
+        insert into userinfo (id,password,uemail,uphone,urtime,utoken)  
+        values (#{id},#{password},#{uemail},#{uphone}, #{urtime},#{utoken})
+    </select>
+	
+    <select id="insertUserIntoUserJJC" parameterType="Map" >
+        INSERT into userjjc() VALUES ()
+    </select>
+       <select id="updateRankIntoUserJJC" parameterType="Map" >
+       UPDATE userjjc SET rank = LAST_INSERT_ID() WHERE uid=LAST_INSERT_ID()
+    </select>
+   
+    <select id="updateUserInfoUltime" parameterType="Map" >
+        update userinfo set utoken=#{utoken},  ultime=#{ultime} 
+        where uid = #{uid}
+    </select>
+    
+    <select id="updateUserinfoSetUname" parameterType="Map" >
+        update userinfo set uname=#{uname}
+    </select>
+    
+    
+    
+    
+    
+    
+    
+	<select id="selectUstatusFromGDMJ" parameterType="Map">
+		select count(*) 
+		from userinfo 
+		where upuid = #{upuid} and upid = #{upid}
+    </select>
+	 
+	<select id="loginUpdateUltimeByUserInfo" parameterType="Map">
+        update usergame set ultime=#{ultime}  where  uid = #{uid}
+     </select>
+	 
+	 
+	 
+</mapper>

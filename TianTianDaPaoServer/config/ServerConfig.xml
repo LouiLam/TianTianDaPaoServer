@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serverConfig>
+    
+	<port>4321</port>
+	<centerServerIP>192.168.1.205</centerServerIP>
+	<centerServerPort>1111</centerServerPort>
+</serverConfig>
