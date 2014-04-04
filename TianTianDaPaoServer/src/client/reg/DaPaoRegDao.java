@@ -41,4 +41,16 @@ public interface DaPaoRegDao {
 	 */
 	public  void updateUserinfoSetUname(Map<String, String> userMap);
 
+	/**
+	 * 插入任务记录，并随机任务ID
+	 * @param params
+	 */
+	public void insertUserIntoTaskUser(Map<String, String> params);
+	
+	/**
+	 * 插入游戏表
+	 * @param params
+	 */
+	public void insertUserIntoUserGame(Map<String, String> params);
+
 }

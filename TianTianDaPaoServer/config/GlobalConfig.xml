@@ -15,6 +15,8 @@
 	
 	<taskConfig>config/TaskConfig.xml</taskConfig>
 	
+	<loginRewardConfig>config/LoginRewardConfig.xml</loginRewardConfig>
+	
 	<retMsgConfig>config/RetMsgConfig.xml</retMsgConfig>
 	
 	<timerConfig>config/TimerConfig.properties</timerConfig>

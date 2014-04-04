@@ -6,19 +6,18 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
 import org.jboss.netty.channel.Channel;
 import org.jboss.netty.handler.codec.http.QueryStringDecoder;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import server.ui.main.U;
 import start.AbstractHttpRequestHandler;
 import config.ConfigFactory;
 import config.Constant;
 
 public class JJCHttpGetRequestHandler extends AbstractHttpRequestHandler {
 
-	private static Logger logger = Logger.getLogger(JJCHttpGetRequestHandler.class);
 
 	@Override
 	protected void handle(String uri, Channel channel) {
@@ -45,7 +44,8 @@ public class JJCHttpGetRequestHandler extends AbstractHttpRequestHandler {
 			sendResponse(jsonObj.toString(), channel);
 		}catch(Exception e){	
 			e.printStackTrace();
-			logger.info("竞技场数据请求出错, ip地址：" + channel.getRemoteAddress() + "    uri = " + uri);
+			U.infoQueue("竞技场数据请求发生异常： "+e.getMessage()+"ip地址："
+					+ channel.getRemoteAddress().toString()+"    uri = " + uri);
 			try {
 				JSONObject jsonObject = new JSONObject();
 				jsonObject.put(Constant.RET, Constant.RET_INVALID_PLATFORM);

@@ -8,6 +8,7 @@ import org.json.JSONObject;
 
 import server.ui.main.U;
 import util.AES;
+import util.RandomUtil;
 import util.RegexUtil;
 import client.login.Check;
 import config.ConfigFactory;
@@ -35,8 +36,8 @@ public class DaPaoRegCheck extends Check {
 			Map userMap = regDao.selectUserByUid(params);
 			if(params.get("uphone")==null||params.get("id")==null||params.get("password")==null)//手机号必填写
 			{
-				jsonObject.put(Constant.RET, Constant.RET_REG_INVALID);
-				jsonObject.put(Constant.MSG, ConfigFactory.getRetMsg(Constant.RET_REG_INVALID));
+				jsonObject.put(Constant.RET, Constant.RET_REG_FAILED_MISS_ARG);
+				jsonObject.put(Constant.MSG, ConfigFactory.getRetMsg(Constant.RET_REG_FAILED_MISS_ARG));
 				U.infoQueue("id:"+params.get("id")+"注册参数要求非法"+channel.getRemoteAddress().toString());
 				return jsonObject;
 			}
@@ -60,9 +61,13 @@ public class DaPaoRegCheck extends Check {
 				int urtime = (int)(System.currentTimeMillis()/1000);
 				params.put("urtime", "" + urtime);
 				params.put("utoken", AES.generateSessionKey());
+				params.put("running_task_id", RandomUtil.getRan(1, 5)+"");
+				params.put("last_tili_send_time", "" + urtime);
 				regDao.insertUserIntoUserInfo(params);
 				regDao.insertUserIntoUserJJC(params);
+				regDao.insertUserIntoTaskUser(params);
 				regDao.updateRankIntoUserJJC(params);
+				regDao.insertUserIntoUserGame(params);
 				sqlSession.commit();
 				userMap =  regDao.selectUserByUid(params);
 				jsonObject.put("userInfo", userMap);

@@ -12,9 +12,14 @@
         insert into userinfo (id,password,uemail,uphone,urtime,utoken)  
         values (#{id},#{password},#{uemail},#{uphone}, #{urtime},#{utoken})
     </select>
-	
+	<select id="insertUserIntoUserGame" parameterType="Map">
+		insert into usergame (last_tili_send_time) values(#{last_tili_send_time})
+	</select>
     <select id="insertUserIntoUserJJC" parameterType="Map" >
         INSERT into userjjc() VALUES ()
+    </select>
+       <select id="insertUserIntoTaskUser" parameterType="Map" >
+        INSERT into usertask(running_task_id) VALUES (#{running_task_id})
     </select>
        <select id="updateRankIntoUserJJC" parameterType="Map" >
        UPDATE userjjc SET rank = LAST_INSERT_ID() WHERE uid=LAST_INSERT_ID()

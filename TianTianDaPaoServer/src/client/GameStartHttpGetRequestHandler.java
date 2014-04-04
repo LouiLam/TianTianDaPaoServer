@@ -16,11 +16,11 @@ import start.AbstractHttpRequestHandler;
 import config.ConfigFactory;
 import config.Constant;
 /**
- * 每日登录奖励
+ * 普通游戏结束
  * @author Administrator
  *
  */
-public class LoginRewardHttpGetRequestHandler extends AbstractHttpRequestHandler {
+public class GameStartHttpGetRequestHandler extends AbstractHttpRequestHandler {
 
 
 	@Override
@@ -41,13 +41,14 @@ public class LoginRewardHttpGetRequestHandler extends AbstractHttpRequestHandler
 				paramClone.put(key, value);
 			}
 			
+
 			JSONObject jsonObj = ConfigFactory
-					.getCheck("6").check(paramClone,channel);
+					.getCheck("9").check(paramClone,channel);
 			//返回
 			sendResponse(jsonObj.toString(), channel);
 		}catch(Exception e){	
 			e.printStackTrace();
-			U.infoQueue("登录奖励请求发生异常： "+e.getMessage()+"ip地址："
+			U.infoQueue("游戏正常开始请求发生异常： "+e.getMessage()+"ip地址："
 					+ channel.getRemoteAddress().toString()+"    uri = " + uri);
 			try {
 				JSONObject jsonObject = new JSONObject();

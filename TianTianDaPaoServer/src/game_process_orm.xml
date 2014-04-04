@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="client.game_process.DaPaoGameProcessDao">
+
+	<resultMap id="ormUser" type="User">
+	</resultMap>
+	
+		<select id="selectGameOverByUtoken" parameterType="Map"
+		resultType="Map">
+		select
+		userinfo.id,userinfo.uid,usergame.normal_max_record from
+		userinfo,usergame where
+		userinfo.uid =usergame.uid and userinfo.utoken=
+		#{utoken}
+	</select>
+		<select id="selectGameStartByUtoken" parameterType="Map"
+		resultType="Map">
+		select
+		userinfo.id,userinfo.uid,usergame.tili from
+		userinfo,usergame where
+		userinfo.uid =usergame.uid and userinfo.utoken=#{utoken}
+	</select>
+	
+	<select id="selectGetTiliByUtoken" parameterType="Map"
+		resultType="Map">
+		select
+		userinfo.id,userinfo.uid,usergame.last_tili_send_time,usergame.tili from
+		userinfo,usergame where
+		userinfo.uid =usergame.uid and userinfo.utoken=
+		#{utoken}
+	</select>
+	<select id="updateUserGameByRecord" parameterType="Map">
+		update usergame set normal_max_record=#{record} where
+		usergame.uid =#{uid}
+	</select>
+	<select id="updateUserGameByTili" parameterType="Map">
+		update usergame set tili=tili-1 where
+		usergame.uid =#{uid}
+	</select>
+<select id="updateGetTiliUserGameByTiliAndTime" parameterType="Map">
+		update usergame set tili=#{tili},last_tili_send_time=#{last_tili_send_time} where
+		usergame.uid =#{uid}
+	</select>
+</mapper>

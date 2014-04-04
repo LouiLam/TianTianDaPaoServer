@@ -21,10 +21,10 @@
     </environments>
     
     <mappers>
-        <mapper resource="loginorm.xml"/>
+        <mapper resource="login_orm.xml"/>
         <mapper resource="regorm.xml"/>
           <mapper resource="jjcorm.xml"/>
-        
+         <mapper resource="game_process_orm.xml"/>
     </mappers>
 </configuration>
   

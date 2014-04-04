@@ -15,21 +15,21 @@
 	</select>
 
 	<select id="selectJJC_PKUser" parameterType="Map" resultType="Map">
-		select userjjc.record,userjjc.rank,userjjc.uid from userjjc where userjjc.uid = #{pk_player_uid}
+		select userjjc.jjc_max_record,userjjc.rank from userjjc where userjjc.uid = #{pk_player_uid}
 	</select>
 
 	<select id="updateJJC_RankWin" parameterType="Map">
-		update userjjc set record=#{record},rank=#{rank_beidong},day_cur_times=day_cur_times+1,pk_win_count=pk_win_count+1,score=score+10 where userjjc.uid = #{uid} 
+		update userjjc set jjc_max_record=#{record},rank=#{rank_beidong},day_cur_times=day_cur_times+1,pk_win_count=pk_win_count+1,score=score+10 where userjjc.uid = #{uid} 
 	</select>
 	<select id="updateJJC_RankBeidong" parameterType="Map">
 		update userjjc set rank=#{rank_zhudong}
 		where uid = #{uid_beidong} 
 	</select>
 	<select id="updateJJC_RankLose" parameterType="Map">
-		update userjjc set record=#{record},day_cur_times=day_cur_times+1,pk_lost_count=pk_lost_count+1,score=score+5 where userjjc.uid = #{uid} 
+		update userjjc set jjc_max_record=#{record},day_cur_times=day_cur_times+1,pk_lost_count=pk_lost_count+1,score=score+5 where userjjc.uid = #{uid} 
 	</select>
 	<select id="updateJJC_RankDraw" parameterType="Map">
-		update userjjc set record=#{record},day_cur_times=day_cur_times+1,pk_draw_count=pk_draw_count+1,score=score+5 where userjjc.uid = #{uid} 
+		update userjjc set jjc_max_record=#{record},day_cur_times=day_cur_times+1,pk_draw_count=pk_draw_count+1,score=score+5 where userjjc.uid = #{uid} 
 	</select>
 	
 	<select id="updateJJC_GetScore" parameterType="Map">	

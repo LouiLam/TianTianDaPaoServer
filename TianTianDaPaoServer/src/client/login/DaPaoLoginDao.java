@@ -8,7 +8,7 @@ public interface DaPaoLoginDao {
 	 * @param upuid
 	 * @return
 	 */
-	public  Map selectUserByUpuid(Map params);
+	public  Map selectUserByLogin(Map params);
 
 
 	/**
@@ -44,4 +44,12 @@ public interface DaPaoLoginDao {
 	 * @return
 	 */
 	public  Map selectJJCUserByUtoken(Map params);
+	
+	/**
+	 * 登录奖励  根据用户token 返回用户是否合法
+	 * @param params
+	 * @return
+	 */
+	public  Map selectLoginRewardByUtoken(Map params);
+	
 }

@@ -15,16 +15,11 @@ import server.ui.main.U;
 import start.AbstractHttpRequestHandler;
 import config.ConfigFactory;
 import config.Constant;
-/**
- * 每日登录奖励
- * @author Administrator
- *
- */
-public class LoginRewardHttpGetRequestHandler extends AbstractHttpRequestHandler {
 
-
+public class TaskFinishHttpGetRequestHandler extends AbstractHttpRequestHandler{
 	@Override
 	protected void handle(String uri, Channel channel) {
+
 		try{
 			//参数解码
 			String decodeuri=null;
@@ -42,12 +37,12 @@ public class LoginRewardHttpGetRequestHandler extends AbstractHttpRequestHandler
 			}
 			
 			JSONObject jsonObj = ConfigFactory
-					.getCheck("6").check(paramClone,channel);
+					.getCheck("7").check(paramClone,channel);
 			//返回
 			sendResponse(jsonObj.toString(), channel);
 		}catch(Exception e){	
 			e.printStackTrace();
-			U.infoQueue("登录奖励请求发生异常： "+e.getMessage()+"ip地址："
+			U.infoQueue("任务完成请求发生异常： "+e.getMessage()+"ip地址："
 					+ channel.getRemoteAddress().toString()+"    uri = " + uri);
 			try {
 				JSONObject jsonObject = new JSONObject();
@@ -58,6 +53,6 @@ public class LoginRewardHttpGetRequestHandler extends AbstractHttpRequestHandler
 				e1.printStackTrace();
 			}
 		}
+	
 	}
-
 }

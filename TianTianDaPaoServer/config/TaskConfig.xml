@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <taskConfig>
-<task id="1" name="任务1" des="描述" reward="奖励" type="类型" arg1="1" arg2="2"></task>
-<task id="2" name="任务2" des="描述" reward="奖励" type="类型" arg1="1" arg2="2"></task>
-<task id="3" name="任务3" des="描述" reward="奖励" type="类型" arg1="1" arg2="2"></task>
-<task id="4" name="任务4" des="描述" reward="奖励" type="类型" arg1="1" arg2="2"></task>
-<task id="5" name="任务5" des="描述" reward="奖励" type="类型" arg1="1" arg2="2"></task>
+<task id="1"  des="当前每日任务需要达到金币数"  target="1000"  reward_gold="500"
+		 reward_charge="0" reward_score="0" reward_diamond="0"></task>
+<task id="2"  des="当前每日任务需要达到竞技场挑战次数"  target="15"  reward_gold="500"
+		 reward_charge="0" reward_score="0" reward_diamond="0"></task>
+<task id="3"  des="当前每日任务需要达到游戏成绩"  target="4000"  reward_gold="500"
+		 reward_charge="0" reward_score="0" reward_diamond="0"></task>
+<task id="4"  des="当前每日任务需要达到游戏场次" target="10"  reward_gold="500"
+		 reward_charge="0" reward_score="0" reward_diamond="0"></task>
 </taskConfig>

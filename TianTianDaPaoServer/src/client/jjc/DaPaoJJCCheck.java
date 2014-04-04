@@ -35,6 +35,15 @@ public class DaPaoJJCCheck extends Check {
 			// 登录检测
 			//uid=3  rank=3  day_max_times=15  socre=0 diamond
 			Map jjcMap = loginDao.selectJJCUserByUtoken(params);
+			
+			// 如果upuid不存在 表示第一次使用设备游客登录
+			if (jjcMap == null) {
+				//登录请求：帐号不存在或密码错误 返回json
+				jsonObject.put(Constant.RET, Constant.RET_JJC_FAILED);
+				jsonObject.put(Constant.MSG, ConfigFactory.getRetMsg(Constant.RET_JJC_FAILED));
+				U.infoQueue("竞技场请求：utoken非法或不存在 "+	channel.getRemoteAddress().toString());
+				return jsonObject;
+			}
 			long rank=(long) jjcMap.get("rank");
 			HashMap<String, String> tempMap=new HashMap<String, String>();
 			if(rank>3)
@@ -43,14 +52,6 @@ public class DaPaoJJCCheck extends Check {
 			tempMap.put("two",  rank-rank/10*2+"");
 			}
 			List rankMap = loginDao.selectJJCUserByNum(tempMap);
-			// 如果upuid不存在 表示第一次使用设备游客登录
-			if (jjcMap == null) {
-				//登录请求：帐号不存在或密码错误 返回json
-				jsonObject.put(Constant.RET, Constant.RET_JJC_FAILED);
-				jsonObject.put(Constant.MSG, ConfigFactory.getRetMsg(Constant.RET_JJC_FAILED));
-				U.infoQueue("竞技场请求：utoken非法或不存在 "+	channel.getRemoteAddress().toString());
-			}
-			
 			// 如果存在//返回消息格式
 			//{
 			//	"ret":"0","userInfo":
@@ -59,14 +60,14 @@ public class DaPaoJJCCheck extends Check {
 			//		},
 			//	"msg":"成功"
 			//}
-			else {
+			
 				jsonObject.put("userInfo", jjcMap);
 				jsonObject.put("rankInfo", rankMap);
 				
 				jsonObject.put(Constant.RET, Constant.RET_JJC_SUCCESS);
 				jsonObject.put(Constant.MSG, ConfigFactory.getRetMsg(Constant.RET_JJC_SUCCESS));
 				U.infoQueue("帐号"+jjcMap.get("id")+"竞技场请求数据成功!竞技场排名："+rank+"    ip:"+channel.getRemoteAddress().toString());
-			}
+			
 		}catch(Exception e){
 			e.printStackTrace();
 		} finally {

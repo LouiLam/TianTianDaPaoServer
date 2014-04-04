@@ -4,9 +4,9 @@
 
 	<resultMap id="ormUser" type="User">
 	</resultMap>
-	<select id="selectUserByUpuid" parameterType="Map" resultType="Map">
-		select userinfo.* from userinfo where id = #{id} and password =
-		#{password}
+	<select id="selectUserByLogin" parameterType="Map" resultType="Map">
+		select userinfo.*,usertask.running_task_id,usergame.is_get_login_reward_this_day,usergame.uconsecutive from userinfo,usertask,usergame where userinfo.id = #{id} and userinfo.password =
+		#{password} and usertask.uid=userinfo.uid and usergame.uid=userinfo.uid
 	</select>
 
 	<select id="insertUserIntoUserInfo" parameterType="Map">
@@ -16,18 +16,12 @@
 		#{upid}, #{uname}, #{uface}, #{ugender}, #{urtime})
 	</select>
 
-	<select id="insertUserIntoGameTable" parameterType="Map">
-		insert into
-		gdmj (ultime, uid, utoken) (select urtime, max(uid), #{utoken}
-		from
-		userinfo)
-	</select>
 
 	<select id="updateUserInfoUltime" parameterType="Map">
-		update userinfo
-		set utoken=#{utoken}, ultime=#{ultime}
-		,uconsecutive=#{uconsecutive}
-		where uid = #{uid}
+		update userinfo,usergame
+		set userinfo.utoken=#{utoken}, userinfo.ultime=#{ultime}
+		,usergame.uconsecutive=#{uconsecutive}
+		where userinfo.uid = #{uid} and usergame.uid=#{uid}
 	</select>
 
 	<select id="updateUserinfoSetUname" parameterType="Map">
@@ -39,17 +33,6 @@
 		call login_reward(#{uid, mode=IN, jdbcType=INTEGER})
 	</select>
 
-
-
-
-
-
-	<select id="selectUstatusFromGDMJ" parameterType="Map">
-		select count(*)
-		from userinfo
-		where upuid = #{upuid} and upid = #{upid}
-	</select>
-
 	<select id="loginUpdateUltimeByUserInfo" parameterType="Map">
 		update
 		usergame set ultime=#{ultime} where uid = #{uid}
@@ -57,9 +40,16 @@
 
 	<select id="selectJJCUserByUtoken" parameterType="Map"
 		resultType="Map">
-		select userjjc.* ,userinfo.id,userinfo.is_get_this_day from userinfo,userjjc where
+		select userjjc.* ,userinfo.id,usergame.is_get_login_reward_this_day from userinfo,userjjc,usergame where
 		userinfo.uid =
-		userjjc.uid and userinfo.utoken= #{utoken}
+		userjjc.uid and userinfo.utoken= #{utoken} and usergame.uid=userinfo.uid
 	</select>
 
+	<select id="selectLoginRewardByUtoken" parameterType="Map"
+		resultType="Map">
+		select userjjc.* ,userinfo.id,usergame.is_get_login_reward_this_day,usergame.ugold,usergame.ucharge from userinfo,userjjc,usergame where
+		userinfo.uid =
+		userjjc.uid and userinfo.utoken= #{utoken} and usergame.uid=userinfo.uid
+	</select>
+	
 </mapper>

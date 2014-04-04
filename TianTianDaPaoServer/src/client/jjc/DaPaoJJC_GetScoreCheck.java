@@ -25,14 +25,10 @@ public class DaPaoJJC_GetScoreCheck extends Check {
 		SqlSession sqlSession = DatabaseConnector.getInstance().getSqlSession();
 
 		try {
-			// YaoPengLoginDao loginDao = sqlSession.getMapper(
-			// ConfigFactory.getClazz(params.get("gid")));
 			DaPaoJJCDao loginDao = sqlSession.getMapper(ConfigFactory
 					.getClazz("3"));
-			// 登录检测
 			Map jjcMap = loginDao.selectJJCUserByUtoken(params);
 			if (jjcMap == null) {
-				// 登录请求：帐号不存在或密码错误 返回json
 				jsonObject.put(Constant.RET, Constant.RET_JJC_GET_SCORE_FAILED);
 				jsonObject.put(Constant.MSG,
 						ConfigFactory.getRetMsg(Constant.RET_JJC_GET_SCORE_FAILED));

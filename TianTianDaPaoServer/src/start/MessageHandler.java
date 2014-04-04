@@ -36,7 +36,7 @@ public class MessageHandler extends SimpleChannelUpstreamHandler {
 			throws Exception {
 		HttpRequest httpRequest = (HttpRequest) e.getMessage();
 		String uri = httpRequest.getUri();
-		String path = uri.split("[?]")[0];
+		String path = uri.split("[?]")[0].trim();
 		try{
 			logger.error("请求uri："+uri+"------path:"+path);
 			if("/favicon.ico".equals(uri)){

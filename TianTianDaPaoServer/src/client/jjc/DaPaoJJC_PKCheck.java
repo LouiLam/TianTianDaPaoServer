@@ -68,10 +68,14 @@ public class DaPaoJJC_PKCheck extends Check {
 
 			}
 			//被挑战用户的战绩
-			long record_beidong=(long)jjc_pkMap.get("record");
+			long record_beidong=(long)jjc_pkMap.get("jjc_max_record");
 			long record_zhudong=Long.parseLong(params.get("record"));
 			long  rank_beidong=(long)jjc_pkMap.get("rank");
 			long rank_zhudong=(long)jjcMap.get("rank");
+			long sqlRecord=(long) jjcMap.get("jjc_max_record");
+			if(record_zhudong<sqlRecord){//如果提交的成绩 大于数据库中的成绩，就更新提交的成绩 否则不提交新成绩
+				params.put("record", sqlRecord+"");
+			}
 			if ((jjcMap.get("uid")+"").equals(params.get("pk_player_uid")+"")) {
 				jsonObject.put(Constant.RET,
 						Constant.RET_JJC_PK_FAILED_UID_MYSELF);
@@ -87,7 +91,7 @@ public class DaPaoJJC_PKCheck extends Check {
 				params.put("uid",jjcMap.get("uid")+"");
 				params.put("rank_beidong", rank_beidong+"");
 				params.put("rank_zhudong", rank_zhudong+"");
-				params.put("uid_beidong", jjc_pkMap.get("uid")+"");
+				params.put("uid_beidong", params.get("pk_player_uid")+"");
 				loginDao.updateJJC_RankWin(params);
 				loginDao.updateJJC_RankBeidong(params);
 				sqlSession.commit();

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 注意修改此配置，数据库存储过程需要对应修改 -->
+<loginRewardConfig>
+	<loginReward day="1" name="第一天" reward_gold="500"
+		 reward_charge="0" reward_score="0" reward_diamond="0"></loginReward>
+	<loginReward day="2" name="第二天" reward_gold="100"
+		 reward_charge="0" reward_score="0" reward_diamond="0"></loginReward>
+	<loginReward day="3" name="第三天" reward_gold="2000"
+		 reward_charge="0" reward_score="0" reward_diamond="0"></loginReward>
+	<loginReward day="4" name="第四天" reward_gold="4000"
+		 reward_charge="0" reward_score="0" reward_diamond="0"></loginReward>
+	<loginReward day="5" name="第五天" reward_gold="8000"
+		 reward_charge="0" reward_score="0" reward_diamond="0"></loginReward>
+	<loginReward day="6" name="第六天" reward_gold="16000"
+		 reward_charge="0" reward_score="0" reward_diamond="0"></loginReward>
+	<loginReward day="7" name="第七天" reward_gold="32000"
+		 reward_charge="0" reward_score="0" reward_diamond="0"></loginReward>
+</loginRewardConfig>
+

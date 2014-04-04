@@ -19,10 +19,19 @@
 	<resMsg ret="16" msg="竞技场非法请求：被pk的用户为自己的uid" />
 	<resMsg ret="17" msg="竞技场挑战请求成功,数据更新" />
 	<resMsg ret="18" msg="竞技场获取积分请求失败：utoken非法或不存在" />
-	<resMsg ret="19" msg="竞竞技场获取积分请求失败：该用户已领取过积分" />
+	<resMsg ret="19" msg="竞技场获取积分请求失败：该用户已领取过积分" />
 	<resMsg ret="20" msg="竞技场获取积分请求成功,数据更新" />
 	<resMsg ret="21" msg="登录奖励领取成功" />
 	<resMsg ret="22" msg="领取登录奖励领取失败：今天该用户已经领取过了" />
 	<resMsg ret="23" msg="领取登录奖励领取失败：utoken非法或不存在" />
 	<resMsg ret="24" msg="竞技场非法请求：今天挑战次数已到上限" />
+	<resMsg ret="25" msg="游戏正常结束请求失败：utoken非法或不存在" />
+	<resMsg ret="26" msg="游戏正常结束请求成功" />
+	<resMsg ret="27" msg="游戏正常结束请求失败：缺少参数record" />
+	<resMsg ret="28" msg="游戏正常开始请求失败：utoken非法或不存在" />
+	<resMsg ret="29" msg="游戏正常开始请求失败：体力不够" />
+	<resMsg ret="30" msg="游戏正常开始请求成功" />
+	<resMsg ret="31" msg="获取体力信息请求失败：utoken非法或不存在" />
+	<resMsg ret="32" msg="获取体力信息请求成功，数据更新" />
+	<resMsg ret="33" msg="注册参数要求非法" />
 </retMsgConfig>

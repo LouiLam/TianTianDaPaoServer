@@ -6,17 +6,23 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
 import org.jboss.netty.channel.Channel;
 import org.jboss.netty.handler.codec.http.QueryStringDecoder;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import server.ui.main.U;
 import start.AbstractHttpRequestHandler;
 import config.ConfigFactory;
+import config.Constant;
+/**
+ * 普通游戏结束
+ * @author Administrator
+ *
+ */
+public class GameOverHttpGetRequestHandler extends AbstractHttpRequestHandler {
 
-public class SearchHttpGetRequestHandler extends AbstractHttpRequestHandler{
 
-	private static Logger logger = Logger.getLogger(SearchHttpGetRequestHandler.class);
 	@Override
 	protected void handle(String uri, Channel channel) {
 		try{
@@ -34,20 +40,25 @@ public class SearchHttpGetRequestHandler extends AbstractHttpRequestHandler{
 				String value = params.get(key).get(0);
 				paramClone.put(key, value);
 			}
+			
 
 			JSONObject jsonObj = ConfigFactory
-					.getSearchCheck("1").check(paramClone,channel);
-			
+					.getCheck("8").check(paramClone,channel);
 			//返回
 			sendResponse(jsonObj.toString(), channel);
-	
 		}catch(Exception e){	
 			e.printStackTrace();
-			logger.info("请求大厅信息出错, ip地址：" + channel.getRemoteAddress() + "    uri = " + uri);
-			
-			sendResponse("", channel);
+			U.infoQueue("游戏正常结束请求发生异常： "+e.getMessage()+"ip地址："
+					+ channel.getRemoteAddress().toString()+"    uri = " + uri);
+			try {
+				JSONObject jsonObject = new JSONObject();
+				jsonObject.put(Constant.RET, Constant.RET_INVALID_PLATFORM);
+				jsonObject.put(Constant.MSG, ConfigFactory.getRetMsg(Constant.RET_INVALID_PLATFORM));
+				sendResponse(jsonObject.toString(), channel);
+			} catch (JSONException e1) {
+				e1.printStackTrace();
+			}
 		}
 	}
-
 
 }

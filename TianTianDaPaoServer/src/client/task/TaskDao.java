@@ -1,4 +1,4 @@
-package task;
+package client.task;
 
 import java.util.HashMap;
 import java.util.List;

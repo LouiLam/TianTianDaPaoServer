@@ -46,7 +46,7 @@ public class SinaLoginCheck  extends Check {
 				DaPaoLoginDao loginDao = sqlSession.getMapper(
 						ConfigFactory.getClazz(params.get("gid")));
 				// 先查询UserInfo表中的upuid字段 是否存在相同的upuid
-				Map userMap = loginDao.selectUserByUpuid(params);
+				Map userMap = loginDao.selectUserByLogin(params);
 				// 如果upuid不存在 表示第一次使用设备游客登录
 				if (userMap == null) {
 					
@@ -60,7 +60,7 @@ public class SinaLoginCheck  extends Check {
 					loginDao.insertUserIntoUserInfo(params);
 //					loginDao.insertUserIntoGameTable(params);
 					sqlSession.commit();
-					userMap = loginDao.selectUserByUpuid(params);
+					userMap = loginDao.selectUserByLogin(params);
 					jsonObject.put("userInfo", userMap);
 					jsonObject.put(Constant.RET, Constant.RET_LOGIN_SUCCESS);
 					jsonObject.put(Constant.MSG, ConfigFactory.getRetMsg(Constant.RET_LOGIN_SUCCESS));

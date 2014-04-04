@@ -5,18 +5,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
 import org.jboss.netty.channel.Channel;
 import org.jboss.netty.handler.codec.http.QueryStringDecoder;
 import org.json.JSONObject;
 
 import start.AbstractHttpRequestHandler;
-import start.MessageHandler;
 import config.ConfigFactory;
 
 public class LoginHttpPostRequestHandler extends AbstractHttpRequestHandler{
 
-	private static Logger logger = Logger.getLogger(MessageHandler.class);
 	
 	@Override
 	protected void handle(String parametersString, Channel channel) {
