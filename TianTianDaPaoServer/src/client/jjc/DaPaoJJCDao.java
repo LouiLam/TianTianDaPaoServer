@@ -11,12 +11,19 @@ public interface DaPaoJJCDao   {
 	 * @return
 	 */
 	public  Map selectJJCUserByUtoken(Map params);
+	/**
+	 * 返回组合排名数据
+	 */
+	public  List selectJJCUserByRank(Map params);
+	/**
+	 * 返回世界排名数据
+	 */
+	public  List selectJJCUserByWorldRank(Map params);
 	
 	/**
-	 * 返回排名数据
+	 * 返回我的排名数据
 	 */
-	public  List selectJJCUserByNum(Map params);
-	
+	public  List selectJJCUserByMyRank(Map params);
 	
 	/**
 	 * 查询挑战请求是否合法

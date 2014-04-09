@@ -15,8 +15,8 @@
 	<resMsg ret="12" msg="竞技场请求数据成功" />
 	<resMsg ret="13" msg="竞技场数据请求失败：utoken非法或不存在" />
 	<resMsg ret="14" msg="竞技场挑战请求失败：utoken非法或不存在" />
-	<resMsg ret="15" msg="竞技场非法请求：被pk的用户uid不存在在" />
-	<resMsg ret="16" msg="竞技场非法请求：被pk的用户为自己的uid" />
+	<resMsg ret="15" msg="竞技场挑战请求失败：被pk的用户uid不存在在" />
+	<resMsg ret="16" msg="竞技场挑战请求失败：被pk的用户为自己的uid" />
 	<resMsg ret="17" msg="竞技场挑战请求成功,数据更新" />
 	<resMsg ret="18" msg="竞技场获取积分请求失败：utoken非法或不存在" />
 	<resMsg ret="19" msg="竞技场获取积分请求失败：该用户已领取过积分" />
@@ -34,4 +34,22 @@
 	<resMsg ret="31" msg="获取体力信息请求失败：utoken非法或不存在" />
 	<resMsg ret="32" msg="获取体力信息请求成功，数据更新" />
 	<resMsg ret="33" msg="注册参数要求非法" />
+	<resMsg ret="34" msg="积分抽奖请求失败：utoken非法或不存在" />
+	<resMsg ret="35" msg="积分抽奖请求成功,数据更新" />
+	<resMsg ret="36" msg="积分抽奖请求失败：积分不够" />
+	<resMsg ret="37" msg="竞技场挑战请求失败：被PK用户排名比发起用户排名低，不允许挑战" />
+	<resMsg ret="38" msg="积分兑换物品请求失败：utoken非法或不存在" />
+	<resMsg ret="39" msg="积分兑换物品请求失败：积分不够" />
+	<resMsg ret="40" msg="积分兑换物品请求成功,数据更新" />
+	<resMsg ret="41" msg="积分兑换物品请求失败,兑换物品ID不存在" />
+	<resMsg ret="42" msg="积分兑换物品请求失败,缺少参数item_id" />
+	<resMsg ret="43" msg="积分兑换物品请求失败,一次性兑换物品不允许重复兑换" />
+	<resMsg ret="44" msg="购买物品请求失败：utoken非法或不存在" />
+	<resMsg ret="45" msg="购买物品请求失败,缺少参数item_id" />
+	<resMsg ret="46" msg="购买物品请求失败,兑换物品ID不存在" />
+	<resMsg ret="47" msg="购买物品请求失败：货币不够" />
+	<resMsg ret="48" msg="购买物品请求失败,一次性购买物品不允许重复购买" />
+	<resMsg ret="49" msg="购买物品请求成功,数据更新" />
+	<resMsg ret="50" msg="获取配置信息请求失败：utoken非法或不存在" />
+	<resMsg ret="51" msg="获取配置信息请求成功" />
 </retMsgConfig>

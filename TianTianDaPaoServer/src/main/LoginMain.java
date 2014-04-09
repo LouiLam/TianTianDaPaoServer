@@ -6,6 +6,9 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.dom4j.DocumentException;
 
+import client.buy_items.BuyItemsConfigMgr;
+import client.score_exchange_items.ScoreExchangeItemsConfigMgr;
+import client.score_lottery.ScoreLotteryConfigMgr;
 import client.task.TaskConfigMgr;
 
 import server.ui.main.DaPaoMain;
@@ -42,6 +45,15 @@ public class LoginMain {
 			// 任务
 			TaskConfigMgr.getInstance().configure();
 			U.info("任务配置文件读取成功");
+			//积分抽奖
+			ScoreLotteryConfigMgr.getInstance().configure();
+			U.info("积分抽奖配置文件读取成功");
+			//积分兑换物品
+			ScoreExchangeItemsConfigMgr.getInstance().configure();
+			U.info("积分兑换物品配置文件读取成功");
+			//物品购买
+			BuyItemsConfigMgr.getInstance().configure();
+			U.info("物品购买配置文件读取成功");
 			// ServerConfig
 			ServerConfig.getInstance().configure();
 			U.info("ServerConfig配置文件读取成功");

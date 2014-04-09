@@ -72,6 +72,16 @@ public class DaPaoJJC_PKCheck extends Check {
 			long record_zhudong=Long.parseLong(params.get("record"));
 			long  rank_beidong=(long)jjc_pkMap.get("rank");
 			long rank_zhudong=(long)jjcMap.get("rank");
+			if(rank_beidong>rank_zhudong)
+			{
+				jsonObject.put(Constant.RET,
+						Constant.RET_JJC_PK_FAILED_UID_MYSELF);
+				jsonObject.put(Constant.MSG, ConfigFactory
+						.getRetMsg(Constant.RET_JJC_PK_FAILED_UID_MYSELF));
+				U.infoQueue("id:"+id+"竞技场非法请求：被PK用户排名比发起用户排名低，不允许挑战   ip:"
+						+ channel.getRemoteAddress().toString());
+				return jsonObject;
+			}
 			long sqlRecord=(long) jjcMap.get("jjc_max_record");
 			if(record_zhudong<sqlRecord){//如果提交的成绩 大于数据库中的成绩，就更新提交的成绩 否则不提交新成绩
 				params.put("record", sqlRecord+"");

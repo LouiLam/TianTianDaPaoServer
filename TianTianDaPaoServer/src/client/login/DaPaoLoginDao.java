@@ -3,6 +3,7 @@ package client.login;
 import java.util.Map;
 
 public interface DaPaoLoginDao {
+	
 	/**
 	 * 登陆时查询用户是否存在
 	 * @param upuid
@@ -38,12 +39,6 @@ public interface DaPaoLoginDao {
 	 */
 	public void login_reward(Map params);
 	
-	/**
-	 * 根据用户token 返回用户是否合法
-	 * @param upuid
-	 * @return
-	 */
-	public  Map selectJJCUserByUtoken(Map params);
 	
 	/**
 	 * 登录奖励  根据用户token 返回用户是否合法

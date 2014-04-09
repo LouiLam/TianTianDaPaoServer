@@ -47,6 +47,8 @@ public class DaPaoLoginRewardCheck extends Check {
 				{
 					// 领取登录奖励
 					loginDao.login_reward(userMap);
+					sqlSession.commit();
+					userMap= loginDao.selectLoginRewardByUtoken(params);
 					jsonObject.put("userInfo", userMap);
 					jsonObject.put(Constant.RET, Constant.RET_LOGIN_REWARD_SUCCESS);
 					jsonObject

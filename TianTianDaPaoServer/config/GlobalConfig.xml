@@ -15,6 +15,13 @@
 	
 	<taskConfig>config/TaskConfig.xml</taskConfig>
 	
+	<scoreLotteryConfig>config/ScoreLotteryConfig.xml</scoreLotteryConfig>
+	
+	<scoreExchangeItemsConfig>config/ScoreExchangeItemsConfig.xml</scoreExchangeItemsConfig>
+	
+	<buyItemsConfig>config/BuyItemsConfig.xml</buyItemsConfig>
+	
+	
 	<loginRewardConfig>config/LoginRewardConfig.xml</loginRewardConfig>
 	
 	<retMsgConfig>config/RetMsgConfig.xml</retMsgConfig>

@@ -16,7 +16,7 @@
 		<select id="selectGameStartByUtoken" parameterType="Map"
 		resultType="Map">
 		select
-		userinfo.id,userinfo.uid,usergame.tili from
+		userinfo.id,userinfo.uid,usergame.tili,usergame.last_tili_send_time from
 		userinfo,usergame where
 		userinfo.uid =usergame.uid and userinfo.utoken=#{utoken}
 	</select>
@@ -24,11 +24,12 @@
 	<select id="selectGetTiliByUtoken" parameterType="Map"
 		resultType="Map">
 		select
-		userinfo.id,userinfo.uid,usergame.last_tili_send_time,usergame.tili from
+		userinfo.id,userinfo.uid,usergame.last_tili_send_time,usergame.tili,usergame.normal_max_record from
 		userinfo,usergame where
 		userinfo.uid =usergame.uid and userinfo.utoken=
 		#{utoken}
 	</select>
+	
 	<select id="updateUserGameByRecord" parameterType="Map">
 		update usergame set normal_max_record=#{record} where
 		usergame.uid =#{uid}

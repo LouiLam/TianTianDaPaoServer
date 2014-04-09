@@ -18,6 +18,9 @@
     <select id="insertUserIntoUserJJC" parameterType="Map" >
         INSERT into userjjc() VALUES ()
     </select>
+      <select id="insertUserIntoUserProp" parameterType="Map" >
+        INSERT into userprop() VALUES ()
+    </select>
        <select id="insertUserIntoTaskUser" parameterType="Map" >
         INSERT into usertask(running_task_id) VALUES (#{running_task_id})
     </select>

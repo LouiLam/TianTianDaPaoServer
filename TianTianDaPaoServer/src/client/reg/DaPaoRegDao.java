@@ -23,9 +23,15 @@ public interface DaPaoRegDao {
 	 * @return
 	 */
 	public  void insertUserIntoUserJJC(Map params);
+	/**
+	 * 注册插入一条纪录到UserProp表中
+	 * @param udevice
+	 * @return
+	 */
+	public  void insertUserIntoUserProp(Map params);
 
 	/**
-	 * 插入一条记录，并使某个字段的值为自动递增值
+	 * 更新一条记录，并使某个字段的值为自动递增值
 	 * @param params
 	 */
 	public  void updateRankIntoUserJJC(Map params);

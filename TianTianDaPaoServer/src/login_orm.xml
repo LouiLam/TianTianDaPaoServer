@@ -9,12 +9,6 @@
 		#{password} and usertask.uid=userinfo.uid and usergame.uid=userinfo.uid
 	</select>
 
-	<select id="insertUserIntoUserInfo" parameterType="Map">
-		insert into
-		userinfo (upuid, upid, uname, uface, ugender, urtime)
-		values (#{upuid},
-		#{upid}, #{uname}, #{uface}, #{ugender}, #{urtime})
-	</select>
 
 
 	<select id="updateUserInfoUltime" parameterType="Map">
@@ -38,16 +32,11 @@
 		usergame set ultime=#{ultime} where uid = #{uid}
 	</select>
 
-	<select id="selectJJCUserByUtoken" parameterType="Map"
-		resultType="Map">
-		select userjjc.* ,userinfo.id,usergame.is_get_login_reward_this_day from userinfo,userjjc,usergame where
-		userinfo.uid =
-		userjjc.uid and userinfo.utoken= #{utoken} and usergame.uid=userinfo.uid
-	</select>
+
 
 	<select id="selectLoginRewardByUtoken" parameterType="Map"
 		resultType="Map">
-		select userjjc.* ,userinfo.id,usergame.is_get_login_reward_this_day,usergame.ugold,usergame.ucharge from userinfo,userjjc,usergame where
+		select userjjc.score ,usergame.ugold,usergame.ucharge,usergame.diamond,userinfo.uid,userinfo.id,usergame.is_get_login_reward_this_day,usergame.ugold,usergame.ucharge from userinfo,userjjc,usergame where
 		userinfo.uid =
 		userjjc.uid and userinfo.utoken= #{utoken} and usergame.uid=userinfo.uid
 	</select>

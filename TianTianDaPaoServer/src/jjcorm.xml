@@ -8,10 +8,19 @@
 		select userjjc.* ,userinfo.id from userinfo,userjjc where userinfo.uid =
 		userjjc.uid and userinfo.utoken= #{utoken}
 	</select>
-	<select id="selectJJCUserByNum" parameterType="Map" resultType="Map">
+	
+	<select id="selectJJCUserByRank" parameterType="Map" resultType="Map">
 		select userjjc.* ,userinfo.id from userinfo,userjjc where userinfo.uid
-		= userjjc.uid and (userjjc.rank BETWEEN 1 and 3 or userjjc.rank
-		in(#{one},#{two})) order by userjjc.rank
+		= userjjc.uid and (userjjc.rank BETWEEN 1 and 50 or in(#{one},#{two},#{three},#{four})) ) order by userjjc.rank
+	</select>
+	<select id="selectJJCUserByWorldRank" parameterType="Map" resultType="Map">
+		select userjjc.* ,userinfo.id from userinfo,userjjc where userinfo.uid
+		= userjjc.uid and (userjjc.rank BETWEEN 1 and 50 ) order by userjjc.rank
+	</select>
+	<select id="selectJJCUserByMyRank" parameterType="Map" resultType="Map">
+		select userjjc.* ,userinfo.id from userinfo,userjjc where userinfo.uid
+		= userjjc.uid and (userjjc.rank
+		in(#{one},#{two},#{three},#{four})) order by userjjc.rank
 	</select>
 
 	<select id="selectJJC_PKUser" parameterType="Map" resultType="Map">

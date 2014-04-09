@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  value 数据库对应字段名 consume表示所需积分 des描述信息 consume_ugold消耗金币 
+consume_ucharge消耗话费点  consume_score消耗积分 consume_diamond消耗钻石-->
+<buyItemsConfig>
+	<buyItems id="1" des="2号角色" consume_ugold="25000"
+		consume_ucharge="0" consume_score="0" consume_diamond="0" value="prop1"></buyItems>
+	<buyItems id="2" des="3号角色" consume_ugold="0"
+		consume_ucharge="0" consume_score="0" consume_diamond="320" value="prop2"></buyItems>
+	<buyItems id="3" des="4号角色" consume_ugold="0"
+		consume_ucharge="0" consume_score="0" consume_diamond="680" value="prop3"></buyItems>
+	<buyItems id="4" des="2号宠物" consume_ugold="80000"
+		consume_ucharge="0" consume_score="0" consume_diamond="0" value="prop5"></buyItems>
+	<buyItems id="5" des="3号宠物" consume_ugold="0"
+		consume_ucharge="0" consume_score="0" consume_diamond="320" value="prop6"></buyItems>
+	<buyItems id="6" des="4号宠物" consume_ugold="0"
+		consume_ucharge="0" consume_score="0" consume_diamond="460" value="prop7"></buyItems>
+	<buyItems id="7" des="2号飞艇" consume_ugold="80000"
+		consume_ucharge="0" consume_score="0" consume_diamond="0" value="prop9"></buyItems>
+	<buyItems id="8" des="3号飞艇" consume_ugold="0"
+		consume_ucharge="0" consume_score="0" consume_diamond="680" value="prop10"></buyItems>
+	<buyItems id="9" des="4号飞艇" consume_ugold="0"
+		consume_ucharge="0" consume_score="0" consume_diamond="680" value="prop11"></buyItems>
+	<buyItems id="10" des="超级水晶" consume_ugold="100"
+		consume_ucharge="0" consume_score="0" consume_diamond="0" value="prop12"></buyItems>
+	<buyItems id="11" des="能量之星" consume_ugold="1200"
+		consume_ucharge="0" consume_score="0" consume_diamond="0" value="prop13"></buyItems>
+	<buyItems id="12" des="不屈意志" consume_ugold="500"
+		consume_ucharge="0" consume_score="0" consume_diamond="0" value="prop14"></buyItems>
+	<buyItems id="13" des="水晶护甲" consume_ugold="150"
+		consume_ucharge="0" consume_score="0" consume_diamond="0" value="prop15"></buyItems>
+	<buyItems id="14" des="永恒之力" consume_ugold="2000"
+		consume_ucharge="0" consume_score="0" consume_diamond="0" value="prop16"></buyItems>
+	<buyItems id="15" des="幸运金币" consume_ugold="300"
+		consume_ucharge="0" consume_score="0" consume_diamond="0" value="prop17"></buyItems>
+
+
+
+
+</buyItemsConfig>

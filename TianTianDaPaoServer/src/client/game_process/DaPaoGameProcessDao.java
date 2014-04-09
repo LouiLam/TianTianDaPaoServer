@@ -24,6 +24,12 @@ public interface DaPaoGameProcessDao   {
 	 */
 	public Map selectGameStartByUtoken(Map params);
 	/**
+	 * 积分抽奖根据用户token 返回用户是否合法
+	 * @param upuid
+	 * @return
+	 */
+	public Map selectScoreLotteryByUtoken(Map params);
+	/**
 	 * 更新挑战者成绩
 	 * @param params
 	 */

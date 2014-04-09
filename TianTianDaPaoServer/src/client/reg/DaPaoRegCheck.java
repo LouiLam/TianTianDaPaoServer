@@ -66,6 +66,7 @@ public class DaPaoRegCheck extends Check {
 				regDao.insertUserIntoUserInfo(params);
 				regDao.insertUserIntoUserJJC(params);
 				regDao.insertUserIntoTaskUser(params);
+				regDao.insertUserIntoUserProp(params);
 				regDao.updateRankIntoUserJJC(params);
 				regDao.insertUserIntoUserGame(params);
 				sqlSession.commit();
@@ -86,8 +87,8 @@ public class DaPaoRegCheck extends Check {
 			//表示id重复不允许注册
 			else {
 //				jsonObject.put("userInfo", userMap);
-				jsonObject.put(Constant.RET, Constant.RET_REG_INVALID);
-				jsonObject.put(Constant.MSG, ConfigFactory.getRetMsg(Constant.RET_REG_INVALID));
+				jsonObject.put(Constant.RET, Constant.RET_REG_FAILED_ID_REPART);
+				jsonObject.put(Constant.MSG, ConfigFactory.getRetMsg(Constant.RET_REG_FAILED_ID_REPART));
 				U.infoQueue("id:"+params.get("id")+"重复不允许注册"+channel.getRemoteAddress().toString());
 			}
 		}catch(Exception e){

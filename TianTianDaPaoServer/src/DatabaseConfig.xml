@@ -2,29 +2,36 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    
-    <typeAliases>
-         <typeAlias alias="Check" type="client.login.Check" />
-         <typeAlias alias="User" type="user.User" />
-    </typeAliases>
-    
-    <environments default="development">
-        <environment id="development">
-            <transactionManager type="JDBC" />
-              <dataSource type="POOLED">
-	             <property name="driver" value="com.mysql.jdbc.Driver" />
-                <property name="url" value="jdbc:mysql://192.168.1.205:3306/tiantiandapao" />
-                <property name="username" value="root" />
-                <property name="password" value="123456" />
-    	     </dataSource>
-        </environment>
-    </environments>
-    
-    <mappers>
-        <mapper resource="login_orm.xml"/>
-        <mapper resource="regorm.xml"/>
-          <mapper resource="jjcorm.xml"/>
-         <mapper resource="game_process_orm.xml"/>
-    </mappers>
+
+	<typeAliases>
+		<typeAlias alias="Check" type="client.login.Check" />
+		<typeAlias alias="User" type="user.User" />
+	</typeAliases>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url"
+					value="jdbc:mysql://192.168.1.205:3306/tiantiandapao" />
+				<property name="username" value="root" />
+				<property name="password" value="123456" />
+				<property name="poolPingQuery" value="select * from userinfo"/>
+				<property name="poolPingEnabled" value="true"/>
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+		<mapper resource="login_orm.xml" />
+		<mapper resource="regorm.xml" />
+		<mapper resource="jjcorm.xml" />
+		<mapper resource="game_process_orm.xml" />
+		<mapper resource="score_lottery_orm.xml" />
+		<mapper resource="score_exchange_items_orm.xml" />
+		<mapper resource="buy_items_orm.xml" />
+		<mapper resource="config_info_orm.xml" />
+	</mappers>
 </configuration>
   

@@ -46,12 +46,17 @@ public class DaPaoJJCCheck extends Check {
 			}
 			long rank=(long) jjcMap.get("rank");
 			HashMap<String, String> tempMap=new HashMap<String, String>();
-			if(rank>3)
+			if(rank>10)
 			{
 			tempMap.put("one", rank-rank/10+"");
 			tempMap.put("two",  rank-rank/10*2+"");
+			tempMap.put("three",  rank-rank/10*3+"");
+			tempMap.put("four",  rank-rank/10*4+"");
 			}
-			List rankMap = loginDao.selectJJCUserByNum(tempMap);
+			//世界排名
+			List worldRankMap = loginDao.selectJJCUserByWorldRank(tempMap);
+//			//我的排名
+			List myRankMap = loginDao.selectJJCUserByMyRank(tempMap);
 			// 如果存在//返回消息格式
 			//{
 			//	"ret":"0","userInfo":
@@ -62,8 +67,8 @@ public class DaPaoJJCCheck extends Check {
 			//}
 			
 				jsonObject.put("userInfo", jjcMap);
-				jsonObject.put("rankInfo", rankMap);
-				
+				jsonObject.put("worldRankMap", worldRankMap);
+				jsonObject.put("myRankMap", myRankMap);
 				jsonObject.put(Constant.RET, Constant.RET_JJC_SUCCESS);
 				jsonObject.put(Constant.MSG, ConfigFactory.getRetMsg(Constant.RET_JJC_SUCCESS));
 				U.infoQueue("帐号"+jjcMap.get("id")+"竞技场请求数据成功!竞技场排名："+rank+"    ip:"+channel.getRemoteAddress().toString());

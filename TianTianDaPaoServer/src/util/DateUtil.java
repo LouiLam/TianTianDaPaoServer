@@ -21,8 +21,15 @@ public class DateUtil {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(getDateByTimestamp(1396575405));
-
+		StringBuffer sql=new StringBuffer("update userprop,userjjc,usergame set ");
+		sql.append("userjjc.score=userjjc.score-"+10);
+		sql.append(",usergame.ucharge=userjjc.ucharge-"+0);
+		sql.append(",usergame.ugold=usergame.ugold-"+0);
+		sql.append(",usergame.diamond=usergame.diamond-"+0);
+		sql.append(",userprop."+1+"=userprop."+1+"+1");
+		sql.append(" where  userprop.uid="+1+" and userjjc.uid="+1);
+		sql.append(" where  userprop.uid="+1+" and usergame.uid="+1);
+		System.out.println(sql.toString());
 	}
 
 	/**

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="client.buy_items.DaPaoBuyItemsDao">
+
+	<resultMap id="ormUser" type="User">
+	</resultMap>
+
+	<select id="selectBuyItemsByUtoken" parameterType="Map"
+		resultType="Map">
+		select userprop.*,userinfo.id,userinfo.uid,userjjc.score,usergame.ugold,usergame.ucharge,usergame.diamond from
+		usergame,userinfo,userjjc,userprop where
+		userinfo.uid =userjjc.uid and userinfo.utoken=
+		#{utoken} and userinfo.uid =userprop.uid and userinfo.uid =usergame.uid
+	</select>
+	<select id="updateItemByUserJJCAndProp" parameterType="Map">
+	    ${paramSQL}
+	</select>
+
+
+	<select id="selectScoreLotteryByMuch" parameterType="Map"
+		resultType="Map">
+		select
+		userinfo.id,userinfo.uid,userjjc.score, usergame.ugold,usergame.ucharge,usergame.diamond
+		from
+		userinfo,userjjc,usergame where
+		userinfo.uid =userjjc.uid and
+		userinfo.utoken=#{utoken} and userinfo.uid =usergame.uid 
+	</select>
+
+
+</mapper>

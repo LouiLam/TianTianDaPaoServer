@@ -56,12 +56,8 @@ public class DaPaoGetTiliInfoCheck extends Check {
 				//10分钟为一个单位 取余
 				sec=60*10-sec%(60*10);
 			}
-//			if(hours<1)
-//			{
-//				long minutes=DateUtil.getMinutesBetween(last_tili_send_time*1000l, System.currentTimeMillis());
-//			}
 			
-			System.out.println("heart:"+heart+"hours:"+hours+",minutes:"+minutes+",剩余minutes:"+sec/60 );
+//			System.out.println("heart:"+heart+"hours:"+hours+",minutes:"+minutes+",剩余minutes:"+sec/60 );
 			String id = (String) gameMap.get("id");
 			params.put("uid", gameMap.get("uid") + "");
 			params.put("tili", result+"");

@@ -60,8 +60,6 @@ public class DaPaoLoginCheck extends Check {
 					{
 						jsonObject.put("login_reward_config", LoginRewardConfigMgr.getInstance().loginRewardList);
 					}
-					//返回任务配置信息和当前任务ID
-					jsonObject.put("task_config", TaskConfigMgr.getInstance().taskList);
 					int ultime = (int)(System.currentTimeMillis()/1000);
 					//先检查登录日期，是否是连续登录
 					long lastTime=(long) userMap.get("ultime");

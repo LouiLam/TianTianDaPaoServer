@@ -10,8 +10,6 @@ import org.dom4j.Element;
 import server.ui.main.U;
 import start.AbstractHttpRequestHandler;
 import client.login.Check;
-import client.reg.DaPaoRegCheck;
-import client.search.YaoPengSearchCheck;
 
 public class ConfigFactory {
 
@@ -37,7 +35,7 @@ public class ConfigFactory {
 					new GlobalConfig().getConfigResourceAddress("CheckConfig"));
 			checkProperties.load(fis1);
 			fis1.close();
-			
+			U.info("check配置成功");
 			
 		
 			dbDaoConfigProperties = new Properties();
@@ -52,28 +50,6 @@ public class ConfigFactory {
 			timerProperties.load(fis3);
 			fis3.close();
 			U.info("时间配置成功");
-//			loginCheckProperties = new Properties();
-//			FileInputStream fis1 = new FileInputStream(
-//					new GlobalConfig().getConfigResourceAddress("loginCheckConfig"));
-//			loginCheckProperties.load(fis1);
-//			fis1.close();
-//			U.info("登录功能配置成功");
-//			regCheckProperties=new Properties();
-//			FileInputStream fis4 = new FileInputStream(
-//					new GlobalConfig().getConfigResourceAddress("regConfig"));
-//			regCheckProperties.load(fis4);
-//			fis4.close();
-//			U.info("注册功能配置成功");
-//			searchCheckProperties=new Properties();
-//			FileInputStream fis5 = new FileInputStream(
-//					new GlobalConfig().getConfigResourceAddress("searchConfig"));
-//			searchCheckProperties.load(fis5);
-//			fis5.close();
-//			jjcCheckProperties =new Properties();
-//			FileInputStream fis6 = new FileInputStream(
-//					new GlobalConfig().getConfigResourceAddress("JJCConfig"));
-//			jjcCheckProperties.load(fis6);
-//			fis6.close();
 			
 			Document document = new GlobalConfig().getDocumentByFileAddress(new GlobalConfig()
 			.getConfigResourceAddress("retMsgConfig"));
@@ -104,10 +80,6 @@ public class ConfigFactory {
 		return (Check)(Class.forName(checkProperties.getProperty(platformId)).newInstance());
 	}
 	
-	public static YaoPengSearchCheck getSearchCheck(String platformId) 
-			throws InstantiationException, IllegalAccessException, ClassNotFoundException{
-		return (YaoPengSearchCheck)(Class.forName(searchCheckProperties.getProperty(platformId)).newInstance());
-	}
 	public static Class getClazz(String gameId) throws ClassNotFoundException {
 		return Class.forName(dbDaoConfigProperties.getProperty(gameId));
 	}
