@@ -3,7 +3,7 @@
 	type:1表示角色  value 表示数据库字段
 	type:2表示飞艇  value 表示数据库字段
 	type:3表示宠物  value 表示数据库字段
-	type:4表示道具  value 表示道具ID数量
+	type:4表示道具  value 表示数据库字段
 	type:5表示金币  value 表示金币数量
 	probability表示抽奖的千分比概率
 	scoreConsume表示每次抽奖的积分消耗

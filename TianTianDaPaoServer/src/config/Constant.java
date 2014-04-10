@@ -61,6 +61,14 @@ public class Constant {
 	public static final int RET_BUY_ITEMS_SUCCESS = 49;//购买物品请求成功,数据更新
 	public static final int RET_CONFIG_INFO_FAILED = 50;//获取配置信息请求失败：utoken非法或不存在
 	public static final int RET_CONFIG_INFO_SUCCESS = 51;//获取配置信息请求成功
+	public static final int RET_ROLE_UPGRADE_FAILED = 52;//角色升级请求失败：utoken非法或不存在
+	public static final int RET_ROLE_UPGRADE_FAILED_MISS_ARG = 53;//角色升级请求失败,缺少参数item_id
+	public static final int RET_ROLE_UPGRADE_FAILED_ARG_INVALID = 54;//角色升级请求失败,item_id参数值非法
+	public static final int RET_ROLE_UPGRADE_FAILED_MAX_LEVEL = 55;//角色升级请求失败,已经是最高等级
+	public static final int RET_ROLE_UPGRADE_FAILED_MONEY_NOT_ENOUGH = 56;//角色升级请求失败,货币不够
+	public static final int RET_ROLE_UPGRADE_SUCCESS = 57;//角色升级请求成功
+	public static final int RET_GAME_START_FAILED_MISS_ARG = 58;//游戏正常开始请求失败：缺少参数
+	public static final int RET_GAME_START_FAILED_ARG_INVALID = 59;//游戏正常开始请求失败：参数值非法
 	public final static String RET = "ret";
 	public final static String MSG = "msg";
 	

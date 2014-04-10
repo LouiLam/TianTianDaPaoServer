@@ -55,10 +55,10 @@ public class DaPaoScoreLotteryCheck extends Check {
 			}
 		
 			int probability=RandomUtil.getRan(0, 1000);
-			String des=null;
 			String gold="";
+			ScoreLottery obj=null;
 			for (int i = 0; i < ScoreLotteryConfigMgr.getInstance().taskObjList.size(); i++) {
-				ScoreLottery obj=ScoreLotteryConfigMgr.getInstance().taskObjList.get(i);
+				 obj=ScoreLotteryConfigMgr.getInstance().taskObjList.get(i);
 				if(probability>=obj.min_probability&&probability<obj.max_probability)
 				{
 					if(obj.type==ScoreLotteryConfigMgr.Gold) //等于金币直接处理
@@ -94,17 +94,18 @@ public class DaPaoScoreLotteryCheck extends Check {
 					}
 					
 					
-					des=obj.des+gold;
 				
 					break;
 				}
 			}
 			
-			U.infoQueue(id + "抽取"+des+"积分抽奖请求成功，数据更新!" + "ip:"
+			U.infoQueue(id + "抽取"+obj.des+"积分抽奖请求成功，数据更新!" + "ip:"
 					+ channel.getRemoteAddress().toString());
 			selectMap = loginDao.selectScoreLotteryByMuch(params);
 			jsonObject.put("userInfo", selectMap);
-			jsonObject.put("des", des);
+			jsonObject.put("item_id", obj.id);
+			if(gold.length()!=0)
+			{jsonObject.put("gold",gold);}
 			jsonObject.put(Constant.RET, Constant.RET_SCORE_LOTTERY_SUCCESS);
 			jsonObject.put(Constant.MSG,
 					ConfigFactory.getRetMsg(Constant.RET_SCORE_LOTTERY_SUCCESS));

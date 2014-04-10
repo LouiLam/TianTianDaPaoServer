@@ -21,6 +21,7 @@
 	
 	<buyItemsConfig>config/BuyItemsConfig.xml</buyItemsConfig>
 	
+	<roleUpgradeConfig>config/RoleUpgradeConfig.xml</roleUpgradeConfig>
 	
 	<loginRewardConfig>config/LoginRewardConfig.xml</loginRewardConfig>
 	

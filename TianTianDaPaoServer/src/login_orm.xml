@@ -5,7 +5,7 @@
 	<resultMap id="ormUser" type="User">
 	</resultMap>
 	<select id="selectUserByLogin" parameterType="Map" resultType="Map">
-		select userinfo.*,usertask.running_task_id,usergame.is_get_login_reward_this_day,usergame.uconsecutive from userinfo,usertask,usergame where userinfo.id = #{id} and userinfo.password =
+		select userinfo.*,usertask.running_task_id,usergame.* from userinfo,usertask,usergame where userinfo.id = #{id} and userinfo.password =
 		#{password} and usertask.uid=userinfo.uid and usergame.uid=userinfo.uid
 	</select>
 

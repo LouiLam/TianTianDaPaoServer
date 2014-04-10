@@ -7,6 +7,7 @@ import org.apache.log4j.PropertyConfigurator;
 import org.dom4j.DocumentException;
 
 import client.buy_items.BuyItemsConfigMgr;
+import client.role_upgrade.RoleUpgradeConfigMgr;
 import client.score_exchange_items.ScoreExchangeItemsConfigMgr;
 import client.score_lottery.ScoreLotteryConfigMgr;
 import client.task.TaskConfigMgr;
@@ -54,6 +55,9 @@ public class LoginMain {
 			//物品购买
 			BuyItemsConfigMgr.getInstance().configure();
 			U.info("物品购买配置文件读取成功");
+			//角色升级
+			RoleUpgradeConfigMgr.getInstance().configure();
+			U.info("角色升级配置文件读取成功");
 			// ServerConfig
 			ServerConfig.getInstance().configure();
 			U.info("ServerConfig配置文件读取成功");

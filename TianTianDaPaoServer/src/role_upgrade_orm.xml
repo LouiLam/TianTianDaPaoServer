@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="client.role_upgrade.DaPaoRoleUpgradeDao">
+
+	<resultMap id="ormUser" type="User">
+	</resultMap>
+
+	<select id="selectRoleUpgradeByUtoken" parameterType="Map"
+		resultType="Map">
+		select
+		userinfo.id,userinfo.uid,usergame.ugold,usergame.diamond,userprop.* from
+		userinfo,userprop,usergame where
+		userinfo.uid =usergame.uid and userinfo.utoken=
+		#{utoken} and userinfo.uid =userprop.uid
+	</select>
+	
+	<select id="selectRoleUpgradeByUID" parameterType="Map"
+		resultType="Map">
+			select
+		userinfo.id,usergame.ugold,usergame.diamond,userprop.prop0,userprop.prop1,userprop.prop2,userprop.prop3 from
+		userinfo,userprop,usergame where
+		userinfo.uid =#{uid} and usergame.uid=#{uid} and userprop.uid=#{uid}
+	</select>
+	
+	<select id="selectRoleLevelByGameProp" parameterType="Map" resultType="Integer">
+	     ${paramSQL}
+	</select>
+
+	<select id="updateRoleUpgradeByMuch" parameterType="Map"
+		>
+		 ${paramSQL}
+	</select>
+
+
+</mapper>

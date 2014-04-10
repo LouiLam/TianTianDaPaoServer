@@ -32,6 +32,7 @@
 		<mapper resource="score_exchange_items_orm.xml" />
 		<mapper resource="buy_items_orm.xml" />
 		<mapper resource="config_info_orm.xml" />
+		<mapper resource="role_upgrade_orm.xml" />
 	</mappers>
 </configuration>
   

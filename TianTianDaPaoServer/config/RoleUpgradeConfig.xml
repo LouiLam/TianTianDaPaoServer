@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 角色升级配置信息 -->
+<roleUpgradeConfig>
+	<roleUpgrade id="1" name="角色1" max_level="30"></roleUpgrade>
+	<roleUpgrade id="2" name="角色2" max_level="45"></roleUpgrade>
+	<roleUpgrade id="3" name="角色3" max_level="60"></roleUpgrade>
+	<roleUpgrade id="4" name="角色4" max_level="70"></roleUpgrade>
+</roleUpgradeConfig>
+

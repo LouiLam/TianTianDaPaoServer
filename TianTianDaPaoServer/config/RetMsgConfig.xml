@@ -52,4 +52,12 @@
 	<resMsg ret="49" msg="购买物品请求成功,数据更新" />
 	<resMsg ret="50" msg="获取配置信息请求失败：utoken非法或不存在" />
 	<resMsg ret="51" msg="获取配置信息请求成功" />
+	<resMsg ret="52" msg="角色升级请求失败：utoken非法或不存在" />
+	<resMsg ret="53" msg="角色升级请求失败,缺少参数item_id" />
+	<resMsg ret="54" msg="角色升级请求失败,item_id参数值非法" />
+	<resMsg ret="55" msg="角色升级请求失败,已经是最高等级" />
+	<resMsg ret="56" msg="角色升级请求失败,货币不够" />
+	<resMsg ret="57" msg="角色升级请求成功" />
+	<resMsg ret="58" msg="游戏正常开始请求失败：缺少参数" />
+	<resMsg ret="59" msg="游戏正常开始请求失败：参数值非法" />
 </retMsgConfig>

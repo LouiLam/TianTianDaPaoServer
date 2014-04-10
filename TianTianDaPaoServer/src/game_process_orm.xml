@@ -16,9 +16,9 @@
 		<select id="selectGameStartByUtoken" parameterType="Map"
 		resultType="Map">
 		select
-		userinfo.id,userinfo.uid,usergame.tili,usergame.last_tili_send_time from
-		userinfo,usergame where
-		userinfo.uid =usergame.uid and userinfo.utoken=#{utoken}
+		userinfo.id,userinfo.uid,usergame.tili,usergame.last_tili_send_time,userprop.* from
+		userinfo,usergame,userprop where
+		userinfo.uid =usergame.uid and userinfo.utoken=#{utoken} and userinfo.uid =userprop.uid
 	</select>
 	
 	<select id="selectGetTiliByUtoken" parameterType="Map"
@@ -35,7 +35,7 @@
 		usergame.uid =#{uid}
 	</select>
 	<select id="updateUserGameByTili" parameterType="Map">
-		update usergame set tili=tili-1 where
+		update usergame set tili=tili-1,cur_role=#{cur_role},cur_pet=#{cur_pet},cur_airship=#{cur_airship}, where
 		usergame.uid =#{uid}
 	</select>
 <select id="updateGetTiliUserGameByTiliAndTime" parameterType="Map">
