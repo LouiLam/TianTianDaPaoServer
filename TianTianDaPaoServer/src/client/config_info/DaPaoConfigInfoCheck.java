@@ -70,7 +70,7 @@ public class DaPaoConfigInfoCheck extends Check {
 				jsonObject.put("userItems", selectMap);
 				jsonObject.put(Constant.RET, Constant.RET_CONFIG_INFO_SUCCESS);
 				jsonObject.put(Constant.MSG, ConfigFactory.getRetMsg(Constant.RET_CONFIG_INFO_SUCCESS));
-				U.infoQueue("id:"+params.get("id")+"获取配置信息请求成功"+channel.getRemoteAddress().toString());
+				U.infoQueue("id:"+selectMap.get("id")+"获取配置信息请求成功"+channel.getRemoteAddress().toString());
 		}catch(Exception e){
 			e.printStackTrace();
 		} finally {

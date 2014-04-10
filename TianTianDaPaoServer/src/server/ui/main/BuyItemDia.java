@@ -15,18 +15,19 @@ import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Text;
 
-public class RegDia extends Dialog {
+public class BuyItemDia extends Dialog {
 	private Text id_text;
 	private Text pwd_text;
 	private Text pwdok_text;
@@ -39,7 +40,7 @@ public class RegDia extends Dialog {
 	 * 
 	 * @param parentShell
 	 */
-	public RegDia(Shell parentShell) {
+	public BuyItemDia(Shell parentShell) {
 		super(parentShell);
 		setShellStyle(SWT.DIALOG_TRIM);
 	}
@@ -60,64 +61,20 @@ public class RegDia extends Dialog {
 	protected Control createDialogArea(Composite parent) {
 		Composite container = (Composite) super.createDialogArea(parent);
 		GridLayout gridLayout = (GridLayout) container.getLayout();
-		gridLayout.numColumns = 3;
+		Table table = new Table(container, SWT.BORDER | SWT.FULL_SELECTION);
+		table.setLinesVisible(true);
+		table.setBounds(10, 10, 582, 237);
+		Font font = new Font(parent.getDisplay(), "Arial", 12, SWT.NORMAL);
+		table.setFont(font);
+		TableColumn column = new TableColumn(table, SWT.NONE);
+		column.setWidth(415);
+		TableColumn column1 = new TableColumn(table, SWT.NONE);
+		column1.setWidth(80);
+		TableColumn column2 = new TableColumn(table, SWT.NONE);
+		column2.setWidth(80);
+//		gridLayout.numColumns = 3;
 
-		Label lblNewLabel = new Label(container, SWT.NONE);
-		lblNewLabel.setText("\u7528\u6237\u540D\uFF1A");
-		new Label(container, SWT.NONE);
-
-		id_text = new Text(container, SWT.BORDER);
-		id_text.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
-				1, 1));
-		id_text.setTextLimit(20);
-		id_text.setToolTipText("\u5e10\u53f7\u6700\u957f20\u4e2a\u5b57\u7b26\uff0c\u4e2d\u6587\u4e3a2\u4e2a\u5b57\u7b26");// �ʺ��20���ַ�����Ϊ2���ַ�
-
-		Label lblNewLabel_1 = new Label(container, SWT.NONE);
-		lblNewLabel_1.setText("\u767B\u5F55\u5BC6\u7801\uFF1A");
-		new Label(container, SWT.NONE);
-
-		pwd_text = new Text(container, SWT.BORDER | SWT.PASSWORD);
-		pwd_text.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
-				1, 1));
-		pwd_text.setTextLimit(36);
-		pwd_text.setToolTipText("\u5bc6\u7801\u6700\u957f36\u4e2a\u5b57\u7b26");
-
-		Label lblNewLabel_2 = new Label(container, SWT.NONE);
-		lblNewLabel_2.setText("\u786E\u8BA4\u5BC6\u7801\uFF1A");
-		new Label(container, SWT.NONE);
-
-		pwdok_text = new Text(container, SWT.BORDER | SWT.PASSWORD);
-		pwdok_text.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,
-				false, 1, 1));
-		pwdok_text.setTextLimit(36);
-		Label label = new Label(container, SWT.NONE);
-		label.setText("\u90AE\u7BB1\uFF1A");
-		new Label(container, SWT.NONE);
-
-		text_3 = new Text(container, SWT.BORDER);
-		text_3.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1,
-				1));
-
-		Label lblNewLabel_3 = new Label(container, SWT.NONE);
-		lblNewLabel_3.setText("QQ\uFF1A");
-
-		new Label(container, SWT.NONE);
-
-		text_4 = new Text(container, SWT.BORDER);
-		text_4.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1,
-				1));
-		text_4.setMessage("\u9884\u7559\u5b57\u6bb5\uff0c\u6682\u65e0\u7528");// Ԥ���ֶΣ�������
-		text_4.setEditable(false);
-
-		Label lblNewLabel_4 = new Label(container, SWT.NONE);
-		lblNewLabel_4.setText("\u624B\u673A\uFF1A");
-		new Label(container, SWT.NONE);
-
-		text_5 = new Text(container, SWT.BORDER);
-		text_5.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1,
-				1));
-		text_5.setMessage("\u9884\u7559\u5b57\u6bb5\uff0c\u6682\u65e0\u7528");// Ԥ���ֶΣ�������
-		text_5.setEditable(false);
+		
 		return container;
 	}
 
@@ -138,7 +95,7 @@ public class RegDia extends Dialog {
 						|| pwdok_text.getText() == null
 						|| pwdok_text.getText().length() == 0) {
 					MessageBox mb = new MessageBox(
-							RegDia.this.getParentShell(), SWT.ICON_INFORMATION
+							BuyItemDia.this.getParentShell(), SWT.ICON_INFORMATION
 									| SWT.OK);
 					mb.setMessage("\u5bc6\u7801\u4e0d\u80fd\u4e3a\u7a7a");// ���벻��Ϊ��
 					mb.open();
@@ -148,7 +105,7 @@ public class RegDia extends Dialog {
 					httpPost();
 				} else {
 					MessageBox mb = new MessageBox(
-							RegDia.this.getParentShell(), SWT.ICON_INFORMATION
+							BuyItemDia.this.getParentShell(), SWT.ICON_INFORMATION
 									| SWT.OK);
 					mb.setMessage("\u5bc6\u7801\u524d\u540e\u4e0d\u4e00\u81f4");// ����ǰ��һ��
 					mb.open();
@@ -166,7 +123,7 @@ public class RegDia extends Dialog {
 	 */
 	@Override
 	protected Point getInitialSize() {
-		return new Point(450, 300);
+		return new Point(680, 322);
 	}
 
 	public void httpPost() {
@@ -186,7 +143,7 @@ public class RegDia extends Dialog {
 			System.out.println(httppHttpResponse2.getStatusLine());
 			System.out.println(EntityUtils.toString(httppHttpResponse2
 					.getEntity()));
-			MessageBox mb = new MessageBox(RegDia.this.getParentShell(),
+			MessageBox mb = new MessageBox(BuyItemDia.this.getParentShell(),
 					SWT.ICON_INFORMATION | SWT.OK);
 			mb.setMessage("\u6CE8\u518C\u6210\u529F");// ע��ɹ�
 			mb.open();

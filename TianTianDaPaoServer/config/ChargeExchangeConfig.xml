@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 话费点与RMB话费兑换比例 -->
+<chargeExchange>
+    <!-- 1RMB等于多少话费点 -->
+	<ratio>10</ratio>
+</chargeExchange>

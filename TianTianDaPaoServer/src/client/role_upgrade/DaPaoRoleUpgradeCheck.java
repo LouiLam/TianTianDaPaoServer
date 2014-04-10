@@ -40,6 +40,7 @@ public class DaPaoRoleUpgradeCheck extends Check {
 						+ channel.getRemoteAddress().toString());
 				return jsonObject;
 			}
+			String id =(String) selectMap.get("id");
 			int item_id;
 			if(params.get("item_id")==null) //丢失参数
 			{
@@ -48,7 +49,7 @@ public class DaPaoRoleUpgradeCheck extends Check {
 				jsonObject
 						.put(Constant.MSG, ConfigFactory
 								.getRetMsg(Constant.RET_ROLE_UPGRADE_FAILED_MISS_ARG));
-				U.infoQueue("角色升级请求失败,缺少参数item_id"
+				U.infoQueue(id+"角色升级请求失败,缺少参数item_id"
 						+ channel.getRemoteAddress().toString());
 				return jsonObject;
 			}
@@ -61,7 +62,7 @@ public class DaPaoRoleUpgradeCheck extends Check {
 				jsonObject
 						.put(Constant.MSG, ConfigFactory
 								.getRetMsg(Constant.RET_ROLE_UPGRADE_FAILED_ARG_INVALID));
-				U.infoQueue("角色升级请求失败,item_id参数值非法---非整形"
+				U.infoQueue(id+"角色升级请求失败,item_id参数值非法---非整形"
 						+ channel.getRemoteAddress().toString());
 				return jsonObject;
 			}
@@ -72,21 +73,20 @@ public class DaPaoRoleUpgradeCheck extends Check {
 				jsonObject
 						.put(Constant.MSG, ConfigFactory
 								.getRetMsg(Constant.RET_ROLE_UPGRADE_FAILED_ARG_INVALID));
-				U.infoQueue("角色升级请求失败,item_id参数值非法---1~4之外的范围"
+				U.infoQueue(id+"角色升级请求失败,item_id参数值非法---1~4之外的范围"
 						+ channel.getRemoteAddress().toString());
 				return jsonObject;
 			}
 			String temp="select prop"+(item_id-1)+" from userprop where  userprop.uid="+selectMap.get("uid");
 			int level=loginDao.selectRoleLevelByGameProp(temp);
 			
-			String id = (String) selectMap.get("id");
 			if(level==0)//没有拥有此角色 不能升级
 			{
 				jsonObject.put(Constant.RET, Constant.RET_ROLE_UPGRADE_FAILED_ARG_INVALID);
 				jsonObject
 						.put(Constant.MSG, ConfigFactory
 								.getRetMsg(Constant.RET_ROLE_UPGRADE_FAILED_ARG_INVALID));
-				U.infoQueue("角色升级请求失败,item_id参数值非法---没有拥有此角色"
+				U.infoQueue(id+"角色升级请求失败,item_id参数值非法---没有拥有此角色"
 						+ channel.getRemoteAddress().toString());
 				return jsonObject;
 			}
@@ -98,7 +98,7 @@ public class DaPaoRoleUpgradeCheck extends Check {
 				jsonObject
 						.put(Constant.MSG, ConfigFactory
 								.getRetMsg(Constant.RET_ROLE_UPGRADE_FAILED_MAX_LEVEL));
-				U.infoQueue("角色升级请求失败,已经是最高等级"
+				U.infoQueue(id+"角色升级请求失败,已经是最高等级"
 						+ channel.getRemoteAddress().toString());
 				return jsonObject;
 			}
@@ -112,7 +112,7 @@ public class DaPaoRoleUpgradeCheck extends Check {
 					jsonObject
 							.put(Constant.MSG, ConfigFactory
 									.getRetMsg(Constant.RET_ROLE_UPGRADE_FAILED_MONEY_NOT_ENOUGH));
-					U.infoQueue("角色升级请求失败,货币不够升级--金币"
+					U.infoQueue(id+"角色升级请求失败,货币不够升级--金币"
 							+ channel.getRemoteAddress().toString());
 					return jsonObject;
 				}
@@ -133,7 +133,7 @@ public class DaPaoRoleUpgradeCheck extends Check {
 					jsonObject
 							.put(Constant.MSG, ConfigFactory
 									.getRetMsg(Constant.RET_ROLE_UPGRADE_FAILED_MONEY_NOT_ENOUGH));
-					U.infoQueue("角色升级请求失败,货币不够升级--钻石"
+					U.infoQueue(id+"角色升级请求失败,货币不够升级--钻石"
 							+ channel.getRemoteAddress().toString());
 					return jsonObject;
 				}

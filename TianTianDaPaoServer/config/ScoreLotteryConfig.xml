@@ -12,15 +12,13 @@
 	<scoreLottery id="1" des="2号角色" probability="20" type="1" value="prop1"></scoreLottery>
 	<scoreLottery id="2" des="3号角色" probability="10" type="1" value="prop2"></scoreLottery>
 	<scoreLottery id="3" des="4号角色" probability="5" type="1" value="prop3"></scoreLottery>
-	<scoreLottery id="4" des="2号飞艇" probability="10" type="2" value="prop9"></scoreLottery>
-	<scoreLottery id="5" des="3号飞艇" probability="5" type="2" value="prop10"></scoreLottery>
-	<scoreLottery id="6" des="2号宠物" probability="30" type="3" value="prop5"></scoreLottery>
-	<scoreLottery id="7" des="3号宠物" probability="10" type="3" value="prop6"></scoreLottery>
-	<scoreLottery id="8" des="4号宠物" probability="10" type="3" value="prop7"></scoreLottery>
-	<scoreLottery id="9" des="超级水晶" probability="80" type="4" value="prop12"></scoreLottery>
-	<scoreLottery id="10" des="能量之星" probability="80" type="4" value="prop13"></scoreLottery>
-	<scoreLottery id="11" des="不屈意志" probability="80" type="4" value="prop14"></scoreLottery>
-	<scoreLottery id="12" des="水晶护甲" probability="80" type="4" value="prop15"></scoreLottery>
-	<scoreLottery id="13" des="永恒之力" probability="80" type="4" value="prop16"></scoreLottery>
-	<scoreLottery id="14" des="金币" probability="500" type="5" value="2000"></scoreLottery>
+	<scoreLottery id="4" des="2号宠物" probability="30" type="3" value="prop5"></scoreLottery>
+	<scoreLottery id="5" des="3号宠物" probability="10" type="3" value="prop6"></scoreLottery>
+	<scoreLottery id="6" des="4号宠物" probability="10" type="3" value="prop7"></scoreLottery>
+	<scoreLottery id="7" des="超级水晶" probability="95" type="4" value="prop12"></scoreLottery>
+	<scoreLottery id="8" des="能量之星" probability="80" type="4" value="prop13"></scoreLottery>
+	<scoreLottery id="9" des="不屈意志" probability="80" type="4" value="prop14"></scoreLottery>
+	<scoreLottery id="10" des="水晶护甲" probability="80" type="4" value="prop15"></scoreLottery>
+	<scoreLottery id="11" des="永恒之力" probability="80" type="4" value="prop16"></scoreLottery>
+	<scoreLottery id="12" des="金币" probability="500" type="5" value="2000"></scoreLottery>
 </scoreLotteryConfig>

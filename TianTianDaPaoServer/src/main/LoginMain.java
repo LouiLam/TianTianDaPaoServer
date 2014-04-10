@@ -6,17 +6,16 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.dom4j.DocumentException;
 
-import client.buy_items.BuyItemsConfigMgr;
-import client.role_upgrade.RoleUpgradeConfigMgr;
-import client.score_exchange_items.ScoreExchangeItemsConfigMgr;
-import client.score_lottery.ScoreLotteryConfigMgr;
-import client.task.TaskConfigMgr;
-
-import server.ui.main.DaPaoMain;
 import server.ui.main.U;
 import start.MessageHandler;
 import start.ServerConfig;
 import start.ServerStart;
+import client.buy_items.BuyItemsConfigMgr;
+import client.charge_exchange.ChargeExchangeConfig;
+import client.role_upgrade.RoleUpgradeConfigMgr;
+import client.score_exchange_items.ScoreExchangeItemsConfigMgr;
+import client.score_lottery.ScoreLotteryConfigMgr;
+import client.task.TaskConfigMgr;
 import config.ConfigFactory;
 import config.GlobalConfig;
 import database.DatabaseConnector;
@@ -58,6 +57,9 @@ public class LoginMain {
 			//角色升级
 			RoleUpgradeConfigMgr.getInstance().configure();
 			U.info("角色升级配置文件读取成功");
+			// ChargeExchangeConfig
+			ChargeExchangeConfig.getInstance().configure();
+			U.info("话费点兑换比率配置文件读取成功");
 			// ServerConfig
 			ServerConfig.getInstance().configure();
 			U.info("ServerConfig配置文件读取成功");

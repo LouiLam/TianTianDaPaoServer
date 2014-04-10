@@ -4,6 +4,7 @@ import java.io.File;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
+import org.dom4j.DocumentHelper;
 import org.dom4j.io.SAXReader;
 
 public class AbstractConfig {
@@ -16,4 +17,5 @@ public class AbstractConfig {
 		document = saxReader.read(new File(fileAddress));
 		return document;
 	}
+
 }

@@ -33,6 +33,7 @@
 		<mapper resource="buy_items_orm.xml" />
 		<mapper resource="config_info_orm.xml" />
 		<mapper resource="role_upgrade_orm.xml" />
+		<mapper resource="charge_exchange_orm.xml" />
 	</mappers>
 </configuration>
   

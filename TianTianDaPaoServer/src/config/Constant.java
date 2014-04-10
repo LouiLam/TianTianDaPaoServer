@@ -69,6 +69,12 @@ public class Constant {
 	public static final int RET_ROLE_UPGRADE_SUCCESS = 57;//角色升级请求成功
 	public static final int RET_GAME_START_FAILED_MISS_ARG = 58;//游戏正常开始请求失败：缺少参数
 	public static final int RET_GAME_START_FAILED_ARG_INVALID = 59;//游戏正常开始请求失败：参数值非法
+	public static final int RET_CHARGE_EXCHANGE_FAILED = 60;//兑换话费点请求失败：utoken非法或不存在
+	public static final int RET_CHARGE_EXCHANGE_SUCCESS = 61;//兑换话费点请求成功
+	public static final int RET_CHARGE_EXCHANGE_FAILED_MISS_ARG = 62;//兑换话费点请求失败,缺少参数phone
+	public static final int RET_CHARGE_EXCHANGE_FAILED_CHARGE_NOT_ENOUGH = 63;//兑换话费点请求失败,话费点不够兑换话费
+	public static final int RET_CHARGE_EXCHANGE_FAILED_PLATFORM_ERROR = 64;//兑换话费点请求失败，第三方平台错误码
+	public static final int RET_CHARGE_EXCHANGE_FAILED_PHONE_ERROR = 65;//兑换话费点请求失败，手机号格式错误
 	public final static String RET = "ret";
 	public final static String MSG = "msg";
 	

@@ -60,4 +60,10 @@
 	<resMsg ret="57" msg="角色升级请求成功" />
 	<resMsg ret="58" msg="游戏正常开始请求失败：缺少参数" />
 	<resMsg ret="59" msg="游戏正常开始请求失败：参数值非法" />
+	<resMsg ret="60" msg="兑换话费点请求失败：utoken非法或不存在" />
+	<resMsg ret="61" msg="兑换话费点请求成功" />
+	<resMsg ret="62" msg="兑换话费点请求失败,缺少参数phone" />
+	<resMsg ret="63" msg="兑换话费点请求失败,话费点不够兑换话费" />
+	<resMsg ret="64" msg="兑换话费点请求失败，第三方平台错误码" />
+	<resMsg ret="65" msg="兑换话费点请求失败，手机号格式错误" />
 </retMsgConfig>

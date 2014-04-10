@@ -3,6 +3,8 @@
 	
     <serverConfig>config/ServerConfig.xml</serverConfig>
     
+    <chargeExchangeConfig>config/ChargeExchangeConfig.xml</chargeExchangeConfig>
+    
 	<httpRequestHandlerConfig>config/HttpRequestHandlerConfig.properties</httpRequestHandlerConfig>
 	
 	<loginCheckConfig>config/LoginCheckConfig.properties</loginCheckConfig>

@@ -87,26 +87,27 @@ public class DaPaoMain extends ApplicationWindow {
 				widgetSelected(e);
 			}
 		});
-		setup.setBounds(306, 360, 72, 22);
+		setup.setBounds(36, 366, 86, 42);
 		setup.setText("启动服务器");
 		
 		text = new Text(container, SWT.BORDER | SWT.READ_ONLY | SWT.MULTI| SWT.V_SCROLL);
 		text.setBounds(0, 0, 626, 349);
 		
-//		Button button = new Button(container, SWT.NONE);
-//		button.setBounds(420, 360, 72, 22);
-//		button.setText("数据库配置");
-//		button.addSelectionListener(new SelectionAdapter() {
-//			@Override
-//			public void widgetDefaultSelected(SelectionEvent e) {
-//				super.widgetDefaultSelected(e);
-//			}
-//			@Override
-//			public void widgetSelected(SelectionEvent e) {
-//				RegDia regDia = new RegDia(Login.this.getShell());
-//				regDia.open();
-//			}
-//		});
+		Button button = new Button(container, SWT.TOGGLE);
+		button.setText("购买物品配置");
+		button.setBounds(631, 10, 86, 42);
+		button.addSelectionListener(new SelectionAdapter() {
+		@Override
+		public void widgetDefaultSelected(SelectionEvent e) {
+			super.widgetDefaultSelected(e);
+		}
+		@Override
+		public void widgetSelected(SelectionEvent e) {
+			BuyItemDia dia = new BuyItemDia(DaPaoMain.this.getShell());
+			dia.open();
+		}
+	});
+
 		return container;
 	}
 
@@ -161,7 +162,7 @@ public class DaPaoMain extends ApplicationWindow {
 	 */
 	@Override
 	protected Point getInitialSize() {
-		return new Point(691, 476);
+		return new Point(733, 492);
 	}
 
 	public void httpPost() {

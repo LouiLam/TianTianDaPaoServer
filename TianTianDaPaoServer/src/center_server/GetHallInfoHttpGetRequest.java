@@ -22,7 +22,7 @@ public class GetHallInfoHttpGetRequest implements Runnable {
 	public static JSONObject hallJsonObject;
 	
 	public void run() {
-
+		
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpGet httpget = new HttpGet("http://"
 				+ ServerConfig.getInstance().getCenterServerIP() + ":"
