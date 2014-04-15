@@ -94,12 +94,47 @@ public class DaPaoBuyItemsCheck extends Check {
 				}
 			}
 			
-			if(obj.id==15)//幸运金币直接购买
+			if(obj.id==15)//幸运金币直接购买 不执行数据库操作
+			{
+				U.infoQueue("id:" + id +obj.des+"物品购买请求成功，数据更新!" + "ip:"
+						+ channel.getRemoteAddress().toString());
+				selectMap.put("consume_ugold", obj.consume_ugold);
+				loginDao.updateGoldSubByUserGame(selectMap);
+				sqlSession.commit();
+				selectMap = loginDao.selectBuyItemByMuch(selectMap);
+				selectMap.put("buyItemsID", obj.id);
+				jsonObject.put("userInfo", selectMap);
+				jsonObject.put(Constant.RET, Constant.RET_BUY_ITEMS_SUCCESS);
+				jsonObject.put(Constant.MSG,
+						ConfigFactory.getRetMsg(Constant.RET_BUY_ITEMS_SUCCESS));
+				return jsonObject;
+			}
+			if(obj.id>15&&obj.id<19)//体力直接购买
 			{
 				U.infoQueue("id:" + id + "兑换"+obj.des+"积分兑换物品请求成功，数据更新!" + "ip:"
 						+ channel.getRemoteAddress().toString());
-				
-				selectMap = loginDao.selectScoreLotteryByMuch(params);
+				selectMap.put("tili", obj.value);
+				selectMap.put("consume_diamond", obj.consume_diamond);
+				loginDao.updateTiliByUserGame(selectMap);
+				sqlSession.commit();
+				selectMap = loginDao.selectBuyItemByMuch(selectMap);
+				selectMap.put("buyItemsID", obj.id);
+				jsonObject.put("userInfo", selectMap);
+				jsonObject.put(Constant.RET, Constant.RET_BUY_ITEMS_SUCCESS);
+				jsonObject.put(Constant.MSG,
+						ConfigFactory.getRetMsg(Constant.RET_BUY_ITEMS_SUCCESS));
+				return jsonObject;
+			}
+			if(obj.id>18)//金币直接购买
+			{
+				U.infoQueue("id:" + id + "兑换"+obj.des+"积分兑换物品请求成功，数据更新!" + "ip:"
+						+ channel.getRemoteAddress().toString());
+				selectMap.put("gold", obj.value);
+				selectMap.put("consume_diamond", obj.consume_diamond);
+				loginDao.updateGoldByUserGame(selectMap);
+				sqlSession.commit();
+				selectMap = loginDao.selectBuyItemByMuch(selectMap);
+				selectMap.put("buyItemsID", obj.id);
 				jsonObject.put("userInfo", selectMap);
 				jsonObject.put(Constant.RET, Constant.RET_BUY_ITEMS_SUCCESS);
 				jsonObject.put(Constant.MSG,
@@ -121,7 +156,10 @@ public class DaPaoBuyItemsCheck extends Check {
 			U.infoQueue("id:" + id + "兑换"+obj.des+"积分兑换物品请求成功，数据更新!" + "ip:"
 					+ channel.getRemoteAddress().toString());
 			
-			selectMap = loginDao.selectScoreLotteryByMuch(params);
+			
+			
+			selectMap = loginDao.selectBuyItemByMuch(selectMap);
+			selectMap.put("buyItemsID", obj.id);
 			jsonObject.put("userInfo", selectMap);
 			jsonObject.put(Constant.RET, Constant.RET_BUY_ITEMS_SUCCESS);
 			jsonObject.put(Constant.MSG,

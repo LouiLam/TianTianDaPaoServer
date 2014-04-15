@@ -5,14 +5,7 @@
 	<resultMap id="ormUser" type="User">
 	</resultMap>
 	
-		<select id="selectGameOverByUtoken" parameterType="Map"
-		resultType="Map">
-		select
-		userinfo.id,userinfo.uid,usergame.normal_max_record from
-		userinfo,usergame where
-		userinfo.uid =usergame.uid and userinfo.utoken=
-		#{utoken}
-	</select>
+	
 		<select id="selectGameStartByUtoken" parameterType="Map"
 		resultType="Map">
 		select
@@ -20,26 +13,65 @@
 		userinfo,usergame,userprop where
 		userinfo.uid =usergame.uid and userinfo.utoken=#{utoken} and userinfo.uid =userprop.uid
 	</select>
-	
-	<select id="selectGetTiliByUtoken" parameterType="Map"
+		<select id="selectGameEndByUtoken" parameterType="Map"
+		resultType="Map">
+			select
+		select_gameover_task.*,userinfo.id,usergame.normal_max_record from
+		userinfo,usergame,select_gameover_task where
+		userinfo.utoken=#{utoken} and userinfo.uid=usergame.uid and select_gameover_task.uid=userinfo.uid
+		
+	</select>
+		<select id="selectGameEndByUID" parameterType="Map"
 		resultType="Map">
 		select
-		userinfo.id,userinfo.uid,usergame.last_tili_send_time,usergame.tili,usergame.normal_max_record from
+		userinfo.id,usergame.ugold,usergame.diamond,usergame.ucharge from
+		userinfo,usergame where
+		userinfo.uid =#{uid} and usergame.uid=#{uid}
+	</select>
+	
+	<select id="selectGetTiliByUtoken" parameterType="Map"
+		resultType="Map">	
+		select
+		userinfo.id,userinfo.uid,usergame.normal_max_record,usergame.tili,usergame.last_tili_send_time from
 		userinfo,usergame where
 		userinfo.uid =usergame.uid and userinfo.utoken=
 		#{utoken}
 	</select>
-	
-	<select id="updateUserGameByRecord" parameterType="Map">
-		update usergame set normal_max_record=#{record} where
+
+	<select id="updateRecordByUserGame" parameterType="Map">
+		update usergame set normal_max_record=#{record},ugold=ugold+#{gold} where
 		usergame.uid =#{uid}
 	</select>
+	<select id="updateGoldByUserGame" parameterType="Map">
+		update usergame set ugold=ugold+#{gold} where
+		usergame.uid =#{uid}
+	</select>
+	
+	
 	<select id="updateUserGameByTili" parameterType="Map">
-		update usergame set tili=tili-1,cur_role=#{cur_role},cur_pet=#{cur_pet},cur_airship=#{cur_airship}, where
+		update usergame set tili=tili-1,cur_role=#{cur_role},cur_pet=#{cur_pet},cur_airship=#{cur_airship}where
 		usergame.uid =#{uid}
 	</select>
 <select id="updateGetTiliUserGameByTiliAndTime" parameterType="Map">
 		update usergame set tili=#{tili},last_tili_send_time=#{last_tili_send_time} where
 		usergame.uid =#{uid}
+	</select>
+	
+
+  <select id="updateUserTaskFinish" resultType="Map" parameterType="Map">
+		update usergame,usertask set usertask.running_task_id=#{running_task_id}, usergame.ucharge= usergame.ucharge+#{reward_charge},usergame.ugold=usergame.ugold+#{reward_gold},usergame.diamond=usergame.diamond+#{reward_diamond}
+		,usertask.finish_task_count=finish_task_count+1,usertask.cur_day_finish_task_count=cur_day_finish_task_count+1,usertask.gold_count= default(usertask.gold_count), usertask.game_count= default(usertask.game_count),usertask.record_count=default(usertask.record_count) 	 
+		where usergame.uid = #{uid} and usertask.uid=#{uid}
+	</select>
+  <select id="updateUserTaskRunning" resultType="Map" parameterType="Map">
+		update usertask set gold_count=gold_count+#{gold},game_count=game_count+1,record_count=record_count+#{record}
+		where uid = #{uid} 
+	</select>
+		<select id="selectGameStartByUID" parameterType="Map"
+		resultType="Map">	
+		select
+		usergame.last_tili_send_time,usergame.tili,select_gameover_task.* from
+		usergame,select_gameover_task where
+		usergame.uid =#{uid}  and select_gameover_task.uid=#{uid}
 	</select>
 </mapper>

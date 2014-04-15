@@ -1,7 +1,6 @@
 package util;
 
 import java.sql.Timestamp;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -19,17 +18,18 @@ public class DateUtil {
 		Timestamp ts = new Timestamp(System.currentTimeMillis());
 		return df.format(ts);
 	}
-
+	public static String getCurDateFile() {
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+		Timestamp ts = new Timestamp(System.currentTimeMillis());
+		return df.format(ts);
+	}
 	public static void main(String[] args) {
-		StringBuffer sql=new StringBuffer("update userprop,userjjc,usergame set ");
-		sql.append("userjjc.score=userjjc.score-"+10);
-		sql.append(",usergame.ucharge=userjjc.ucharge-"+0);
-		sql.append(",usergame.ugold=usergame.ugold-"+0);
-		sql.append(",usergame.diamond=usergame.diamond-"+0);
-		sql.append(",userprop."+1+"=userprop."+1+"+1");
-		sql.append(" where  userprop.uid="+1+" and userjjc.uid="+1);
-		sql.append(" where  userprop.uid="+1+" and usergame.uid="+1);
-		System.out.println(sql.toString());
+		
+		long score_3day_pass=DateUtil.getSecondsBetween(DateUtil.getTimesnight(),System.currentTimeMillis())%(1440*60*3); //三天一循环(一天1440分钟，1分钟60秒，3天)
+		System.out.println(  1440*60-score_3day_pass);
+		System.out.println(1440*60*3-score_3day_pass);
+//		System.out.println(getSecondsBetween(getTimesnight(),System.currentTimeMillis())%(1440*60));
+		
 	}
 
 	/**
@@ -56,7 +56,17 @@ public class DateUtil {
 		
 
 	}
-
+	//获得当天24点时间  (单位小时) 指定时间表示间隔3天
+	public static long getTimesnight(){ 
+//		2014-04-13 23:59:59  cal.set(2014, 3, 13);
+		Calendar cal = Calendar.getInstance(); 
+		cal.set(2014, 3, 13);
+		cal.set(Calendar.HOUR_OF_DAY, 24);
+		cal.set(Calendar.SECOND, 0); 
+		cal.set(Calendar.MINUTE, 0); 
+		cal.set(Calendar.MILLISECOND, 0); 
+		return cal.getTimeInMillis(); 
+		} 
 	/**
 	 * 分钟差值
 	 * 

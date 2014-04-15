@@ -1,4 +1,5 @@
 package server.ui.main;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,8 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+
+import util.FileUtil;
 
 public class DaPaoMain extends ApplicationWindow {
 
@@ -87,26 +90,38 @@ public class DaPaoMain extends ApplicationWindow {
 				widgetSelected(e);
 			}
 		});
-		setup.setBounds(36, 366, 86, 42);
+		setup.setBounds(315, 365, 86, 42);
 		setup.setText("启动服务器");
 		
 		text = new Text(container, SWT.BORDER | SWT.READ_ONLY | SWT.MULTI| SWT.V_SCROLL);
 		text.setBounds(0, 0, 626, 349);
 		
+		Button btntxt = new Button(container, SWT.TOGGLE);
+		btntxt.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				
+       
+            try {
+            	FileUtil.logWriteUtil(text.getText());
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}  
+          
+			}
+		});
+		btntxt.setText("写输出到txt");
+		btntxt.setBounds(10, 365, 86, 42);
+		
 		Button button = new Button(container, SWT.TOGGLE);
-		button.setText("购买物品配置");
-		button.setBounds(631, 10, 86, 42);
 		button.addSelectionListener(new SelectionAdapter() {
-		@Override
-		public void widgetDefaultSelected(SelectionEvent e) {
-			super.widgetDefaultSelected(e);
-		}
-		@Override
-		public void widgetSelected(SelectionEvent e) {
-			BuyItemDia dia = new BuyItemDia(DaPaoMain.this.getShell());
-			dia.open();
-		}
-	});
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				text.setText("");
+			}
+		});
+		button.setText("清空输出");
+		button.setBounds(102, 365, 86, 42);
 
 		return container;
 	}

@@ -17,15 +17,28 @@
 	</select>
 
 
-	<select id="selectScoreLotteryByMuch" parameterType="Map"
+<select id="selectBuyItemByMuch" parameterType="Map"
 		resultType="Map">
 		select
-		userinfo.id,userinfo.uid,userjjc.score, usergame.ugold,usergame.ucharge,usergame.diamond
+		userinfo.id,userinfo.uid,userjjc.score,usergame.tili, usergame.ugold,usergame.ucharge,usergame.diamond
 		from
 		userinfo,userjjc,usergame where
-		userinfo.uid =userjjc.uid and
-		userinfo.utoken=#{utoken} and userinfo.uid =usergame.uid 
+		userinfo.uid = #{uid} and
+		userjjc.uid  = #{uid} and
+		usergame.uid =#{uid}
 	</select>
+	
 
-
+	<select id="updateGoldByUserGame" parameterType="Map">
+		update usergame set ugold=ugold+#{gold},diamond=diamond-#{consume_diamond} where
+		usergame.uid =#{uid}
+	</select>
+	<select id="updateGoldSubByUserGame" parameterType="Map">
+		update usergame set ugold=ugold-#{consume_ugold} where
+		usergame.uid =#{uid}
+	</select>
+	<select id="updateTiliByUserGame" parameterType="Map">
+		update usergame set tili=tili+#{tili},diamond=diamond-#{consume_diamond} where
+		usergame.uid =#{uid}
+	</select>
 </mapper>

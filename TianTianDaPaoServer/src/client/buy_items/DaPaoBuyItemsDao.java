@@ -19,9 +19,24 @@ public interface DaPaoBuyItemsDao   {
 	public void updateItemByUserJJCAndProp(@Param("paramSQL")String sql);
 	
 	/**
-	 * 返回各种更新字段（金币，道具，角色 飞船 宠物等）
+	 * 购买金币
+	 * @param params
+	 */
+	public void updateGoldByUserGame(Map params);
+	/**
+	 * 购买体力
+	 * @param params
+	 */
+	public void updateTiliByUserGame(Map params);
+	/**
+	 * 扣除金币
+	 * @param params
+	 */
+	public void updateGoldSubByUserGame(Map params);
+	/**
+	 * 返回各种货币字段
 	 * @param params
 	 * @return
 	 */
-	public Map selectScoreLotteryByMuch(Map params);
+	public Map selectBuyItemByMuch(Map params);
 }

@@ -63,9 +63,9 @@ public class DaPaoGameStartCheck extends Check {
 							+ channel.getRemoteAddress().toString());
 					return jsonObject;
 				}
-				int role_value=(int) gameMap.get("prop"+(cur_role-1));
-				int pet_value=(int) gameMap.get("prop"+(4+cur_pet-1));
-				int airship_value=(int) gameMap.get("prop"+(8+cur_airship-1));
+				long role_value=(long) gameMap.get("prop"+(cur_role-1));
+				long pet_value=(long) gameMap.get("prop"+(4+cur_pet-1));
+				long airship_value=(long) gameMap.get("prop"+(8+cur_airship-1));
 				if(role_value==0||pet_value==0||airship_value==0)
 				{
 					jsonObject.put(Constant.RET, Constant.RET_GAME_START_FAILED_ARG_INVALID);
@@ -94,9 +94,9 @@ public class DaPaoGameStartCheck extends Check {
 			long minutes=DateUtil.getMinutesBetween(last_tili_send_time*1000l, System.currentTimeMillis());
 			long sec=DateUtil.getSecondsBetween(last_tili_send_time*1000l, System.currentTimeMillis());
 			//10分钟一颗星
-			int tili=(int) gameMap.get("tili");
+			long tili=(long) gameMap.get("tili");
 			int heart=(int) (minutes/10);
-			int result=tili+heart;
+			long result=tili+heart;
 			if(result>=5)
 			{
 				result=5;
@@ -142,7 +142,7 @@ public class DaPaoGameStartCheck extends Check {
 			
 			U.infoQueue("id:" + id + "游戏正常开始请求成功，数据更新!" + "ip:"
 					+ channel.getRemoteAddress().toString());
-			gameMap = loginDao.selectGetTiliByUtoken(params);
+			gameMap = loginDao.selectGameStartByUID(params);
 			if(result<5)
 			{
 				gameMap.put("remain", sec);

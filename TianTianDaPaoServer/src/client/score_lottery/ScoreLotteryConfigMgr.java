@@ -22,6 +22,10 @@ public class ScoreLotteryConfigMgr extends AbstractConfig {
 	 * 积分消耗
 	 */
 	public static int scoreConsume=0;
+	/**
+	 * 奖励金币值
+	 */
+	public static int goldValue=0;
 	public static ScoreLotteryConfigMgr getInstance() {
 		if (taskConfigMgr == null) {
 			taskConfigMgr = new ScoreLotteryConfigMgr();
@@ -54,9 +58,14 @@ public class ScoreLotteryConfigMgr extends AbstractConfig {
 			map.put("value", obj.value);
 			taskList.add(map);
 			taskObjList.add(obj);
+			if(obj.type==ScoreLotteryConfigMgr.Gold)
+			{
+				goldValue= Integer.parseInt(obj.value);
+			}
 		}
 		HashMap<String, Object> map=new HashMap<String, Object>();
 		map.put("scoreConsume", scoreConsume);
+		
 	}
 @Override
 public String toString() {

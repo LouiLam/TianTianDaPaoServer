@@ -34,7 +34,6 @@ public class DaPaoLoginCheck extends Check {
 					ConfigFactory.getClazz("1"));
 			// 登录检测
 			Map userMap = loginDao.selectUserByLogin(params);
-			// 如果upuid不存在 表示第一次使用设备游客登录
 			if (userMap == null) {
 				//登录请求：帐号不存在或密码错误 返回json
 				jsonObject.put(Constant.RET, Constant.RET_ACCOUNT_INVALID);

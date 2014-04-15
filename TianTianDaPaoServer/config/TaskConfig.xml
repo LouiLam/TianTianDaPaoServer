@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- des描述信息 target目标  reward_gold奖励金币  reward_charge奖励话费点 reward_score奖励积分 reward_diamond奖励钻石 -->
+<!-- des描述信息 target目标  reward_gold奖励金币  reward_charge奖励话费点 reward_score奖励积分 reward_diamond奖励钻石 
+type1:金币 type2:JJC挑战次数 type3:每日任务需要达到的总成绩 type4:需要达到游戏场次
+-->
 <taskConfig>
-<task id="1"  des="当前每日任务需要达到金币数"  target="1000"  reward_gold="500"
+<task id="1"  des="当前每日任务需要达到金币数"  target="1000" type="1" reward_gold="500"
+		 reward_charge="0" reward_score="0"  reward_diamond="0"></task>
+<task id="2"  des="当前每日任务需要达到竞技场挑战次数"  target="15" type="2" reward_gold="500"
 		 reward_charge="0" reward_score="0" reward_diamond="0"></task>
-<task id="2"  des="当前每日任务需要达到竞技场挑战次数"  target="15"  reward_gold="500"
+<task id="3"  des="当前每日任务需要达到游戏成绩" type="3" target="4000"  reward_gold="500"
 		 reward_charge="0" reward_score="0" reward_diamond="0"></task>
-<task id="3"  des="当前每日任务需要达到游戏成绩"  target="4000"  reward_gold="500"
-		 reward_charge="0" reward_score="0" reward_diamond="0"></task>
-<task id="4"  des="当前每日任务需要达到游戏场次" target="10"  reward_gold="500"
+<task id="4"  des="当前每日任务需要达到游戏场次"  type="4" target="10"  reward_gold="500"
 		 reward_charge="0" reward_score="0" reward_diamond="0"></task>
 </taskConfig>

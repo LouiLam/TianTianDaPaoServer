@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="client.task.DaPaoTaskRunningDao">
+
+	<resultMap id="ormUser" type="User">
+	</resultMap>
+	
+	
+		<select id="selectTaskUserByUtoken" parameterType="Map"
+		resultType="Map">
+		select
+		userinfo.id,select_gameover_task.* from
+		userinfo,select_gameover_task where
+		userinfo.uid =select_gameover_task.uid and userinfo.utoken=#{utoken}
+	</select>
+</mapper>

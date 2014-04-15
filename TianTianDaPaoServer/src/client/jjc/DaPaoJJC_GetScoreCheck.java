@@ -7,6 +7,7 @@ import org.jboss.netty.channel.Channel;
 import org.json.JSONObject;
 
 import server.ui.main.U;
+import util.DateUtil;
 import client.login.Check;
 import config.ConfigFactory;
 import config.Constant;
@@ -53,6 +54,8 @@ public class DaPaoJJC_GetScoreCheck extends Check {
 			loginDao.updateJJC_GetScore(jjcMap);
 			sqlSession.commit();
 			jjcMap = loginDao.selectJJCUserByUtoken(params);
+			long score_3day_pass=DateUtil.getSecondsBetween(DateUtil.getTimesnight(),System.currentTimeMillis())%(1440*60*3); //三天一循环(一天1440分钟，1分钟60秒，3天)
+		    jjcMap.put("score_3day_remain", 1440*60*3-score_3day_pass);
 			jsonObject.put("userInfo", jjcMap);
 			jsonObject.put(Constant.RET, Constant.RET_JJC_GET_SCORE_SUCCESS);
 			jsonObject.put(Constant.MSG,

@@ -9,7 +9,9 @@
 		#{password} and usertask.uid=userinfo.uid and usergame.uid=userinfo.uid
 	</select>
 
-
+	<select id="selectUserByLoginMac" parameterType="Map" resultType="Map">
+		select userinfo.*,usertask.running_task_id,usergame.* from userinfo,usertask,usergame where userinfo.mac = #{mac}  and usertask.uid=userinfo.uid and usergame.uid=userinfo.uid
+	</select>
 
 	<select id="updateUserInfoUltime" parameterType="Map">
 		update userinfo,usergame

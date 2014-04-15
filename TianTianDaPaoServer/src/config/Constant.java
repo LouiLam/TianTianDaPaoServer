@@ -11,7 +11,7 @@ public class Constant {
 	
 	public static final int RET_LOGIN_SUCCESS = 0;//登录成功
 	public static final int RET_ACCOUNT_LOCKOUT=1;//帐号被锁定
-	public static final int RET_INVALID_ARG=2;//预留字段暂无用
+	public static final int RET_LOGIN_FAILED_ARG_INVALID=2;//登录请求失败：缺少参数MAC或参数值非法
 	public static final int RET_INVALID_TOKEN=3;//非法或无效的token
 	public static final int RET_INVALID_PLATFORM=4;//预留字段暂无用
 	public static final int RET_REG_SUCCESS=5;//注册成功
@@ -36,7 +36,7 @@ public class Constant {
 	public static final int RET_JJC_PK_FAILED_UID_COUNT_LIMIT = 24;//竞技场非法请求：今天挑战次数已到上限
 	public static final int RET_GAME_OVER_FAILED = 25;//游戏正常结束请求失败：utoken非法或不存在
 	public static final int RET_GAME_OVER_SUCCESS = 26;//游戏正常结束请求成功
-	public static final int RET_GAME_OVER_FAILED_MISS_ARG = 27;//游戏正常结束请求失败：缺少参数record
+	public static final int RET_GAME_OVER_FAILED_MISS_ARG = 27;//游戏正常结束请求失败：缺少参数record或gold
 	public static final int RET_GAME_START_FAILED = 28;//游戏正常开始请求失败：utoken非法或不存在
 	public static final int RET_GAME_START_FAILED_TILI_NOT_ENOUGH = 29;//游戏正常开始请求失败：体力不够
 	public static final int RET_GAME_START_SUCCESS = 30;//游戏正常开始请求成功
@@ -75,6 +75,16 @@ public class Constant {
 	public static final int RET_CHARGE_EXCHANGE_FAILED_CHARGE_NOT_ENOUGH = 63;//兑换话费点请求失败,话费点不够兑换话费
 	public static final int RET_CHARGE_EXCHANGE_FAILED_PLATFORM_ERROR = 64;//兑换话费点请求失败，第三方平台错误码
 	public static final int RET_CHARGE_EXCHANGE_FAILED_PHONE_ERROR = 65;//兑换话费点请求失败，手机号格式错误
+	public static final int RET_GAME_OVER_FAILED_ARG_INVALID = 66;//游戏正常结束请求失败：参数值非法
+	public static final int RET_JJC_PK_FAILED_ARG_INVALID = 67;//竞技场挑战请求失败：gold参数值非法
+	public static final int RET_TASK_RUNNING_FAILED = 68;//任务进度请求失败：utoken非法或不存在
+	public static final int RET_TASK_RUNNING_SUCCESS = 69;//任务进度请求成功
+	public static final int RET_JJC_PK_FAILED_RANK_LOWER =70;//竞技场非法请求：被PK用户排名比发起用户排名低，不允许挑战
+	
+	public static final int RET_MODIFY_USER_PROFILE_FAILED = 71;//用户修改资料请求失败：utoken非法或不存在
+	public static final int RET_MODIFY_USER_PROFILE_SUCCESS = 72;//用户修改资料请求成功
+	public static final int RET_MODIFY_USER_PROFILE_FAILED_MISS_ARG = 73;//用户修改资料请求失败：缺少参数
+	public static final int RET_MODIFY_USER_PROFILE_FAILED_ID_HAVE_EXIST = 74;//用户修改资料请求失败：此昵称已存在，请换一个
 	public final static String RET = "ret";
 	public final static String MSG = "msg";
 	

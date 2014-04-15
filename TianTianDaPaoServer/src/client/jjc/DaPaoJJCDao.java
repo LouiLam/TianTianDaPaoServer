@@ -3,6 +3,8 @@ package client.jjc;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
 
 public interface DaPaoJJCDao   {
 	/**
@@ -11,6 +13,20 @@ public interface DaPaoJJCDao   {
 	 * @return
 	 */
 	public  Map selectJJCUserByUtoken(Map params);
+	/**
+	 * 返回时，筛选字段
+	 * @param upuid
+	 * @return
+	 */
+	public  Map selectJJCUserByUID(Map params);
+	
+	/**
+	 * 获取积分刷新时间
+	 * @param upuid
+	 * @return
+	 */
+	public  Map selectLastExecutedByResetScore(@Param("paramSQL")String sql);
+	
 	/**
 	 * 返回组合排名数据
 	 */
@@ -64,4 +80,21 @@ public interface DaPaoJJCDao   {
 	 * @param params
 	 */
 	public void updateJJC_GetScore(Map params);
+
+	
+	/**
+	 * 更新用户金币
+	 * @param params
+	 */
+	public void updateGoldByUserGame(Map params);
+	/**
+	 * 任务执行中更新
+	 * @param params
+	 */
+	public void updateUserTaskRunning(Map params);
+	/**
+	 * 任务完成更新
+	 * @param params
+	 */
+	public void updateUserTaskFinish(Map params);
 }

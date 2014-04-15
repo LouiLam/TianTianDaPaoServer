@@ -56,16 +56,16 @@ public class DaPaoConfigInfoCheck extends Check {
 			//}
 			//表示id重复不允许注册
 			
-				//积分兑换物品配置信息
-				jsonObject.put("scoreExchange", ScoreExchangeItemsConfigMgr.getInstance().taskList);
-				//积分抽奖配置信息
-				jsonObject.put("scoreLottery", ScoreLotteryConfigMgr.getInstance().taskList);
-				//积分抽奖消耗
-				jsonObject.put("scoreLotteryConsume", ScoreLotteryConfigMgr.scoreConsume);
-				//购买道具配置信息
-				jsonObject.put("buyItems", BuyItemsConfigMgr.getInstance().taskList);
-				//返回任务配置信息
-				jsonObject.put("task_config", TaskConfigMgr.getInstance().taskList);
+//				//积分兑换物品配置信息
+//				jsonObject.put("scoreExchange", ScoreExchangeItemsConfigMgr.getInstance().taskList);
+//				//积分抽奖配置信息
+//				jsonObject.put("scoreLottery", ScoreLotteryConfigMgr.getInstance().taskList);
+//				//积分抽奖消耗
+//				jsonObject.put("scoreLotteryConsume", ScoreLotteryConfigMgr.scoreConsume);
+//				//购买道具配置信息
+//				jsonObject.put("buyItems", BuyItemsConfigMgr.getInstance().taskList);
+//				//返回任务配置信息
+//				jsonObject.put("task_config", TaskConfigMgr.getInstance().taskList);
 				//用户拥有道具配置信息
 				jsonObject.put("userItems", selectMap);
 				jsonObject.put(Constant.RET, Constant.RET_CONFIG_INFO_SUCCESS);

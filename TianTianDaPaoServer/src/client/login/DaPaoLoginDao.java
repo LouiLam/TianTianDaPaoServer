@@ -11,7 +11,9 @@ public interface DaPaoLoginDao {
 	 */
 	public  Map selectUserByLogin(Map params);
 
+	public  Map selectUserByLoginMac(Map params);
 
+	
 	/**
 	 * 第一次游客登录插入一条纪录到UserInfo表中
 	 * @param udevice

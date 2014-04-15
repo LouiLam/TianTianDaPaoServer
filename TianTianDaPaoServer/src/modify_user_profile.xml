@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="client.modify_user_profile.DaPaoModifyUserProfileDao">
+
+	<resultMap id="ormUser" type="User">
+	</resultMap>
+	
+	
+		<select id="selectModifyByUtoken" parameterType="Map"
+		resultType="Map">
+		select
+		userinfo.id,userinfo.uid from
+		userinfo where userinfo.utoken=#{utoken} 
+	</select>
+	
+
+	<select id="updateIDByUserInfo" parameterType="Map">
+		update userinfo set id=#{id} where
+		userinfo.uid =#{uid}
+	</select>
+	
+	
+</mapper>

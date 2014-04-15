@@ -9,6 +9,7 @@ import org.jboss.netty.channel.Channel;
 import org.json.JSONObject;
 
 import server.ui.main.U;
+import util.DateUtil;
 import client.login.Check;
 import config.ConfigFactory;
 import config.Constant;
@@ -28,17 +29,11 @@ public class DaPaoJJCCheck extends Check {
 		SqlSession sqlSession = DatabaseConnector.getInstance().getSqlSession();
 		
 		try {
-//			YaoPengLoginDao loginDao = sqlSession.getMapper(
-//					ConfigFactory.getClazz(params.get("gid")));
 			DaPaoJJCDao loginDao = sqlSession.getMapper(
 					ConfigFactory.getClazz("3"));
-			// 登录检测
-			//uid=3  rank=3  day_max_times=15  socre=0 diamond
 			Map jjcMap = loginDao.selectJJCUserByUtoken(params);
 			
-			// 如果upuid不存在 表示第一次使用设备游客登录
 			if (jjcMap == null) {
-				//登录请求：帐号不存在或密码错误 返回json
 				jsonObject.put(Constant.RET, Constant.RET_JJC_FAILED);
 				jsonObject.put(Constant.MSG, ConfigFactory.getRetMsg(Constant.RET_JJC_FAILED));
 				U.infoQueue("竞技场请求：utoken非法或不存在 "+	channel.getRemoteAddress().toString());
@@ -57,15 +52,11 @@ public class DaPaoJJCCheck extends Check {
 			List worldRankMap = loginDao.selectJJCUserByWorldRank(tempMap);
 //			//我的排名
 			List myRankMap = loginDao.selectJJCUserByMyRank(tempMap);
-			// 如果存在//返回消息格式
-			//{
-			//	"ret":"0","userInfo":
-			//		{
-			//			"uid":1,"id":"111111","udevice":"0","uname":"用户1","gender":true,"ustatus":0,"ultime":"1393401845","password":"111111","utoken":"02E861ED2BC184C15EDF4C9AF48E5DF7","uface":1,"urtime":1351829267
-			//		},
-			//	"msg":"成功"
-			//}
-			
+			if((long)jjcMap.get("score_3day")==0)
+			{
+				long score_3day_pass=DateUtil.getSecondsBetween(DateUtil.getTimesnight(),System.currentTimeMillis())%(1440*60*3); //三天一循环(一天1440分钟，1分钟60秒，3天)
+			    jjcMap.put("score_3day_remain", 1440*60*3-score_3day_pass);
+			}
 				jsonObject.put("userInfo", jjcMap);
 				jsonObject.put("worldRankMap", worldRankMap);
 				jsonObject.put("myRankMap", myRankMap);

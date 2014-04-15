@@ -32,7 +32,18 @@ consume_ucharge消耗话费点  consume_score消耗积分 consume_diamond消耗�
 		consume_ucharge="0" consume_score="0" consume_diamond="0" value="prop16"></buyItems>
 	<buyItems id="15" des="幸运金币" consume_ugold="300"
 		consume_ucharge="0" consume_score="0" consume_diamond="0" value="prop17"></buyItems>
-
+	<buyItems id="16" des="体力10" consume_ugold="0"
+		consume_ucharge="0" consume_score="0" consume_diamond="30" value="10"></buyItems>
+	<buyItems id="17" des="体力50" consume_ugold="0"
+		consume_ucharge="0" consume_score="0" consume_diamond="140" value="50"></buyItems>
+	<buyItems id="18" des="体力200" consume_ugold="0"
+		consume_ucharge="0" consume_score="0" consume_diamond="500" value="200"></buyItems>
+	<buyItems id="19" des="金币2500" consume_ugold="0"
+		consume_ucharge="0" consume_score="0" consume_diamond="50" value="2500"></buyItems>
+	<buyItems id="20" des="金币11000" consume_ugold="0"
+		consume_ucharge="0" consume_score="0" consume_diamond="200" value="11000"></buyItems>
+	<buyItems id="21" des="金币88000" consume_ugold="0"
+		consume_ucharge="0" consume_score="0" consume_diamond="1500" value="88000"></buyItems>
 
 
 

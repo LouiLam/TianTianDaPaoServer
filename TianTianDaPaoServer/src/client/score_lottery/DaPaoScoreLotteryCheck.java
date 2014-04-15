@@ -73,14 +73,15 @@ public class DaPaoScoreLotteryCheck extends Check {
 					else //道具处理
 					{
 						long count=(long) selectMap.get(obj.value);
-						if(count!=0&&obj.id>=1&&obj.id<=8) //已经拥有此一次性拥有道具,就奖励普通抽奖金币值X2
+						if(count!=0&&obj.id>=1&&obj.id<=6) //已经拥有此一次性拥有道具,就奖励普通抽奖金币值X2
 						{
-							params.put("ugold", Integer.parseInt(obj.value)*2+"");
+							params.put("ugold", ScoreLotteryConfigMgr.goldValue*2+"");
 							params.put("uid", selectMap.get("uid")+"");
 							params.put("score_consume", ScoreLotteryConfigMgr.scoreConsume+"");
 							loginDao.updateUGoldByUserGame(params);
 							sqlSession.commit();
-							gold=Integer.parseInt(obj.value)*2+"";
+							gold= ScoreLotteryConfigMgr.goldValue*2+"";
+							 obj=ScoreLotteryConfigMgr.getInstance().taskObjList.get(11);//11索引表示金币
 						}
 						else   //非一次性道具 ，数量递增
 						{
@@ -105,7 +106,7 @@ public class DaPaoScoreLotteryCheck extends Check {
 			jsonObject.put("userInfo", selectMap);
 			jsonObject.put("item_id", obj.id);
 			if(gold.length()!=0)
-			{jsonObject.put("gold",gold);}
+			{jsonObject.put("gold",Integer.parseInt(gold));}
 			jsonObject.put(Constant.RET, Constant.RET_SCORE_LOTTERY_SUCCESS);
 			jsonObject.put(Constant.MSG,
 					ConfigFactory.getRetMsg(Constant.RET_SCORE_LOTTERY_SUCCESS));

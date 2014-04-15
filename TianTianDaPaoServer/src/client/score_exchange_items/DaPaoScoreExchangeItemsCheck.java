@@ -95,7 +95,7 @@ public class DaPaoScoreExchangeItemsCheck extends Check {
 			sql.append(",userprop."+obj.value+"=userprop."+obj.value+"+1");
 			sql.append(" where  userprop.uid="+selectMap.get("uid")+" and userjjc.uid="+selectMap.get("uid"));
 	
-			System.out.println(sql.toString());
+//			System.out.println(sql.toString());
 			loginDao.updateItemByUserJJCAndProp(sql.toString());
 			sqlSession.commit();
 			U.infoQueue("id:" + id + "兑换"+obj.des+"积分兑换物品请求成功，数据更新!" + "ip:"

@@ -34,6 +34,8 @@
 		<mapper resource="config_info_orm.xml" />
 		<mapper resource="role_upgrade_orm.xml" />
 		<mapper resource="charge_exchange_orm.xml" />
+		<mapper resource="task_running_orm.xml" />
+		<mapper resource="modify_user_profile.xml" />
 	</mappers>
 </configuration>
   

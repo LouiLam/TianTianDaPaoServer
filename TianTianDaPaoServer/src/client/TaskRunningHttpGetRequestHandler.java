@@ -16,10 +16,11 @@ import start.AbstractHttpRequestHandler;
 import config.ConfigFactory;
 import config.Constant;
 
-public class TaskFinishHttpGetRequestHandler extends AbstractHttpRequestHandler{
+public class TaskRunningHttpGetRequestHandler extends AbstractHttpRequestHandler {
+
+
 	@Override
 	protected void handle(String uri, Channel channel) {
-
 		try{
 			//参数解码
 			String decodeuri=null;
@@ -36,13 +37,14 @@ public class TaskFinishHttpGetRequestHandler extends AbstractHttpRequestHandler{
 				paramClone.put(key, value);
 			}
 			
+
 			JSONObject jsonObj = ConfigFactory
 					.getCheck("7").check(paramClone,channel);
 			//返回
 			sendResponse(jsonObj.toString(), channel);
 		}catch(Exception e){	
 			e.printStackTrace();
-			U.infoQueue("任务完成请求发生异常： "+e.getMessage()+"ip地址："
+			U.infoQueue("任务进度查询请求发生异常： "+e.getMessage()+"ip地址："
 					+ channel.getRemoteAddress().toString()+"    uri = " + uri);
 			try {
 				JSONObject jsonObject = new JSONObject();
@@ -53,6 +55,6 @@ public class TaskFinishHttpGetRequestHandler extends AbstractHttpRequestHandler{
 				e1.printStackTrace();
 			}
 		}
-	
 	}
+
 }

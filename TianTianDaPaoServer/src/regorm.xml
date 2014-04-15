@@ -7,10 +7,21 @@
     <select id="selectUserByUid" parameterType="Map" resultType="Map" >
 		select userinfo.* from userinfo where id = #{id}
     </select>
-    
+       <select id="selectUserByMac" parameterType="Map" resultType="Map" >
+		select userinfo.* from userinfo where mac = #{mac}
+    </select>
+    <select id="insert_score_3day" statementType="CALLABLE"
+		parameterType="Map">
+		call insert_score_3day(#{uid, mode=IN, jdbcType=INTEGER})
+	</select>
+	
     <select id="insertUserIntoUserInfo" parameterType="Map" >
         insert into userinfo (id,password,uemail,uphone,urtime,utoken)  
         values (#{id},#{password},#{uemail},#{uphone}, #{urtime},#{utoken})
+    </select>
+       <select id="insertUserInfoByMac" parameterType="Map" >
+        insert into userinfo (id,password,urtime,utoken,mac)  
+        values ('Visitor',#{password}, #{urtime},#{utoken},#{mac})
     </select>
 	<select id="insertUserIntoUserGame" parameterType="Map">
 		insert into usergame (last_tili_send_time) values(#{last_tili_send_time})
@@ -39,7 +50,9 @@
     
     
     
-    
+      <select id="updateIDIntoUserInfo" parameterType="Map" >
+         UPDATE userinfo SET id = CONCAT('Visitor--',LAST_INSERT_ID()) WHERE uid=LAST_INSERT_ID()
+    </select>
     
     
     
@@ -52,7 +65,5 @@
 	<select id="loginUpdateUltimeByUserInfo" parameterType="Map">
         update usergame set ultime=#{ultime}  where  uid = #{uid}
      </select>
-	 
-	 
-	 
+	
 </mapper>

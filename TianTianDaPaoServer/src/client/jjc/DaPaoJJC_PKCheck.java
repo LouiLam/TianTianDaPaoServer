@@ -1,5 +1,6 @@
 package client.jjc;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -7,7 +8,10 @@ import org.jboss.netty.channel.Channel;
 import org.json.JSONObject;
 
 import server.ui.main.U;
+import util.RandomUtil;
 import client.login.Check;
+import client.task.Task;
+import client.task.TaskConfigMgr;
 import config.ConfigFactory;
 import config.Constant;
 import database.DatabaseConnector;
@@ -25,16 +29,10 @@ public class DaPaoJJC_PKCheck extends Check {
 		SqlSession sqlSession = DatabaseConnector.getInstance().getSqlSession();
 
 		try {
-			// YaoPengLoginDao loginDao = sqlSession.getMapper(
-			// ConfigFactory.getClazz(params.get("gid")));
 			DaPaoJJCDao loginDao = sqlSession.getMapper(ConfigFactory
 					.getClazz("3"));
-			// 登录检测
-			// uid=3 rank=3 day_max_times=15 socre=0 diamond
 			Map jjcMap = loginDao.selectJJCUserByUtoken(params);
-			// 如果upuid不存在 表示第一次使用设备游客登录
 			if (jjcMap == null) {
-				// 登录请求：帐号不存在或密码错误 返回json
 				jsonObject.put(Constant.RET, Constant.RET_JJC_PK_FAILED);
 				jsonObject.put(Constant.MSG,
 						ConfigFactory.getRetMsg(Constant.RET_JJC_PK_FAILED));
@@ -42,7 +40,18 @@ public class DaPaoJJC_PKCheck extends Check {
 						+ channel.getRemoteAddress().toString());
 				return jsonObject;
 			}
+		
 			String id=(String)jjcMap.get("id");
+			try {
+				 Long.parseLong(params.get("gold"));
+			} catch (Exception e) {
+				jsonObject.put(Constant.RET, Constant.RET_JJC_PK_FAILED_ARG_INVALID);
+				jsonObject.put(Constant.MSG,
+						ConfigFactory.getRetMsg(Constant.RET_JJC_PK_FAILED_ARG_INVALID));
+				U.infoQueue(id+"竞技场挑战请求失败：gold参数值非法"
+						+ channel.getRemoteAddress().toString());
+				return jsonObject;
+			}
 			int day_cur_times=(int) jjcMap.get("day_cur_times");
 			int day_max_times=(int) jjcMap.get("day_max_times");
 			if(day_cur_times>=day_max_times)
@@ -75,9 +84,9 @@ public class DaPaoJJC_PKCheck extends Check {
 			if(rank_beidong>rank_zhudong)
 			{
 				jsonObject.put(Constant.RET,
-						Constant.RET_JJC_PK_FAILED_UID_MYSELF);
+						Constant.RET_JJC_PK_FAILED_RANK_LOWER);
 				jsonObject.put(Constant.MSG, ConfigFactory
-						.getRetMsg(Constant.RET_JJC_PK_FAILED_UID_MYSELF));
+						.getRetMsg(Constant.RET_JJC_PK_FAILED_RANK_LOWER));
 				U.infoQueue("id:"+id+"竞技场非法请求：被PK用户排名比发起用户排名低，不允许挑战   ip:"
 						+ channel.getRemoteAddress().toString());
 				return jsonObject;
@@ -104,7 +113,6 @@ public class DaPaoJJC_PKCheck extends Check {
 				params.put("uid_beidong", params.get("pk_player_uid")+"");
 				loginDao.updateJJC_RankWin(params);
 				loginDao.updateJJC_RankBeidong(params);
-				sqlSession.commit();
 //				"被动用户战绩"+record_beidong+"rank_beidong:"+rank_beidong+
 //				"uid_beidong"+jjc_pkMap.get("uid")+"主动用户战绩"+record_zhudong+
 //				"rank_zhudong:"+rank_zhudong+"uid_zhudong"+jjcMap.get("uid")+"帐号" + jjcMap.get("id") + 
@@ -115,7 +123,6 @@ public class DaPaoJJC_PKCheck extends Check {
 			{
 				params.put("uid",jjcMap.get("uid")+"");
 				loginDao.updateJJC_RankDraw(params);
-				sqlSession.commit();
 				U.infoQueue("id:"+id+"竞技场挑战请求成功，数据更新(平局)!" + "ip:"
 						+ channel.getRemoteAddress().toString());
 			}
@@ -123,11 +130,91 @@ public class DaPaoJJC_PKCheck extends Check {
 			{
 				params.put("uid",jjcMap.get("uid")+"");
 				loginDao.updateJJC_RankLose(params);
-				sqlSession.commit();
 				U.infoQueue("id:"+id+"竞技场挑战请求成功，数据更新(失败)!" + "ip:"
 						+ channel.getRemoteAddress().toString());
 			}
-			jjcMap = loginDao.selectJJCUserByUtoken(params);
+			loginDao.updateUserTaskRunning(params);
+			loginDao.updateGoldByUserGame(params);
+			sqlSession.commit();
+			
+			//处理任务相关
+			int running_task_id=(int) jjcMap.get("running_task_id");
+			Task obj=TaskConfigMgr.getInstance().taskObjMap.get(running_task_id);
+			if(obj==null)
+			{
+				jsonObject.put(Constant.RET, Constant.RET_GAME_OVER_FAILED_MISS_ARG);
+				jsonObject.put(Constant.MSG,
+						ConfigFactory.getRetMsg(Constant.RET_GAME_OVER_FAILED_MISS_ARG));
+				U.infoQueue(id+"游戏正常结束请求----相关任务请求失败：running_task_id非法获取到的Task对象为空"
+						+ channel.getRemoteAddress().toString());
+			}
+			else
+			{
+				switch (running_task_id) {
+				case TaskConfigMgr.GOLD:
+					if((long)jjcMap.get("gold_count")+Long.parseLong(params.get("gold"))>=obj.target)//目标达到，任务完成，任务奖励,清空用户任务列表数据
+					{
+						//任务暂不奖励积分
+						HashMap<String, Object>map=new HashMap<String, Object>();
+						map.put("reward_gold", obj.reward_gold);
+						map.put("reward_charge", obj.reward_charge);
+						map.put("reward_diamond", obj.reward_diamond);
+						map.put("uid", jjcMap.get("uid"));
+						map.put("running_task_id", RandomUtil.getRan(1, TaskConfigMgr.Size+1)+"");
+						loginDao.updateUserTaskFinish(map);
+						jsonObject.put("taskFinishID", obj.id);
+					}
+					break;
+				case TaskConfigMgr.GAME_COUNT:
+					if((long)jjcMap.get("game_count")+1>=obj.target)//目标达到，任务完成，任务奖励,清空用户任务列表数据
+					{
+						//任务暂不奖励积分
+						HashMap<String, Object>map=new HashMap<String, Object>();
+						map.put("reward_gold", obj.reward_gold);
+						map.put("reward_charge", obj.reward_charge);
+						map.put("reward_diamond", obj.reward_diamond);
+						map.put("uid", jjcMap.get("uid"));
+						map.put("running_task_id", RandomUtil.getRan(1, TaskConfigMgr.Size+1)+"");
+						loginDao.updateUserTaskFinish(map);
+						jsonObject.put("taskFinishID", obj.id);
+					}
+					break;
+				case TaskConfigMgr.JJC_PK_COUNT:
+					if((long)jjcMap.get("jjc_pk_count")+1>=obj.target)//目标达到，任务完成，任务奖励,清空用户任务列表数据
+					{
+						//任务暂不奖励积分
+						HashMap<String, Object>map=new HashMap<String, Object>();
+						map.put("reward_gold", obj.reward_gold);
+						map.put("reward_charge", obj.reward_charge);
+						map.put("reward_diamond", obj.reward_diamond);
+						map.put("uid", jjcMap.get("uid"));
+						map.put("running_task_id", RandomUtil.getRan(1, TaskConfigMgr.Size+1)+"");
+						loginDao.updateUserTaskFinish(map);
+						jsonObject.put("taskFinishID", obj.id);
+					}
+					break;
+				case TaskConfigMgr.TOTAL_RECORD:
+					if((long)jjcMap.get("record_count")+record_zhudong>=obj.target)//目标达到，任务完成，任务奖励,清空用户任务列表数据
+					{
+						//任务暂不奖励积分
+						HashMap<String, Object>map=new HashMap<String, Object>();
+						map.put("reward_gold", obj.reward_gold);
+						map.put("reward_charge", obj.reward_charge);
+						map.put("reward_diamond", obj.reward_diamond);
+						map.put("uid", jjcMap.get("uid"));
+						map.put("running_task_id", RandomUtil.getRan(1, TaskConfigMgr.Size+1)+"");
+						loginDao.updateUserTaskFinish(map);
+						jsonObject.put("taskFinishID", obj.id);
+					}
+					break;
+
+				default:
+					break;
+				}
+			}
+			
+			
+			jjcMap = loginDao.selectJJCUserByUID(jjcMap);
 			jsonObject.put("userInfo", jjcMap);
 			jsonObject.put(Constant.RET, Constant.RET_JJC_PK_SUCCESS);
 			jsonObject.put(Constant.MSG,

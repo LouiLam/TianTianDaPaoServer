@@ -16,9 +16,14 @@ import config.ConfigFactory;
 import config.Constant;
 import database.DatabaseConnector;
 
-public class DaPaoRegCheck extends Check {
+/**
+ * MAC地址注册
+ * @author Administrator
+ *
+ */
+public class DaPaoRegMacCheck extends Check {
 	
-	public DaPaoRegCheck() {
+	public DaPaoRegMacCheck() {
 		super();
 	}
 
@@ -34,50 +39,36 @@ public class DaPaoRegCheck extends Check {
 					ConfigFactory.getClazz("2"));
 			// 注册检测
 			
-			Map userMap = regDao.selectUserByUid(params);
-			if(params.get("uphone")==null||params.get("id")==null||params.get("password")==null)//手机号必填写
+			Map userMap = regDao.selectUserByMac(params);
+			if(params.get("mac")==null)//mac地址必填写
 			{
 				jsonObject.put(Constant.RET, Constant.RET_REG_FAILED_MISS_ARG);
 				jsonObject.put(Constant.MSG, ConfigFactory.getRetMsg(Constant.RET_REG_FAILED_MISS_ARG));
-				U.infoQueue("id:"+params.get("id")+"注册参数要求非法"+channel.getRemoteAddress().toString());
+				U.infoQueue("注册参数要求非法"+channel.getRemoteAddress().toString());
 				return jsonObject;
 			}
-		
 			if (userMap == null) {
-				//检测帐号格式
-				if( params.get("id")!=null&&!RegexUtil.validateID((String) params.get("id")))
-				{
-					jsonObject.put(Constant.RET, Constant.RET_ACCOUNT_VALIDATE_INVALID);
-					jsonObject.put(Constant.MSG, ConfigFactory.getRetMsg(Constant.RET_ACCOUNT_VALIDATE_INVALID));
-					U.infoQueue("用户注册id:"+params.get("id")+"注册帐号格式非法");
-					return jsonObject;
-				}
-				if( params.get("password")!=null&&!RegexUtil.validatePassword((String) params.get("password")))
-				{
-					jsonObject.put(Constant.RET, Constant.RET_PASSWORD_VALIDATE_INVALID);
-					jsonObject.put(Constant.MSG, ConfigFactory.getRetMsg(Constant.RET_PASSWORD_VALIDATE_INVALID));
-					U.infoQueue("用户注册password:"+params.get("password")+"密码格式非法");
-					return jsonObject;
-				}
-				//id不存在 表示可以注册
+				//mac不存在 表示可以注册
 				int urtime = (int)(System.currentTimeMillis()/1000);
 				params.put("urtime", "" + urtime);
 				params.put("utoken", AES.generateSessionKey());
 				params.put("running_task_id", RandomUtil.getRan(1, TaskConfigMgr.Size+1)+"");
 				params.put("last_tili_send_time", "" + urtime);
-				regDao.insertUserIntoUserInfo(params);
+				params.put("password", "123456");
+				regDao.insertUserInfoByMac(params);
+				regDao.updateIDIntoUserInfo(params);
 				regDao.insertUserIntoUserJJC(params);
 				regDao.insertUserIntoTaskUser(params);
 				regDao.insertUserIntoUserProp(params);
 				regDao.updateRankIntoUserJJC(params);
 				regDao.insertUserIntoUserGame(params);
 				sqlSession.commit();
-				userMap =  regDao.selectUserByUid(params);
+				userMap =  regDao.selectUserByMac(params);
 				regDao.insert_score_3day(userMap);
 				jsonObject.put("userInfo", userMap);
 				jsonObject.put(Constant.RET, Constant.RET_REG_SUCCESS);
 				jsonObject.put(Constant.MSG, ConfigFactory.getRetMsg(Constant.RET_REG_SUCCESS));
-				U.infoQueue("用户注册id:"+params.get("id")+"注册成功"+channel.getRemoteAddress().toString());
+				U.infoQueue("mac:"+params.get("mac")+"注册成功"+channel.getRemoteAddress().toString());
 			}
 			// 如果存在//返回消息格式
 			//{
@@ -92,7 +83,7 @@ public class DaPaoRegCheck extends Check {
 //				jsonObject.put("userInfo", userMap);
 				jsonObject.put(Constant.RET, Constant.RET_REG_FAILED_ID_REPART);
 				jsonObject.put(Constant.MSG, ConfigFactory.getRetMsg(Constant.RET_REG_FAILED_ID_REPART));
-				U.infoQueue("id:"+params.get("id")+"重复不允许注册"+channel.getRemoteAddress().toString());
+				U.infoQueue("mac:"+params.get("mac")+"重复不允许注册"+channel.getRemoteAddress().toString());
 			}
 		}catch(Exception e){
 			e.printStackTrace();
