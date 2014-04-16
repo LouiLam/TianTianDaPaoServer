@@ -36,6 +36,7 @@
 		<mapper resource="charge_exchange_orm.xml" />
 		<mapper resource="task_running_orm.xml" />
 		<mapper resource="modify_user_profile.xml" />
+		<mapper resource="use_items_orm.xml" />
 	</mappers>
 </configuration>
   

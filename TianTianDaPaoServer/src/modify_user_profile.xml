@@ -15,7 +15,7 @@
 	
 
 	<select id="updateIDByUserInfo" parameterType="Map">
-		update userinfo set id=#{id} where
+		update userinfo set id=#{id},modify_user_profile_count=modify_user_profile_count+1 where
 		userinfo.uid =#{uid}
 	</select>
 	

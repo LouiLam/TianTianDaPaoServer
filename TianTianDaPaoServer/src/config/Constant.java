@@ -85,6 +85,12 @@ public class Constant {
 	public static final int RET_MODIFY_USER_PROFILE_SUCCESS = 72;//用户修改资料请求成功
 	public static final int RET_MODIFY_USER_PROFILE_FAILED_MISS_ARG = 73;//用户修改资料请求失败：缺少参数
 	public static final int RET_MODIFY_USER_PROFILE_FAILED_ID_HAVE_EXIST = 74;//用户修改资料请求失败：此昵称已存在，请换一个
+	
+	public static final int RET_USE_ITEMS_FAILED = 75;//使用物品请求失败：utoken非法或不存在
+	public static final int RET_USE_ITEMS_FAILED_MISS_ARG = 76;//使用物品请求失败,缺少参数item_id
+	public static final int RET_USE_ITEMS_SUCCESS = 77;//使用物品请求成功
+	public static final int RET_USE_ITEMS_FAILED_ARG_INVALID = 78;//使用物品请求失败,参数非法
+	public static final int RET_USE_ITEMS_FAILED_COUNT_ZERO = 79;//使用物品请求失败,物品数量为0
 	public final static String RET = "ret";
 	public final static String MSG = "msg";
 	

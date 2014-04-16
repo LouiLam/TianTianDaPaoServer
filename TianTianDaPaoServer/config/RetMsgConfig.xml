@@ -76,4 +76,13 @@
 	<resMsg ret="72" msg="用户修改资料请求成功" />
 	<resMsg ret="73" msg="用户修改资料请求失败：参数要求非法，缺少参数id" />
 	<resMsg ret="74" msg="用户修改资料请求失败：此昵称已存在，请换一个" />
+	
+	<resMsg ret="75" msg="使用物品请求失败：utoken非法或不存在" />
+	<resMsg ret="76" msg="使用物品请求失败,缺少参数item_id" />
+	<resMsg ret="77" msg="使用物品请求成功" />
+	<resMsg ret="78" msg="使用物品请求失败,参数非法" />
+	<resMsg ret="79" msg="使用物品请求失败,物品数量为0" />
+	
+	
+
 </retMsgConfig>

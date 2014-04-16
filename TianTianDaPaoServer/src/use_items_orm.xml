@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="client.use_items.DaPaoUseItemsDao">
+
+	<resultMap id="ormUser" type="User">
+	</resultMap>
+
+	<select id="selectUseItemsByUtoken" parameterType="Map"
+		resultType="Map">
+		select userprop.*,userinfo.id from
+		userinfo,userprop where
+		userinfo.utoken=
+		#{utoken} and userinfo.uid =userprop.uid 
+	</select>
+	<select id="updateItemByUserProp" parameterType="Map">
+	    ${paramSQL}
+	</select>
+
+
+<select id="selectBuyItemByMuch" parameterType="Map"
+		resultType="Map">
+		select
+		userinfo.id,userinfo.uid,userjjc.score,usergame.tili, usergame.ugold,usergame.ucharge,usergame.diamond
+		from
+		userinfo,userjjc,usergame where
+		userinfo.uid = #{uid} and
+		userjjc.uid  = #{uid} and
+		usergame.uid =#{uid}
+	</select>
+	
+
+	<select id="updateGoldByUserGame" parameterType="Map">
+		update usergame set ugold=ugold+#{gold},diamond=diamond-#{consume_diamond} where
+		usergame.uid =#{uid}
+	</select>
+	<select id="updateGoldSubByUserGame" parameterType="Map">
+		update usergame set ugold=ugold-#{consume_ugold} where
+		usergame.uid =#{uid}
+	</select>
+	<select id="updateTiliByUserGame" parameterType="Map">
+		update usergame set tili=tili+#{tili},diamond=diamond-#{consume_diamond} where
+		usergame.uid =#{uid}
+	</select>
+</mapper>
