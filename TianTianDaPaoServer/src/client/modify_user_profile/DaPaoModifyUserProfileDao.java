@@ -18,4 +18,11 @@ public interface DaPaoModifyUserProfileDao   {
 	 * @param params
 	 */
 	public void updateIDByUserInfo(Map params);
+	
+	/**
+	 * 查昵称是否重复
+	 * @param params
+	 * @return 
+	 */
+	public Map selectIDByUserInfo(Map params);
 }

@@ -18,6 +18,11 @@
 		update userinfo set id=#{id},modify_user_profile_count=modify_user_profile_count+1 where
 		userinfo.uid =#{uid}
 	</select>
-	
+		<select id="selectIDByUserInfo" parameterType="Map"
+		resultType="Map">
+		select
+		userinfo.uid,userinfo.mac from
+		userinfo where id=#{id}
+	</select>
 	
 </mapper>

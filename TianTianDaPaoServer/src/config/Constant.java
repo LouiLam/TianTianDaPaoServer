@@ -91,6 +91,10 @@ public class Constant {
 	public static final int RET_USE_ITEMS_SUCCESS = 77;//使用物品请求成功
 	public static final int RET_USE_ITEMS_FAILED_ARG_INVALID = 78;//使用物品请求失败,参数非法
 	public static final int RET_USE_ITEMS_FAILED_COUNT_ZERO = 79;//使用物品请求失败,物品数量为0
+	
+	public static final int RET_REBIRTH_FAILED = 80;//重生请求失败：utoken非法或不存在
+	public static final int RET_REBIRTH_FAILED_DIAMOND_NOT_ENOUGH = 81;//重生请求失败,钻石不够
+	public static final int RET_REBIRTH_SUCCESS = 82;//重生请求成功
 	public final static String RET = "ret";
 	public final static String MSG = "msg";
 	

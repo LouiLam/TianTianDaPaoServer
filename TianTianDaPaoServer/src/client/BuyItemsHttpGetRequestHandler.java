@@ -1,6 +1,7 @@
 package client;
 
 import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -29,7 +30,6 @@ public class BuyItemsHttpGetRequestHandler extends AbstractHttpRequestHandler {
 			//参数解码
 			String decodeuri=null;
 			decodeuri= URLDecoder.decode(uri,"utf-8");
-			
 			//参数转换
 			QueryStringDecoder queryStringDecoder = new QueryStringDecoder(decodeuri);
 			Map<String, List<String>> params = queryStringDecoder.getParameters();

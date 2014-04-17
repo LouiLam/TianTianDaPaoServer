@@ -45,7 +45,9 @@ public class DaPaoModifyUserProfileCheck extends Check {
 				U.infoQueue("用户修改资料请求失败：参数要求非法，缺少参数id"+channel.getRemoteAddress().toString());
 				return jsonObject;
 			}
-			if(selectMap.get("id").equals(params.get("id")))
+			Map idMap = loginDao.selectIDByUserInfo(params);
+			System.out.println("用户修改昵称："+params.get("id"));
+			if(idMap!=null)
 			{
 				//此昵称已存在，请换一个
 				jsonObject.put(Constant.RET, Constant.RET_MODIFY_USER_PROFILE_FAILED_ID_HAVE_EXIST);
@@ -56,6 +58,7 @@ public class DaPaoModifyUserProfileCheck extends Check {
 			selectMap.put("id", params.get("id"));
 			loginDao.updateIDByUserInfo(selectMap);
 			jsonObject.put("userInfo", selectMap);
+			U.infoQueue("用户修改资料请求成功"+channel.getRemoteAddress().toString());
 			jsonObject.put(Constant.RET, Constant.RET_MODIFY_USER_PROFILE_SUCCESS);
 			jsonObject.put(Constant.MSG,
 					ConfigFactory.getRetMsg(Constant.RET_MODIFY_USER_PROFILE_SUCCESS));

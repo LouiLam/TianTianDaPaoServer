@@ -12,6 +12,7 @@ import start.ServerConfig;
 import start.ServerStart;
 import client.buy_items.BuyItemsConfigMgr;
 import client.charge_exchange.ChargeExchangeConfig;
+import client.consume.RebirthConfig;
 import client.role_upgrade.RoleUpgradeConfigMgr;
 import client.score_exchange_items.ScoreExchangeItemsConfigMgr;
 import client.score_lottery.ScoreLotteryConfigMgr;
@@ -60,6 +61,9 @@ public class LoginMain {
 			// ChargeExchangeConfig
 			ChargeExchangeConfig.getInstance().configure();
 			U.info("话费点兑换比率配置文件读取成功");
+			// RebirthConsumeConfig
+			RebirthConfig.getInstance().configure();
+			U.info("重生消耗配置文件读取成功");
 			// ServerConfig
 			ServerConfig.getInstance().configure();
 			U.info("ServerConfig配置文件读取成功");

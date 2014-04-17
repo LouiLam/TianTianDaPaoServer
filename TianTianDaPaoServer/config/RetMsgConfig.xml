@@ -83,6 +83,9 @@
 	<resMsg ret="78" msg="使用物品请求失败,参数非法" />
 	<resMsg ret="79" msg="使用物品请求失败,物品数量为0" />
 	
+	<resMsg ret="80" msg="重生请求失败：utoken非法或不存在" />
+	<resMsg ret="81" msg="重生请求失败,钻石不够" />
+	<resMsg ret="82" msg="重生请求成功" />
 	
 
 </retMsgConfig>

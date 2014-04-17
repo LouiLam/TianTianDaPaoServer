@@ -16,11 +16,11 @@ import start.AbstractHttpRequestHandler;
 import config.ConfigFactory;
 import config.Constant;
 /**
- * 修改用户资料
+ * 重生接口：使用钻石
  * @author Administrator
  *
  */
-public class ModifyUserProfileHttpGetRequestHandler extends AbstractHttpRequestHandler {
+public class RebirthHttpGetRequestHandler extends AbstractHttpRequestHandler {
 
 
 	@Override
@@ -29,6 +29,7 @@ public class ModifyUserProfileHttpGetRequestHandler extends AbstractHttpRequestH
 			//参数解码
 			String decodeuri=null;
 			decodeuri= URLDecoder.decode(uri,"utf-8");
+			
 			//参数转换
 			QueryStringDecoder queryStringDecoder = new QueryStringDecoder(decodeuri);
 			Map<String, List<String>> params = queryStringDecoder.getParameters();
@@ -42,12 +43,12 @@ public class ModifyUserProfileHttpGetRequestHandler extends AbstractHttpRequestH
 			
 
 			JSONObject jsonObj = ConfigFactory
-					.getCheck("17").check(paramClone,channel);
+					.getCheck("19").check(paramClone,channel);
 			//返回
 			sendResponse(jsonObj.toString(), channel);
 		}catch(Exception e){	
 			e.printStackTrace();
-			U.infoQueue("客户端修改用户资料请求发生异常： "+e.getMessage()+"ip地址："
+			U.infoQueue("客户端重生请求发生异常： "+e.getMessage()+"ip地址："
 					+ channel.getRemoteAddress().toString()+"    uri = " + uri);
 			try {
 				JSONObject jsonObject = new JSONObject();
