@@ -12,7 +12,8 @@ import start.ServerConfig;
 import start.ServerStart;
 import client.buy_items.BuyItemsConfigMgr;
 import client.charge_exchange.ChargeExchangeConfig;
-import client.consume.RebirthConfig;
+import client.money_append.MoneyAppendConfig;
+import client.money_consume.MoneyConsumeConfig;
 import client.role_upgrade.RoleUpgradeConfigMgr;
 import client.score_exchange_items.ScoreExchangeItemsConfigMgr;
 import client.score_lottery.ScoreLotteryConfigMgr;
@@ -20,6 +21,7 @@ import client.task.TaskConfigMgr;
 import config.ConfigFactory;
 import config.GlobalConfig;
 import database.DatabaseConnector;
+import event.EveryDayDoSomthing;
 
 public class LoginMain {
 
@@ -49,6 +51,10 @@ public class LoginMain {
 			//积分抽奖
 			ScoreLotteryConfigMgr.getInstance().configure();
 			U.info("积分抽奖配置文件读取成功");
+			
+			//每日重置全局数据
+			EveryDayDoSomthing.configure();
+			U.info("每日重置全局数据定时器启动");
 			//积分兑换物品
 			ScoreExchangeItemsConfigMgr.getInstance().configure();
 			U.info("积分兑换物品配置文件读取成功");
@@ -61,9 +67,10 @@ public class LoginMain {
 			// ChargeExchangeConfig
 			ChargeExchangeConfig.getInstance().configure();
 			U.info("话费点兑换比率配置文件读取成功");
-			// RebirthConsumeConfig
-			RebirthConfig.getInstance().configure();
-			U.info("重生消耗配置文件读取成功");
+			MoneyConsumeConfig.getInstance().configure();
+			U.info("货币消耗配置文件读取成功");
+			MoneyAppendConfig.getInstance().configure();
+			U.info("货币增加配置文件读取成功");
 			// ServerConfig
 			ServerConfig.getInstance().configure();
 			U.info("ServerConfig配置文件读取成功");

@@ -2,5 +2,5 @@
 <!-- 话费点与RMB话费兑换比例 -->
 <chargeExchange>
     <!-- 1RMB等于多少话费点 -->
-	<ratio>10</ratio>
+	<ratio>2000</ratio>
 </chargeExchange>

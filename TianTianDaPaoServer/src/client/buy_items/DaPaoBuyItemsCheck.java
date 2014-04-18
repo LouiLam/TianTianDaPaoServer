@@ -111,7 +111,7 @@ public class DaPaoBuyItemsCheck extends Check {
 			}
 			if(obj.id>15&&obj.id<19)//体力直接购买
 			{
-				U.infoQueue("id:" + id + "兑换"+obj.des+"积分兑换物品请求成功，数据更新!" + "ip:"
+				U.infoQueue("id:" + id +obj.des+"物品购买请求成功，数据更新!" + "ip:"
 						+ channel.getRemoteAddress().toString());
 				selectMap.put("tili", obj.value);
 				selectMap.put("consume_diamond", obj.consume_diamond);
@@ -127,7 +127,7 @@ public class DaPaoBuyItemsCheck extends Check {
 			}
 			if(obj.id>18)//金币直接购买
 			{
-				U.infoQueue("id:" + id + "兑换"+obj.des+"积分兑换物品请求成功，数据更新!" + "ip:"
+				U.infoQueue("id:" + id +obj.des+"物品购买请求成功，数据更新!" + "ip:"
 						+ channel.getRemoteAddress().toString());
 				selectMap.put("gold", obj.value);
 				selectMap.put("consume_diamond", obj.consume_diamond);
@@ -153,7 +153,7 @@ public class DaPaoBuyItemsCheck extends Check {
 //			System.out.println(sql.toString());
 			loginDao.updateItemByUserJJCAndProp(sql.toString());
 			sqlSession.commit();
-			U.infoQueue("id:" + id + "兑换"+obj.des+"积分兑换物品请求成功，数据更新!" + "ip:"
+			U.infoQueue("id:" + id +obj.des+"物品购买请求成功，数据更新!" + "ip:"
 					+ channel.getRemoteAddress().toString());
 			
 			

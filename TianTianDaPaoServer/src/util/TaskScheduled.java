@@ -27,8 +27,12 @@ public class TaskScheduled {
 	 */
 	public static boolean cancel(ScheduledFuture<?> scheduled){
 		if(scheduled == null) return false;
-		return scheduled.cancel(false);
+		return scheduled.cancel(true);
 	}
-	
+	public static void clear()
+	{
+		scheduler.shutdown();
+		scheduler= new ScheduledThreadPoolExecutor(1);
+	}
 	
 }

@@ -12,8 +12,8 @@ import util.RandomUtil;
 import util.RegexUtil;
 import client.buy_items.BuyItemsConfigMgr;
 import client.charge_exchange.ChargeExchangeConfig;
-import client.consume.RebirthConfig;
 import client.login.Check;
+import client.money_consume.MoneyConsumeConfig;
 import client.score_exchange_items.ScoreExchangeItemsConfigMgr;
 import client.score_lottery.ScoreLotteryConfigMgr;
 import client.task.TaskConfigMgr;
@@ -73,7 +73,7 @@ public class DaPaoConfigInfoCheck extends Check {
 				//话费点兑换比率
 				jsonObject.put("chargeExchangeConfig", ChargeExchangeConfig.getInstance().ratio);
 				//复活
-				jsonObject.put("rebirthConfig", RebirthConfig.getInstance().diamond);
+				jsonObject.put("rebirthConfig", MoneyConsumeConfig.getInstance().diamond);
 				jsonObject.put(Constant.RET, Constant.RET_CONFIG_INFO_SUCCESS);
 				jsonObject.put(Constant.MSG, ConfigFactory.getRetMsg(Constant.RET_CONFIG_INFO_SUCCESS));
 				U.infoQueue("id:"+selectMap.get("id")+"获取配置信息请求成功"+channel.getRemoteAddress().toString());

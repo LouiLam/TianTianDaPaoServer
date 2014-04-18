@@ -31,7 +31,6 @@ public class DateUtil {
 //		System.out.println(getSecondsBetween(getTimesnight(),System.currentTimeMillis())%(1440*60));
 		
 	}
-
 	/**
 	 * 天数差值
 	 * 
@@ -40,6 +39,29 @@ public class DateUtil {
 	 * @return
 	 */
 	public static long getDaysBetween(long startDate, long endDate) {
+		
+		Calendar fromCalendar = Calendar.getInstance();
+		fromCalendar.setTimeInMillis(startDate);
+		int fromDay=fromCalendar.get(Calendar.DAY_OF_YEAR);
+		// fromCalendar.set(Calendar.HOUR_OF_DAY, 0);
+		// fromCalendar.set(Calendar.MINUTE, 0);
+		// fromCalendar.set(Calendar.SECOND, 0);
+		// fromCalendar.set(Calendar.MILLISECOND, 0);
+		Calendar toCalendar = Calendar.getInstance();
+		toCalendar.setTimeInMillis(endDate);
+		int toDay=toCalendar.get(Calendar.DAY_OF_YEAR);
+		return (toDay -fromDay);
+	
+
+	}
+	/**
+	 * 天数差值
+	 * 
+	 * @param startDate
+	 * @param endDate
+	 * @return
+	 */
+	public static long _getDaysBetween(long startDate, long endDate) {
 	
 			Calendar fromCalendar = Calendar.getInstance();
 			fromCalendar.setTimeInMillis(startDate);
@@ -49,7 +71,7 @@ public class DateUtil {
 			// fromCalendar.set(Calendar.MILLISECOND, 0);
 
 			Calendar toCalendar = Calendar.getInstance();
-
+			toCalendar.setTimeInMillis(endDate);
 			
 			return (toCalendar.getTimeInMillis() - fromCalendar
 					.getTimeInMillis()) / (1000 * 60 * 60 * 24);
@@ -78,6 +100,7 @@ public class DateUtil {
 		Calendar fromCalendar = Calendar.getInstance();
 		fromCalendar.setTimeInMillis(startDate);
 		Calendar toCalendar = Calendar.getInstance();
+		toCalendar.setTimeInMillis(endDate);
 		return (toCalendar.getTimeInMillis() - fromCalendar
 				.getTimeInMillis()) / (1000 * 60 );
 	
@@ -93,6 +116,7 @@ public class DateUtil {
 		Calendar fromCalendar = Calendar.getInstance();
 		fromCalendar.setTimeInMillis(startDate);
 		Calendar toCalendar = Calendar.getInstance();
+		toCalendar.setTimeInMillis(endDate);
 		return (toCalendar.getTimeInMillis() - fromCalendar
 				.getTimeInMillis()) / (1000 );
 	
@@ -108,6 +132,7 @@ public class DateUtil {
 		Calendar fromCalendar = Calendar.getInstance();
 		fromCalendar.setTimeInMillis(startDate);
 		Calendar toCalendar = Calendar.getInstance();
+		toCalendar.setTimeInMillis(endDate);
 		return (toCalendar.getTimeInMillis() - fromCalendar
 				.getTimeInMillis()) / (1000 * 60*60 );
 	}

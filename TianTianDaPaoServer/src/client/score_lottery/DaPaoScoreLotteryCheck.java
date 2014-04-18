@@ -12,6 +12,7 @@ import client.login.Check;
 import config.ConfigFactory;
 import config.Constant;
 import database.DatabaseConnector;
+import event.EveryDayDoSomthing;
 
 public class DaPaoScoreLotteryCheck extends Check {
 	public DaPaoScoreLotteryCheck() {
@@ -55,7 +56,7 @@ public class DaPaoScoreLotteryCheck extends Check {
 			}
 		
 			int probability=RandomUtil.getRan(0, 1000);
-			String gold="";
+			String gold="",charge="";
 			ScoreLottery obj=null;
 			for (int i = 0; i < ScoreLotteryConfigMgr.getInstance().taskObjList.size(); i++) {
 				 obj=ScoreLotteryConfigMgr.getInstance().taskObjList.get(i);
@@ -70,6 +71,34 @@ public class DaPaoScoreLotteryCheck extends Check {
 						sqlSession.commit();
 						gold=obj.value;
 					}
+					else if(obj.type==ScoreLotteryConfigMgr.Charge) //等于话费点直接处理
+					{
+					
+						if(EveryDayDoSomthing.LotteryChargeRemain<=0)//每日话费点限额已用完，奖励金币
+						{
+							obj=ScoreLotteryConfigMgr.getInstance().taskObjList.get(11);//11索引表示金币
+							obj.des+="每日话费点限额已用完，奖励金币";
+							params.put("ugold", obj.value+"");
+							params.put("uid", selectMap.get("uid")+"");
+							params.put("score_consume", ScoreLotteryConfigMgr.scoreConsume+"");
+							loginDao.updateUGoldByUserGame(params);
+							sqlSession.commit();
+							gold=obj.value;
+						}
+						else
+						{
+							int range=Integer.parseInt(obj.value)+1;
+							EveryDayDoSomthing.LotteryChargeRemain-=range;
+							//话费点1~10随机
+							params.put("ucharge", RandomUtil.getRan(1, range)+"");
+							params.put("uid", selectMap.get("uid")+"");
+							params.put("score_consume", ScoreLotteryConfigMgr.scoreConsume+"");
+							loginDao.updateUChargeByUserGame(params);
+							sqlSession.commit();
+							charge=range+"";
+						}
+					
+					}
 					else //道具处理
 					{
 						long count=(long) selectMap.get(obj.value);
@@ -82,6 +111,7 @@ public class DaPaoScoreLotteryCheck extends Check {
 							sqlSession.commit();
 							gold= ScoreLotteryConfigMgr.goldValue*2+"";
 							 obj=ScoreLotteryConfigMgr.getInstance().taskObjList.get(11);//11索引表示金币
+							 obj.des+="已经拥有此一次性拥有道具,就奖励普通抽奖金币值X2";
 						}
 						else   //非一次性道具 ，数量递增
 						{
@@ -100,13 +130,17 @@ public class DaPaoScoreLotteryCheck extends Check {
 				}
 			}
 			
-			U.infoQueue(id + "抽取"+obj.des+"积分抽奖请求成功，数据更新!" + "ip:"
+			U.infoQueue(id + "抽取"+obj.des+"积分抽奖请求成功，数据更新!系统剩余可抽取的话费点为"+EveryDayDoSomthing.LotteryChargeRemain + "ip:"
 					+ channel.getRemoteAddress().toString());
 			selectMap = loginDao.selectScoreLotteryByMuch(params);
 			jsonObject.put("userInfo", selectMap);
 			jsonObject.put("item_id", obj.id);
 			if(gold.length()!=0)
 			{jsonObject.put("gold",Integer.parseInt(gold));}
+			if(charge.length()!=0)
+			{
+				jsonObject.put("charge",Integer.parseInt(charge));
+			}
 			jsonObject.put(Constant.RET, Constant.RET_SCORE_LOTTERY_SUCCESS);
 			jsonObject.put(Constant.MSG,
 					ConfigFactory.getRetMsg(Constant.RET_SCORE_LOTTERY_SUCCESS));

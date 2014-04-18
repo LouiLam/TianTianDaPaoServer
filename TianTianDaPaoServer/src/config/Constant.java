@@ -27,9 +27,9 @@ public class Constant {
 	public static final int RET_JJC_PK_FAILED_UID_NOT_EXIST = 15;//竞技场挑战请求失败：被pk的用户uid不存在
 	public static final int RET_JJC_PK_FAILED_UID_MYSELF = 16;//竞技场挑战请求失败：被pk的用户为自己的uid
 	public static final int RET_JJC_PK_SUCCESS = 17;//竞技场挑战请求成功,数据更新
-	public static final int RET_JJC_GET_SCORE_FAILED = 18;//竞技场获取积分请求失败：utoken非法或不存在
-	public static final int RET_JJC_GET_SCORE_FAILED_HAVE_DONE = 19;//竞技场获取积分请求失败：该用户已领取过积分
-	public static final int RET_JJC_GET_SCORE_SUCCESS = 20;//竞技场获取积分请求成功,数据更新
+	public static final int RET_JJC_GET_3DAY_REWARD_FAILED = 18;//竞技场获取三日奖励请求失败：utoken非法或不存在
+	public static final int RET_JJC_GET_3DAY_REWARD_FAILED_HAVE_DONE = 19;//竞技场获取三日奖励请求失败：该用户已领取过三日奖励
+	public static final int RET_JJC_GET_3DAY_REWARD_SUCCESS = 20;//竞技场获取三日奖励请求成功
 	public static final int RET_LOGIN_REWARD_SUCCESS = 21;//登录奖励领取成功
 	public static final int RET_LOGIN_REWARD_FAILED_HAVE_DONE = 22;//领取登录奖励领取失败：今天该用户已经领取过了
 	public static final int RET_LOGIN_REWARD_FAILED = 23;//领取登录奖励领取失败：utoken非法或不存在
@@ -80,21 +80,21 @@ public class Constant {
 	public static final int RET_TASK_RUNNING_FAILED = 68;//任务进度请求失败：utoken非法或不存在
 	public static final int RET_TASK_RUNNING_SUCCESS = 69;//任务进度请求成功
 	public static final int RET_JJC_PK_FAILED_RANK_LOWER =70;//竞技场非法请求：被PK用户排名比发起用户排名低，不允许挑战
-	
 	public static final int RET_MODIFY_USER_PROFILE_FAILED = 71;//用户修改资料请求失败：utoken非法或不存在
 	public static final int RET_MODIFY_USER_PROFILE_SUCCESS = 72;//用户修改资料请求成功
 	public static final int RET_MODIFY_USER_PROFILE_FAILED_MISS_ARG = 73;//用户修改资料请求失败：缺少参数
 	public static final int RET_MODIFY_USER_PROFILE_FAILED_ID_HAVE_EXIST = 74;//用户修改资料请求失败：此昵称已存在，请换一个
-	
 	public static final int RET_USE_ITEMS_FAILED = 75;//使用物品请求失败：utoken非法或不存在
 	public static final int RET_USE_ITEMS_FAILED_MISS_ARG = 76;//使用物品请求失败,缺少参数item_id
 	public static final int RET_USE_ITEMS_SUCCESS = 77;//使用物品请求成功
 	public static final int RET_USE_ITEMS_FAILED_ARG_INVALID = 78;//使用物品请求失败,参数非法
 	public static final int RET_USE_ITEMS_FAILED_COUNT_ZERO = 79;//使用物品请求失败,物品数量为0
-	
 	public static final int RET_REBIRTH_FAILED = 80;//重生请求失败：utoken非法或不存在
 	public static final int RET_REBIRTH_FAILED_DIAMOND_NOT_ENOUGH = 81;//重生请求失败,钻石不够
 	public static final int RET_REBIRTH_SUCCESS = 82;//重生请求成功
+	public static final int RET_BOSS_OVER_FAILED = 83;//Boss结束请求话费点失败：utoken非法或不存在
+	public static final int RET_BOSS_OVER_SUCCESS = 84;//Boss结束请求话费点成功
+	public static final int RET_BOSS_OVER_FAILED_NOT_PROBABTLITY= 85;//Boss结束请求话费点失败，没有随机到匹配的概率
 	public final static String RET = "ret";
 	public final static String MSG = "msg";
 	

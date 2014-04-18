@@ -5,6 +5,7 @@
 	type:3表示宠物  value 表示数据库字段
 	type:4表示道具  value 表示数据库字段
 	type:5表示金币  value 表示金币数量
+	type:6表示金币  value 表示话费点随机最大数量
 	probability表示抽奖的千分比概率
 	scoreConsume表示每次抽奖的积分消耗
  -->
@@ -20,5 +21,6 @@
 	<scoreLottery id="9" des="不屈意志" probability="80" type="4" value="prop14"></scoreLottery>
 	<scoreLottery id="10" des="水晶护甲" probability="80" type="4" value="prop15"></scoreLottery>
 	<scoreLottery id="11" des="永恒之力" probability="80" type="4" value="prop16"></scoreLottery>
-	<scoreLottery id="12" des="金币" probability="500" type="5" value="2000"></scoreLottery>
+	<scoreLottery id="12" des="金币" probability="490" type="5" value="2000"></scoreLottery>
+	<scoreLottery id="13" des="话费点" probability="10" type="6" value="10"></scoreLottery>
 </scoreLotteryConfig>

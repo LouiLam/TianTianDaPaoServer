@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="client.jjc.DaPaoJJCDao">
-	<resultMap id="ormUser" type="User">
-	</resultMap>
+	 
+	 
 	<select id="selectJJCUserByUtoken" parameterType="Map"
 		resultType="Map">
 		select userjjc.* ,userinfo.id,select_gameover_task.* from userinfo,userjjc,select_gameover_task where userinfo.uid =
 		userjjc.uid and userinfo.utoken= #{utoken} and select_gameover_task.uid=userinfo.uid
 	</select>
+	<select id="selectJJC3DayUserByUtoken" parameterType="Map"
+		resultType="Map">
+		select userjjc.score ,userinfo.uid,userjjc.score_3day,userjjc.charge_3day,userjjc.diamond_3day,userinfo.id,usergame.ucharge,usergame.diamond from userjjc,usergame,userinfo where userinfo.uid =
+		userjjc.uid and userinfo.utoken= #{utoken} and usergame.uid=userinfo.uid
+	</select>
+	
 	<select id="selectJJCUserByUID" parameterType="Map"
 		resultType="Map">
 		select userjjc.* ,userinfo.id from userinfo,userjjc where userjjc.uid =
@@ -46,12 +52,10 @@
 		update userjjc set jjc_max_record=#{record},day_cur_times=day_cur_times+1,pk_draw_count=pk_draw_count+1,score=score+5 where userjjc.uid = #{uid} 
 	</select>
 	
-	<select id="updateJJC_GetScore" parameterType="Map">	
-	    update userjjc set  score=score_3day+score,score_3day=0 where userjjc.uid = #{uid}	
+	<select id="updateJJC_Get3DayReward" parameterType="Map">	
+	   update usergame,userjjc set usergame.diamond=usergame.diamond+userjjc.diamond_3day,usergame.ucharge=usergame.ucharge+userjjc.charge_3day, userjjc.score=userjjc.score_3day+userjjc.score,userjjc.score_3day=0 ,userjjc.charge_3day=0,userjjc.diamond_3day=0  where userjjc.uid =#{uid} and usergame.uid=#{uid}
 	</select>
-	<select id="selectJJC_GetScore" parameterType="Map" resultType="Map">	
-	    select userjjc.* from userjjc where userjjc.uid = #{uid}	
-	</select>
+
 		<select id="selectLastExecutedByResetScore" resultType="Map">
 	    ${paramSQL}
 	</select>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--boos结束增加，话费点奖励范围-->
+<bossOverAppend>
+	<charge>10</charge>
+</bossOverAppend>

@@ -25,6 +25,12 @@ public interface DaPaoScoreLotteryDao   {
 	public void updateUGoldByUserGame(Map params);
 	
 	/**
+	 * 抽奖到话费点
+	 * @param params
+	 */
+	public void updateUChargeByUserGame(Map params);
+	
+	/**
 	 * 返回各种更新字段（金币，道具，角色 飞船 宠物等）
 	 * @param params
 	 * @return

@@ -5,7 +5,9 @@
     
     <chargeExchangeConfig>config/ChargeExchangeConfig.xml</chargeExchangeConfig>
     
-    <rebirthConsumeConfig>config/RebirthConsumeConfig.xml</rebirthConsumeConfig>
+    <moneyConsumeConfig>config/MoneyConsumeConfig.xml</moneyConsumeConfig>
+    
+    <moneyAppendConfig>config/MoneyAppendConfig.xml</moneyAppendConfig>
     
 	<httpRequestHandlerConfig>config/HttpRequestHandlerConfig.properties</httpRequestHandlerConfig>
 	

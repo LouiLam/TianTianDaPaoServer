@@ -14,6 +14,13 @@ public interface DaPaoJJCDao   {
 	 */
 	public  Map selectJJCUserByUtoken(Map params);
 	/**
+	 * 三日奖励根据用户token 返回用户是否合法
+	 * @param upuid
+	 * @return
+	 */
+	public  Map selectJJC3DayUserByUtoken(Map params);
+	
+	/**
 	 * 返回时，筛选字段
 	 * @param upuid
 	 * @return
@@ -70,16 +77,10 @@ public interface DaPaoJJCDao   {
 	
 	
 	/**
-	 * 查询3day积分  看用户有没有领过积分
-	 * @param params
-	 * @return
-	 */
-	public Map selectJJC_GetScore(Map params);
-	/**
-	 * 获取积分
+	 * 获取三日奖励
 	 * @param params
 	 */
-	public void updateJJC_GetScore(Map params);
+	public void updateJJC_Get3DayReward(Map params);
 
 	
 	/**

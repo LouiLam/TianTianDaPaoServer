@@ -115,6 +115,8 @@ public class DaPaoLoginMacCheck extends Check {
 		//先检查登录日期，是否是连续登录
 		long lastTime=(long) userMap.get("ultime");
 		int uconsecutive=(int) userMap.get("uconsecutive");
+//	long prc=DateUtil.getDaysBetween(1397722970*1000l, System.currentTimeMillis());
+		
 		long prc=DateUtil.getDaysBetween(lastTime*1000l, System.currentTimeMillis());
 		if(prc==1)//连续登录 uconsecutive+1
 		{

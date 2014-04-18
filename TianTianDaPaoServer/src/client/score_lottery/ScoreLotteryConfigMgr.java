@@ -15,6 +15,7 @@ public class ScoreLotteryConfigMgr extends AbstractConfig {
 	public static final int Pet=3;
 	public static final int Prop=4;
 	public static final int Gold=5;
+	public static final int Charge=6;
 	public ArrayList<HashMap<String, Object>> taskList;
 	public ArrayList<ScoreLottery> taskObjList;
 	private static ScoreLotteryConfigMgr taskConfigMgr;

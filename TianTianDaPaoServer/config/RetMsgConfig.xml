@@ -17,10 +17,10 @@
 	<resMsg ret="14" msg="竞技场挑战请求失败：utoken非法或不存在" />
 	<resMsg ret="15" msg="竞技场挑战请求失败：被pk的用户uid不存在在" />
 	<resMsg ret="16" msg="竞技场挑战请求失败：被pk的用户为自己的uid" />
-	<resMsg ret="17" msg="竞技场挑战请求成功,数据更新" />
-	<resMsg ret="18" msg="竞技场获取积分请求失败：utoken非法或不存在" />
-	<resMsg ret="19" msg="竞技场获取积分请求失败：该用户已领取过积分" />
-	<resMsg ret="20" msg="竞技场获取积分请求成功,数据更新" />
+	<resMsg ret="17" msg="竞技场挑战请求成功,数据更新" />	
+	<resMsg ret="18" msg="竞技场获取三日奖励请求失败：utoken非法或不存在" />
+	<resMsg ret="19" msg="竞技场获取三日奖励请求失败：该用户已领取过三日奖励" />
+	<resMsg ret="20" msg="竞技场获取三日奖励请求成功" />
 	<resMsg ret="21" msg="登录奖励领取成功" />
 	<resMsg ret="22" msg="领取登录奖励领取失败：今天该用户已经领取过了" />
 	<resMsg ret="23" msg="领取登录奖励领取失败：utoken非法或不存在" />
@@ -86,6 +86,8 @@
 	<resMsg ret="80" msg="重生请求失败：utoken非法或不存在" />
 	<resMsg ret="81" msg="重生请求失败,钻石不够" />
 	<resMsg ret="82" msg="重生请求成功" />
+	<resMsg ret="83" msg="Boss结束请求话费点失败：utoken非法或不存在" />
+	<resMsg ret="84" msg="Boss结束请求话费点成功" />
+	<resMsg ret="85" msg="Boss结束请求话费点失败，没有随机到匹配的概率" />
 	
-
 </retMsgConfig>

@@ -5,7 +5,6 @@
 
 	<typeAliases>
 		<typeAlias alias="Check" type="client.login.Check" />
-		<typeAlias alias="User" type="user.User" />
 	</typeAliases>
 
 	<environments default="development">
@@ -38,6 +37,7 @@
 		<mapper resource="modify_user_profile.xml" />
 		<mapper resource="use_items_orm.xml" />
 		<mapper resource="rebirth_orm.xml" />
+		<mapper resource="boss_over_orm.xml" />
 	</mappers>
 </configuration>
   

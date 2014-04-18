@@ -16,7 +16,12 @@ import start.AbstractHttpRequestHandler;
 import config.ConfigFactory;
 import config.Constant;
 
-public class JJC_GetScoreHttpGetRequestHandler extends AbstractHttpRequestHandler {
+/**
+ * 获取每三日奖励（目前奖励积分，话费点和钻石）
+ * @author Administrator
+ *
+ */
+public class JJC_Get3DayRewardHttpGetRequestHandler extends AbstractHttpRequestHandler {
 
 
 	@Override

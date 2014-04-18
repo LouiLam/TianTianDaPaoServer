@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="client.score_lottery.DaPaoScoreLotteryDao">
 
-	<resultMap id="ormUser" type="User">
-	</resultMap>
+	 
+	 
 
 	<select id="selectScoreLotteryByUtoken" parameterType="Map"
 		resultType="Map">
@@ -15,6 +15,10 @@
 	</select>
 	<select id="updateUGoldByUserGame" parameterType="Map">
 		update usergame,userjjc set usergame.ugold=usergame.ugold+#{ugold},userjjc.score=userjjc.score-#{score_consume}
+		where  usergame.uid=#{uid} and userjjc.uid=#{uid}
+	</select>
+	<select id="updateUChargeByUserGame" parameterType="Map">
+		update usergame,userjjc set usergame.ucharge=usergame.ucharge+#{ucharge},userjjc.score=userjjc.score-#{score_consume}
 		where  usergame.uid=#{uid} and userjjc.uid=#{uid}
 	</select>
 	<select id="updateItemByUserProp" parameterType="Map">

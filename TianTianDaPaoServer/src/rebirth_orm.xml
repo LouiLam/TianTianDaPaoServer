@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="client.consume.DaPaoRebirthDao">
+<mapper namespace="client.money_consume.DaPaoRebirthDao">
 
-	<resultMap id="ormUser" type="User">
-	</resultMap>
+	 
+	 
 
 	<select id="selectUseItemsByUtoken" parameterType="Map"
 		resultType="Map">

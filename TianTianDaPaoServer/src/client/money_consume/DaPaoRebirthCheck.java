@@ -1,4 +1,4 @@
-package client.consume;
+package client.money_consume;
 
 import java.util.Map;
 
@@ -41,7 +41,7 @@ public class DaPaoRebirthCheck extends Check {
 				return jsonObject;
 			}
 			String id = (String) selectMap.get("id");
-			if((long)selectMap.get("diamond")<RebirthConfig.getInstance().diamond)
+			if((long)selectMap.get("diamond")<MoneyConsumeConfig.getInstance().diamond)
 			{
 				jsonObject.put(Constant.RET, Constant.RET_REBIRTH_FAILED_DIAMOND_NOT_ENOUGH);
 				jsonObject
@@ -51,7 +51,7 @@ public class DaPaoRebirthCheck extends Check {
 						+ channel.getRemoteAddress().toString());
 				return jsonObject;
 			}
-			selectMap.put("diamond", RebirthConfig.getInstance().diamond);
+			selectMap.put("diamond", MoneyConsumeConfig.getInstance().diamond);
 			loginDao.updateDiamondByUserGame(selectMap);
 			
 			sqlSession.commit();

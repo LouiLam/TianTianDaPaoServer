@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="client.login.DaPaoLoginDao">
 
-	<resultMap id="ormUser" type="User">
-	</resultMap>
+	 
+	 
 	<select id="selectUserByLogin" parameterType="Map" resultType="Map">
 		select userinfo.*,usertask.running_task_id,usergame.* from userinfo,usertask,usergame where userinfo.id = #{id} and userinfo.password =
 		#{password} and usertask.uid=userinfo.uid and usergame.uid=userinfo.uid

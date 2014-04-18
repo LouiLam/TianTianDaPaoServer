@@ -1,4 +1,4 @@
-package client.consume;
+package client.money_consume;
 
 import java.util.Map;
 
