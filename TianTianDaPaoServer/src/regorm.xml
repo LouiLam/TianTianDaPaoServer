@@ -35,7 +35,7 @@
         INSERT into usertask(running_task_id) VALUES (#{running_task_id})
     </select>
        <select id="updateRankIntoUserJJC" parameterType="Map" >
-       UPDATE userjjc SET rank = LAST_INSERT_ID() WHERE uid=LAST_INSERT_ID()
+       UPDATE userjjc SET rank = LAST_INSERT_ID()-10000000 WHERE uid=LAST_INSERT_ID()
     </select>
    
     <select id="updateUserInfoUltime" parameterType="Map" >
@@ -50,19 +50,11 @@
     
     
       <select id="updateIDIntoUserInfo" parameterType="Map" >
-         UPDATE userinfo SET id = CONCAT('Visitor--',LAST_INSERT_ID()) WHERE uid=LAST_INSERT_ID()
+         UPDATE userinfo SET id = CONCAT('Visitor',LAST_INSERT_ID()) WHERE uid=LAST_INSERT_ID()
     </select>
     
     
     
-	<select id="selectUstatusFromGDMJ" parameterType="Map">
-		select count(*) 
-		from userinfo 
-		where upuid = #{upuid} and upid = #{upid}
-    </select>
 	 
-	<select id="loginUpdateUltimeByUserInfo" parameterType="Map">
-        update usergame set ultime=#{ultime}  where  uid = #{uid}
-     </select>
 	
 </mapper>

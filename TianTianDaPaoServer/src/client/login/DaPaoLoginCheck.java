@@ -69,6 +69,14 @@ public class DaPaoLoginCheck extends Check {
 						 uconsecutive++;
 //						 System.out.println("连续登录 uconsecutive+1");
 					}
+					else//非连续登录 重置uconsecutive=1
+					{
+						uconsecutive=1;
+					}
+					if(uconsecutive==7)//uconsecutive==7的时候 重置uconsecutive=1
+					{
+						uconsecutive=1;
+					}
 					userMap.put("ultime", "" + ultime);
 					userMap.put("utoken", AES.generateSessionKey());
 					userMap.put("uconsecutive", uconsecutive+"");

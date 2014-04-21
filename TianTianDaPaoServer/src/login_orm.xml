@@ -29,12 +29,6 @@
 		call login_reward(#{uid, mode=IN, jdbcType=INTEGER})
 	</select>
 
-	<select id="loginUpdateUltimeByUserInfo" parameterType="Map">
-		update
-		usergame set ultime=#{ultime} where uid = #{uid}
-	</select>
-
-
 
 	<select id="selectLoginRewardByUtoken" parameterType="Map"
 		resultType="Map">

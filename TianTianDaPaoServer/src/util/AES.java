@@ -32,9 +32,10 @@ public class AES {
 		try {
 			
 				
-			String url="http://api.99huafei.com/mobile/direct.aspx?partner=11588&out_trade_id=dp1&mobile=13975800403&value=10&type=0&notify_url=www.test.com&sign=0c5d7b6acef260d35f5c03b4f1f94e73&charset=utf-8";	
-			System.out.println(getMD5Str("partner=11588&out_trade_id=dp1&mobile=13975800403&value=10&type=0&notify_url=www.test.com&e63jWLW6yqUDwGwBy5A02cSaJZEOwGHBUkKKbbasRZjK0bVTXQR1sGeHrQktZTaT"));
-
+			long uid = 10000000;
+			int money=2;
+			
+			System.out.println(AES.getMD5Str(uid+""+money+"zjd.com"));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

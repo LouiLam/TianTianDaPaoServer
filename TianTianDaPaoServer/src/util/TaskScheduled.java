@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 public class TaskScheduled {
 
-	private static ScheduledThreadPoolExecutor scheduler = new ScheduledThreadPoolExecutor(1000);
+	private static ScheduledThreadPoolExecutor scheduler = new ScheduledThreadPoolExecutor(1);
 	
 	/**
 	 * 以固定速率执行周期任务

@@ -40,5 +40,8 @@
 	<searchConfig>config/SearchCheckConfig.properties</searchConfig>
 	
 	<JJCConfig>config/JJCCheckConfig.properties</JJCConfig>
+	
 	<CheckConfig>config/CheckConfig.Properties</CheckConfig>
+	
+	<KeywordsConfig>config/Keywords.txt</KeywordsConfig>
 </globalConfig>

@@ -71,23 +71,25 @@
 	<resMsg ret="68" msg="任务进度请求失败：utoken非法或不存在" />
 	<resMsg ret="69" msg="任务进度请求成功" />
 	<resMsg ret="70" msg="竞技场非法请求：被PK用户排名比发起用户排名低，不允许挑战" />
-	
 	<resMsg ret="71" msg="用户修改资料请求失败：utoken非法或不存在" />
 	<resMsg ret="72" msg="用户修改资料请求成功" />
 	<resMsg ret="73" msg="用户修改资料请求失败：参数要求非法，缺少参数id" />
 	<resMsg ret="74" msg="用户修改资料请求失败：此昵称已存在，请换一个" />
-	
 	<resMsg ret="75" msg="使用物品请求失败：utoken非法或不存在" />
 	<resMsg ret="76" msg="使用物品请求失败,缺少参数item_id" />
 	<resMsg ret="77" msg="使用物品请求成功" />
 	<resMsg ret="78" msg="使用物品请求失败,参数非法" />
 	<resMsg ret="79" msg="使用物品请求失败,物品数量为0" />
-	
 	<resMsg ret="80" msg="重生请求失败：utoken非法或不存在" />
 	<resMsg ret="81" msg="重生请求失败,钻石不够" />
 	<resMsg ret="82" msg="重生请求成功" />
 	<resMsg ret="83" msg="Boss结束请求话费点失败：utoken非法或不存在" />
 	<resMsg ret="84" msg="Boss结束请求话费点成功" />
 	<resMsg ret="85" msg="Boss结束请求话费点失败，没有随机到匹配的概率" />
-	
+	<resMsg ret="86" msg="游戏充值回调失败：缺少参数sign或uid或money" />
+	<resMsg ret="87" msg="游戏充值回调失败：参数值格式不正确" />
+	<resMsg ret="88" msg="游戏充值回调失败：加密MD5值和原始匹配不合法" />
+	<resMsg ret="89" msg="游戏充值回调成功" />
+	<resMsg ret="90" msg="充值查询请求失败：utoken非法或不存在" />
+	<resMsg ret="91" msg="充值查询请求成功" />
 </retMsgConfig>

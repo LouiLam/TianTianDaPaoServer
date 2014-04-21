@@ -95,6 +95,14 @@ public class Constant {
 	public static final int RET_BOSS_OVER_FAILED = 83;//Boss结束请求话费点失败：utoken非法或不存在
 	public static final int RET_BOSS_OVER_SUCCESS = 84;//Boss结束请求话费点成功
 	public static final int RET_BOSS_OVER_FAILED_NOT_PROBABTLITY= 85;//Boss结束请求话费点失败，没有随机到匹配的概率
+	public static final int RET_RECHARGE_CALLBACK_FAILED_MISS_ARG = 86;//游戏充值回调失败：缺少参数sign或uid或money
+	public static final int RET_RECHARGE_CALLBACK_FAILED_INVALID_ARG = 87;//游戏充值回调失败：参数值格式不正确
+	public static final int RET_RECHARGE_CALLBACK_FAILED_MD5_ERROR= 88;//游戏充值回调失败：加密MD5值和原始匹配不合法
+	public static final int RET_RECHARGE_CALLBACK_SUCCESS= 89;//游戏充值回调成功
+	public static final int RET_RECHARGE_QUERY_FAILED= 90;//充值查询请求失败：utoken非法或不存在
+	public static final int RET_RECHARGE_QUERY_SUCCESS= 91;//充值查询请求成功!
+	
+	
 	public final static String RET = "ret";
 	public final static String MSG = "msg";
 	

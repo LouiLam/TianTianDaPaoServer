@@ -14,6 +14,7 @@ import client.login.Check;
 import config.ConfigFactory;
 import config.Constant;
 import database.DatabaseConnector;
+import event.EveryDayDoSomthing;
 
 public class DaPaoBossOverCheck extends Check {
 	public DaPaoBossOverCheck() {
@@ -46,11 +47,23 @@ public class DaPaoBossOverCheck extends Check {
 		
 			if(probability<10)//10%概率
 			{
+			
 				int range=RandomUtil.getRan(1, MoneyAppendConfig.getInstance().charge);
+				EveryDayDoSomthing.BOSSChargeRemain-=range;
+				if(EveryDayDoSomthing.BOSSChargeRemain<=0)//超过每日奖励限额
+				{
+					U.infoQueue("id:" + id + "Boss结束请求话费点失败，超过每日奖励限额!" + "ip:"
+							+ channel.getRemoteAddress().toString());
+					
+					jsonObject.put(Constant.RET, Constant.RET_BOSS_OVER_FAILED_NOT_PROBABTLITY);
+					jsonObject.put(Constant.MSG,
+							ConfigFactory.getRetMsg(Constant.RET_BOSS_OVER_FAILED_NOT_PROBABTLITY));
+					return jsonObject;
+				}
 				selectMap.put("ucharge", range);
 				loginDao.updateChargeByUserGame(selectMap);
 				sqlSession.commit();
-				U.infoQueue("id:" + id + "Boss结束请求话费点成功，数据更新!" + "ip:"
+				U.infoQueue("id:" + id + "Boss结束请求话费点成功，数据更新!系统剩余可获取的话费点为"+EveryDayDoSomthing.BOSSChargeRemain + "ip:"
 						+ channel.getRemoteAddress().toString());
 				jsonObject.put("get_charge", range);
 				jsonObject.put(Constant.RET, Constant.RET_BOSS_OVER_SUCCESS);

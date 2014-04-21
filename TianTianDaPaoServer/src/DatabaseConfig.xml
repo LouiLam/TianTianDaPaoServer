@@ -38,6 +38,8 @@
 		<mapper resource="use_items_orm.xml" />
 		<mapper resource="rebirth_orm.xml" />
 		<mapper resource="boss_over_orm.xml" />
+		<mapper resource="recharge_orm.xml" />
+		<mapper resource="recharge_query_orm.xml" />
 	</mappers>
 </configuration>
   

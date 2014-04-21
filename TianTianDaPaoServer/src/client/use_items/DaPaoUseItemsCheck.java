@@ -107,7 +107,6 @@ public class DaPaoUseItemsCheck extends Check {
 			sql.append("userprop."+obj.value+"=userprop."+obj.value+"-1");
 			sql.append(" where  userprop.uid="+selectMap.get("uid"));
 	
-			System.out.println(sql.toString());
 			loginDao.updateItemByUserProp(sql.toString());
 			sqlSession.commit();
 			U.infoQueue("id:" + id + "使用"+obj.des+"物品请求成功，数据更新!" + "ip:"

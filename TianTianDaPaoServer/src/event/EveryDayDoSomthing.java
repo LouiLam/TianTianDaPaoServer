@@ -2,6 +2,7 @@ package event;
 
 import java.util.concurrent.TimeUnit;
 
+import util.DateUtil;
 import util.TaskScheduled;
 
 public class EveryDayDoSomthing {
@@ -21,6 +22,7 @@ public class EveryDayDoSomthing {
 			
 			@Override
 			public void run() {
+				System.out.println("刷新EveryDayDoSomthing的时间点为："+DateUtil.getCurDate());
 				BOSSChargeRemain=2000;
 				LotteryChargeRemain=1500;
 				
