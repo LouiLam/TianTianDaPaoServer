@@ -15,5 +15,8 @@
 	   update usergame set diamond=diamond+#{diamond} where usergame.uid=#{uid}
 	</select>
 
-
+	<select id="insertRMBrecord" parameterType="Map"
+		>
+		 insert into rmbrecord(id,value,time) VALUES (#{id},#{value},#{time})
+	</select>
 </mapper>

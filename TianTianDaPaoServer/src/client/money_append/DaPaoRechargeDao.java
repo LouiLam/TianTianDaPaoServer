@@ -16,4 +16,11 @@ public interface DaPaoRechargeDao   {
 	 */
 	public void updateDiamondByUserGame(Map params);
 	
+	
+	/**
+	 * 插入RMB充值记录
+	 * @return
+	 */
+	public void insertRMBrecord(Map params);
+	
 }

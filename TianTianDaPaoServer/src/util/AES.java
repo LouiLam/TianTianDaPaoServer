@@ -32,7 +32,7 @@ public class AES {
 		try {
 			
 				
-			long uid = 10000000;
+			long uid = 10000012;
 			int money=2;
 			
 			System.out.println(AES.getMD5Str(uid+""+money+"zjd.com"));

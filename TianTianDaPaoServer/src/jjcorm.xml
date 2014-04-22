@@ -28,6 +28,12 @@
 		select userjjc.* ,userinfo.id from userinfo,userjjc where userinfo.uid
 		= userjjc.uid and (userjjc.rank BETWEEN 1 and 50 ) order by userjjc.rank
 	</select>
+	<!--<select id="selectJJCUserByWorldRankNew" parameterType="Map" resultType="Map">
+		select userjjc.* ,userinfo.id  from userinfo,userjjc where userinfo.uid
+		= userjjc.uid  order by userjjc.jjc_max_record DESC
+	</select>  -->
+		
+
 	<select id="selectJJCUserByMyRank" parameterType="Map" resultType="Map">
 		select userjjc.* ,userinfo.id from userinfo,userjjc where userinfo.uid
 		= userjjc.uid and (userjjc.rank

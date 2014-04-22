@@ -25,9 +25,7 @@ public class DateUtil {
 	}
 	public static void main(String[] args) {
 		
-		long score_3day_pass=DateUtil.getSecondsBetween(DateUtil.getTimesnight(),System.currentTimeMillis())%(1440*60*3); //三天一循环(一天1440分钟，1分钟60秒，3天)
-		System.out.println(  1440*60-score_3day_pass);
-		System.out.println(1440*60*3-score_3day_pass);
+		System.out.println(getDateByTimestamp(1398132437) );
 //		System.out.println(getSecondsBetween(getTimesnight(),System.currentTimeMillis())%(1440*60));
 		
 	}

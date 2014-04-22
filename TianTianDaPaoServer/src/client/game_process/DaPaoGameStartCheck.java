@@ -97,7 +97,7 @@ public class DaPaoGameStartCheck extends Check {
 			long tili=(long) gameMap.get("tili");
 			int heart=(int) (minutes/10);
 			long result=tili+heart;
-			if(result>=5)
+			if(result>=5) 
 			{
 				result=5;
 			}
@@ -131,7 +131,7 @@ public class DaPaoGameStartCheck extends Check {
 
 			}
 			params.put("uid", gameMap.get("uid")+"");
-			if(heart>0)
+			if(heart>0&&tili<5)//如果有人买体力的情况下不用更新数据库中的体力值
 			{
 				loginDao.updateGetTiliUserGameByTiliAndTime(params);
 				sqlSession.commit();

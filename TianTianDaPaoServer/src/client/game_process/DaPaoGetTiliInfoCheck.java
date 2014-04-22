@@ -48,7 +48,7 @@ public class DaPaoGetTiliInfoCheck extends Check {
 			long tili=(long) gameMap.get("tili");
 			int heart=(int) (minutes/10);
 			long result=tili+heart;
-			if(result>=5)
+			if(result>=5)//如果有人买体力的情况下不能重置为5
 			{
 				result=5;
 			}
@@ -64,7 +64,7 @@ public class DaPaoGetTiliInfoCheck extends Check {
 			params.put("tili", result+"");
 			params.put("last_tili_send_time", System.currentTimeMillis()/1000+"");
 			
-			if(heart>0&&tili<5)
+			if(heart>0&&tili<5) //如果有人买体力的情况下不用更新数据库中的体力值
 			//更新数据库last_tili_send_time和tili字段
 			{loginDao.updateGetTiliUserGameByTiliAndTime(params);
 			sqlSession.commit();

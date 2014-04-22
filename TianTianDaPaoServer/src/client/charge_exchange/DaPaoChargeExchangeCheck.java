@@ -87,7 +87,7 @@ public class DaPaoChargeExchangeCheck extends Check {
 			// 判断用户话费点不够兑换话费
 			// 兑换面值(10，20，30，50，100，150，200，300，500)
 			int result=httpGet();
-			if(result==0)//充值成功,扣除话费点,写入chargerecord数据库
+			if(result==0)//兑换成功,扣除话费点,写入chargerecord数据库
 			{
 			
 			selectMap.put("ucharge", value*ChargeExchangeConfig.getInstance().ratio);

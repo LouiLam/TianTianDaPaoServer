@@ -66,9 +66,18 @@ public class DaPaoRechargeCheck extends Check {
 						+ "        "+channel.getRemoteAddress().toString());
 				return jsonObject;
 			}
+			
 			params.put("diamond", money*10+"");
 			Map selectMap = loginDao.selectRechargeByUID(params);
+			//更新钻石
 		     loginDao.updateDiamondByUserGame(params);
+		     
+		     
+		   //充值成功,写入记录rmbrecord数据库
+			selectMap.put("value", money);
+			selectMap.put("time", System.currentTimeMillis()/1000);
+			loginDao.insertRMBrecord(selectMap);
+		     
 		     sqlSession.commit();
 			U.infoQueue("id:" + selectMap.get("id") + "游戏充值回调成功" + "ip:"
 						+ channel.getRemoteAddress().toString());
