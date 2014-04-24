@@ -8,8 +8,6 @@ import org.json.JSONObject;
 
 import server.ui.main.U;
 import util.RandomUtil;
-import client.buy_items.BuyItems;
-import client.buy_items.BuyItemsConfigMgr;
 import client.login.Check;
 import config.ConfigFactory;
 import config.Constant;
@@ -29,7 +27,7 @@ public class DaPaoBossOverCheck extends Check {
 		SqlSession sqlSession = DatabaseConnector.getInstance().getSqlSession();
 
 		try {
-			DaPaoBossOverDao loginDao = sqlSession.getMapper(ConfigFactory
+			DaPaoBossOverDao loginDao = (DaPaoBossOverDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("15"));
 			Map selectMap = loginDao.selectBossOverByUtoken(params);
 

@@ -47,6 +47,8 @@ public class TaskConfigMgr extends AbstractConfig {
 		super.getDocumentByFileAddress(new GlobalConfig()
 				.getConfigResourceAddress("taskConfig"));
 		Element root = (Element) document.getRootElement();
+		taskList.clear();
+		taskObjMap.clear();
 		for (int i = 0; i < root.elements().size(); i++) {
 			Task obj = new Task();
 			HashMap<String, Object> map=new HashMap<String, Object>();

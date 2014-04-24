@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="client.money_append.DaPaoGetSystemInfoRewardDao">
+
+	 
+	 
+
+	<select id="selectSystemInfoByUtoken" parameterType="Map"
+		resultType="Map">
+		select userinfo.id,userinfo.uid from
+		userinfo where
+		userinfo.utoken=
+		#{utoken}
+	</select>
+	<select id="updateReward" parameterType="Map">
+	 update usergame,userjjc set usergame.ucharge=usergame.ucharge+#{ucharge},usergame.diamond=usergame.diamond+#{diamond},
+	 usergame.ugold=usergame.ugold+#{ugold},userjjc.score=userjjc.score+#{score}
+	 where usergame.uid=#{uid} and userjjc.uid=#{uid}
+	</select>
+	<select id="selectSystemInfoByUID" parameterType="Map"
+		resultType="Map">
+		select userjjc.score,usergame.diamond,usergame.ucharge,usergame.ugold from
+		userjjc,usergame where
+		usergame.uid=#{uid} and userjjc.uid=#{uid}
+	</select>
+
+</mapper>

@@ -43,7 +43,7 @@ public class SinaLoginCheck  extends Check {
 				String name=sinaPlatformJson.getString("name");
 				String gender=sinaPlatformJson.getString("gender");
 				String uface=sinaPlatformJson.getString("profile_image_url");
-				DaPaoLoginDao loginDao = sqlSession.getMapper(
+				DaPaoLoginDao loginDao = (DaPaoLoginDao) sqlSession.getMapper(
 						ConfigFactory.getClazz(params.get("gid")));
 				// 先查询UserInfo表中的upuid字段 是否存在相同的upuid
 				Map userMap = loginDao.selectUserByLogin(params);

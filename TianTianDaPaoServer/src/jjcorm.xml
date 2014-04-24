@@ -70,7 +70,7 @@
 		usergame.uid =#{uid}
 	</select>
 	  <select id="updateUserTaskRunning" resultType="Map" parameterType="Map">
-		update usertask set gold_count=gold_count+#{gold},game_count=game_count+1,record_count=record_count+#{record}
+		update usertask set gold_count=gold_count+#{gold},game_count=game_count+1,record_count=record_count+#{record},jjc_pk_count=jjc_pk_count+1
 		where uid = #{uid} 
 	</select>
 	  <select id="updateUserTaskFinish" resultType="Map" parameterType="Map">

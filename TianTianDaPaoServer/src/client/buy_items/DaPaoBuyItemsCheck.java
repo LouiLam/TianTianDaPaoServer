@@ -25,7 +25,7 @@ public class DaPaoBuyItemsCheck extends Check {
 		SqlSession sqlSession = DatabaseConnector.getInstance().getSqlSession();
 
 		try {
-			DaPaoBuyItemsDao loginDao = sqlSession.getMapper(ConfigFactory
+			DaPaoBuyItemsDao loginDao = (DaPaoBuyItemsDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("7"));
 			Map selectMap = loginDao.selectBuyItemsByUtoken(params);
 

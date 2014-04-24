@@ -30,7 +30,7 @@ public class DaPaoRegCheck extends Check {
 		SqlSession sqlSession = DatabaseConnector.getInstance().getSqlSession();
 		
 		try {
-			DaPaoRegDao regDao = sqlSession.getMapper(
+			DaPaoRegDao regDao = (DaPaoRegDao) sqlSession.getMapper(
 					ConfigFactory.getClazz("2"));
 			// 注册检测
 			

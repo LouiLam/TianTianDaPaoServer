@@ -8,8 +8,6 @@ import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 
-import org.apache.commons.codec.binary.Base64;
-
 public class AES {
 	private static SecretKey key;
 	private static String keyStr;

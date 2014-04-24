@@ -25,6 +25,8 @@ public class RoleUpgradeConfigMgr extends AbstractConfig {
 		super.getDocumentByFileAddress(new GlobalConfig()
 				.getConfigResourceAddress("roleUpgradeConfig"));
 		Element root = (Element) document.getRootElement();
+		taskObjMap.clear();
+		taskList.clear();
 		for (int i = 0; i < root.elements().size(); i++) {
 			RoleUpgrade obj = new RoleUpgrade();
 			HashMap<String, Object> map=new HashMap<String, Object>();

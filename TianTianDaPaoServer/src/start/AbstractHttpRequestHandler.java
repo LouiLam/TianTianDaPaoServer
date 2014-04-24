@@ -1,8 +1,7 @@
 package start;
 
+import static org.jboss.netty.handler.codec.http.HttpHeaders.Names.CONTENT_TYPE;
 import static org.jboss.netty.handler.codec.http.HttpVersion.HTTP_1_1;
-import static org.jboss.netty.handler.codec.http.HttpHeaders.Names.*;
-
 
 import org.jboss.netty.buffer.ChannelBuffer;
 import org.jboss.netty.buffer.ChannelBuffers;

@@ -11,7 +11,6 @@ import org.json.JSONObject;
 import server.ui.main.U;
 import util.AES;
 import util.DateUtil;
-import client.task.TaskConfigMgr;
 import config.ConfigFactory;
 import config.Constant;
 import database.DatabaseConnector;
@@ -30,7 +29,7 @@ public class DaPaoLoginCheck extends Check {
 		SqlSession sqlSession = DatabaseConnector.getInstance().getSqlSession();
 		
 		try {
-			DaPaoLoginDao loginDao = sqlSession.getMapper(
+			DaPaoLoginDao loginDao = (DaPaoLoginDao) sqlSession.getMapper(
 					ConfigFactory.getClazz("1"));
 			// 登录检测
 			Map userMap = loginDao.selectUserByLogin(params);

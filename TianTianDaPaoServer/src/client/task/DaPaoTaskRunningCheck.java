@@ -1,7 +1,5 @@
 package client.task;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -9,11 +7,9 @@ import org.jboss.netty.channel.Channel;
 import org.json.JSONObject;
 
 import server.ui.main.U;
+import client.login.Check;
 import config.ConfigFactory;
 import config.Constant;
-
-import client.jjc.DaPaoJJCDao;
-import client.login.Check;
 import database.DatabaseConnector;
 /**
  * 请求任务进度信息
@@ -33,7 +29,7 @@ public class DaPaoTaskRunningCheck extends Check {
 		SqlSession sqlSession = DatabaseConnector.getInstance().getSqlSession();
 		
 		try {
-			DaPaoTaskRunningDao loginDao = sqlSession.getMapper(
+			DaPaoTaskRunningDao loginDao = (DaPaoTaskRunningDao) sqlSession.getMapper(
 					ConfigFactory.getClazz("11"));
 			Map jjcMap = loginDao.selectTaskUserByUtoken(params);
 			

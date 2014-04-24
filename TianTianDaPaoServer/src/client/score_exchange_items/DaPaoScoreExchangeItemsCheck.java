@@ -25,7 +25,7 @@ public class DaPaoScoreExchangeItemsCheck extends Check {
 		SqlSession sqlSession = DatabaseConnector.getInstance().getSqlSession();
 
 		try {
-			DaPaoScoreExchangeItemsDao loginDao = sqlSession.getMapper(ConfigFactory
+			DaPaoScoreExchangeItemsDao loginDao = (DaPaoScoreExchangeItemsDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("6"));
 			Map selectMap = loginDao.selectScoreExchangeItemsByUtoken(params);
 

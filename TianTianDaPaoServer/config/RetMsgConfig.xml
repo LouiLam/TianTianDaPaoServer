@@ -92,4 +92,8 @@
 	<resMsg ret="89" msg="游戏充值回调成功" />
 	<resMsg ret="90" msg="充值查询请求失败：utoken非法或不存在" />
 	<resMsg ret="91" msg="充值查询请求成功" />
+	<resMsg ret="92" msg="获取系统信息奖励请求成功" />
+	<resMsg ret="93" msg="获取系统信息奖励请求失败：utoken非法或不存在"/>
+	<resMsg ret="94" msg="获取系统信息奖励请求失败：item_id错误" />
+	<resMsg ret="95" msg="获取系统信息奖励请求失败：重复领取" />
 </retMsgConfig>

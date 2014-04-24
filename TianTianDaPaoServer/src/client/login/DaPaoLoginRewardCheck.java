@@ -1,6 +1,5 @@
 package client.login;
 
-import java.util.Calendar;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -28,7 +27,7 @@ public class DaPaoLoginRewardCheck extends Check {
 		try {
 			// YaoPengLoginDao loginDao = sqlSession.getMapper(
 			// ConfigFactory.getClazz(params.get("gid")));
-			DaPaoLoginDao loginDao = sqlSession.getMapper(ConfigFactory
+			DaPaoLoginDao loginDao = (DaPaoLoginDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("1"));
 			// 登录检测
 			Map userMap = loginDao.selectLoginRewardByUtoken(params);

@@ -25,6 +25,8 @@ public class BuyItemsConfigMgr extends AbstractConfig {
 		super.getDocumentByFileAddress(new GlobalConfig()
 				.getConfigResourceAddress("buyItemsConfig"));
 		Element root = (Element) document.getRootElement();
+		taskList.clear();
+		taskObjMap.clear();
 		for (int i = 0; i < root.elements().size(); i++) {
 			BuyItems obj = new BuyItems();
 			HashMap<String, Object> map=new HashMap<String, Object>();

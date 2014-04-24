@@ -8,9 +8,6 @@ import config.GlobalConfig;
 public class MoneyAppendConfig extends AbstractConfig{
 
 	private static MoneyAppendConfig moneyAppendConfig;
-	/**
-	 *   <!-- 1RMB等于多少话费点 -->
-	 */
 	public int charge;
 	public static MoneyAppendConfig getInstance() {
 		if (moneyAppendConfig == null) {

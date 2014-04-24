@@ -7,8 +7,6 @@ import org.jboss.netty.channel.Channel;
 import org.json.JSONObject;
 
 import server.ui.main.U;
-import client.buy_items.BuyItems;
-import client.buy_items.BuyItemsConfigMgr;
 import client.login.Check;
 import config.ConfigFactory;
 import config.Constant;
@@ -27,7 +25,7 @@ public class DaPaoRebirthCheck extends Check {
 		SqlSession sqlSession = DatabaseConnector.getInstance().getSqlSession();
 
 		try {
-			DaPaoRebirthDao loginDao = sqlSession.getMapper(ConfigFactory
+			DaPaoRebirthDao loginDao = (DaPaoRebirthDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("14"));
 			Map selectMap = loginDao.selectUseItemsByUtoken(params);
 

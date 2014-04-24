@@ -25,7 +25,7 @@ public class DaPaoRechargeQueryCheck extends Check {
 		SqlSession sqlSession = DatabaseConnector.getInstance().getSqlSession();
 
 		try {
-			DaPaoRechargeQueryDao loginDao = sqlSession.getMapper(ConfigFactory
+			DaPaoRechargeQueryDao loginDao = (DaPaoRechargeQueryDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("17"));
 			Map selectMap = loginDao.selectDiamondByUtoken(params);
 

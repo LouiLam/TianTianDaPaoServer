@@ -38,7 +38,7 @@ public class DaPaoChargeExchangeCheck extends Check {
 		SqlSession sqlSession = DatabaseConnector.getInstance().getSqlSession();
 
 		try {
-			DaPaoChargeExchangeDao dao = sqlSession.getMapper(ConfigFactory
+			DaPaoChargeExchangeDao dao = (DaPaoChargeExchangeDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("10"));
 
 			Map selectMap = dao.selectUserByUToken(params);

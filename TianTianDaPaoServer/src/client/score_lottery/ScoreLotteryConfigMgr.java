@@ -41,6 +41,8 @@ public class ScoreLotteryConfigMgr extends AbstractConfig {
 		Element root = (Element) document.getRootElement();
 		scoreConsume=Integer.parseInt(root.attributeValue("scoreConsume"));
 		int total_probability=0;
+		taskList.clear();
+		taskObjList.clear();
 		for (int i = 0; i < root.elements().size(); i++) {
 			ScoreLottery obj = new ScoreLottery();
 			HashMap<String, Object> map=new HashMap<String, Object>();

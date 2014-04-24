@@ -2,8 +2,6 @@ package client.modify_user_profile;
 
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Param;
-
 
 public interface DaPaoModifyUserProfileDao   {
 	/**

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--系统奖励信息 -->
+<getSystemInfoConfig>
+	<getSystemInfo id="1" title="系统信息标题" content="系统信息内容" ugold="10" diamond="10" score="10" ucharge="10" prop12="0" prop13="0" prop14="0" prop15="0" prop16="0"></getSystemInfo>
+</getSystemInfoConfig>
+

@@ -29,7 +29,7 @@ public class DaPaoJJCCheck extends Check {
 		SqlSession sqlSession = DatabaseConnector.getInstance().getSqlSession();
 		
 		try {
-			DaPaoJJCDao loginDao = sqlSession.getMapper(
+			DaPaoJJCDao loginDao = (DaPaoJJCDao) sqlSession.getMapper(
 					ConfigFactory.getClazz("3"));
 			Map jjcMap = loginDao.selectJJCUserByUtoken(params);
 			

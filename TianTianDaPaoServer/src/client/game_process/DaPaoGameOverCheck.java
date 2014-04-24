@@ -29,7 +29,7 @@ public class DaPaoGameOverCheck extends Check {
 		SqlSession sqlSession = DatabaseConnector.getInstance().getSqlSession();
 
 		try {
-			DaPaoGameProcessDao loginDao = sqlSession.getMapper(ConfigFactory
+			DaPaoGameProcessDao loginDao = (DaPaoGameProcessDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("4"));
 			Map gameMap = loginDao.selectGameEndByUtoken(params);
 		

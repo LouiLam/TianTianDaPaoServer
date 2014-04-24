@@ -25,6 +25,7 @@ public class LoginRewardConfigMgr extends AbstractConfig {
 		super.getDocumentByFileAddress(new GlobalConfig()
 				.getConfigResourceAddress("loginRewardConfig"));
 		Element root = (Element) document.getRootElement();
+		loginRewardList.clear();
 		for (int i = 0; i < root.elements().size(); i++) {
 			LoginReward obj = new LoginReward();
 			HashMap<String, Object> map=new HashMap<>();

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 获取公告-->
+<getNoticeConfig>
+	<getNotice id="1" title="公告标题1" content="内容1" date="2013年4月5日" remark="备注1" ></getNotice>
+	<getNotice id="2" title="公告标题2" content="内容2" date="2013年4月6日" remark="备注2" ></getNotice>
+</getNoticeConfig>

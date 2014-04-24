@@ -7,16 +7,9 @@ import org.jboss.netty.channel.Channel;
 import org.json.JSONObject;
 
 import server.ui.main.U;
-import util.AES;
-import util.RandomUtil;
-import util.RegexUtil;
-import client.buy_items.BuyItemsConfigMgr;
 import client.charge_exchange.ChargeExchangeConfig;
 import client.login.Check;
 import client.money_consume.MoneyConsumeConfig;
-import client.score_exchange_items.ScoreExchangeItemsConfigMgr;
-import client.score_lottery.ScoreLotteryConfigMgr;
-import client.task.TaskConfigMgr;
 import config.ConfigFactory;
 import config.Constant;
 import database.DatabaseConnector;
@@ -35,7 +28,7 @@ public class DaPaoConfigInfoCheck extends Check {
 		SqlSession sqlSession = DatabaseConnector.getInstance().getSqlSession();
 		
 		try {
-			DaPaoConfigInfoDao dao = sqlSession.getMapper(
+			DaPaoConfigInfoDao dao = (DaPaoConfigInfoDao) sqlSession.getMapper(
 					ConfigFactory.getClazz("8"));
 			
 			Map selectMap = dao.selectUserByUToken(params);

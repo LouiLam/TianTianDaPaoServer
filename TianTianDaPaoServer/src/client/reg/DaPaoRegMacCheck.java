@@ -9,7 +9,6 @@ import org.json.JSONObject;
 import server.ui.main.U;
 import util.AES;
 import util.RandomUtil;
-import util.RegexUtil;
 import client.login.Check;
 import client.task.TaskConfigMgr;
 import config.ConfigFactory;
@@ -35,7 +34,7 @@ public class DaPaoRegMacCheck extends Check {
 		SqlSession sqlSession = DatabaseConnector.getInstance().getSqlSession();
 		
 		try {
-			DaPaoRegDao regDao = sqlSession.getMapper(
+			DaPaoRegDao regDao = (DaPaoRegDao) sqlSession.getMapper(
 					ConfigFactory.getClazz("2"));
 			// 注册检测
 			

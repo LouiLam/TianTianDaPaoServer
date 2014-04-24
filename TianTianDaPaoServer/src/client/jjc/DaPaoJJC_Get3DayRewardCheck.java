@@ -26,7 +26,7 @@ public class DaPaoJJC_Get3DayRewardCheck extends Check {
 		SqlSession sqlSession = DatabaseConnector.getInstance().getSqlSession();
 
 		try {
-			DaPaoJJCDao loginDao = sqlSession.getMapper(ConfigFactory
+			DaPaoJJCDao loginDao = (DaPaoJJCDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("3"));
 			Map jjcMap = loginDao.selectJJC3DayUserByUtoken(params);
 			if (jjcMap == null) {

@@ -19,7 +19,7 @@ public class ConfigFactory {
 	private static Properties httpRequestHandlerProperties;
 	private static Properties checkProperties;
 	private static Properties dbDaoConfigProperties;
-	private static Properties timerProperties;
+//	private static Properties timerProperties;
 	private static HashMap<Integer, String> retMsgMap;
 
 	public static void init() {
@@ -67,12 +67,12 @@ public class ConfigFactory {
 			dbDaoConfigProperties.load(fis2);
 			fis2.close();
 			U.info("dbDao配置成功");
-			timerProperties = new Properties();
-			FileInputStream fis3 = new FileInputStream(
-					new GlobalConfig().getConfigResourceAddress("timerConfig"));
-			timerProperties.load(fis3);
-			fis3.close();
-			U.info("时间配置成功");
+//			timerProperties = new Properties();
+//			FileInputStream fis3 = new FileInputStream(
+//					new GlobalConfig().getConfigResourceAddress("timerConfig"));
+//			timerProperties.load(fis3);
+//			fis3.close();
+//			U.info("时间配置成功");
 
 			Document document = new GlobalConfig()
 					.getDocumentByFileAddress(new GlobalConfig()
@@ -107,18 +107,15 @@ public class ConfigFactory {
 				.newInstance());
 	}
 
-	public static Class getClazz(String gameId) throws ClassNotFoundException {
+	public static Class<?> getClazz(String gameId) throws ClassNotFoundException {
 		return Class.forName(dbDaoConfigProperties.getProperty(gameId));
 	}
 
-	public static String getTimerConfig(String key) {
-		return timerProperties.getProperty(key);
-	}
+//	public static String getTimerConfig(String key) {
+//		return timerProperties.getProperty(key);
+//	}
 
 	public static String getRetMsg(int ret) {
 		return retMsgMap.get(ret);
 	}
-	// public static String getKeywords(int ret) {
-	// return keywordsProperties.get(ret);
-	// }
 }

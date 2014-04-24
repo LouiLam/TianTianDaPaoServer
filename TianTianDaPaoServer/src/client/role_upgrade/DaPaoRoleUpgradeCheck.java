@@ -7,7 +7,6 @@ import org.jboss.netty.channel.Channel;
 import org.json.JSONObject;
 
 import server.ui.main.U;
-import util.RandomUtil;
 import client.login.Check;
 import config.ConfigFactory;
 import config.Constant;
@@ -26,7 +25,7 @@ public class DaPaoRoleUpgradeCheck extends Check {
 		SqlSession sqlSession = DatabaseConnector.getInstance().getSqlSession();
 
 		try {
-			DaPaoRoleUpgradeDao loginDao = sqlSession.getMapper(ConfigFactory
+			DaPaoRoleUpgradeDao loginDao = (DaPaoRoleUpgradeDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("9"));
 			
 			Map selectMap = loginDao.selectRoleUpgradeByUtoken(params);

@@ -25,7 +25,7 @@ public class DaPaoModifyUserProfileCheck extends Check {
 		SqlSession sqlSession = DatabaseConnector.getInstance().getSqlSession();
 
 		try {
-			DaPaoModifyUserProfileDao loginDao = sqlSession.getMapper(ConfigFactory
+			DaPaoModifyUserProfileDao loginDao = (DaPaoModifyUserProfileDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("12"));
 			Map selectMap = loginDao.selectModifyByUtoken(params);
 

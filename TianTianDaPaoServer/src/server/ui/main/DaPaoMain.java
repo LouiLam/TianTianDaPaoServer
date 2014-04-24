@@ -14,6 +14,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.dom4j.DocumentException;
 import org.eclipse.jface.action.StatusLineManager;
 import org.eclipse.jface.window.ApplicationWindow;
 import org.eclipse.swt.SWT;
@@ -47,6 +48,7 @@ public class DaPaoMain extends ApplicationWindow {
 
 	Text pwd_text;
 	Combo combo;
+	Button btntxt ;
 	public static Text text;
 
 	/**
@@ -66,7 +68,11 @@ public class DaPaoMain extends ApplicationWindow {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				LoginMain.main(null);
+				
+			
 				setup.setEnabled(false);
+				setup.setSelection(false);
+//				btntxt.setEnabled(false);
 //				setEnabled(false);
 //				if (combo.getText() == null
 //						|| combo.getText().trim().length() == 0
@@ -96,7 +102,7 @@ public class DaPaoMain extends ApplicationWindow {
 		text = new Text(container, SWT.BORDER | SWT.READ_ONLY | SWT.MULTI| SWT.V_SCROLL);
 		text.setBounds(0, 0, 626, 349);
 		
-		Button btntxt = new Button(container, SWT.TOGGLE);
+		 btntxt = new Button(container, SWT.TOGGLE);
 		btntxt.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -118,10 +124,25 @@ public class DaPaoMain extends ApplicationWindow {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				text.setText("");
+				
 			}
 		});
 		button.setText("清空输出");
 		button.setBounds(102, 365, 86, 42);
+		
+		Button button_1 = new Button(container, SWT.TOGGLE);
+		button_1.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				try {
+					LoginMain.ReloadConfig();
+				} catch (DocumentException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		button_1.setText("重新载入配置文件");
+		button_1.setBounds(518, 365, 108, 42);
 
 		return container;
 	}

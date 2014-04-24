@@ -40,7 +40,7 @@ public class DaPaoUseItemsCheck extends Check {
 		SqlSession sqlSession = DatabaseConnector.getInstance().getSqlSession();
 
 		try {
-			DaPaoUseItemsDao loginDao = sqlSession.getMapper(ConfigFactory
+			DaPaoUseItemsDao loginDao = (DaPaoUseItemsDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("13"));
 			Map selectMap = loginDao.selectUseItemsByUtoken(params);
 

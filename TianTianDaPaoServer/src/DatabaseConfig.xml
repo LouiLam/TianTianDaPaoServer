@@ -40,6 +40,7 @@
 		<mapper resource="boss_over_orm.xml" />
 		<mapper resource="recharge_orm.xml" />
 		<mapper resource="recharge_query_orm.xml" />
+		<mapper resource="system_info_reward_orm.xml" />
 	</mappers>
 </configuration>
   

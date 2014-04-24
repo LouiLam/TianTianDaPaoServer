@@ -7,19 +7,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
 import org.jboss.netty.channel.Channel;
 import org.jboss.netty.handler.codec.http.QueryStringDecoder;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import start.AbstractHttpRequestHandler;
 import config.ConfigFactory;
-import config.Constant;
 
 public class RegHttpPostRequestHandler extends AbstractHttpRequestHandler {
 
-	private static Logger logger = Logger.getLogger(RegHttpPostRequestHandler.class);
 
 	@Override
 	protected void handle(String parametersString, Channel channel) {
@@ -31,7 +27,7 @@ public class RegHttpPostRequestHandler extends AbstractHttpRequestHandler {
 				e1.printStackTrace();
 			}
 			
-			QueryStringDecoder queryStringDecoder = new QueryStringDecoder("/?" + parametersString);
+			QueryStringDecoder queryStringDecoder = new QueryStringDecoder("/?" + decodeuri);
 			
 			Map<String, List<String>> params = queryStringDecoder.getParameters();
 			Map<String, String> paramClone = new HashMap<String, String>();

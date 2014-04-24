@@ -2,6 +2,8 @@ package event;
 
 import java.util.concurrent.TimeUnit;
 
+import client.money_append.DaPaoGetSystemInfoRewardCheck;
+
 import util.DateUtil;
 import util.TaskScheduled;
 
@@ -18,6 +20,7 @@ public class EveryDayDoSomthing {
 	}
 	public static void configure()
 	{
+		TaskScheduled.clear();
 		TaskScheduled.scheduleAtFixedRate(new Runnable() {
 			
 			@Override
@@ -25,6 +28,7 @@ public class EveryDayDoSomthing {
 				System.out.println("刷新EveryDayDoSomthing的时间点为："+DateUtil.getCurDate());
 				BOSSChargeRemain=2000;
 				LotteryChargeRemain=1500;
+				DaPaoGetSystemInfoRewardCheck.MAP.clear();
 				
 			}
 		}, 0, 1, TimeUnit.DAYS);

@@ -2,8 +2,6 @@ package client.money_consume;
 
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Param;
-
 
 public interface DaPaoRebirthDao   {
 	/**

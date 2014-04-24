@@ -27,7 +27,7 @@ public class DaPaoScoreLotteryCheck extends Check {
 		SqlSession sqlSession = DatabaseConnector.getInstance().getSqlSession();
 
 		try {
-			DaPaoScoreLotteryDao loginDao = sqlSession.getMapper(ConfigFactory
+			DaPaoScoreLotteryDao loginDao = (DaPaoScoreLotteryDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("5"));
 			Map selectMap = loginDao.selectScoreLotteryByUtoken(params);
 

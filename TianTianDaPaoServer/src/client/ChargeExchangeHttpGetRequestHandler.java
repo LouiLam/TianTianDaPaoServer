@@ -48,7 +48,7 @@ public class ChargeExchangeHttpGetRequestHandler extends AbstractHttpRequestHand
 			sendResponse(jsonObj.toString(), channel);
 		}catch(Exception e){	
 			e.printStackTrace();
-			U.infoQueue("客户端积分抽奖请求发生异常： "+e.getMessage()+"ip地址："
+			U.infoQueue("客户端兑换话费点请求发生异常： "+e.getMessage()+"ip地址："
 					+ channel.getRemoteAddress().toString()+"    uri = " + uri);
 			try {
 				JSONObject jsonObject = new JSONObject();

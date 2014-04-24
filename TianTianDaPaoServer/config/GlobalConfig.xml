@@ -44,4 +44,8 @@
 	<CheckConfig>config/CheckConfig.Properties</CheckConfig>
 	
 	<KeywordsConfig>config/Keywords.txt</KeywordsConfig>
+	
+	<getNoticeConfig>config/GetNoticeConfig.xml</getNoticeConfig>
+
+	<getSystemInfoConfig>config/GetSystemInfoConfig.xml</getSystemInfoConfig>
 </globalConfig>

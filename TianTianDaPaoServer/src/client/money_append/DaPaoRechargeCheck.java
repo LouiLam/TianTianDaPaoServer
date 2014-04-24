@@ -26,7 +26,7 @@ public class DaPaoRechargeCheck extends Check {
 		SqlSession sqlSession = DatabaseConnector.getInstance().getSqlSession();
 
 		try {
-			DaPaoRechargeDao loginDao = sqlSession.getMapper(ConfigFactory
+			DaPaoRechargeDao loginDao = (DaPaoRechargeDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("16"));
 			
 			if(params.get("sign")==null||params.get("sign").length()==0||params.get("uid")==null||params.get("uid").length()==0||params.get("money")==null||params.get("money").length()==0)

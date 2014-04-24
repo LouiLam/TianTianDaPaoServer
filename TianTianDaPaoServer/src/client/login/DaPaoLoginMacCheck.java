@@ -17,6 +17,8 @@ import client.reg.DaPaoRegDao;
 import client.task.TaskConfigMgr;
 import config.ConfigFactory;
 import config.Constant;
+import config.GetNoticeConfigMgr;
+import config.GetSystemInfoConfigMgr;
 import database.DatabaseConnector;
 
 /**
@@ -38,9 +40,9 @@ public class DaPaoLoginMacCheck extends Check {
 		SqlSession sqlSession = DatabaseConnector.getInstance().getSqlSession();
 		
 		try {
-			DaPaoLoginDao loginDao = sqlSession.getMapper(
+			DaPaoLoginDao loginDao = (DaPaoLoginDao) sqlSession.getMapper(
 					ConfigFactory.getClazz("1"));
-			DaPaoRegDao regDao = sqlSession.getMapper(
+			DaPaoRegDao regDao = (DaPaoRegDao) sqlSession.getMapper(
 					ConfigFactory.getClazz("2"));
 			
 			//检查参数
@@ -75,6 +77,11 @@ public class DaPaoLoginMacCheck extends Check {
 				userMap =  regDao.selectUserByMac(params);
 				regDao.insert_score_3day(userMap);
 				userMap = loginDao.selectUserByLoginMac(params);
+				userMap.put("isFirstLogin", 1);
+				if(GetNoticeConfigMgr.SIZE>0)
+				{userMap.put("isNotice", 1);}
+				if(GetSystemInfoConfigMgr.SIZE>0)
+				{userMap.put("isSystemInfo", 1);}
 				loginProcess(userMap, jsonObject, loginDao, channel);
 			}
 			// 如果存在//返回消息格式
@@ -91,7 +98,10 @@ public class DaPaoLoginMacCheck extends Check {
 					jsonObject.put(Constant.RET, Constant.RET_ACCOUNT_LOCKOUT);
 					jsonObject.put(Constant.MSG, ConfigFactory.getRetMsg(Constant.RET_ACCOUNT_LOCKOUT));
 				}else if(Constant.USTATUS_NORMAL.equals("" + userMap.get("ustatus"))){
-					
+					if(GetNoticeConfigMgr.SIZE>0)
+					{userMap.put("isNotice", 1);}
+					if(GetSystemInfoConfigMgr.SIZE>0)
+					{userMap.put("isSystemInfo", 1);}
 					loginProcess(userMap, jsonObject, loginDao, channel);
 				
 				}

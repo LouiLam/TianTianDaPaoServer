@@ -30,6 +30,8 @@ public class ScoreExchangeItemsConfigMgr extends AbstractConfig {
 		super.getDocumentByFileAddress(new GlobalConfig()
 				.getConfigResourceAddress("scoreExchangeItemsConfig"));
 		Element root = (Element) document.getRootElement();
+		taskList.clear();
+		taskObjMap.clear();
 		for (int i = 0; i < root.elements().size(); i++) {
 			ScoreExchangeItems obj = new ScoreExchangeItems();
 			HashMap<String, Object> map=new HashMap<String, Object>();
