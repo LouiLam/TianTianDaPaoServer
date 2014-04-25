@@ -13,15 +13,22 @@ import org.json.JSONObject;
 
 import server.ui.main.U;
 import start.AbstractHttpRequestHandler;
+import util.Statistics;
 import config.ConfigFactory;
 import config.Constant;
 
 public class LoginHttpGetRequestHandler extends AbstractHttpRequestHandler {
-
+ 
 
 	@Override
 	protected void handle(String uri, Channel channel) {
-		try{
+		try{ 
+			if(Statistics.INDEPENDENT_IP_SET.add(channel.getRemoteAddress().toString().split(":")[0]))
+			{
+				Statistics.INDEPENDENT_IP_BY_DAY++;
+				Statistics.INDEPENDENT_IP_TOTAL++;
+				U.infoQueueIP();
+			}
 			//参数解码
 			String decodeuri=null;
 			decodeuri= URLDecoder.decode(uri,"utf-8");

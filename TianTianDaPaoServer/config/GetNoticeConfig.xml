@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 获取公告-->
 <getNoticeConfig>
-	<getNotice id="1" title="公告标题1" content="内容1" date="2013年4月5日" remark="备注1" ></getNotice>
-	<getNotice id="2" title="公告标题2" content="内容2" date="2013年4月6日" remark="备注2" ></getNotice>
+	<getNotice id="1" title="公告标题1" content="内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1" date="2013年4月5日" remark="备注1" ></getNotice>
+	<getNotice id="2" title="公告标题2" content="内容2内容1内容1内" date="2013年4月6日" remark="备注2" ></getNotice>
+	<getNotice id="3" title="公告标题3" content="内容3内容1内容1内容1内容1内容1内容1内容1内容1内容1内容" date="2013年4月6日" remark="备注3" ></getNotice>
+	<getNotice id="4" title="公告标题4" content="内容4内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1" date="2013年4月6日" remark="备注4" ></getNotice>
 </getNoticeConfig>

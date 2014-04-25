@@ -80,4 +80,10 @@ public interface DaPaoRegDao {
 	 * @param params
 	 */
 	public void insert_score_3day(Map params);
+
+	/**
+	 * 注册插入系统奖励表
+	 * @param params
+	 */
+	public void insertUserIntoUserSystemReward(Map<String, String> params);
 }

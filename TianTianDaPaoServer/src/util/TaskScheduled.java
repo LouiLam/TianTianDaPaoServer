@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 public class TaskScheduled {
 
-	private static ScheduledThreadPoolExecutor scheduler = new ScheduledThreadPoolExecutor(1);
+	private static ScheduledThreadPoolExecutor scheduler = new ScheduledThreadPoolExecutor(10);
 	
 	/**
 	 * 以固定速率执行周期任务
@@ -32,7 +32,11 @@ public class TaskScheduled {
 	public static void clear()
 	{
 		scheduler.shutdown();
-		scheduler= new ScheduledThreadPoolExecutor(1);
+		scheduler= new ScheduledThreadPoolExecutor(10);
+	}
+	public static void toCount()
+	{
+		System.out.println("当前激活线程数量"+scheduler.getActiveCount());
 	}
 	
 }

@@ -105,7 +105,7 @@ public class Constant {
 	public static final int RET_GET_SYSTEM_INFO_REWARD_FAILED= 93;//获取系统信息奖励请求失败：utoken非法或不存在
 	public static final int RET_GET_SYSTEM_INFO_REWARD_FAILED_ARG_ERROR= 94;//获取系统信息奖励请求失败：item_id错误	
 	public static final int RET_GET_SYSTEM_INFO_REWARD_FAILED_REPEAT_GET= 95;//获取系统信息奖励请求失败：重复领取	
-	
+	public static final int RET_RECHARGE_CALLBACK_FAILED_UID_NOT_EXIST= 96;//游戏充值回调失败：UID不存在
 	public final static String RET = "ret";
 	public final static String MSG = "msg";
 	

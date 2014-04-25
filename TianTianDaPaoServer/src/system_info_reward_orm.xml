@@ -7,15 +7,13 @@
 
 	<select id="selectSystemInfoByUtoken" parameterType="Map"
 		resultType="Map">
-		select userinfo.id,userinfo.uid from
-		userinfo where
-		userinfo.utoken=
-		#{utoken}
+		select userinfo.id,userinfo.uid,user_system_reward.* from
+		userinfo,user_system_reward where
+		userinfo.utoken=#{utoken} and userinfo.uid=user_system_reward.uid
 	</select>
 	<select id="updateReward" parameterType="Map">
-	 update usergame,userjjc set usergame.ucharge=usergame.ucharge+#{ucharge},usergame.diamond=usergame.diamond+#{diamond},
-	 usergame.ugold=usergame.ugold+#{ugold},userjjc.score=userjjc.score+#{score}
-	 where usergame.uid=#{uid} and userjjc.uid=#{uid}
+	      ${paramSQL}
+
 	</select>
 	<select id="selectSystemInfoByUID" parameterType="Map"
 		resultType="Map">

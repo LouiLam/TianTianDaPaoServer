@@ -15,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @SuppressWarnings({ "rawtypes", "unchecked" })
 public class Finder {
 	// 敏感词
-	private static Set<String> WORDS = new HashSet<String>();
+	public static Set<String> WORDS = new HashSet<String>();
 	// 由敏感词生成的字树
 	private static Map<String, Map> TREE = new ConcurrentHashMap<String, Map>();
 	// 默认敏感词分割符
@@ -208,7 +208,7 @@ public class Finder {
 				}
 			}
 		}
-		System.out.println("当前敏感词数量：" + WORDS.size());
+	
 	}
 
 	private static void removeWords(String... sensitiveWords) {

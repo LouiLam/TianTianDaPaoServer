@@ -7,13 +7,14 @@
 
 	<select id="selectBossOverByUtoken" parameterType="Map"
 		resultType="Map">
-		select usergame.ucharge,userinfo.id,userinfo.uid from
-		userinfo,usergame where
+			select usergame.ucharge,userinfo.id,userinfo.uid,gogal_var.boss_charge_remain from
+		userinfo,usergame,gogal_var where
 		userinfo.utoken=
-		#{utoken} and userinfo.uid =usergame.uid 
+		#{utoken} and userinfo.uid =usergame.uid  and gogal_var.uid=1
 	</select>
 	<select id="updateChargeByUserGame" parameterType="Map">
-	   update usergame set ucharge=ucharge+#{ucharge} where usergame.uid=#{uid}
+	      update usergame, gogal_var set usergame.ucharge=usergame.ucharge+#{ucharge},gogal_var.boss_charge_remain=gogal_var.boss_charge_remain-#{ucharge} where usergame.uid=#{uid}
+	   and gogal_var.uid=1
 	</select>
 
 

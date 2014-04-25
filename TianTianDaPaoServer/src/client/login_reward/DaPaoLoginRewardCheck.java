@@ -1,10 +1,13 @@
-package client.login;
+package client.login_reward;
 
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.jboss.netty.channel.Channel;
 import org.json.JSONObject;
+
+import client.login.Check;
+import client.login.DaPaoLoginDao;
 
 import server.ui.main.U;
 import config.ConfigFactory;

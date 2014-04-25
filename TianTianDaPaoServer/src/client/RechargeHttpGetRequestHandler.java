@@ -24,14 +24,14 @@ public class RechargeHttpGetRequestHandler extends AbstractHttpRequestHandler {
 
 
 	@Override
-	protected void handle(String uri, Channel channel) {
+	protected void handle(String parametersString, Channel channel) {
 		try{
 			//参数解码
 			String decodeuri=null;
-			decodeuri= URLDecoder.decode(uri,"utf-8");
+			decodeuri= URLDecoder.decode(parametersString,"utf-8");
 			
 			//参数转换
-			QueryStringDecoder queryStringDecoder = new QueryStringDecoder(decodeuri);
+			QueryStringDecoder queryStringDecoder = new QueryStringDecoder( decodeuri);
 			Map<String, List<String>> params = queryStringDecoder.getParameters();
 			Map<String, String> paramClone = new HashMap<String, String>();
 			Iterator<String> it = params.keySet().iterator();
@@ -49,7 +49,7 @@ public class RechargeHttpGetRequestHandler extends AbstractHttpRequestHandler {
 		}catch(Exception e){	
 			e.printStackTrace();
 			U.infoQueue("客户端充值请求发生异常： "+e.getMessage()+"ip地址："
-					+ channel.getRemoteAddress().toString()+"    uri = " + uri);
+					+ channel.getRemoteAddress().toString()+"    uri = " + parametersString);
 			try {
 				JSONObject jsonObject = new JSONObject();
 				jsonObject.put(Constant.RET, Constant.RET_INVALID_PLATFORM);

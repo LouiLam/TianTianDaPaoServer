@@ -2,6 +2,8 @@ package client.money_append;
 
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
 
 public interface DaPaoGetSystemInfoRewardDao   {
 	/**
@@ -20,6 +22,6 @@ public interface DaPaoGetSystemInfoRewardDao   {
 	 * 更新奖励
 	 * @param params
 	 */
-	public void updateReward(Map params);
+	public void updateReward(@Param("paramSQL")String sql);
 	
 }

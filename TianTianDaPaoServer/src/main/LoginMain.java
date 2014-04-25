@@ -1,6 +1,5 @@
 package main;
 
-import login_reward.LoginRewardConfigMgr;
 
 import org.apache.log4j.PropertyConfigurator;
 import org.dom4j.DocumentException;
@@ -10,6 +9,7 @@ import start.ServerConfig;
 import start.ServerStart;
 import client.buy_items.BuyItemsConfigMgr;
 import client.charge_exchange.ChargeExchangeConfig;
+import client.login_reward.LoginRewardConfigMgr;
 import client.money_append.MoneyAppendConfig;
 import client.money_consume.MoneyConsumeConfig;
 import client.role_upgrade.RoleUpgradeConfigMgr;
@@ -37,8 +37,7 @@ public class LoginMain {
 			TaskConfigMgr.getInstance().configure();
 			U.info("任务配置文件读取成功");
 			ScoreLotteryConfigMgr.getInstance().configure();
-			U.info("积分抽奖配置文件读取成功");
-			EveryDayDoSomthing.configure();
+			
 			U.info("每日重置全局数据定时器启动");
 			ScoreExchangeItemsConfigMgr.getInstance().configure();
 			U.info("积分兑换物品配置文件读取成功");
@@ -63,6 +62,8 @@ public class LoginMain {
 			U.info("数据库配置文件读取成功");
 		
 			ConfigFactory.init();
+			U.info("积分抽奖配置文件读取成功");
+			EveryDayDoSomthing.configure();
 	}
 	/**
 	 * @param args

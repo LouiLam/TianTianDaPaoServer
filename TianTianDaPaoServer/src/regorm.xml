@@ -34,6 +34,10 @@
        <select id="insertUserIntoTaskUser" parameterType="Map" >
         INSERT into usertask(running_task_id) VALUES (#{running_task_id})
     </select>
+      <select id="insertUserIntoUserSystemReward" parameterType="Map" >
+        INSERT into user_system_reward() VALUES ()
+    </select>
+       
        <select id="updateRankIntoUserJJC" parameterType="Map" >
        UPDATE userjjc SET rank = LAST_INSERT_ID()-10000000 WHERE uid=LAST_INSERT_ID()
     </select>

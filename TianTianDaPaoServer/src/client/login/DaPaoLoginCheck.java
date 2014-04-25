@@ -2,11 +2,12 @@ package client.login;
 
 import java.util.Map;
 
-import login_reward.LoginRewardConfigMgr;
 
 import org.apache.ibatis.session.SqlSession;
 import org.jboss.netty.channel.Channel;
 import org.json.JSONObject;
+
+import client.login_reward.LoginRewardConfigMgr;
 
 import server.ui.main.U;
 import util.AES;

@@ -8,6 +8,7 @@
 	</typeAliases>
 
 	<environments default="development">
+	    <!--  -->
 		<environment id="development">
 			<transactionManager type="JDBC" />
 			<dataSource type="POOLED">
@@ -20,6 +21,16 @@
 				<property name="poolPingEnabled" value="true"/>
 			</dataSource>
 		</environment>
+		<!--  <environment id="metadata">  
+            <transactionManager type="JDBC" />  
+            <dataSource type="POOLED">  
+                <property name="driver" value="com.mysql.jdbc.Driver" />  
+                <property name="url" value="jdbc:mysql://192.168.1.205:3306/information_schema" />  
+                <property name="username" value="root" />  
+                <property name="password" value="123456" />  
+            </dataSource>  
+        </environment>   -->
+		
 	</environments>
 
 	<mappers>
@@ -41,6 +52,7 @@
 		<mapper resource="recharge_orm.xml" />
 		<mapper resource="recharge_query_orm.xml" />
 		<mapper resource="system_info_reward_orm.xml" />
+		<mapper resource="statistics_orm.xml" />
 	</mappers>
 </configuration>
   

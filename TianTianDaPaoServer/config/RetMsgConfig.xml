@@ -96,4 +96,5 @@
 	<resMsg ret="93" msg="获取系统信息奖励请求失败：utoken非法或不存在"/>
 	<resMsg ret="94" msg="获取系统信息奖励请求失败：item_id错误" />
 	<resMsg ret="95" msg="获取系统信息奖励请求失败：重复领取" />
+	<resMsg ret="96" msg="游戏充值回调失败：UID不存在" />
 </retMsgConfig>

@@ -1,4 +1,4 @@
-package login_reward;
+package client.login_reward;
 
 import java.util.ArrayList;
 import java.util.HashMap;

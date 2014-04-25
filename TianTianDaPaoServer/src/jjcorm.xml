@@ -75,7 +75,7 @@
 	</select>
 	  <select id="updateUserTaskFinish" resultType="Map" parameterType="Map">
 		update usergame,usertask set usertask.running_task_id=#{running_task_id}, usergame.ucharge= usergame.ucharge+#{reward_charge},usergame.ugold=usergame.ugold+#{reward_gold},usergame.diamond=usergame.diamond+#{reward_diamond}
-		,usertask.finish_task_count=finish_task_count+1,usertask.cur_day_finish_task_count=cur_day_finish_task_count+1,usertask.gold_count= default(usertask.gold_count), usertask.game_count= default(usertask.game_count),usertask.record_count=default(usertask.record_count) 	 
+		,usertask.finish_task_count=finish_task_count+1,usertask.cur_day_finish_task_count=cur_day_finish_task_count+1,usertask.jjc_pk_count= default(usertask.jjc_pk_count),usertask.gold_count= default(usertask.gold_count), usertask.game_count= default(usertask.game_count),usertask.record_count=default(usertask.record_count) 	 
 		where usergame.uid = #{uid} and usertask.uid=#{uid}
 	</select>
 </mapper>

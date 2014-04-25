@@ -58,6 +58,7 @@ public class DaPaoScoreLotteryCheck extends Check {
 			int probability=RandomUtil.getRan(0, 1000);
 			String gold="",charge="";
 			ScoreLottery obj=null;
+			long lottery_charge_remain=(long) selectMap.get("lottery_charge_remain");
 			for (int i = 0; i < ScoreLotteryConfigMgr.getInstance().taskObjList.size(); i++) {
 				 obj=ScoreLotteryConfigMgr.getInstance().taskObjList.get(i);
 				if(probability>=obj.min_probability&&probability<obj.max_probability)
@@ -74,7 +75,7 @@ public class DaPaoScoreLotteryCheck extends Check {
 					else if(obj.type==ScoreLotteryConfigMgr.Charge) //等于话费点直接处理
 					{
 					
-						if(EveryDayDoSomthing.LotteryChargeRemain<=0)//每日话费点限额已用完，奖励金币
+						if(lottery_charge_remain<=0)//每日话费点限额已用完，奖励金币
 						{
 							obj=ScoreLotteryConfigMgr.getInstance().taskObjList.get(11);//11索引表示金币
 							obj.des+="每日话费点限额已用完，奖励金币";
@@ -88,7 +89,7 @@ public class DaPaoScoreLotteryCheck extends Check {
 						else
 						{
 							int range=Integer.parseInt(obj.value)+1;
-							EveryDayDoSomthing.LotteryChargeRemain-=range;
+							lottery_charge_remain-=range;
 							//话费点1~10随机
 							params.put("ucharge", RandomUtil.getRan(1, range)+"");
 							params.put("uid", selectMap.get("uid")+"");
@@ -130,7 +131,7 @@ public class DaPaoScoreLotteryCheck extends Check {
 				}
 			}
 			
-			U.infoQueue(id + "抽取"+obj.des+"积分抽奖请求成功，数据更新!系统剩余可抽取的话费点为"+EveryDayDoSomthing.LotteryChargeRemain + "ip:"
+			U.infoQueue(id + "抽取"+obj.des+"积分抽奖请求成功，数据更新!系统剩余可抽取的话费点为"+lottery_charge_remain + "ip:"
 					+ channel.getRemoteAddress().toString());
 			selectMap = loginDao.selectScoreLotteryByMuch(params);
 			jsonObject.put("userInfo", selectMap);

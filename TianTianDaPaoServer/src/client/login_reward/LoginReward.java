@@ -1,4 +1,4 @@
-package login_reward;
+package client.login_reward;
 
 public class LoginReward {
 public int day;//天数

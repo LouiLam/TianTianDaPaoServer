@@ -16,7 +16,6 @@ import config.GetSystemInfoConfigMgr;
 import database.DatabaseConnector;
 
 public class DaPaoGetSystemInfoRewardCheck extends Check {
-	public static HashMap<Long, int[]> MAP = new HashMap<Long, int[]>();
 
 	public DaPaoGetSystemInfoRewardCheck() {
 		super();
@@ -31,7 +30,6 @@ public class DaPaoGetSystemInfoRewardCheck extends Check {
 			DaPaoGetSystemInfoRewardDao loginDao = (DaPaoGetSystemInfoRewardDao) sqlSession
 					.getMapper(ConfigFactory.getClazz("18"));
 			Map<Object,Object> selectMap = loginDao.selectSystemInfoByUtoken(params);
-
 			if (selectMap == null) {
 				jsonObject.put(Constant.RET, Constant.RET_GET_SYSTEM_INFO_REWARD_FAILED);
 				jsonObject.put(Constant.MSG,
@@ -67,29 +65,30 @@ public class DaPaoGetSystemInfoRewardCheck extends Check {
 			selectMap.put("ucharge", obj.ucharge);
 			selectMap.put("score", obj.score);
 			selectMap.put("ugold", obj.ugold);
-			if (MAP.get(uid) == null) // 没有领取一次
+			if(selectMap.get("reward"+item_id)==null)
 			{
-				int temp[] = new int[GetSystemInfoConfigMgr.SIZE];
-				temp[item_id - 1] = item_id;
-				MAP.put(uid, temp);
-				loginDao.updateReward(selectMap);
-				selectMap=loginDao.selectSystemInfoByUID(selectMap);
-				U.infoQueue("id:" + id + "获取系统信息奖励请求成功"
+				jsonObject.put(Constant.RET, Constant.RET_GET_SYSTEM_INFO_REWARD_FAILED_ARG_ERROR);
+				jsonObject.put(Constant.MSG,
+						ConfigFactory.getRetMsg(Constant.RET_GET_SYSTEM_INFO_REWARD_FAILED_ARG_ERROR));
+				U.infoQueue("获取系统信息奖励请求失败：item_id值范围非法---策划配置文档与数据库字段配置不匹配 "
 						+ channel.getRemoteAddress().toString());
-				jsonObject.put("userInfo", selectMap);
-				jsonObject.put(Constant.RET,
-						Constant.RET_GET_SYSTEM_INFO_REWARD_SUCCESS);
-				jsonObject
-						.put(Constant.MSG,
-								ConfigFactory
-										.getRetMsg(Constant.RET_GET_SYSTEM_INFO_REWARD_SUCCESS));
-			} 
-			else if (MAP.get(uid)[item_id - 1] == 0)// 领取过其中某一个系统奖励,但这个系统奖励没有领取
-			{
-				MAP.get(uid)[item_id - 1] = item_id;
-				loginDao.updateReward(selectMap);
-				selectMap=loginDao.selectSystemInfoByUID(selectMap);
+				return jsonObject;
+			}
+			boolean isReward=(boolean) selectMap.get("reward"+item_id);
 			
+			if (!isReward) // 没有领取一次
+			{
+				StringBuffer sql=new StringBuffer("update usergame,userjjc,user_system_reward set ");
+				sql.append("usergame.ucharge=usergame.ucharge+"+obj.ucharge);
+				sql.append(",usergame.diamond=usergame.diamond+"+obj.diamond);
+				sql.append(",usergame.ugold=usergame.ugold+"+obj.ugold);
+				sql.append(",userjjc.score=userjjc.score+"+obj.score);
+				sql.append(",user_system_reward.reward"+item_id+"=1");
+				sql.append(" where  usergame.uid="+selectMap.get("uid")+" and userjjc.uid="+selectMap.get("uid")+" and user_system_reward.uid="+selectMap.get("uid"));
+				
+						 
+				loginDao.updateReward(sql.toString());
+				selectMap=loginDao.selectSystemInfoByUID(selectMap);
 				U.infoQueue("id:" + id + "获取系统信息奖励请求成功"
 						+ channel.getRemoteAddress().toString());
 				jsonObject.put("userInfo", selectMap);

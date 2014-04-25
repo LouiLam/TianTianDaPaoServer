@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="event.DaPaoStatisticsDao">
+	 
+	<select id="updateSystemStatistics" parameterType="Map"
+		>
+		insert into  system_statistics (independent_ip_by_day,time) values(#{independent_ip_by_day},#{time})
+	</select>
+</mapper>

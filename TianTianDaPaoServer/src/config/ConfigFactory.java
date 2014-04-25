@@ -14,7 +14,7 @@ import server.ui.main.U;
 import start.AbstractHttpRequestHandler;
 import client.login.Check;
 
-public class ConfigFactory {
+public  class ConfigFactory {
 
 	private static Properties httpRequestHandlerProperties;
 	private static Properties checkProperties;
@@ -35,9 +35,10 @@ public class ConfigFactory {
 			 */
 			while ((line = br.readLine()) != null) {
 				Finder.addSensitiveWords(line);
-				System.out.println(line);
+//				System.out.println(line);
 				
 			}
+			System.out.println("当前敏感词数量：" + Finder.WORDS.size());
 			br.close();
 			isr.close();
 			fis0.close();

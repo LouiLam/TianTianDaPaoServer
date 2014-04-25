@@ -8,18 +8,18 @@
 	<select id="selectScoreLotteryByUtoken" parameterType="Map"
 		resultType="Map">
 		select
-		userinfo.id,userinfo.uid,userjjc.score,userprop.* from
-		userinfo,userjjc,userprop where
+		userinfo.id,userinfo.uid,userjjc.score,userprop.*,gogal_var.lottery_charge_remain from
+		userinfo,userjjc,userprop,gogal_var where
 		userinfo.uid =userjjc.uid and userinfo.utoken=
-		#{utoken} and userinfo.uid =userprop.uid
+		#{utoken} and userinfo.uid =userprop.uid and gogal_var.uid=1
 	</select>
 	<select id="updateUGoldByUserGame" parameterType="Map">
 		update usergame,userjjc set usergame.ugold=usergame.ugold+#{ugold},userjjc.score=userjjc.score-#{score_consume}
 		where  usergame.uid=#{uid} and userjjc.uid=#{uid}
 	</select>
 	<select id="updateUChargeByUserGame" parameterType="Map">
-		update usergame,userjjc set usergame.ucharge=usergame.ucharge+#{ucharge},userjjc.score=userjjc.score-#{score_consume}
-		where  usergame.uid=#{uid} and userjjc.uid=#{uid}
+		update usergame,userjjc,gogal_var set usergame.ucharge=usergame.ucharge+#{ucharge},gogal_var.lottery_charge_remain=gogal_var.lottery_charge_remain-#{ucharge},userjjc.score=userjjc.score-#{score_consume}
+		where  usergame.uid=#{uid} and userjjc.uid=#{uid}  and gogal_var.uid=1
 	</select>
 	<select id="updateItemByUserProp" parameterType="Map">
 	    ${paramSQL}

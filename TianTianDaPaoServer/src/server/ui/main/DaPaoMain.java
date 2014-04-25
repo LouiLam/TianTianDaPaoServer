@@ -31,6 +31,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
 import util.FileUtil;
+import org.eclipse.swt.widgets.Label;
 
 public class DaPaoMain extends ApplicationWindow {
 
@@ -50,7 +51,9 @@ public class DaPaoMain extends ApplicationWindow {
 	Combo combo;
 	Button btntxt ;
 	public static Text text;
-
+	public static Label lblip,lblip_1;
+	private Label label;
+	private Label label_1;
 	/**
 	 * Create contents of the application window.
 	 * 
@@ -96,7 +99,7 @@ public class DaPaoMain extends ApplicationWindow {
 				widgetSelected(e);
 			}
 		});
-		setup.setBounds(315, 365, 86, 42);
+		setup.setBounds(426, 365, 86, 42);
 		setup.setText("启动服务器");
 		
 		text = new Text(container, SWT.BORDER | SWT.READ_ONLY | SWT.MULTI| SWT.V_SCROLL);
@@ -117,7 +120,7 @@ public class DaPaoMain extends ApplicationWindow {
 			}
 		});
 		btntxt.setText("写输出到txt");
-		btntxt.setBounds(10, 365, 86, 42);
+		btntxt.setBounds(10, 365, 72, 42);
 		
 		Button button = new Button(container, SWT.TOGGLE);
 		button.addSelectionListener(new SelectionAdapter() {
@@ -128,7 +131,7 @@ public class DaPaoMain extends ApplicationWindow {
 			}
 		});
 		button.setText("清空输出");
-		button.setBounds(102, 365, 86, 42);
+		button.setBounds(88, 365, 86, 42);
 		
 		Button button_1 = new Button(container, SWT.TOGGLE);
 		button_1.addSelectionListener(new SelectionAdapter() {
@@ -143,6 +146,22 @@ public class DaPaoMain extends ApplicationWindow {
 		});
 		button_1.setText("重新载入配置文件");
 		button_1.setBounds(518, 365, 108, 42);
+		
+		 lblip = new Label(container, SWT.NONE);
+		lblip.setBounds(268, 365, 115, 12);
+		lblip.setText("当天独立ip访问人数");
+		
+		 lblip_1 = new Label(container, SWT.NONE);
+		lblip_1.setText("累计独立ip访问人数");
+		lblip_1.setBounds(268, 395, 115, 12);
+		
+		label = new Label(container, SWT.NONE);
+		label.setBounds(180, 365, 82, 12);
+		label.setText("当天访问人数：");
+		
+		label_1 = new Label(container, SWT.NONE);
+		label_1.setBounds(180, 395, 82, 12);
+		label_1.setText("累计访问人数：");
 
 		return container;
 	}

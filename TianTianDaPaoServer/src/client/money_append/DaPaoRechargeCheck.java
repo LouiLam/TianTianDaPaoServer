@@ -54,6 +54,9 @@ public class DaPaoRechargeCheck extends Check {
 				U.infoQueue("游戏充值回调失败：参数值格式不正确 "
 						+ channel.getRemoteAddress().toString());
 			}
+			System.out.println("sign:"+ params.get("sign"));
+			System.out.println("uid:"+ params.get("uid"));
+			System.out.println("money:"+ params.get("money"));
 			
 			String md5Result=AES.getMD5Str(uid+""+money+"zjd.com");
 			if(!md5Result.equals(sign))
@@ -69,6 +72,15 @@ public class DaPaoRechargeCheck extends Check {
 			
 			params.put("diamond", money*10+"");
 			Map selectMap = loginDao.selectRechargeByUID(params);
+			if(selectMap==null) //uid不存在
+			{
+				jsonObject.put(Constant.RET, Constant.RET_RECHARGE_CALLBACK_FAILED_UID_NOT_EXIST);
+				jsonObject
+						.put(Constant.MSG, ConfigFactory
+								.getRetMsg(Constant.RET_RECHARGE_CALLBACK_FAILED_UID_NOT_EXIST));
+				U.infoQueue("游戏充值回调失败：uid不存在"+channel.getRemoteAddress().toString());
+				return jsonObject;
+			}
 			//更新钻石
 		     loginDao.updateDiamondByUserGame(params);
 		     

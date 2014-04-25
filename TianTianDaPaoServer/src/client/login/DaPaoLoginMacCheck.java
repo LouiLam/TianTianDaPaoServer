@@ -2,7 +2,6 @@ package client.login;
 
 import java.util.Map;
 
-import login_reward.LoginRewardConfigMgr;
 
 import org.apache.ibatis.session.SqlSession;
 import org.jboss.netty.channel.Channel;
@@ -13,6 +12,7 @@ import server.ui.main.U;
 import util.AES;
 import util.DateUtil;
 import util.RandomUtil;
+import client.login_reward.LoginRewardConfigMgr;
 import client.reg.DaPaoRegDao;
 import client.task.TaskConfigMgr;
 import config.ConfigFactory;
@@ -73,6 +73,7 @@ public class DaPaoLoginMacCheck extends Check {
 				regDao.insertUserIntoUserProp(params);
 				regDao.updateRankIntoUserJJC(params);
 				regDao.insertUserIntoUserGame(params);
+				regDao.insertUserIntoUserSystemReward(params);
 				sqlSession.commit();
 				userMap =  regDao.selectUserByMac(params);
 				regDao.insert_score_3day(userMap);

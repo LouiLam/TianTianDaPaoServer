@@ -71,6 +71,7 @@ public class DaPaoRegCheck extends Check {
 				regDao.insertUserIntoUserProp(params);
 				regDao.updateRankIntoUserJJC(params);
 				regDao.insertUserIntoUserGame(params);
+				regDao.insertUserIntoUserSystemReward(params);
 				sqlSession.commit();
 				userMap =  regDao.selectUserByUid(params);
 				regDao.insert_score_3day(userMap);

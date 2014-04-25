@@ -47,8 +47,9 @@ public class DaPaoBossOverCheck extends Check {
 			{
 			
 				int range=RandomUtil.getRan(1, MoneyAppendConfig.getInstance().charge);
-				EveryDayDoSomthing.BOSSChargeRemain-=range;
-				if(EveryDayDoSomthing.BOSSChargeRemain<=0)//超过每日奖励限额
+				long BOSSChargeRemain=(long) selectMap.get("boss_charge_remain");
+						BOSSChargeRemain-=range;
+				if(BOSSChargeRemain<=0)//超过每日奖励限额
 				{
 					U.infoQueue("id:" + id + "Boss结束请求话费点失败，超过每日奖励限额!" + "ip:"
 							+ channel.getRemoteAddress().toString());
@@ -61,7 +62,7 @@ public class DaPaoBossOverCheck extends Check {
 				selectMap.put("ucharge", range);
 				loginDao.updateChargeByUserGame(selectMap);
 				sqlSession.commit();
-				U.infoQueue("id:" + id + "Boss结束请求话费点成功，数据更新!系统剩余可获取的话费点为"+EveryDayDoSomthing.BOSSChargeRemain + "ip:"
+				U.infoQueue("id:" + id + "Boss结束请求话费点成功，数据更新!系统剩余可获取的话费点为"+BOSSChargeRemain + "ip:"
 						+ channel.getRemoteAddress().toString());
 				jsonObject.put("get_charge", range);
 				jsonObject.put(Constant.RET, Constant.RET_BOSS_OVER_SUCCESS);
