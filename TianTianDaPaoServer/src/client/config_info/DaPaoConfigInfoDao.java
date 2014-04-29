@@ -8,7 +8,7 @@ public interface DaPaoConfigInfoDao {
 	 * @param upuid
 	 * @return
 	 */
-	public  Map selectUserByUToken(Map params);
+	public  Map<Object,Object> selectUserByUToken(Map<? extends Object,? extends Object> params);
 
 
 

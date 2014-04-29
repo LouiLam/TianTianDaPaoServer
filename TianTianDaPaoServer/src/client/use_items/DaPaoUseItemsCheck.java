@@ -42,7 +42,7 @@ public class DaPaoUseItemsCheck extends Check {
 		try {
 			DaPaoUseItemsDao loginDao = (DaPaoUseItemsDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("13"));
-			Map selectMap = loginDao.selectUseItemsByUtoken(params);
+			Map<Object,Object> selectMap = loginDao.selectUseItemsByUtoken(params);
 
 			if (selectMap == null) {
 				jsonObject.put(Constant.RET, Constant.RET_USE_ITEMS_FAILED);

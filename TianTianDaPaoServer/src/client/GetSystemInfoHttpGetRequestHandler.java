@@ -15,7 +15,6 @@ import server.ui.main.U;
 import start.AbstractHttpRequestHandler;
 import config.ConfigFactory;
 import config.Constant;
-import config.GetSystemInfoConfigMgr;
 
 /**
  * 获取系统奖励消息
@@ -42,12 +41,10 @@ public class GetSystemInfoHttpGetRequestHandler extends AbstractHttpRequestHandl
 				String value = params.get(key).get(0);
 				paramClone.put(key, value);
 			}
-			JSONObject jsonObj =new JSONObject();
-			jsonObj.put("systemInfo", GetSystemInfoConfigMgr.getInstance().getSystemInfoList);
-			
+			JSONObject jsonObj = ConfigFactory
+					.getCheck("24").check(paramClone,channel);
 			//返回
 			sendResponse(jsonObj.toString(), channel);
-			U.infoQueue("获取系统信息请求成功： "+channel.getRemoteAddress().toString());
 		}catch(Exception e){	
 			e.printStackTrace();
 			U.infoQueue("获取公告请求发生异常： "+e.getMessage()+"ip地址："

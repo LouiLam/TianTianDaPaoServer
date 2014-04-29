@@ -41,12 +41,29 @@ public class LoginRewardConfigMgr extends AbstractConfig {
 					.attributeValue("reward_score"));
 			obj.reward_diamond = Integer.parseInt(task
 					.attributeValue("reward_diamond"));
+			
+			obj.prop12 = Integer.parseInt(task
+					.attributeValue("prop12"));
+			obj.prop13 = Integer.parseInt(task
+					.attributeValue("prop13"));
+			obj.prop14 = Integer.parseInt(task
+					.attributeValue("prop14"));
+			obj.prop15 = Integer.parseInt(task
+					.attributeValue("prop15"));
+			obj.prop16 = Integer.parseInt(task
+					.attributeValue("prop16"));
 			map.put("day", obj.day);
 			map.put("name", obj.name);
 			map.put("reward_gold", obj.reward_gold);
 			map.put("reward_charge", obj.reward_charge);
 			map.put("reward_score", obj.reward_score);
 			map.put("reward_diamond", obj.reward_diamond);
+			
+			map.put("prop12", obj.prop12);
+			map.put("prop13", obj.prop13);
+			map.put("prop14", obj.prop14);
+			map.put("prop15", obj.prop15);
+			map.put("prop16", obj.prop16);
 			loginRewardList.add(map);
 			
 			

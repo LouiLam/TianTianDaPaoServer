@@ -28,7 +28,7 @@ public class DaPaoGameStartCheck extends Check {
 		try {
 			DaPaoGameProcessDao loginDao = (DaPaoGameProcessDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("4"));
-			Map gameMap = loginDao.selectGameStartByUtoken(params);
+			Map<Object,Object> gameMap = loginDao.selectGameStartByUtoken(params);
 
 			if (gameMap == null) {
 				jsonObject.put(Constant.RET, Constant.RET_GAME_START_FAILED);

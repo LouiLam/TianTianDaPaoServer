@@ -186,13 +186,13 @@ public class Finder {
 		return new TextAnalysis().mark(TREE, text, startTag, endTag);
 	}
 
-	private static void check(String... words) {
-		for (String word : words) {
-			if (word != null && word.contains(TREE_END_KEY)) {
-				throw new RuntimeException("包含非法字符：" + TREE_END_KEY);
-			}
-		}
-	}
+//	private static void check(String... words) {
+//		for (String word : words) {
+//			if (word != null && word.contains(TREE_END_KEY)) {
+//				throw new RuntimeException("包含非法字符：" + TREE_END_KEY);
+//			}
+//		}
+//	}
 
 	private static void addWords(String... sensitiveWords) {
 		for (String word : sensitiveWords) {

@@ -11,7 +11,7 @@ public interface DaPaoScoreExchangeItemsDao   {
 	 * @param upuid
 	 * @return
 	 */
-	public Map selectScoreExchangeItemsByUtoken(Map params);
+	public Map<Object,Object> selectScoreExchangeItemsByUtoken(Map<? extends Object,? extends Object> params);
 	
 //	update usergame,userjjc set usergame.ugold=usergame.ugold+#{ugold},userjjc.score=userjjc.score-#{consume}
 //	where  usergame.uid=#{uid} and userjjc.uid=#{uid}
@@ -26,5 +26,5 @@ public interface DaPaoScoreExchangeItemsDao   {
 	 * @param params
 	 * @return
 	 */
-	public Map selectScoreLotteryByMuch(Map params);
+	public Map<Object,Object> selectScoreLotteryByMuch(Map<? extends Object,? extends Object> params);
 }

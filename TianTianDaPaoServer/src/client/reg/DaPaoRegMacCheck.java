@@ -38,7 +38,7 @@ public class DaPaoRegMacCheck extends Check {
 					ConfigFactory.getClazz("2"));
 			// 注册检测
 			
-			Map userMap = regDao.selectUserByMac(params);
+			Map<Object,Object> userMap = regDao.selectUserByMac(params);
 			if(params.get("mac")==null)//mac地址必填写
 			{
 				jsonObject.put(Constant.RET, Constant.RET_REG_FAILED_MISS_ARG);

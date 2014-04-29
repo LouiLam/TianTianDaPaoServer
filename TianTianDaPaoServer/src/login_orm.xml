@@ -32,9 +32,9 @@
 
 	<select id="selectLoginRewardByUtoken" parameterType="Map"
 		resultType="Map">
-		select userjjc.score ,usergame.ugold,usergame.ucharge,usergame.diamond,userinfo.uid,userinfo.id,usergame.is_get_login_reward_this_day,usergame.ugold,usergame.ucharge from userinfo,userjjc,usergame where
+		select userprop.* ,userjjc.score ,usergame.ugold,usergame.ucharge,usergame.diamond,userinfo.uid,userinfo.id,usergame.is_get_login_reward_this_day,usergame.ugold,usergame.ucharge from userinfo,userjjc,usergame,userprop where
 		userinfo.uid =
-		userjjc.uid and userinfo.utoken= #{utoken} and usergame.uid=userinfo.uid
+		userjjc.uid and userinfo.utoken= #{utoken} and usergame.uid=userinfo.uid and userprop.uid=userinfo.uid
 	</select>
 	
 </mapper>

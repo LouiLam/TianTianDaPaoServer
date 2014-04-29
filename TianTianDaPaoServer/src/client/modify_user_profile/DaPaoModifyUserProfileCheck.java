@@ -27,7 +27,7 @@ public class DaPaoModifyUserProfileCheck extends Check {
 		try {
 			DaPaoModifyUserProfileDao loginDao = (DaPaoModifyUserProfileDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("12"));
-			Map selectMap = loginDao.selectModifyByUtoken(params);
+			Map<Object,Object> selectMap = loginDao.selectModifyByUtoken(params);
 
 			if (selectMap == null) {
 				jsonObject.put(Constant.RET, Constant.RET_MODIFY_USER_PROFILE_FAILED);
@@ -45,7 +45,7 @@ public class DaPaoModifyUserProfileCheck extends Check {
 				U.infoQueue("用户修改资料请求失败：参数要求非法，缺少参数id"+channel.getRemoteAddress().toString());
 				return jsonObject;
 			}
-			Map idMap = loginDao.selectIDByUserInfo(params);
+			Map<Object,Object> idMap = loginDao.selectIDByUserInfo(params);
 			System.out.println("用户修改昵称："+params.get("id"));
 			if(idMap!=null)
 			{

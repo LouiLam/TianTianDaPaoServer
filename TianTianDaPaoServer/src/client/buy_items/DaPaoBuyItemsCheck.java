@@ -27,7 +27,7 @@ public class DaPaoBuyItemsCheck extends Check {
 		try {
 			DaPaoBuyItemsDao loginDao = (DaPaoBuyItemsDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("7"));
-			Map selectMap = loginDao.selectBuyItemsByUtoken(params);
+			Map<Object, Object> selectMap = loginDao.selectBuyItemsByUtoken(params);
 
 			if (selectMap == null) {
 				jsonObject.put(Constant.RET, Constant.RET_BUY_ITEMS_FAILED);
@@ -62,7 +62,7 @@ public class DaPaoBuyItemsCheck extends Check {
 				return jsonObject;
 				
 			}
-			long score=(long) selectMap.get("score");
+//			long score=(long) selectMap.get("score");
 			long ugold=(long) selectMap.get("ugold");
 			long ucharge=(long) selectMap.get("ucharge");
 			long diamond=(long) selectMap.get("diamond");

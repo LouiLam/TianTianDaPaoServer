@@ -13,8 +13,8 @@ import config.ConfigFactory;
 import config.Constant;
 import database.DatabaseConnector;
 
-public class DaPaoRechargeCheck extends Check {
-	public DaPaoRechargeCheck() {
+public class DaPaoRechargeTelecomCheck extends Check {
+	public DaPaoRechargeTelecomCheck() {
 		super();
 	}
 
@@ -71,7 +71,7 @@ public class DaPaoRechargeCheck extends Check {
 			}
 			
 			params.put("diamond", money*10+"");
-			Map selectMap = loginDao.selectRechargeByUID(params);
+			Map<Object,Object> selectMap = loginDao.selectRechargeByUID(params);
 			if(selectMap==null) //uid不存在
 			{
 				jsonObject.put(Constant.RET, Constant.RET_RECHARGE_CALLBACK_FAILED_UID_NOT_EXIST);
@@ -88,6 +88,7 @@ public class DaPaoRechargeCheck extends Check {
 		   //充值成功,写入记录rmbrecord数据库
 			selectMap.put("value", money);
 			selectMap.put("time", System.currentTimeMillis()/1000);
+			selectMap.put("channelID", 0);
 			loginDao.insertRMBrecord(selectMap);
 		     
 		     sqlSession.commit();

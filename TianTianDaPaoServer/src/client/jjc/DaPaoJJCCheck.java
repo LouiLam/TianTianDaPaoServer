@@ -31,7 +31,7 @@ public class DaPaoJJCCheck extends Check {
 		try {
 			DaPaoJJCDao loginDao = (DaPaoJJCDao) sqlSession.getMapper(
 					ConfigFactory.getClazz("3"));
-			Map jjcMap = loginDao.selectJJCUserByUtoken(params);
+			Map<Object,Object> jjcMap = loginDao.selectJJCUserByUtoken(params);
 			
 			if (jjcMap == null) {
 				jsonObject.put(Constant.RET, Constant.RET_JJC_FAILED);
@@ -49,9 +49,9 @@ public class DaPaoJJCCheck extends Check {
 			tempMap.put("four",  rank-rank/10*4+"");
 			}
 			//世界排名
-			List worldRankMap = loginDao.selectJJCUserByWorldRank(tempMap);
+			List<Object> worldRankMap = loginDao.selectJJCUserByWorldRank(tempMap);
 //			//我的排名
-			List myRankMap = loginDao.selectJJCUserByMyRank(tempMap);
+			List<Object> myRankMap = loginDao.selectJJCUserByMyRank(tempMap);
 			if((long)jjcMap.get("score_3day")==0)
 			{
 				long score_3day_pass=DateUtil.getSecondsBetween(DateUtil.getTimesnight(),System.currentTimeMillis())%(1440*60*3); //三天一循环(一天1440分钟，1分钟60秒，3天)

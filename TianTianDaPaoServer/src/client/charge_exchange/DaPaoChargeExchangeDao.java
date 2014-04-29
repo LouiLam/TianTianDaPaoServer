@@ -7,12 +7,12 @@ public interface DaPaoChargeExchangeDao {
 	 * 查询用户相关信息
 	 * @return
 	 */
-	public  Map selectUserByUToken(Map params);
+	public  Map<Object,Object> selectUserByUToken(Map<? extends Object,? extends Object> params);
 	/**
 	 * d请求成功后返回相关信息
 	 * @return
 	 */
-	public  Map selectUserByUID(Map params);
+	public  Map<Object,Object> selectUserByUID(Map<? extends Object,? extends Object> params);
 	/**
 	 * 查询当前记录条数
 	 * @return
@@ -22,10 +22,10 @@ public interface DaPaoChargeExchangeDao {
 	 * 更新话费点字段
 	 * @return
 	 */
-	public void updateChargeByUsergame(Map params);
+	public void updateChargeByUsergame(Map<? extends Object,? extends Object> params);
 	/**
 	 * 插入话费点字段
 	 * @return
 	 */
-	public void insertChargerecordByUsergame(Map params);
+	public void insertChargerecordByUsergame(Map<? extends Object,? extends Object> params);
 }

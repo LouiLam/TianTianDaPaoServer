@@ -27,7 +27,7 @@ public class DaPaoRechargeQueryCheck extends Check {
 		try {
 			DaPaoRechargeQueryDao loginDao = (DaPaoRechargeQueryDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("17"));
-			Map selectMap = loginDao.selectDiamondByUtoken(params);
+			Map<Object,Object> selectMap = loginDao.selectDiamondByUtoken(params);
 
 			if (selectMap == null) {
 				jsonObject.put(Constant.RET, Constant.RET_RECHARGE_QUERY_FAILED);

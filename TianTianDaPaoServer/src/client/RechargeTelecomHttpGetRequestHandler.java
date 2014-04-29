@@ -17,10 +17,11 @@ import config.ConfigFactory;
 import config.Constant;
 /**
  * 二师兄，充值回调接口
+ * 电信短信支付
  * @author Administrator
  *
  */
-public class RechargeHttpGetRequestHandler extends AbstractHttpRequestHandler {
+public class RechargeTelecomHttpGetRequestHandler extends AbstractHttpRequestHandler {
 
 
 	@Override
@@ -48,7 +49,7 @@ public class RechargeHttpGetRequestHandler extends AbstractHttpRequestHandler {
 			sendResponse(jsonObj.toString(), channel);
 		}catch(Exception e){	
 			e.printStackTrace();
-			U.infoQueue("客户端充值请求发生异常： "+e.getMessage()+"ip地址："
+			U.infoQueue("电信回调充值请求发生异常： "+e.getMessage()+"ip地址："
 					+ channel.getRemoteAddress().toString()+"    uri = " + parametersString);
 			try {
 				JSONObject jsonObject = new JSONObject();

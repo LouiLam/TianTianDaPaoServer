@@ -27,7 +27,7 @@ public class DaPaoScoreExchangeItemsCheck extends Check {
 		try {
 			DaPaoScoreExchangeItemsDao loginDao = (DaPaoScoreExchangeItemsDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("6"));
-			Map selectMap = loginDao.selectScoreExchangeItemsByUtoken(params);
+			Map<Object,Object> selectMap = loginDao.selectScoreExchangeItemsByUtoken(params);
 
 			if (selectMap == null) {
 				jsonObject.put(Constant.RET, Constant.RET_SCORE_EXCHANGE_ITEMS_FAILED);

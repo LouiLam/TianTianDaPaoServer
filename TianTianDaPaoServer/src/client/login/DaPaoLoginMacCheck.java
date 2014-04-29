@@ -2,7 +2,6 @@ package client.login;
 
 import java.util.Map;
 
-
 import org.apache.ibatis.session.SqlSession;
 import org.jboss.netty.channel.Channel;
 import org.json.JSONException;
@@ -54,7 +53,7 @@ public class DaPaoLoginMacCheck extends Check {
 				return jsonObject;
 			}
 			// 登录检测
-			Map userMap = loginDao.selectUserByLoginMac(params);
+			Map<Object,Object> userMap = loginDao.selectUserByLoginMac(params);
 			// 如果userMap不存在 表示第一次使用设备游客登录,执行注册逻辑
 			if (userMap == null) {
 				jsonObject.put(Constant.RET, Constant.RET_ACCOUNT_INVALID);
@@ -115,7 +114,7 @@ public class DaPaoLoginMacCheck extends Check {
 		return jsonObject;
 
 	}
-	private void loginProcess(Map userMap,JSONObject jsonObject ,DaPaoLoginDao loginDao ,Channel channel) throws JSONException
+	private void loginProcess(Map<Object,Object> userMap,JSONObject jsonObject ,DaPaoLoginDao loginDao ,Channel channel) throws JSONException
 	{
 		boolean is_get_login_reward_this_day=(boolean) userMap.get("is_get_login_reward_this_day");
 		if(!is_get_login_reward_this_day)//返回登录奖励配置信息给客户端做显示
@@ -132,6 +131,14 @@ public class DaPaoLoginMacCheck extends Check {
 		if(prc==1)//连续登录 uconsecutive+1
 		{
 			 uconsecutive++;
+		}
+		else//非连续登录 重置uconsecutive=1
+		{
+			uconsecutive=1;
+		}
+		if(uconsecutive==8)//uconsecutive==8的时候 重置uconsecutive=1
+		{
+			uconsecutive=1;
 		}
 		userMap.put("ultime", "" + ultime);
 		userMap.put("utoken", AES.generateSessionKey());

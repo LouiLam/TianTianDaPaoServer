@@ -9,6 +9,6 @@ public interface DaPaoTaskRunningDao   {
 	 * @param upuid
 	 * @return
 	 */
-	public  Map selectTaskUserByUtoken(Map params);
+	public  Map<Object,Object> selectTaskUserByUtoken(Map<? extends Object,? extends Object> params);
 	
 }

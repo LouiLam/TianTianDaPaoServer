@@ -27,7 +27,7 @@ public class DaPaoRebirthCheck extends Check {
 		try {
 			DaPaoRebirthDao loginDao = (DaPaoRebirthDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("14"));
-			Map selectMap = loginDao.selectUseItemsByUtoken(params);
+			Map<Object,Object> selectMap = loginDao.selectUseItemsByUtoken(params);
 
 			if (selectMap == null) {
 				jsonObject.put(Constant.RET, Constant.RET_USE_ITEMS_FAILED);

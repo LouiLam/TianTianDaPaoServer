@@ -5,14 +5,11 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.ibatis.session.SqlSession;
 
-import client.login.DaPaoLoginDao;
-import config.ConfigFactory;
-
-import database.DatabaseConnector;
-
 import util.DateUtil;
 import util.Statistics;
 import util.TaskScheduled;
+import config.ConfigFactory;
+import database.DatabaseConnector;
 
 public class EveryDayDoSomthing {
 //	5000话费点 每天分配

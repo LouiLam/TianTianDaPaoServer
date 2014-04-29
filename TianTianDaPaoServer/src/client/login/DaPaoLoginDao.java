@@ -9,9 +9,9 @@ public interface DaPaoLoginDao {
 	 * @param upuid
 	 * @return
 	 */
-	public  Map selectUserByLogin(Map params);
+	public  Map<Object,Object> selectUserByLogin(Map<? extends Object,? extends Object> params);
 
-	public  Map selectUserByLoginMac(Map params);
+	public  Map<Object,Object> selectUserByLoginMac(Map<? extends Object,? extends Object> params);
 
 	
 	/**
@@ -19,7 +19,7 @@ public interface DaPaoLoginDao {
 	 * @param udevice
 	 * @return
 	 */
-	public  void insertUserIntoUserInfo(Map params);
+	public  void insertUserIntoUserInfo(Map<? extends Object,? extends Object> params);
 
 
 
@@ -27,7 +27,7 @@ public interface DaPaoLoginDao {
 	 * 登陆后更新token和Ultime
 	 * @param params
 	 */
-	public  void updateUserInfoUltime(Map<String, String> params);
+	public  void updateUserInfoUltime(Map<Object,Object> params);
 
 	/**
 	 * 平台登陆后更新uname
@@ -39,7 +39,7 @@ public interface DaPaoLoginDao {
 	 * 登录奖励
 	 * @param params
 	 */
-	public void login_reward(Map params);
+	public void login_reward(Map<? extends Object,? extends Object> params);
 	
 	
 	/**
@@ -47,6 +47,6 @@ public interface DaPaoLoginDao {
 	 * @param params
 	 * @return
 	 */
-	public  Map selectLoginRewardByUtoken(Map params);
+	public  Map<Object,Object> selectLoginRewardByUtoken(Map<? extends Object,? extends Object> params);
 	
 }

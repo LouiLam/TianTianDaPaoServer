@@ -11,7 +11,7 @@ public interface DaPaoScoreLotteryDao   {
 	 * @param upuid
 	 * @return
 	 */
-	public Map selectScoreLotteryByUtoken(Map params);
+	public Map<Object,Object> selectScoreLotteryByUtoken(Map<? extends Object,? extends Object> params);
 	/**
 	 * 抽奖到物品
 	 * @param params
@@ -22,18 +22,18 @@ public interface DaPaoScoreLotteryDao   {
 	 * 抽奖到金币
 	 * @param params
 	 */
-	public void updateUGoldByUserGame(Map params);
+	public void updateUGoldByUserGame(Map<? extends Object,? extends Object> params);
 	
 	/**
 	 * 抽奖到话费点
 	 * @param params
 	 */
-	public void updateUChargeByUserGame(Map params);
+	public void updateUChargeByUserGame(Map<? extends Object,? extends Object> params);
 	
 	/**
 	 * 返回各种更新字段（金币，道具，角色 飞船 宠物等）
 	 * @param params
 	 * @return
 	 */
-	public Map selectScoreLotteryByMuch(Map params);
+	public Map<Object,Object> selectScoreLotteryByMuch(Map<? extends Object,? extends Object> params);
 }

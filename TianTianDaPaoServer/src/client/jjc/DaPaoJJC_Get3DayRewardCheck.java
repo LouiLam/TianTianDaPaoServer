@@ -28,7 +28,7 @@ public class DaPaoJJC_Get3DayRewardCheck extends Check {
 		try {
 			DaPaoJJCDao loginDao = (DaPaoJJCDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("3"));
-			Map jjcMap = loginDao.selectJJC3DayUserByUtoken(params);
+			Map<Object,Object> jjcMap = loginDao.selectJJC3DayUserByUtoken(params);
 			if (jjcMap == null) {
 				jsonObject.put(Constant.RET, Constant.RET_JJC_GET_3DAY_REWARD_FAILED);
 				jsonObject.put(Constant.MSG,

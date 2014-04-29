@@ -31,7 +31,7 @@ public class DaPaoTaskRunningCheck extends Check {
 		try {
 			DaPaoTaskRunningDao loginDao = (DaPaoTaskRunningDao) sqlSession.getMapper(
 					ConfigFactory.getClazz("11"));
-			Map jjcMap = loginDao.selectTaskUserByUtoken(params);
+			Map<Object,Object> jjcMap = loginDao.selectTaskUserByUtoken(params);
 			
 			if (jjcMap == null) {
 				jsonObject.put(Constant.RET, Constant.RET_TASK_RUNNING_FAILED);

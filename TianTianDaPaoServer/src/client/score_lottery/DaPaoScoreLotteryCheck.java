@@ -12,7 +12,6 @@ import client.login.Check;
 import config.ConfigFactory;
 import config.Constant;
 import database.DatabaseConnector;
-import event.EveryDayDoSomthing;
 
 public class DaPaoScoreLotteryCheck extends Check {
 	public DaPaoScoreLotteryCheck() {
@@ -29,7 +28,7 @@ public class DaPaoScoreLotteryCheck extends Check {
 		try {
 			DaPaoScoreLotteryDao loginDao = (DaPaoScoreLotteryDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("5"));
-			Map selectMap = loginDao.selectScoreLotteryByUtoken(params);
+			Map<Object,Object> selectMap = loginDao.selectScoreLotteryByUtoken(params);
 
 			if (selectMap == null) {
 				jsonObject.put(Constant.RET, Constant.RET_SCORE_LOTTERY_FAILED);

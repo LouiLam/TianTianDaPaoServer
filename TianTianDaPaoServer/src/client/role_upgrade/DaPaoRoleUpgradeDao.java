@@ -11,7 +11,7 @@ public interface DaPaoRoleUpgradeDao   {
 	 * @param upuid
 	 * @return
 	 */
-	public Map selectRoleUpgradeByUtoken(Map params);
+	public Map<Object,Object> selectRoleUpgradeByUtoken(Map<? extends Object,? extends Object> params);
 	/**
 	 * 查询角色等级
 	 * @param params
@@ -29,5 +29,5 @@ public interface DaPaoRoleUpgradeDao   {
 	 * @param params
 	 * @return
 	 */
-	public Map selectRoleUpgradeByUID(Map params);
+	public Map<Object,Object> selectRoleUpgradeByUID(Map<? extends Object,? extends Object> params);
 }

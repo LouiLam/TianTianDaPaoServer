@@ -25,7 +25,7 @@ public class DateUtil {
 	}
 	public static void main(String[] args) {
 		
-		System.out.println(getDateByTimestamp(1398132437) );
+		System.out.println(getDateByTimestamp(1398412774) );
 //		System.out.println(getSecondsBetween(getTimesnight(),System.currentTimeMillis())%(1440*60));
 		
 	}

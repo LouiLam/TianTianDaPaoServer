@@ -17,6 +17,6 @@
 
 	<select id="insertRMBrecord" parameterType="Map"
 		>
-		 insert into rmbrecord(id,value,time) VALUES (#{id},#{value},#{time})
+		 insert into rmbrecord(id,value,time,channelID) VALUES (#{id},#{value},#{time},#{channelID})
 	</select>
 </mapper>

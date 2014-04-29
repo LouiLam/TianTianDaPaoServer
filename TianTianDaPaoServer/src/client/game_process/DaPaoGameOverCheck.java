@@ -31,7 +31,7 @@ public class DaPaoGameOverCheck extends Check {
 		try {
 			DaPaoGameProcessDao loginDao = (DaPaoGameProcessDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("4"));
-			Map gameMap = loginDao.selectGameEndByUtoken(params);
+			Map<Object,Object> gameMap = loginDao.selectGameEndByUtoken(params);
 		
 			if (gameMap == null) {
 				jsonObject.put(Constant.RET, Constant.RET_GAME_OVER_FAILED);

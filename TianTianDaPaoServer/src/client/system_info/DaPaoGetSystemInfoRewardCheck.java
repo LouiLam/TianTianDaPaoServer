@@ -1,6 +1,5 @@
-package client.money_append;
+package client.system_info;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -39,7 +38,7 @@ public class DaPaoGetSystemInfoRewardCheck extends Check {
 				return jsonObject;
 			}
 			String id = (String) selectMap.get("id");
-			long uid = (long) selectMap.get("uid");
+//			long uid = (long) selectMap.get("uid");
 			int item_id=0;
 			try {
 				 item_id = Integer.parseInt(params.get("item_id"));
@@ -76,7 +75,7 @@ public class DaPaoGetSystemInfoRewardCheck extends Check {
 			}
 			boolean isReward=(boolean) selectMap.get("reward"+item_id);
 			
-			if (!isReward) // 没有领取一次
+			if (!isReward) // 没有领取
 			{
 				StringBuffer sql=new StringBuffer("update usergame,userjjc,user_system_reward set ");
 				sql.append("usergame.ucharge=usergame.ucharge+"+obj.ucharge);

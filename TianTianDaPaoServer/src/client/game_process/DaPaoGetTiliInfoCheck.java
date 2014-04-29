@@ -28,7 +28,7 @@ public class DaPaoGetTiliInfoCheck extends Check {
 		try {
 			DaPaoGameProcessDao loginDao = (DaPaoGameProcessDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("4"));
-			Map gameMap = loginDao.selectGetTiliByUtoken(params);
+			Map<Object,Object> gameMap = loginDao.selectGetTiliByUtoken(params);
 		
 			if (gameMap == null) {
 				jsonObject.put(Constant.RET, Constant.RET_GET_TILI_INFO_FAILED);

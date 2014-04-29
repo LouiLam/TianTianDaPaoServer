@@ -8,7 +8,7 @@ public interface DaPaoRechargeQueryDao   {
 	 * 使用物品根据用户token 返回用户是否合法
 	 * @return
 	 */
-	public Map selectDiamondByUtoken(Map params);
+	public Map<Object,Object> selectDiamondByUtoken(Map<? extends Object,? extends Object> params);
 	
 	
 }

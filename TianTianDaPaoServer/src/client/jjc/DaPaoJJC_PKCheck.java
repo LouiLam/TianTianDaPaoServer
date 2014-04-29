@@ -31,7 +31,7 @@ public class DaPaoJJC_PKCheck extends Check {
 		try {
 			DaPaoJJCDao loginDao = (DaPaoJJCDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("3"));
-			Map jjcMap = loginDao.selectJJCUserByUtoken(params);
+			Map<Object,Object> jjcMap = loginDao.selectJJCUserByUtoken(params);
 			if (jjcMap == null) {
 				jsonObject.put(Constant.RET, Constant.RET_JJC_PK_FAILED);
 				jsonObject.put(Constant.MSG,
@@ -65,7 +65,7 @@ public class DaPaoJJC_PKCheck extends Check {
 				return jsonObject;
 			}
 			//被动玩家数据
-			Map jjc_pkMap = loginDao.selectJJC_PKUser(params);
+			Map<Object,Object> jjc_pkMap = loginDao.selectJJC_PKUser(params);
 			if (jjc_pkMap == null) {
 				jsonObject.put(Constant.RET,
 						Constant.RET_JJC_PK_FAILED_UID_NOT_EXIST);

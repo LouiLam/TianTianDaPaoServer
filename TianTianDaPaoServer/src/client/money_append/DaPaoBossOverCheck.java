@@ -12,7 +12,6 @@ import client.login.Check;
 import config.ConfigFactory;
 import config.Constant;
 import database.DatabaseConnector;
-import event.EveryDayDoSomthing;
 
 public class DaPaoBossOverCheck extends Check {
 	public DaPaoBossOverCheck() {
@@ -29,7 +28,7 @@ public class DaPaoBossOverCheck extends Check {
 		try {
 			DaPaoBossOverDao loginDao = (DaPaoBossOverDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("15"));
-			Map selectMap = loginDao.selectBossOverByUtoken(params);
+			Map<Object,Object> selectMap = loginDao.selectBossOverByUtoken(params);
 
 			if (selectMap == null) {
 				jsonObject.put(Constant.RET, Constant.RET_BOSS_OVER_FAILED);

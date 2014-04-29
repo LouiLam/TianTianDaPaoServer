@@ -6,10 +6,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.jboss.netty.channel.Channel;
 import org.json.JSONObject;
 
+import server.ui.main.U;
 import client.login.Check;
 import client.login.DaPaoLoginDao;
-
-import server.ui.main.U;
 import config.ConfigFactory;
 import config.Constant;
 import database.DatabaseConnector;
@@ -33,7 +32,7 @@ public class DaPaoLoginRewardCheck extends Check {
 			DaPaoLoginDao loginDao = (DaPaoLoginDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("1"));
 			// 登录检测
-			Map userMap = loginDao.selectLoginRewardByUtoken(params);
+			Map<Object,Object> userMap = loginDao.selectLoginRewardByUtoken(params);
 			if (userMap == null) {
 				// 登录请求：帐号不存在或密码错误 返回json
 				jsonObject.put(Constant.RET, Constant.RET_LOGIN_REWARD_FAILED);

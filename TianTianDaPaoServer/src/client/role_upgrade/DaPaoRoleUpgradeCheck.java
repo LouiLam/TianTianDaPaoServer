@@ -28,7 +28,7 @@ public class DaPaoRoleUpgradeCheck extends Check {
 			DaPaoRoleUpgradeDao loginDao = (DaPaoRoleUpgradeDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("9"));
 			
-			Map selectMap = loginDao.selectRoleUpgradeByUtoken(params);
+			Map<Object,Object> selectMap = loginDao.selectRoleUpgradeByUtoken(params);
 
 			if (selectMap == null) {
 				jsonObject.put(Constant.RET, Constant.RET_ROLE_UPGRADE_FAILED);

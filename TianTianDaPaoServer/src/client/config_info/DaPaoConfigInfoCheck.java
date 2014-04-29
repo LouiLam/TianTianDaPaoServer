@@ -31,7 +31,7 @@ public class DaPaoConfigInfoCheck extends Check {
 			DaPaoConfigInfoDao dao = (DaPaoConfigInfoDao) sqlSession.getMapper(
 					ConfigFactory.getClazz("8"));
 			
-			Map selectMap = dao.selectUserByUToken(params);
+			Map<Object,Object> selectMap = dao.selectUserByUToken(params);
 			if (selectMap == null) {
 				jsonObject.put(Constant.RET, Constant.RET_SCORE_EXCHANGE_ITEMS_FAILED);
 				jsonObject

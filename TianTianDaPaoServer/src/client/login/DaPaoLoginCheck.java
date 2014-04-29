@@ -2,16 +2,14 @@ package client.login;
 
 import java.util.Map;
 
-
 import org.apache.ibatis.session.SqlSession;
 import org.jboss.netty.channel.Channel;
 import org.json.JSONObject;
 
-import client.login_reward.LoginRewardConfigMgr;
-
 import server.ui.main.U;
 import util.AES;
 import util.DateUtil;
+import client.login_reward.LoginRewardConfigMgr;
 import config.ConfigFactory;
 import config.Constant;
 import database.DatabaseConnector;
@@ -33,7 +31,7 @@ public class DaPaoLoginCheck extends Check {
 			DaPaoLoginDao loginDao = (DaPaoLoginDao) sqlSession.getMapper(
 					ConfigFactory.getClazz("1"));
 			// 登录检测
-			Map userMap = loginDao.selectUserByLogin(params);
+			Map<Object,Object> userMap = loginDao.selectUserByLogin(params);
 			if (userMap == null) {
 				//登录请求：帐号不存在或密码错误 返回json
 				jsonObject.put(Constant.RET, Constant.RET_ACCOUNT_INVALID);
@@ -73,7 +71,7 @@ public class DaPaoLoginCheck extends Check {
 					{
 						uconsecutive=1;
 					}
-					if(uconsecutive==7)//uconsecutive==7的时候 重置uconsecutive=1
+					if(uconsecutive==8)//uconsecutive==8的时候 重置uconsecutive=1
 					{
 						uconsecutive=1;
 					}

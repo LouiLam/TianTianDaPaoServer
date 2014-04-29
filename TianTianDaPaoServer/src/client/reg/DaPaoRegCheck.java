@@ -34,7 +34,7 @@ public class DaPaoRegCheck extends Check {
 					ConfigFactory.getClazz("2"));
 			// 注册检测
 			
-			Map userMap = regDao.selectUserByUid(params);
+			Map<Object,Object> userMap = regDao.selectUserByUid(params);
 			if(params.get("uphone")==null||params.get("id")==null||params.get("password")==null)//手机号必填写
 			{
 				jsonObject.put(Constant.RET, Constant.RET_REG_FAILED_MISS_ARG);
