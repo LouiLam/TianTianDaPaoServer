@@ -18,7 +18,7 @@ public class ServerConfig extends AbstractConfig{
 	}
 	public void configure()  throws DocumentException
 	{
-		super.getDocumentByFileAddress(new GlobalConfig().getConfigResourceAddress("serverConfig"));
+		super.getDocumentByFileAddress(GlobalConfig.getInstance().getConfigResourceAddress("serverConfig"));
 	}
 	private ServerConfig()  {
 		

@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="client.config_info.DaPaoConfigInfoDao">
-
-	 
-	 
-
 	<select id="selectUserByUToken" parameterType="Map"
 		resultType="Map">
 		select
-		userinfo.id,userinfo.uid,userprop.* from
-		userinfo,userprop where
+		userinfo.id,userinfo.uid,userprop.*,gogal_var.* from
+		userinfo,userprop,gogal_var where
 		userinfo.uid =userprop.uid and userinfo.utoken=
-		#{utoken}
+		#{utoken}  and gogal_var.uid=1
 	</select>
-
 
 </mapper>

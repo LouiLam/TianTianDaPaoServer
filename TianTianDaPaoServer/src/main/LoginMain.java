@@ -26,10 +26,11 @@ import event.EveryDayDoSomthing;
 public class LoginMain {
 
 
-	public static void ReloadConfig() throws DocumentException
+	public static void ReloadConfig(String code) throws DocumentException
 	{
+			GlobalConfig.getInstance().setCountryCode(code);
 			// 日志
-			PropertyConfigurator.configure(new GlobalConfig()
+			PropertyConfigurator.configure(GlobalConfig.getInstance()
 					.getConfigResourceAddress("logConfig"));
 			U.info("日志启动成功");
 			LoginRewardConfigMgr.getInstance().configure();
@@ -61,7 +62,7 @@ public class LoginMain {
 			DatabaseConnector.getInstance().configure();
 			U.info("数据库配置文件读取成功");
 		
-			ConfigFactory.init();
+			ConfigFactory.init(code);
 			U.info("积分抽奖配置文件读取成功");
 			EveryDayDoSomthing.configure();
 	}
@@ -77,7 +78,7 @@ public class LoginMain {
 		// 客户端创建搜索 http://127.0.0.1:4321/v1/user/search?create=你妈妈的
 		
 		try {
-			ReloadConfig();
+			ReloadConfig("cn");
 			new ServerStart().start();
 		} catch (DocumentException e1) {
 			e1.printStackTrace();

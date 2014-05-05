@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 積分抽獎配置信息 type:1表示角色 value 表示數據庫字段 type:2表示飛艇 value 表示數據庫字段 type:3表示寵物 
+	value 表示數據庫字段 type:4表示道具 value 表示數據庫字段 type:5表示金幣 value 表示金幣數量 type:6表示話費點 
+	value 表示話費點隨機最大數量 probability表示抽獎的千分比概率 scoreConsume表示每次抽獎的積分消耗 -->
+<scoreLotteryConfig scoreConsume="688">
+	<scoreLottery id="1" des="2號角色" probability="20" type="1"
+		value="prop1" />
+	<scoreLottery id="2" des="3號角色" probability="10" type="1"
+		value="prop2" />
+	<scoreLottery id="3" des="4號角色" probability="5" type="1"
+		value="prop3" />
+	<scoreLottery id="4" des="2號寵物" probability="30" type="3"
+		value="prop5" />
+	<scoreLottery id="5" des="3號寵物" probability="10" type="3"
+		value="prop6" />
+	<scoreLottery id="6" des="4號寵物" probability="10" type="3"
+		value="prop7" />
+	<scoreLottery id="7" des="超級水晶" probability="95" type="4"
+		value="prop12" />
+	<scoreLottery id="8" des="能量之星" probability="80" type="4"
+		value="prop13" />
+	<scoreLottery id="9" des="不屈意志" probability="80" type="4"
+		value="prop14" />
+	<scoreLottery id="10" des="水晶護甲" probability="80" type="4"
+		value="prop15" />
+	<scoreLottery id="11" des="永恒之力" probability="80" type="4"
+		value="prop16" />
+	<scoreLottery id="12" des="金幣" probability="490" type="5"
+		value="2000" />
+	<scoreLottery id="13" des="話費點" probability="10" type="6"
+		value="10" />
+</scoreLotteryConfig>

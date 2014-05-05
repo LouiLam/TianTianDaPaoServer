@@ -20,7 +20,7 @@ public class GetSystemInfoConfigMgr extends AbstractConfig {
 
 
 	public void configure() throws DocumentException {
-		super.getDocumentByFileAddress(new GlobalConfig()
+		super.getDocumentByFileAddress(GlobalConfig.getInstance()
 				.getConfigResourceAddress("getSystemInfoConfig"));
 		Element root = (Element) document.getRootElement();
 		getSystemInfoList.clear();

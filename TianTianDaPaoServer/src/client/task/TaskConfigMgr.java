@@ -44,7 +44,7 @@ public class TaskConfigMgr extends AbstractConfig {
 	public static int Size;
 
 	public void configure() throws DocumentException {
-		super.getDocumentByFileAddress(new GlobalConfig()
+		super.getDocumentByFileAddress(GlobalConfig.getInstance()
 				.getConfigResourceAddress("taskConfig"));
 		Element root = (Element) document.getRootElement();
 		taskList.clear();

@@ -21,7 +21,7 @@ public class ChargeExchangeConfig extends AbstractConfig{
 	}
 	public void configure()  throws DocumentException
 	{
-		super.getDocumentByFileAddress(new GlobalConfig().getConfigResourceAddress("chargeExchangeConfig"));
+		super.getDocumentByFileAddress(GlobalConfig.getInstance().getConfigResourceAddress("chargeExchangeConfig"));
 		ratio=Integer.parseInt(document.selectSingleNode("/chargeExchange/ratio").getText());
 	}
 	private ChargeExchangeConfig()  {

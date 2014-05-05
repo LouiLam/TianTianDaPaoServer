@@ -1,28 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- 注意修改此配置，数据库存储过程需要对应修改 -->
-<loginRewardConfig>
-	<loginReward day="1" name="第一天" reward_gold="500"
-		 reward_charge="0" reward_score="0" reward_diamond="0"
-		  prop12="0" prop13="0" prop14="0" prop15="0" prop16="0"
-		 ></loginReward>
-	<loginReward day="2" name="第二天" reward_gold="1000"
-		 reward_charge="0" reward_score="0" reward_diamond="0"
-		 prop12="0" prop13="0" prop14="0" prop15="0" prop16="0"
-		 ></loginReward>
-	<loginReward day="3" name="第三天" reward_gold="0"
-		 reward_charge="0" reward_score="0" reward_diamond="0"
-		 prop12="0" prop13="0" prop14="1" prop15="0" prop16="0"></loginReward>
-	<loginReward day="4" name="第四天" reward_gold="1450"
-		 reward_charge="0" reward_score="0" reward_diamond="0"
-		 prop12="0" prop13="0" prop14="0" prop15="0" prop16="0"></loginReward>
-	<loginReward day="5" name="第五天" reward_gold="0"
-		 reward_charge="0" reward_score="0" reward_diamond="0"
-		 prop12="0" prop13="1" prop14="0" prop15="0" prop16="0"></loginReward>
-	<loginReward day="6" name="第六天" reward_gold="0"
-		 reward_charge="0" reward_score="0" reward_diamond="40"
-		 prop12="0" prop13="0" prop14="0" prop15="0" prop16="0"></loginReward>
-	<loginReward day="7" name="第七天" reward_gold="0"
-		 reward_charge="0" reward_score="100" reward_diamond="0"
-		 prop12="0" prop13="0" prop14="0" prop15="0" prop16="0"></loginReward>
-</loginRewardConfig>
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!--  每日登录奖励配置信息，注：修改此配置，数据库存储过程需要对应修改 
+reward_gold：奖励金币
+reward_charge：奖励话费点
+reward_score：奖励积分
+reward_diamond：奖励钻石
+prop12：超级水晶数量
+prop13：能量之星数量
+prop14：不屈意志数量
+prop15：水晶护甲数量
+prop16：永恒之力数量
 
+
+  --> 
+<loginRewardConfig>
+  <loginReward id="1" name="第一天" reward_gold="500" reward_charge="0" reward_score="0" reward_diamond="0" prop12="0" prop13="0" prop14="0" prop15="0" prop16="0" /> 
+  <loginReward id="2" name="第二天" reward_gold="1000" reward_charge="0" reward_score="0" reward_diamond="0" prop12="0" prop13="0" prop14="0" prop15="0" prop16="0" /> 
+  <loginReward id="3" name="第三天" reward_gold="1500" reward_charge="0" reward_score="0" reward_diamond="0" prop12="0" prop13="0" prop14="0" prop15="0" prop16="0" /> 
+  <loginReward id="4" name="第四天" reward_gold="1450" reward_charge="0" reward_score="0" reward_diamond="0" prop12="0" prop13="0" prop14="1" prop15="0" prop16="0" /> 
+  <loginReward id="5" name="第五天" reward_gold="0" reward_charge="0" reward_score="0" reward_diamond="0" prop12="0" prop13="1" prop14="0" prop15="0" prop16="0" /> 
+  <loginReward id="6" name="第六天" reward_gold="0" reward_charge="0" reward_score="0" reward_diamond="40" prop12="0" prop13="0" prop14="0" prop15="0" prop16="0" /> 
+  <loginReward id="7" name="第七天" reward_gold="0" reward_charge="0" reward_score="100" reward_diamond="0" prop12="0" prop13="0" prop14="0" prop15="0" prop16="0" /> 
+</loginRewardConfig>

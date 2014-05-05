@@ -20,7 +20,7 @@ public class GetNoticeConfigMgr extends AbstractConfig{
 
 
 	public void configure() throws DocumentException {
-		super.getDocumentByFileAddress(new GlobalConfig()
+		super.getDocumentByFileAddress(GlobalConfig.getInstance()
 				.getConfigResourceAddress("getNoticeConfig"));
 		Element root = (Element) document.getRootElement();
 		getNoticeList.clear();

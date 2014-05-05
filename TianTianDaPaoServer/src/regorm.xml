@@ -20,7 +20,7 @@
     </select>
        <select id="insertUserInfoByMac" parameterType="Map" >
         insert into userinfo (id,password,urtime,utoken,mac)  
-        values ('Visitor',#{password}, #{urtime},#{utoken},#{mac})
+        values ('V',#{password}, #{urtime},#{utoken},#{mac})
     </select>
 	<select id="insertUserIntoUserGame" parameterType="Map">
 		insert into usergame (last_tili_send_time) values(#{last_tili_send_time})
@@ -54,7 +54,7 @@
     
     
       <select id="updateIDIntoUserInfo" parameterType="Map" >
-         UPDATE userinfo SET id = CONCAT('Visitor',LAST_INSERT_ID()) WHERE uid=LAST_INSERT_ID()
+         UPDATE userinfo SET id = CONCAT('V',LAST_INSERT_ID()) WHERE uid=LAST_INSERT_ID()
     </select>
     
     

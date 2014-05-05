@@ -22,7 +22,7 @@ public class BuyItemsConfigMgr extends AbstractConfig {
 
 
 	public void configure() throws DocumentException {
-		super.getDocumentByFileAddress(new GlobalConfig()
+		super.getDocumentByFileAddress(GlobalConfig.getInstance()
 				.getConfigResourceAddress("buyItemsConfig"));
 		Element root = (Element) document.getRootElement();
 		taskList.clear();

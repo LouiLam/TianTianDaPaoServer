@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--boos结束增加，话费点奖励范围-->
-<bossOverAppend>
-	<charge>10</charge>
-</bossOverAppend>
+
+<moneyAppendConfig>
+	<!--boos死亡增加，话费点奖励范围（10表示1~10随机） -->
+	<bossOverAppend>
+		<charge>10</charge>
+	</bossOverAppend>
+	<!-- 钻石与RMB兑换比例 1RMB等于多少钻石 -->
+	<diamindExchange>
+		<ratio>10</ratio>
+	</diamindExchange>
+</moneyAppendConfig>

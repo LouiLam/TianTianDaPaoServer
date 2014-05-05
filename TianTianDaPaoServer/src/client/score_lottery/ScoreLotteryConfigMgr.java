@@ -36,7 +36,7 @@ public class ScoreLotteryConfigMgr extends AbstractConfig {
 
 
 	public void configure() throws DocumentException {
-		super.getDocumentByFileAddress(new GlobalConfig()
+		super.getDocumentByFileAddress(GlobalConfig.getInstance()
 				.getConfigResourceAddress("scoreLotteryConfig"));
 		Element root = (Element) document.getRootElement();
 		scoreConsume=Integer.parseInt(root.attributeValue("scoreConsume"));

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--  value 数据库对应字段名 consume表示所需积分  des描述信息 -->
+<!--  
+积分兑换配置信息
+value 数据库对应字段名 
+consume表示所需积分  
+des描述信息
+ -->
 <scoreExchangeItemsConfig scoreConsume="688">
 	<scoreExchangeItems id="1" des="2号角色" consume="10000"
 		 value="prop1"></scoreExchangeItems>

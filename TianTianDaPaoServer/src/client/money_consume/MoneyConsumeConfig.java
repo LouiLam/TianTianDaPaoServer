@@ -21,7 +21,7 @@ public class MoneyConsumeConfig extends AbstractConfig{
 	}
 	public void configure()  throws DocumentException
 	{
-		super.getDocumentByFileAddress(new GlobalConfig().getConfigResourceAddress("moneyConsumeConfig"));
+		super.getDocumentByFileAddress(GlobalConfig.getInstance().getConfigResourceAddress("moneyConsumeConfig"));
 		diamond=Integer.parseInt(document.selectSingleNode("/rebirthConsume/diamond").getText());
 	}
 	private MoneyConsumeConfig()  {

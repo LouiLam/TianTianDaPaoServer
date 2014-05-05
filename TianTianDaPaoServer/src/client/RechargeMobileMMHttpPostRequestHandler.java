@@ -16,6 +16,7 @@ import start.AbstractHttpRequestHandler;
 import util.AES;
 import util.Dom4jTest;
 import client.money_append.DaPaoRechargeDao;
+import client.money_append.MoneyAppendConfig;
 import config.ConfigFactory;
 import config.Constant;
 import database.DatabaseConnector;
@@ -73,7 +74,7 @@ public class RechargeMobileMMHttpPostRequestHandler extends
 				HashMap<Object, Object> map = new HashMap<Object, Object>();
 				map.put("uid", uid);
 				Map<Object, Object> selectMap = loginDao.selectRechargeByUID(map);
-				selectMap.put("diamond", TotalPrice * 10 + "");
+				selectMap.put("diamond", TotalPrice * MoneyAppendConfig.getInstance().ratioDiamond + "");
 				// 更新钻石
 				loginDao.updateDiamondByUserGame(selectMap);
 

@@ -22,7 +22,7 @@ public class LoginRewardConfigMgr extends AbstractConfig {
 
 
 	public void configure() throws DocumentException {
-		super.getDocumentByFileAddress(new GlobalConfig()
+		super.getDocumentByFileAddress(GlobalConfig.getInstance()
 				.getConfigResourceAddress("loginRewardConfig"));
 		Element root = (Element) document.getRootElement();
 		loginRewardList.clear();
@@ -30,7 +30,7 @@ public class LoginRewardConfigMgr extends AbstractConfig {
 			LoginReward obj = new LoginReward();
 			HashMap<String, Object> map=new HashMap<>();
 			Element task = (Element) root.elements().get(i);
-			obj.day = Integer.parseInt(task.attributeValue("day"));
+			obj.id = Integer.parseInt(task.attributeValue("id"));
 		
 			obj.name = task.attributeValue("name");
 			obj.reward_gold = Integer.parseInt(task
@@ -52,7 +52,7 @@ public class LoginRewardConfigMgr extends AbstractConfig {
 					.attributeValue("prop15"));
 			obj.prop16 = Integer.parseInt(task
 					.attributeValue("prop16"));
-			map.put("day", obj.day);
+			map.put("day", obj.id);
 			map.put("name", obj.name);
 			map.put("reward_gold", obj.reward_gold);
 			map.put("reward_charge", obj.reward_charge);

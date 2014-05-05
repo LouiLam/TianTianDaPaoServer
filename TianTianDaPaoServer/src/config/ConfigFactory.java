@@ -22,10 +22,10 @@ public  class ConfigFactory {
 //	private static Properties timerProperties;
 	private static HashMap<Integer, String> retMsgMap;
 
-	public static void init() {
+	public static void init(String code) {
 		try {
 			FileInputStream fis0 = new FileInputStream(
-					new GlobalConfig()
+					GlobalConfig.getInstance()
 							.getConfigResourceAddress("KeywordsConfig"));
 			InputStreamReader isr = new InputStreamReader(fis0, "UTF-8");
 			BufferedReader br = new BufferedReader(isr);
@@ -50,21 +50,21 @@ public  class ConfigFactory {
 //			}
 			httpRequestHandlerProperties = new Properties();
 			FileInputStream fis = new FileInputStream(
-					new GlobalConfig()
+					GlobalConfig.getInstance()
 							.getConfigResourceAddress("httpRequestHandlerConfig"));
 			httpRequestHandlerProperties.load(fis);
 			fis.close();
 			U.info("http请求处理配置成功");
 			checkProperties = new Properties();
 			FileInputStream fis1 = new FileInputStream(
-					new GlobalConfig().getConfigResourceAddress("CheckConfig"));
+					GlobalConfig.getInstance().getConfigResourceAddress("CheckConfig"));
 			checkProperties.load(fis1);
 			fis1.close();
 			U.info("check配置成功");
 
 			dbDaoConfigProperties = new Properties();
 			FileInputStream fis2 = new FileInputStream(
-					new GlobalConfig().getConfigResourceAddress("dbDaoConfig"));
+					GlobalConfig.getInstance().getConfigResourceAddress("dbDaoConfig"));
 			dbDaoConfigProperties.load(fis2);
 			fis2.close();
 			U.info("dbDao配置成功");
@@ -74,10 +74,9 @@ public  class ConfigFactory {
 //			timerProperties.load(fis3);
 //			fis3.close();
 //			U.info("时间配置成功");
-
-			Document document = new GlobalConfig()
-					.getDocumentByFileAddress(new GlobalConfig()
-							.getConfigResourceAddress("retMsgConfig"));
+			Document document = GlobalConfig.getInstance()
+				.getDocumentByFileAddress(GlobalConfig.getInstance()
+						.getConfigResourceAddress("retMsgConfig"));
 			retMsgMap = new HashMap<Integer, String>();
 			Element root = (Element) document.getRootElement();
 			for (int i = 0; i < root.elements().size(); i++) {

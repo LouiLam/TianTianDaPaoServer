@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 重生消耗-->
+<!-- 重生消耗（20表示消耗20钻）-->
 <rebirthConsume>
 	<diamond>20</diamond>
 </rebirthConsume>

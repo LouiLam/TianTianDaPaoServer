@@ -27,7 +27,7 @@ public class ScoreExchangeItemsConfigMgr extends AbstractConfig {
 
 
 	public void configure() throws DocumentException {
-		super.getDocumentByFileAddress(new GlobalConfig()
+		super.getDocumentByFileAddress(GlobalConfig.getInstance()
 				.getConfigResourceAddress("scoreExchangeItemsConfig"));
 		Element root = (Element) document.getRootElement();
 		taskList.clear();

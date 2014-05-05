@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 積分兌換配置信息 value 數據庫對應字段名 consume表示所需積分 des描述信息 -->
+<scoreExchangeItemsConfig scoreConsume="688">
+	<scoreExchangeItems id="1" des="2號角色" consume="10000"
+		value="prop1" />
+	<scoreExchangeItems id="2" des="3號角色" consume="29999"
+		value="prop2" />
+	<scoreExchangeItems id="3" des="4號角色" consume="29999"
+		value="prop3" />
+	<scoreExchangeItems id="4" des="2號飛艇" consume="10000"
+		value="prop9" />
+	<scoreExchangeItems id="5" des="3號飛艇" consume="29999"
+		value="prop10" />
+	<scoreExchangeItems id="6" des="2號寵物" consume="7000"
+		value="prop5" />
+	<scoreExchangeItems id="7" des="3號寵物" consume="10000"
+		value="prop6" />
+	<scoreExchangeItems id="8" des="4號寵物" consume="29999"
+		value="prop7" />
+	<scoreExchangeItems id="9" des="能量之星" consume="50"
+		value="prop13" />
+	<scoreExchangeItems id="10" des="水晶護甲" consume="30"
+		value="prop15" />
+</scoreExchangeItemsConfig>

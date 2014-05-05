@@ -22,7 +22,7 @@ public class RoleUpgradeConfigMgr extends AbstractConfig {
 
 
 	public void configure() throws DocumentException {
-		super.getDocumentByFileAddress(new GlobalConfig()
+		super.getDocumentByFileAddress(GlobalConfig.getInstance()
 				.getConfigResourceAddress("roleUpgradeConfig"));
 		Element root = (Element) document.getRootElement();
 		taskObjMap.clear();

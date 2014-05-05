@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<globalConfig>
+	
+    <serverConfig>config/ServerConfig.xml</serverConfig>
+    
+    <chargeExchangeConfig>config/ChargeExchangeConfig.xml</chargeExchangeConfig>
+    
+    <moneyConsumeConfig>config/MoneyConsumeConfig.xml</moneyConsumeConfig>
+    
+    <moneyAppendConfig>config/MoneyAppendConfig.xml</moneyAppendConfig>
+    
+	<httpRequestHandlerConfig>config/HttpRequestHandlerConfig.properties</httpRequestHandlerConfig>
+	
+	<loginCheckConfig>config/LoginCheckConfig.properties</loginCheckConfig>
+	
+	<dbDaoConfig>config/DBDaoConfig.properties</dbDaoConfig>
+	
+	<logConfig>config/Log4j.properties</logConfig>
+	
+	<databaseConfig>DatabaseConfig.xml</databaseConfig>
+	
+	<taskConfig>config/TaskConfig_tw.xml</taskConfig>
+	
+	<scoreLotteryConfig>config/ScoreLotteryConfig_tw.xml</scoreLotteryConfig>
+	
+	<scoreExchangeItemsConfig>config/ScoreExchangeItemsConfig_tw.xml</scoreExchangeItemsConfig>
+	
+	<buyItemsConfig>config/BuyItemsConfig_tw.xml</buyItemsConfig>
+	
+	<roleUpgradeConfig>config/RoleUpgradeConfig.xml</roleUpgradeConfig>
+	
+	<loginRewardConfig>config/LoginRewardConfig.xml</loginRewardConfig>
+	
+	<retMsgConfig>config/RetMsgConfig_tw.xml</retMsgConfig>
+	
+	<retMsgConfigtw>config/RetMsgConfig_tw.xml</retMsgConfigtw>
+	
+	<timerConfig>config/TimerConfig.properties</timerConfig>
+	
+	<regConfig>config/RegCheckConfig.properties</regConfig>
+	
+	<searchConfig>config/SearchCheckConfig.properties</searchConfig>
+	
+	<JJCConfig>config/JJCCheckConfig.properties</JJCConfig>
+	
+	<CheckConfig>config/CheckConfig.Properties</CheckConfig>
+	
+	<KeywordsConfig>config/Keywords.txt</KeywordsConfig>
+	
+	<getNoticeConfig>config/GetNoticeConfig_tw.xml</getNoticeConfig>
+
+	<getSystemInfoConfig>config/GetSystemInfoConfig.xml</getSystemInfoConfig>
+</globalConfig>

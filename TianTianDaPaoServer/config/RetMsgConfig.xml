@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <retMsgConfig>
 	<retMsg ret="0" msg="登录成功" />
-	<retMsg ret="1" msg="帐号封停" />
+	<retMsg ret="1" msg="此帐号封停，如有疑问请致电客服" />
 	<retMsg ret="2" msg="登录请求失败：缺少参数MAC或参数值非法" />
 	<retMsg ret="3" msg="非法Token" />
 	<retMsg ret="4" msg="非法平台" />

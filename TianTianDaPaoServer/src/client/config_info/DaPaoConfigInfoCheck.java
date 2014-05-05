@@ -65,6 +65,7 @@ public class DaPaoConfigInfoCheck extends Check {
 				jsonObject.put("userItems", selectMap);
 				//话费点兑换比率
 				jsonObject.put("chargeExchangeConfig", ChargeExchangeConfig.getInstance().ratio);
+				jsonObject.put("scoreExchangeItemConfig", ChargeExchangeConfig.getInstance().ratio);
 				//复活
 				jsonObject.put("rebirthConfig", MoneyConsumeConfig.getInstance().diamond);
 				jsonObject.put(Constant.RET, Constant.RET_CONFIG_INFO_SUCCESS);

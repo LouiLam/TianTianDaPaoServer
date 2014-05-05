@@ -21,12 +21,12 @@
 	</select>
 	
 	<select id="selectJJCUserByRank" parameterType="Map" resultType="Map">
-		select userjjc.* ,userinfo.id from userinfo,userjjc where userinfo.uid
-		= userjjc.uid and (userjjc.rank BETWEEN 1 and 50 or in(#{one},#{two},#{three},#{four})) ) order by userjjc.rank
+		select userjjc.* ,userinfo.id,usergame.cur_role from userinfo,userjjc,usergame where userinfo.uid
+		= userjjc.uid and userinfo.uid= usergame.uid and (userjjc.rank BETWEEN 1 and 50 or in(#{one},#{two},#{three},#{four})) ) order by userjjc.rank
 	</select>
 	<select id="selectJJCUserByWorldRank" parameterType="Map" resultType="Map">
-		select userjjc.* ,userinfo.id from userinfo,userjjc where userinfo.uid
-		= userjjc.uid and (userjjc.rank BETWEEN 1 and 50 ) order by userjjc.rank
+		select userjjc.* ,userinfo.id,usergame.cur_role from userinfo,userjjc,usergame where userinfo.uid
+		= userjjc.uid and  userinfo.uid= usergame.uid and (userjjc.rank BETWEEN 1 and 50 ) order by userjjc.rank
 	</select>
 	<!--<select id="selectJJCUserByWorldRankNew" parameterType="Map" resultType="Map">
 		select userjjc.* ,userinfo.id  from userinfo,userjjc where userinfo.uid

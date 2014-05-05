@@ -70,7 +70,7 @@ public class DaPaoRechargeTelecomCheck extends Check {
 				return jsonObject;
 			}
 			
-			params.put("diamond", money*10+"");
+			params.put("diamond", money*MoneyAppendConfig.getInstance().ratioDiamond+"");
 			Map<Object,Object> selectMap = loginDao.selectRechargeByUID(params);
 			if(selectMap==null) //uid不存在
 			{

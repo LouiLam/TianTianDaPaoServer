@@ -8,7 +8,6 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.dom4j.DocumentException;
 
 import config.GlobalConfig;
 
@@ -28,12 +27,10 @@ public class DatabaseConnector {
 	{
 		Reader reader = null;
 		try {
-			reader = Resources.getResourceAsReader(new GlobalConfig().getConfigResourceAddress("databaseConfig"));
+			reader = Resources.getResourceAsReader(GlobalConfig.getInstance().getConfigResourceAddress("databaseConfig"));
 		} catch (IOException e) {
 			e.printStackTrace();
-		} catch (DocumentException e) {
-			e.printStackTrace();
-		}  
+		} 
         SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
         sqlSessionFactory = builder.build(reader);
         try {

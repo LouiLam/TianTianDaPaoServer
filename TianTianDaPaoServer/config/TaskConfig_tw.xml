@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 任務配置信息 des描述信息 target目標 reward_gold獎勵金幣 reward_charge獎勵話費點 reward_score獎勵積分 
+	reward_diamond獎勵鑽石 type1:金幣 type2:JJC挑戰次數 type3:每日任務需要達到的總成績 type4:需要達到遊戲場次 -->
+<taskConfig>
+	<task id="1" des="當前每日任務需要達到金幣數" target="1000" type="1"
+		reward_gold="500" reward_charge="0" reward_score="0" reward_diamond="0" />
+	<task id="2" des="當前每日任務需要達到競技場挑戰次數" target="15" type="2"
+		reward_gold="500" reward_charge="0" reward_score="0" reward_diamond="0" />
+	<task id="3" des="當前每日任務需要達到遊戲成績" type="3" target="4000"
+		reward_gold="500" reward_charge="0" reward_score="0" reward_diamond="0" />
+	<task id="4" des="當前每日任務需要達到遊戲場次" type="4" target="10"
+		reward_gold="500" reward_charge="0" reward_score="0" reward_diamond="0" />
+</taskConfig>

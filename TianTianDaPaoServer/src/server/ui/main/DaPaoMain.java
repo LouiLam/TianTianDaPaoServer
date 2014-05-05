@@ -54,6 +54,7 @@ public class DaPaoMain extends ApplicationWindow {
 	public static Label lblip,lblip_1;
 	private Label label;
 	private Label label_1;
+	private Button btntw;
 	/**
 	 * Create contents of the application window.
 	 * 
@@ -99,7 +100,7 @@ public class DaPaoMain extends ApplicationWindow {
 				widgetSelected(e);
 			}
 		});
-		setup.setBounds(426, 365, 86, 42);
+		setup.setBounds(389, 365, 86, 42);
 		setup.setText("启动服务器");
 		
 		text = new Text(container, SWT.BORDER | SWT.READ_ONLY | SWT.MULTI| SWT.V_SCROLL);
@@ -133,19 +134,19 @@ public class DaPaoMain extends ApplicationWindow {
 		button.setText("清空输出");
 		button.setBounds(88, 365, 86, 42);
 		
-		Button button_1 = new Button(container, SWT.TOGGLE);
-		button_1.addSelectionListener(new SelectionAdapter() {
+		Button btncn = new Button(container, SWT.TOGGLE);
+		btncn.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				try {
-					LoginMain.ReloadConfig();
+					LoginMain.ReloadConfig("cn");
 				} catch (DocumentException e1) {
 					e1.printStackTrace();
 				}
 			}
 		});
-		button_1.setText("重新载入配置文件");
-		button_1.setBounds(518, 365, 108, 42);
+		btncn.setText("重新载入配置cn");
+		btncn.setBounds(481, 365, 108, 42);
 		
 		 lblip = new Label(container, SWT.NONE);
 		lblip.setBounds(268, 365, 115, 12);
@@ -162,6 +163,20 @@ public class DaPaoMain extends ApplicationWindow {
 		label_1 = new Label(container, SWT.NONE);
 		label_1.setBounds(180, 395, 82, 12);
 		label_1.setText("累计访问人数：");
+		
+		btntw = new Button(container, SWT.TOGGLE);
+		btntw.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				try {
+					LoginMain.ReloadConfig("tw");
+				} catch (DocumentException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		btntw.setText("重新载入配置tw");
+		btntw.setBounds(595, 365, 108, 42);
 
 		return container;
 	}

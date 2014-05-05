@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
+积分抽奖配置信息
 	type:1表示角色  value 表示数据库字段
 	type:2表示飞艇  value 表示数据库字段
 	type:3表示宠物  value 表示数据库字段
 	type:4表示道具  value 表示数据库字段
 	type:5表示金币  value 表示金币数量
-	type:6表示金币  value 表示话费点随机最大数量
+	type:6表示话费点  value 表示话费点随机最大数量
 	probability表示抽奖的千分比概率
 	scoreConsume表示每次抽奖的积分消耗
  -->
