@@ -1,4 +1,4 @@
-package client.money_append;
+package client.recharge;
 
 import java.util.Map;
 
@@ -9,6 +9,7 @@ import org.json.JSONObject;
 import server.ui.main.U;
 import util.AES;
 import client.login.Check;
+import client.money_append.MoneyAppendConfig;
 import config.ConfigFactory;
 import config.Constant;
 import database.DatabaseConnector;

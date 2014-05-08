@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="client.money_append.DaPaoRechargeDao">
+<mapper namespace="client.recharge.DaPaoRechargeDao">
 
 	 
 	 
@@ -17,6 +17,13 @@
 
 	<select id="insertRMBrecord" parameterType="Map"
 		>
-		 insert into rmbrecord(id,value,time,channelID) VALUES (#{id},#{value},#{time},#{channelID})
+		 insert into rmbrecord(id,generate_time,channelID) VALUES (#{id},#{generate_time},#{channelID})
+		  </select>
+   <select id="selectOrder" parameterType="Map" resultType="Map" >
+       select  rmbrecord.uid,rmbrecord.generate_time from rmbrecord WHERE uid=LAST_INSERT_ID()
+    </select>
+    <select id="updateRMBrecord" parameterType="Map">
+	   update rmbrecord set state=1,finish_time=#{finish_time},value=#{value},channelID=#{channelID} where rmbrecord.uid=#{uid}
 	</select>
+   
 </mapper>

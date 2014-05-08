@@ -99,7 +99,7 @@ public class Constant {
 	public static final int RET_RECHARGE_CALLBACK_FAILED_INVALID_ARG = 87;//游戏充值回调失败：参数值格式不正确
 	public static final int RET_RECHARGE_CALLBACK_FAILED_MD5_ERROR= 88;//游戏充值回调失败：加密MD5值和原始匹配不合法
 	public static final int RET_RECHARGE_CALLBACK_SUCCESS= 89;//游戏充值回调成功
-	public static final int RET_RECHARGE_QUERY_FAILED= 90;//充值查询请求失败：utoken非法或不存在
+	public static final int RET_RECHARGE_QUERY_FAILED= 90;//充值查询请求失败：uid或orderID非法或不存在
 	public static final int RET_RECHARGE_QUERY_SUCCESS= 91;//充值查询请求成功!
 	public static final int RET_GET_SYSTEM_INFO_REWARD_SUCCESS= 92;//获取系统信息奖励请求成功
 	public static final int RET_GET_SYSTEM_INFO_REWARD_FAILED= 93;//获取系统信息奖励请求失败：utoken非法或不存在
@@ -108,6 +108,9 @@ public class Constant {
 	public static final int RET_RECHARGE_CALLBACK_FAILED_UID_NOT_EXIST= 96;//游戏充值回调失败：UID不存在
 	public static final int RET_GET_SYSTEM_INFO_SUCCESS= 97;//获取系统信息请求成功
 	public static final int RET_GET_SYSTEM_INFO_FAILED= 98;//获取系统信息请求失败：utoken非法或不存在
+	public static final int RET_RECHARGE_GENERATE_ORDERS_FAILED_ARG_VALUE_INVALID= 99;//生成订单请求失败：参数值非法
+	public static final int RET_RECHARGE_GENERATE_ORDERS_FAILED_INVALID_ARG= 100;//生成订单请求失败：参数不存在或长度为0
+	public static final int RET_RECHARGE_GENERATE_ORDERS_SUCCESS= 101;//生成订单请求成功
 	public final static String RET = "ret";
 	public final static String MSG = "msg";
 	

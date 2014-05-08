@@ -90,7 +90,7 @@
   <resMsg ret="87" msg="遊戲充值回調失敗:參數值格式不正確" />
   <resMsg ret="88" msg="遊戲充值回調失敗:加密MD5值和原始匹配不合法" />
   <resMsg ret="89" msg="遊戲充值回調成功" />
-  <resMsg ret="90" msg="充值查詢請求失敗:utoken非法或不存在" />
+  <resMsg ret="90" msg="充值查詢請求失敗:uid或orderID非法或不存在" />
   <resMsg ret="91" msg="充值查詢請求成功" />
   <resMsg ret="92" msg="獲取系統信息獎勵請求成功" />
   <resMsg ret="93" msg="獲取系統信息獎勵請求失敗:utoken非法或不存在" />
@@ -99,4 +99,7 @@
   <resMsg ret="96" msg="遊戲充值回調失敗:UID不存在" />
   <resMsg ret="97" msg="獲取系統信息請求成功" />
   <resMsg ret="98" msg="獲取系統信息請求失敗:utoken非法或不存在" />
+  <resMsg ret="99" msg="生成訂單請求失敗：參數值非法" />
+  <resMsg ret="100" msg="生成訂單請求失敗：參數不存在或長度為0" />
+  <resMsg ret="101" msg="生成訂單請求成功" />
 </retMsgConfig>

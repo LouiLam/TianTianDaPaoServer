@@ -16,4 +16,6 @@ public interface DaPaoBossOverDao   {
 	 */
 	public void updateChargeByUserGame(Map<? extends Object,? extends Object> params);
 	
+	
+	public  Map<Object,Object> selectBossOverByUID(Map<? extends Object,? extends Object> params);
 }

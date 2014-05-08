@@ -27,14 +27,14 @@ public class DaPaoRechargeQueryCheck extends Check {
 		try {
 			DaPaoRechargeQueryDao loginDao = (DaPaoRechargeQueryDao) sqlSession.getMapper(ConfigFactory
 					.getClazz("17"));
-			Map<Object,Object> selectMap = loginDao.selectDiamondByUtoken(params);
+			Map<Object,Object> selectMap = loginDao.selectOrderByUID(params);
 
 			if (selectMap == null) {
 				jsonObject.put(Constant.RET, Constant.RET_RECHARGE_QUERY_FAILED);
 				jsonObject
 						.put(Constant.MSG, ConfigFactory
 								.getRetMsg(Constant.RET_RECHARGE_QUERY_FAILED));
-				U.infoQueue("充值查询请求失败：utoken非法或不存在 "
+				U.infoQueue("充值查询请求失败：uid或orderID非法或不存在 "
 						+ channel.getRemoteAddress().toString());
 				return jsonObject;
 			}

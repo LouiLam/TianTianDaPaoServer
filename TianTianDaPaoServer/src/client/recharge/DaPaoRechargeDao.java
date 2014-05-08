@@ -1,4 +1,4 @@
-package client.money_append;
+package client.recharge;
 
 import java.util.Map;
 
@@ -18,9 +18,21 @@ public interface DaPaoRechargeDao   {
 	
 	
 	/**
-	 * 插入RMB充值记录
+	 * 生成订单号
 	 * @return
 	 */
 	public void insertRMBrecord(Map<? extends Object, ? extends Object> params);
 	
+	/**
+	 * 更新订单状态
+	 * @param params
+	 */
+	public void updateRMBrecord(Map<? extends Object, ? extends Object> params);
+	
+	/**
+	 * 查询订单号和生成时间
+	 * @param params
+	 * @return
+	 */
+	public Map<Object, Object> selectOrder(Map<? extends Object, ? extends Object> params);
 }

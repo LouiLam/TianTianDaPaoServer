@@ -15,8 +15,8 @@ import server.ui.main.U;
 import start.AbstractHttpRequestHandler;
 import util.AES;
 import util.Dom4jTest;
-import client.money_append.DaPaoRechargeDao;
 import client.money_append.MoneyAppendConfig;
+import client.recharge.DaPaoRechargeDao;
 import config.ConfigFactory;
 import config.Constant;
 import database.DatabaseConnector;
@@ -53,7 +53,10 @@ public class RechargeMobileMMHttpPostRequestHandler extends
 			String PayCode = root.element("PayCode").getText();
 			String appKey = "F5A12F2B2F319F93";
 			String TransactionID = root.element("TransactionID").getText();
-			String uid = root.element("ExData").getText();
+			String uidAndOrderNum[] = root.element("ExData").getText().split("#");
+			String uid=uidAndOrderNum[0];
+			String orderNum=uidAndOrderNum[1];
+			System.out.println("uid:"+uid+"orderNum:"+orderNum);
 			// 单位分/100=元
 			int TotalPrice = Integer.parseInt(root.element("TotalPrice")
 					.getText()) / 100;
@@ -74,15 +77,26 @@ public class RechargeMobileMMHttpPostRequestHandler extends
 				HashMap<Object, Object> map = new HashMap<Object, Object>();
 				map.put("uid", uid);
 				Map<Object, Object> selectMap = loginDao.selectRechargeByUID(map);
+				if(selectMap==null)
+				{
+					result="移动MM回调充值请求发生错误，缺少参数";
+					sendResponse(result, channel);
+					return ;
+				}
 				selectMap.put("diamond", TotalPrice * MoneyAppendConfig.getInstance().ratioDiamond + "");
 				// 更新钻石
 				loginDao.updateDiamondByUserGame(selectMap);
 
 				// 充值成功,写入记录rmbrecord数据库
 				selectMap.put("value", TotalPrice);
-				selectMap.put("time", System.currentTimeMillis() / 1000);
+				selectMap.put("finish_time", System.currentTimeMillis() / 1000);
 				selectMap.put("channelID", 1);
-				loginDao.insertRMBrecord(selectMap);
+				selectMap.put("uid", orderNum);
+				loginDao.updateRMBrecord(selectMap);
+				sqlSession.commit();
+				sqlSession.close();
+				U.infoQueue("移动MM回调充值请求成功： "  + "ip地址："
+						+ channel.getRemoteAddress().toString());
 			} else {
 				U.infoQueue("移动MM回调充值请求MD5发生不匹配： " + "我方：" + We + "---对方："
 						+ otherSide + "ip地址："
