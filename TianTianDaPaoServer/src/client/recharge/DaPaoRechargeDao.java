@@ -5,10 +5,16 @@ import java.util.Map;
 
 public interface DaPaoRechargeDao   {
 	/**
-	 * 根据用户token 返回用户是否合法
+	 * 根据用户uid 返回用户是否合法
 	 * @return
 	 */
 	public Map<Object, Object> selectRechargeByUID(Map<? extends Object, ? extends Object> params);
+	
+	/**
+	 * 根据用户token 返回用户是否合法
+	 * @return
+	 */
+	public Map<Object, Object> selectRechargeByToken(Map<? extends Object, ? extends Object> params);
 	
 	/**
 	 * 更新钻石

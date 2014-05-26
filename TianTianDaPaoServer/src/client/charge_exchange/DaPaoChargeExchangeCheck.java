@@ -120,9 +120,9 @@ public class DaPaoChargeExchangeCheck extends Check {
 			} else {
 				jsonObject.put("result", result);
 				jsonObject.put(Constant.RET,
-						Constant.RET_CHARGE_EXCHANGE_SUCCESS);
+						Constant.RET_CHARGE_EXCHANGE_FAILED_PLATFORM_ERROR);
 				jsonObject.put(Constant.MSG, ConfigFactory
-						.getRetMsg(Constant.RET_CHARGE_EXCHANGE_SUCCESS));
+						.getRetMsg(Constant.RET_CHARGE_EXCHANGE_FAILED_PLATFORM_ERROR));
 				U.infoQueue("id:" + selectMap.get("id") + "兑换话费点请求失败，第三方平台错误码"
 						+ result + channel.getRemoteAddress().toString());
 			}

@@ -24,7 +24,8 @@ des描述信息
 		 value="prop7"></scoreExchangeItems>
 	<scoreExchangeItems id="9" des="能量之星" consume="50"
 		 value="prop13"></scoreExchangeItems>
-	<scoreExchangeItems id="10" des="水晶护甲" consume="30"
-		 value="prop15"></scoreExchangeItems>
+	<!--<scoreExchangeItems id="10" des="水晶护甲" consume="30"
+		 value="prop15"></scoreExchangeItems>  -->
+	
 
 </scoreExchangeItemsConfig>

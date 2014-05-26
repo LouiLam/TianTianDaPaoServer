@@ -27,7 +27,7 @@
   <resMsg ret="24" msg="競技場非法請求:今天挑戰次數已到上限" />
   <resMsg ret="25" msg="遊戲正常結束請求失敗:utoken非法或不存在" />
   <resMsg ret="26" msg="遊戲正常結束請求成功" />
-  <resMsg ret="27" msg="遊戲正常結束請求失敗:缺少參數record或gold" />
+  <resMsg ret="27" msg="遊戲正常結束請求失敗:缺少參數record或gold或item0_count或item1_count" />
   <resMsg ret="28" msg="遊戲正常開始請求失敗:utoken非法或不存在" />
   <resMsg ret="29" msg="遊戲正常開始請求失敗:體力不夠" />
   <resMsg ret="30" msg="遊戲正常開始請求成功" />
@@ -67,7 +67,7 @@
   <resMsg ret="64" msg="兌換話費點請求失敗,第三方平台錯誤碼" />
   <resMsg ret="65" msg="兌換話費點請求失敗,手機號格式錯誤" />
   <resMsg ret="66" msg="遊戲正常結束請求失敗:參數值非法" />
-  <resMsg ret="67" msg="競技場挑戰請求失敗:gold參數值非法" />
+  <resMsg ret="67" msg="競技場挑戰請求失敗：缺少參數item0_count或item1_count或gold參數值非法" />
   <resMsg ret="68" msg="任務進度請求失敗:utoken非法或不存在" />
   <resMsg ret="69" msg="任務進度請求成功" />
   <resMsg ret="70" msg="競技場非法請求:被PK用戶排名比發起用戶排名低,不允許挑戰" />
@@ -102,4 +102,10 @@
   <resMsg ret="99" msg="生成訂單請求失敗：參數值非法" />
   <resMsg ret="100" msg="生成訂單請求失敗：參數不存在或長度為0" />
   <resMsg ret="101" msg="生成訂單請求成功" />
+  <resMsg ret="102" msg="Boss結束請求話費點失敗：此玩家沒有生成話費點" />
+  	<resMsg ret="103" msg="遊戲測試充值回調失敗：缺少參數" />
+	<resMsg ret="104" msg="遊戲測試充值回調失敗：參數值範圍不正確" />
+	<resMsg ret="105" msg="遊戲測試充值回調成功" />
+	<resMsg ret="106" msg="遊戲測試充值回調失敗：玩家鑽石超過最大值" />
+	<resMsg ret="107" msg="遊戲測試充值回調失敗：此接口已禁用" />
 </retMsgConfig>

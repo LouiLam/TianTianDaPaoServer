@@ -11,6 +11,14 @@
 		userinfo where
 		userinfo.uid=#{uid} 
 	</select>
+		<select id="selectRechargeByToken" parameterType="Map"
+		resultType="Map">
+		select usergame.diamond,userinfo.id,userinfo.uid from
+		userinfo,usergame where
+		userinfo.utoken=
+		#{utoken} and userinfo.uid =usergame.uid
+	</select>
+	
 	<select id="updateDiamondByUserGame" parameterType="Map">
 	   update usergame set diamond=diamond+#{diamond} where usergame.uid=#{uid}
 	</select>

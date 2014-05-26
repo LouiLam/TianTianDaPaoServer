@@ -43,10 +43,12 @@ public class DaPaoRechargeTelecomCheck extends Check {
 			String sign=null;
 			long uid = 0;
 			int money = 0;
+			long order=0;
 			try {
 				 sign = (String) params.get("sign");
 				 uid = Long.parseLong(params.get("uid"));
 				 money=Integer.parseInt(params.get("money"));
+				 order = Long.parseLong(params.get("order"));
 			} catch (Exception e) {
 				jsonObject.put(Constant.RET, Constant.RET_RECHARGE_CALLBACK_FAILED_INVALID_ARG);
 				jsonObject
@@ -59,7 +61,7 @@ public class DaPaoRechargeTelecomCheck extends Check {
 			System.out.println("uid:"+ params.get("uid"));
 			System.out.println("money:"+ params.get("money"));
 			
-			String md5Result=AES.getMD5Str(uid+""+money+"zjd.com");
+			String md5Result=AES.getMD5Str(uid+""+money+order+"zjd.com");
 			if(!md5Result.equals(sign))
 			{
 				jsonObject.put(Constant.RET, Constant.RET_RECHARGE_CALLBACK_FAILED_MD5_ERROR);
@@ -88,10 +90,10 @@ public class DaPaoRechargeTelecomCheck extends Check {
 		     
 		   //充值成功,写入记录rmbrecord数据库
 			selectMap.put("value", money);
-			selectMap.put("time", System.currentTimeMillis()/1000);
+			selectMap.put("finish_time", System.currentTimeMillis()/1000);
 			selectMap.put("channelID", 0);
-			loginDao.insertRMBrecord(selectMap);
-		     
+			selectMap.put("uid", order);
+			loginDao.updateRMBrecord(selectMap);
 		     sqlSession.commit();
 			U.infoQueue("id:" + selectMap.get("id") + "游戏充值回调成功" + "ip:"
 						+ channel.getRemoteAddress().toString());

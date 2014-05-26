@@ -43,11 +43,11 @@ public class DaPaoGameOverCheck extends Check {
 			}
 			
 			String id = (String) gameMap.get("id");
-			if (params.get("record") == null||params.get("gold")==null) {
+			if (params.get("record") == null||params.get("gold")==null||params.get("item0_count")==null||params.get("item1_count")==null) {
 				jsonObject.put(Constant.RET, Constant.RET_GAME_OVER_FAILED_MISS_ARG);
 				jsonObject.put(Constant.MSG,
 						ConfigFactory.getRetMsg(Constant.RET_GAME_OVER_FAILED_MISS_ARG));
-				U.infoQueue(id+"游戏正常结束请求失败：缺少参数record或gold"
+				U.infoQueue(id+"游戏正常结束请求失败：缺少参数record或gold或item0_count或item1_count"
 						+ channel.getRemoteAddress().toString());
 				return jsonObject;
 			}
@@ -64,7 +64,6 @@ public class DaPaoGameOverCheck extends Check {
 				return jsonObject;
 			}
 
-		
 			
 			//正常游戏结束处理
 			long normal_max_record=(long) gameMap.get("normal_max_record");
@@ -75,7 +74,7 @@ public class DaPaoGameOverCheck extends Check {
 				loginDao.updateRecordByUserGame(params);
 				
 			}
-			loginDao.updateGoldByUserGame(params);
+			loginDao.updateGoldByUserGameAndDiamond(params);
 			loginDao.updateUserTaskRunning(params);
 			sqlSession.commit();
 			//处理任务相关

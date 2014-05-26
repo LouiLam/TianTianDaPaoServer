@@ -43,7 +43,19 @@ public class DaPaoBossOverCheck extends Check {
 			}
 			String id = (String) selectMap.get("id");
 			
-			int range = DaPaoBossOverChargeGenerateCheck.rangeMap.get(selectMap
+			int range =0;
+			if( DaPaoBossOverChargeGenerateCheck.rangeMap.get(selectMap
+					.get("uid"))==null)
+			{
+				U.infoQueue("id:" + id + "Boss结束请求话费点失败---此玩家没有生成话费点"+ "ip:"
+						+ channel.getRemoteAddress().toString());
+				jsonObject.put("userInfo", selectMap);
+				jsonObject.put(Constant.RET, Constant.RET_BOSS_OVER_FAILED_NO_RANGE);
+				jsonObject.put(Constant.MSG,
+						ConfigFactory.getRetMsg(Constant.RET_BOSS_OVER_FAILED_NO_RANGE));
+				return jsonObject;
+			}
+			range=DaPaoBossOverChargeGenerateCheck.rangeMap.get(selectMap
 					.get("uid"));
 			long BOSSChargeRemain = (long) selectMap.get("boss_charge_remain");
 			BOSSChargeRemain -= range;

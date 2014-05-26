@@ -87,7 +87,7 @@ public interface DaPaoJJCDao   {
 	 * 更新用户金币
 	 * @param params
 	 */
-	public void updateGoldByUserGame(Map<? extends Object,? extends Object> params);
+	public void updateGoldAndDiamondByUserGame(Map<? extends Object,? extends Object> params);
 	/**
 	 * 任务执行中更新
 	 * @param params

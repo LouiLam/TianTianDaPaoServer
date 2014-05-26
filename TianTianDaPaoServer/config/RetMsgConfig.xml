@@ -27,7 +27,7 @@
 	<resMsg ret="24" msg="竞技场非法请求：今天挑战次数已到上限" />
 	<resMsg ret="25" msg="游戏正常结束请求失败：utoken非法或不存在" />
 	<resMsg ret="26" msg="游戏正常结束请求成功" />
-	<resMsg ret="27" msg="游戏正常结束请求失败：缺少参数record或gold" />
+	<resMsg ret="27" msg="游戏正常结束请求失败：缺少参数record或gold或item0_count或item1_count" />
 	<resMsg ret="28" msg="游戏正常开始请求失败：utoken非法或不存在" />
 	<resMsg ret="29" msg="游戏正常开始请求失败：体力不够" />
 	<resMsg ret="30" msg="游戏正常开始请求成功" />
@@ -67,7 +67,7 @@
 	<resMsg ret="64" msg="兑换话费点请求失败，第三方平台错误码" />
 	<resMsg ret="65" msg="兑换话费点请求失败，手机号格式错误" />
 	<resMsg ret="66" msg="游戏正常结束请求失败：参数值非法" />
-	<resMsg ret="67" msg="竞技场挑战请求失败：gold参数值非法" />
+	<resMsg ret="67" msg="竞技场挑战请求失败：缺少参数item0_count或item1_count或gold参数值非法" />
 	<resMsg ret="68" msg="任务进度请求失败：utoken非法或不存在" />
 	<resMsg ret="69" msg="任务进度请求成功" />
 	<resMsg ret="70" msg="竞技场非法请求：被PK用户排名比发起用户排名低，不允许挑战" />
@@ -102,4 +102,10 @@
 	<resMsg ret="99" msg="生成订单请求失败：参数值非法" />
 	<resMsg ret="100" msg="生成订单请求失败：参数不存在或长度为0" />
 	<resMsg ret="101" msg="生成订单请求成功" />
+	<resMsg ret="102" msg="Boss结束请求话费点失败：此玩家没有生成话费点" />
+	<resMsg ret="103" msg="游戏测试充值回调失败：缺少参数" />
+	<resMsg ret="104" msg="游戏测试充值回调失败：参数值范围不正确" />
+	<resMsg ret="105" msg="游戏测试充值回调成功" />
+	<resMsg ret="106" msg="游戏测试充值回调失败：玩家钻石超过最大值" />
+	<resMsg ret="107" msg="游戏测试充值回调失败：此接口已禁用" />
 </retMsgConfig>

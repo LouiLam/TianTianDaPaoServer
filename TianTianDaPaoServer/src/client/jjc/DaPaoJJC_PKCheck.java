@@ -40,7 +40,15 @@ public class DaPaoJJC_PKCheck extends Check {
 						+ channel.getRemoteAddress().toString());
 				return jsonObject;
 			}
-		
+			if(params.get("item0_count")==null||params.get("item1_count")==null)
+			{
+				jsonObject.put(Constant.RET, Constant.RET_JJC_PK_FAILED_ARG_INVALID);
+				jsonObject.put(Constant.MSG,
+						ConfigFactory.getRetMsg(Constant.RET_JJC_PK_FAILED_ARG_INVALID));
+				U.infoQueue("竞技场挑战请求失败：缺少参数item0_count或item1_count"
+						+ channel.getRemoteAddress().toString());
+				return jsonObject;
+			}
 			String id=(String)jjcMap.get("id");
 			try {
 				 Long.parseLong(params.get("gold"));
@@ -134,7 +142,7 @@ public class DaPaoJJC_PKCheck extends Check {
 						+ channel.getRemoteAddress().toString());
 			}
 			loginDao.updateUserTaskRunning(params);
-			loginDao.updateGoldByUserGame(params);
+			loginDao.updateGoldAndDiamondByUserGame(params);
 			sqlSession.commit();
 			
 			//处理任务相关

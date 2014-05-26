@@ -18,7 +18,7 @@
 	</select>
 <select id="selectBossOverByUID" parameterType="Map"
 		resultType="Map">
-			select usergame.ucharge ,usergame.id from usergame where usergame.uid=#{uid}
+			select usergame.ucharge ,usergame.tili from usergame where usergame.uid=#{uid}
 	</select>
 
 </mapper>

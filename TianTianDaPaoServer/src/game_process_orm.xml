@@ -42,8 +42,8 @@
 		update usergame set normal_max_record=#{record},ugold=ugold+#{gold} where
 		usergame.uid =#{uid}
 	</select>
-	<select id="updateGoldByUserGame" parameterType="Map">
-		update usergame set ugold=ugold+#{gold} where
+	<select id="updateGoldByUserGameAndDiamond" parameterType="Map">
+		update usergame set ugold=ugold+#{gold},diamond=diamond-(5*#{item0_count}+20*#{item1_count}) where
 		usergame.uid =#{uid}
 	</select>
 	

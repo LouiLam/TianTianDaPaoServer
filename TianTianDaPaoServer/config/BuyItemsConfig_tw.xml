@@ -19,7 +19,7 @@ consume_ucharge消耗话费点
   <buyItems id="7" des="2號飛艇" consume_ugold="80000" consume_ucharge="0" consume_score="0" consume_diamond="0" value="prop9" /> 
   <buyItems id="8" des="3號飛艇" consume_ugold="0" consume_ucharge="0" consume_score="0" consume_diamond="680" value="prop10" /> 
   <buyItems id="9" des="4號飛艇" consume_ugold="0" consume_ucharge="0" consume_score="0" consume_diamond="680" value="prop11" /> 
-  <buyItems id="10" des="超級水晶" consume_ugold="200" consume_ucharge="0" consume_score="0" consume_diamond="0" value="prop12" /> 
+  <buyItems id="10" des="超級水晶" consume_ugold="400" consume_ucharge="0" consume_score="0" consume_diamond="0" value="prop12" /> 
   <buyItems id="11" des="能量之星" consume_ugold="1200" consume_ucharge="0" consume_score="0" consume_diamond="0" value="prop13" /> 
   <buyItems id="12" des="不屈意志" consume_ugold="500" consume_ucharge="0" consume_score="0" consume_diamond="0" value="prop14" /> 
   <buyItems id="13" des="水晶護甲" consume_ugold="150" consume_ucharge="0" consume_score="0" consume_diamond="0" value="prop15" /> 

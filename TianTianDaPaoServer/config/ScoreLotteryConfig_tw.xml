@@ -15,15 +15,15 @@
 		value="prop6" />
 	<scoreLottery id="6" des="4號寵物" probability="10" type="3"
 		value="prop7" />
-	<scoreLottery id="7" des="超級水晶" probability="95" type="4"
+	<scoreLottery id="7" des="超級水晶" probability="115" type="4"
 		value="prop12" />
-	<scoreLottery id="8" des="能量之星" probability="80" type="4"
+	<scoreLottery id="8" des="能量之星" probability="100" type="4"
 		value="prop13" />
-	<scoreLottery id="9" des="不屈意志" probability="80" type="4"
+	<scoreLottery id="9" des="不屈意志" probability="100" type="4"
 		value="prop14" />
-	<scoreLottery id="10" des="水晶護甲" probability="80" type="4"
+	<scoreLottery id="10" des="水晶護甲" probability="0" type="4"
 		value="prop15" />
-	<scoreLottery id="11" des="永恒之力" probability="80" type="4"
+	<scoreLottery id="11" des="永恒之力" probability="100" type="4"
 		value="prop16" />
 	<scoreLottery id="12" des="金幣" probability="490" type="5"
 		value="2000" />

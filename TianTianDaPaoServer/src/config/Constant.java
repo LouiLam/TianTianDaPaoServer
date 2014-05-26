@@ -76,7 +76,7 @@ public class Constant {
 	public static final int RET_CHARGE_EXCHANGE_FAILED_PLATFORM_ERROR = 64;//兑换话费点请求失败，第三方平台错误码
 	public static final int RET_CHARGE_EXCHANGE_FAILED_PHONE_ERROR = 65;//兑换话费点请求失败，手机号格式错误
 	public static final int RET_GAME_OVER_FAILED_ARG_INVALID = 66;//游戏正常结束请求失败：参数值非法
-	public static final int RET_JJC_PK_FAILED_ARG_INVALID = 67;//竞技场挑战请求失败：gold参数值非法
+	public static final int RET_JJC_PK_FAILED_ARG_INVALID = 67;//竞技场挑战请求失败：缺少参数item0_count或item1_count或gold参数值非法
 	public static final int RET_TASK_RUNNING_FAILED = 68;//任务进度请求失败：utoken非法或不存在
 	public static final int RET_TASK_RUNNING_SUCCESS = 69;//任务进度请求成功
 	public static final int RET_JJC_PK_FAILED_RANK_LOWER =70;//竞技场非法请求：被PK用户排名比发起用户排名低，不允许挑战
@@ -111,6 +111,12 @@ public class Constant {
 	public static final int RET_RECHARGE_GENERATE_ORDERS_FAILED_ARG_VALUE_INVALID= 99;//生成订单请求失败：参数值非法
 	public static final int RET_RECHARGE_GENERATE_ORDERS_FAILED_INVALID_ARG= 100;//生成订单请求失败：参数不存在或长度为0
 	public static final int RET_RECHARGE_GENERATE_ORDERS_SUCCESS= 101;//生成订单请求成功
+	public static final int RET_BOSS_OVER_FAILED_NO_RANGE =102;//Boss结束请求话费点失败---此玩家没有生成话费点
+	public static final int RET_RECHARGE_TEST_FAILED_MISS_ARG = 103;//游戏测试充值回调失败：缺少参数
+	public static final int RET_RECHARGE_TEST_FAILED_INVALID_ARG = 104;//游戏测试充值回调失败：参数值范围不正确
+	public static final int RET_RECHARGE_TEST_SUCCESS= 105;//游戏测试充值回调成功
+	public static final int RET_RECHARGE_TEST_FAILED_OVER_MAX_VALUE= 106;//游戏测试充值回调失败：玩家钻石超过最大值
+	public static final int RET_RECHARGE_TEST_FAILED= 107;//游戏测试充值回调失败：此接口已禁用
 	public final static String RET = "ret";
 	public final static String MSG = "msg";
 	

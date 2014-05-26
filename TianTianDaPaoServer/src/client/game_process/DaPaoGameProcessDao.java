@@ -50,7 +50,7 @@ public interface DaPaoGameProcessDao   {
 	 * 更新用户金币
 	 * @param params
 	 */
-	public void updateGoldByUserGame(Map<? extends Object,? extends Object> params);
+	public void updateGoldByUserGameAndDiamond(Map<? extends Object,? extends Object> params);
 	
 	/**
 	 * 开始游戏更新体力
