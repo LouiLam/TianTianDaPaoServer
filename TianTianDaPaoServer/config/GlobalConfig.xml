@@ -3,6 +3,8 @@
 	
     <serverConfig>config/ServerConfig.xml</serverConfig>
     
+    <jjcEntryTypeConfig>config/JJCEntryTypeConfig.xml</jjcEntryTypeConfig>
+    
     <chargeExchangeConfig>config/ChargeExchangeConfig.xml</chargeExchangeConfig>
     
     <moneyConsumeConfig>config/MoneyConsumeConfig.xml</moneyConsumeConfig>
@@ -48,4 +50,8 @@
 	<getNoticeConfig>config/GetNoticeConfig.xml</getNoticeConfig>
 
 	<getSystemInfoConfig>config/GetSystemInfoConfig.xml</getSystemInfoConfig>
+	
+	<rechargeGiveConfigMgr>config/RechargeGiveConfig.xml</rechargeGiveConfigMgr>
+	
+	
 </globalConfig>

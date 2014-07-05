@@ -10,6 +10,7 @@ import server.ui.main.U;
 import client.charge_exchange.ChargeExchangeConfig;
 import client.login.Check;
 import client.money_consume.MoneyConsumeConfig;
+import client.recharge.RechargeGiveConfigMgr;
 import config.ConfigFactory;
 import config.Constant;
 import database.DatabaseConnector;
@@ -66,6 +67,7 @@ public class DaPaoConfigInfoCheck extends Check {
 				//话费点兑换比率
 				jsonObject.put("chargeExchangeConfig", ChargeExchangeConfig.getInstance().ratio);
 				jsonObject.put("scoreExchangeItemConfig", ChargeExchangeConfig.getInstance().ratio);
+				jsonObject.put("rechargeGiveConfigMgr", RechargeGiveConfigMgr.getInstance().taskList);
 				//复活
 				jsonObject.put("rebirthConfig", MoneyConsumeConfig.getInstance().diamond);
 				jsonObject.put(Constant.RET, Constant.RET_CONFIG_INFO_SUCCESS);

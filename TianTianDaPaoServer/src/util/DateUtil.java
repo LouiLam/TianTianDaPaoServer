@@ -80,7 +80,7 @@ public class DateUtil {
 	public static long getTimesnight(){ 
 //		2014-04-13 23:59:59  cal.set(2014, 3, 13);
 		Calendar cal = Calendar.getInstance(); 
-		cal.set(2014, 3, 13);
+		cal.set(2014, 5, 29);
 		cal.set(Calendar.HOUR_OF_DAY, 24);
 		cal.set(Calendar.SECOND, 0); 
 		cal.set(Calendar.MINUTE, 0); 

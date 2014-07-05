@@ -9,9 +9,11 @@ import start.ServerConfig;
 import start.ServerStart;
 import client.buy_items.BuyItemsConfigMgr;
 import client.charge_exchange.ChargeExchangeConfig;
+import client.jjc.JJCEntryTypeConfigMgr;
 import client.login_reward.LoginRewardConfigMgr;
 import client.money_append.MoneyAppendConfig;
 import client.money_consume.MoneyConsumeConfig;
+import client.recharge.RechargeGiveConfigMgr;
 import client.role_upgrade.RoleUpgradeConfigMgr;
 import client.score_exchange_items.ScoreExchangeItemsConfigMgr;
 import client.score_lottery.ScoreLotteryConfigMgr;
@@ -29,6 +31,7 @@ public class LoginMain {
 	public static void ReloadConfig(String code) throws DocumentException
 	{
 			GlobalConfig.getInstance().setCountryCode(code);
+		
 			// 日志
 			PropertyConfigurator.configure(GlobalConfig.getInstance()
 					.getConfigResourceAddress("logConfig"));
@@ -58,12 +61,17 @@ public class LoginMain {
 			U.info("公告配置文件读取成功");
 			GetSystemInfoConfigMgr.getInstance().configure();
 			U.info("系统信息奖励配置文件读取成功");
+			JJCEntryTypeConfigMgr.getInstance().configure();
+			U.info("竞技场入场配置文件读取成功");
+			RechargeGiveConfigMgr.getInstance().configure();
+			U.info("钻石赠送配置文件读取成功");
 			// 数据库
 			DatabaseConnector.getInstance().configure();
 			U.info("数据库配置文件读取成功");
 		
 			ConfigFactory.init(code);
-			U.info("积分抽奖配置文件读取成功");
+		
+		
 			EveryDayDoSomthing.configure();
 	}
 	/**

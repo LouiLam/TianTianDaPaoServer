@@ -73,8 +73,21 @@ public class DaPaoRechargeTelecomCheck extends Check {
 				return jsonObject;
 			}
 			
-			params.put("diamond", money*MoneyAppendConfig.getInstance().ratioDiamond+"");
+			params.put("diamond",(money * MoneyAppendConfig.getInstance().ratioDiamond+RechargeGiveConfigMgr.getInstance().taskObjMap.get(money).giveDiamond)+"");
 			Map<Object,Object> selectMap = loginDao.selectRechargeByUID(params);
+			//获取订单状态
+			params.put("order", order+"");
+			Map<Object, Object> selectStateMap = loginDao.selectOrderState(params);
+			if(selectStateMap==null||(boolean)selectStateMap.get("state"))
+			{
+				jsonObject.put(Constant.RET, Constant.RET_RECHARGE_CALLBACK_FAILED_ORDER);
+				jsonObject
+						.put(Constant.MSG, ConfigFactory
+								.getRetMsg(Constant.RET_RECHARGE_CALLBACK_FAILED_ORDER));
+				U.infoQueue("电信充值回调失败：订单号不存在或订单已完成"
+						+ channel.getRemoteAddress().toString());
+				return jsonObject;
+			}
 			if(selectMap==null) //uid不存在
 			{
 				jsonObject.put(Constant.RET, Constant.RET_RECHARGE_CALLBACK_FAILED_UID_NOT_EXIST);

@@ -7,7 +7,6 @@ public class ScoreExchangeItems {
 	public String value;
 	//消耗积分
 	public int consume;
-
 @Override
 public String toString() {
 	// TODO Auto-generated method stub

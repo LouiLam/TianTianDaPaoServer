@@ -38,30 +38,49 @@ public class DaPaoModifyUserProfileCheck extends Check {
 						+ channel.getRemoteAddress().toString());
 				return jsonObject;
 			}
-			if(params.get("id")==null)//id必填写
+			if(params.get("id")==null)
 			{
+				if(params.get("cur_role")==null||params.get("cur_pet")==null||params.get("cur_airship")==null)
+				{
 				jsonObject.put(Constant.RET, Constant.RET_MODIFY_USER_PROFILE_FAILED_MISS_ARG);
 				jsonObject.put(Constant.MSG, ConfigFactory.getRetMsg(Constant.RET_MODIFY_USER_PROFILE_FAILED_MISS_ARG));
-				U.infoQueue("用户修改资料请求失败：参数要求非法，缺少参数id"+channel.getRemoteAddress().toString());
+				U.infoQueue("用户修改资料修改请求失败：参数要求非法，缺少参数"+channel.getRemoteAddress().toString());
 				return jsonObject;
+				}
+				else  //修改当前角色信息等
+				{
+					long role_value=(long) selectMap.get("prop"+(Integer.parseInt(params.get("cur_role"))-1));
+					params.put("uid", selectMap.get("uid")+"");
+					params.put("cur_role_level", role_value+"");
+					loginDao.updateByUserGame(params);
+					jsonObject.put("userInfo", selectMap);
+					U.infoQueue("用户修改资料请求成功"+channel.getRemoteAddress().toString());
+					jsonObject.put(Constant.RET, Constant.RET_MODIFY_USER_PROFILE_SUCCESS);
+					jsonObject.put(Constant.MSG,
+							ConfigFactory.getRetMsg(Constant.RET_MODIFY_USER_PROFILE_SUCCESS));
+				}
 			}
-			Map<Object,Object> idMap = loginDao.selectIDByUserInfo(params);
-			System.out.println("用户修改昵称："+params.get("id"));
-			if(idMap!=null)
+			else  //修改帐号信息
 			{
-				//此昵称已存在，请换一个
-				jsonObject.put(Constant.RET, Constant.RET_MODIFY_USER_PROFILE_FAILED_ID_HAVE_EXIST);
-				jsonObject.put(Constant.MSG, ConfigFactory.getRetMsg(Constant.RET_MODIFY_USER_PROFILE_FAILED_ID_HAVE_EXIST));
-				U.infoQueue("用户修改资料请求失败：此昵称已存在，请换一个"+channel.getRemoteAddress().toString());
-				return jsonObject;
+				Map<Object,Object> idMap = loginDao.selectIDByUserInfo(params);
+				System.out.println("用户修改昵称："+params.get("id"));
+				if(idMap!=null)
+				{
+					//此昵称已存在，请换一个
+					jsonObject.put(Constant.RET, Constant.RET_MODIFY_USER_PROFILE_FAILED_ID_HAVE_EXIST);
+					jsonObject.put(Constant.MSG, ConfigFactory.getRetMsg(Constant.RET_MODIFY_USER_PROFILE_FAILED_ID_HAVE_EXIST));
+					U.infoQueue("用户修改资料请求失败：此昵称已存在，请换一个"+channel.getRemoteAddress().toString());
+					return jsonObject;
+				}
+				selectMap.put("id", params.get("id"));
+				loginDao.updateIDByUserInfo(selectMap);
+				jsonObject.put("userInfo", selectMap);
+				U.infoQueue("用户修改资料请求成功"+channel.getRemoteAddress().toString());
+				jsonObject.put(Constant.RET, Constant.RET_MODIFY_USER_PROFILE_SUCCESS);
+				jsonObject.put(Constant.MSG,
+						ConfigFactory.getRetMsg(Constant.RET_MODIFY_USER_PROFILE_SUCCESS));
 			}
-			selectMap.put("id", params.get("id"));
-			loginDao.updateIDByUserInfo(selectMap);
-			jsonObject.put("userInfo", selectMap);
-			U.infoQueue("用户修改资料请求成功"+channel.getRemoteAddress().toString());
-			jsonObject.put(Constant.RET, Constant.RET_MODIFY_USER_PROFILE_SUCCESS);
-			jsonObject.put(Constant.MSG,
-					ConfigFactory.getRetMsg(Constant.RET_MODIFY_USER_PROFILE_SUCCESS));
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

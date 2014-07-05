@@ -53,8 +53,8 @@ public class DaPaoJJC_Get3DayRewardCheck extends Check {
 			loginDao.updateJJC_Get3DayReward(jjcMap);
 			sqlSession.commit();
 			jjcMap = loginDao.selectJJC3DayUserByUtoken(params);
-			long score_3day_pass=DateUtil.getSecondsBetween(DateUtil.getTimesnight(),System.currentTimeMillis())%(1440*60*3); //三天一循环(一天1440分钟，1分钟60秒，3天)
-		    jjcMap.put("score_3day_remain", 1440*60*3-score_3day_pass);
+			long score_3day_pass=DateUtil.getSecondsBetween(DateUtil.getTimesnight(),System.currentTimeMillis())%(1440*60*7); //七天一循环(一天1440分钟，1分钟60秒，7天)
+		    jjcMap.put("score_3day_remain", 1440*60*7-score_3day_pass);
 			jsonObject.put("userInfo", jjcMap);
 			jsonObject.put(Constant.RET, Constant.RET_JJC_GET_3DAY_REWARD_SUCCESS);
 			jsonObject.put(Constant.MSG,

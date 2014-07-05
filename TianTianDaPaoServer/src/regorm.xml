@@ -19,8 +19,8 @@
         values (#{id},#{password},#{uemail},#{uphone}, #{urtime},#{utoken})
     </select>
        <select id="insertUserInfoByMac" parameterType="Map" >
-        insert into userinfo (id,password,urtime,utoken,mac)  
-        values ('V',#{password}, #{urtime},#{utoken},#{mac})
+        insert into userinfo (id,password,urtime,utoken,mac,channelID)  
+        values ('V',#{password}, #{urtime},#{utoken},#{mac},#{channelID})
     </select>
 	<select id="insertUserIntoUserGame" parameterType="Map">
 		insert into usergame (last_tili_send_time) values(#{last_tili_send_time})

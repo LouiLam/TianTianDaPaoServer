@@ -33,12 +33,12 @@ import org.eclipse.swt.widgets.Text;
 
 import util.FileUtil;
 
-public class DaPaoMain extends ApplicationWindow {
+public class DaPaoMain4321 extends ApplicationWindow {
 
 	/**
 	 * Create the application window,
 	 */
-	public DaPaoMain() {
+	public DaPaoMain4321() {
 		super(null);
 		setShellStyle(SWT.CLOSE | SWT.TITLE);
 		createActions();
@@ -206,7 +206,7 @@ public class DaPaoMain extends ApplicationWindow {
 	 */
 	public static void main(String args[]) {
 		try {
-			DaPaoMain window = new DaPaoMain();
+			DaPaoMain4321 window = new DaPaoMain4321();
 			window.setBlockOnOpen(true);
 			window.open();
 			Display.getCurrent().dispose();
@@ -257,14 +257,14 @@ public class DaPaoMain extends ApplicationWindow {
 //				System.out.println(entity);
 //				int end = entity.indexOf("<html>");
 //				System.out.println(entity.substring(0, end));
-				MessageBox mb = new MessageBox(DaPaoMain.this.getShell(),
+				MessageBox mb = new MessageBox(DaPaoMain4321.this.getShell(),
 						SWT.ICON_INFORMATION | SWT.OK);
 				mb.setMessage(entity);// ���ص�¼�ַ��ɷ���˴�����
 				mb.open();
 			}
 			else
 			{
-				MessageBox mb = new MessageBox(DaPaoMain.this.getShell(),
+				MessageBox mb = new MessageBox(DaPaoMain4321.this.getShell(),
 				SWT.ICON_INFORMATION | SWT.OK);
 				mb.setMessage("error!StatusCode:"+httppHttpResponse2.getStatusLine().getStatusCode());// http״̬�����
 				mb.open();

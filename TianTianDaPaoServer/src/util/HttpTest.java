@@ -14,20 +14,21 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class HttpTest {
 public static void main(String[] args) {
 	
 	try {
-		httpPost();
+		httpGet();
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 }
 public static void  httpGet() throws Exception {
-	String url="http://218.76.35.162:4321/v1/user/recharge?uid=10000001&money=2&sign=01ac22cbf28d092f7e254985ed74450f";
+	String url="http://www.hexcm.com/yxlm/member/fight_cha.php?action=area";
 	
 	
 	
@@ -51,12 +52,16 @@ public static void  httpGet() throws Exception {
         	String str=EntityUtils.toString(response1
 						.getEntity());
             HttpEntity entity1 = response1.getEntity();
+            JSONArray a=new JSONArray(str);
             // do something useful with the response body
             // and ensure it is fully consumed
             if(response1.getStatusLine().getStatusCode()==HttpStatus.SC_OK)
             {
-            
-            	 System.out.println(str);
+            for (int i = 0; i < a.length(); i++) {
+            	 System.out.println(a.get(i));
+				
+			}
+            	
             	//用户点击开始游戏按钮成功
             }
             EntityUtils.consume(entity1);

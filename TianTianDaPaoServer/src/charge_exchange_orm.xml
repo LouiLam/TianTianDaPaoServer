@@ -31,7 +31,7 @@
 	</select>
 	<select id="insertChargerecordByUsergame" parameterType="Map"
 		>
-		 insert into chargerecord(id,value,time,phone) VALUES (#{id},#{value},#{time},#{phone})
+		 insert into chargerecord(id_uid,value,time,phone) VALUES (#{uid},#{value},#{time},#{phone})
 	</select>
 
 </mapper>

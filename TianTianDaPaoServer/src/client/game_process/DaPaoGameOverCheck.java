@@ -43,11 +43,11 @@ public class DaPaoGameOverCheck extends Check {
 			}
 			
 			String id = (String) gameMap.get("id");
-			if (params.get("record") == null||params.get("gold")==null||params.get("item0_count")==null||params.get("item1_count")==null) {
+			if (params.get("maxRange")==null||params.get("fightID")==null||params.get("record") == null||params.get("gold")==null||params.get("item0_count")==null||params.get("item1_count")==null||params.get("item2_count")==null) {
 				jsonObject.put(Constant.RET, Constant.RET_GAME_OVER_FAILED_MISS_ARG);
 				jsonObject.put(Constant.MSG,
 						ConfigFactory.getRetMsg(Constant.RET_GAME_OVER_FAILED_MISS_ARG));
-				U.infoQueue(id+"游戏正常结束请求失败：缺少参数record或gold或item0_count或item1_count"
+				U.infoQueue(id+"游戏正常结束请求失败：缺少参数record或gold或item0_count或item1_count或item2_count或fightID或max_range"
 						+ channel.getRemoteAddress().toString());
 				return jsonObject;
 			}
@@ -74,8 +74,18 @@ public class DaPaoGameOverCheck extends Check {
 				loginDao.updateRecordByUserGame(params);
 				
 			}
+			if((long)gameMap.get("max_range")>Long.parseLong(params.get("maxRange")))
+			{
+				params.put("max_range", gameMap.get("max_range")+"");
+			}
+			else
+			{
+				params.put("max_range", params.get("maxRange")+"");
+			}
 			loginDao.updateGoldByUserGameAndDiamond(params);
 			loginDao.updateUserTaskRunning(params);
+			params.put("finish_time", System.currentTimeMillis()/1000+"");
+			loginDao.updateUserFight20140609(params);
 			sqlSession.commit();
 			//处理任务相关
 			int running_task_id=(int) gameMap.get("running_task_id");

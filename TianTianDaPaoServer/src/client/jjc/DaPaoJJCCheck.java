@@ -54,8 +54,8 @@ public class DaPaoJJCCheck extends Check {
 			List<Object> myRankMap = loginDao.selectJJCUserByMyRank(tempMap);
 			if((long)jjcMap.get("score_3day")==0)
 			{
-				long score_3day_pass=DateUtil.getSecondsBetween(DateUtil.getTimesnight(),System.currentTimeMillis())%(1440*60*3); //三天一循环(一天1440分钟，1分钟60秒，3天)
-			    jjcMap.put("score_3day_remain", 1440*60*3-score_3day_pass);
+				long score_3day_pass=DateUtil.getSecondsBetween(DateUtil.getTimesnight(),System.currentTimeMillis())%(1440*60*7); //三天一循环(一天1440分钟，1分钟60秒，3天)
+			    jjcMap.put("score_3day_remain", 1440*60*7-score_3day_pass);
 			}
 				jsonObject.put("userInfo", jjcMap);
 				jsonObject.put("worldRankMap", worldRankMap);

@@ -12,7 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import config.GlobalConfig;
 
 
-public class DatabaseConnector {
+public class DatabaseConnector  {
 
 	private SqlSessionFactory sqlSessionFactory;
 	private static DatabaseConnector myself;
@@ -23,10 +23,12 @@ public class DatabaseConnector {
 		}
 		return myself;
 	}
-	public void configure()  
+	public void configure()
 	{
+		
 		Reader reader = null;
 		try {
+//			reader = Resources.getResourceAsReader(GlobalConfig.getInstance().getConfigResourceAddress("databaseConfig"));
 			reader = Resources.getResourceAsReader(GlobalConfig.getInstance().getConfigResourceAddress("databaseConfig"));
 		} catch (IOException e) {
 			e.printStackTrace();

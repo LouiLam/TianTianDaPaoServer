@@ -12,8 +12,8 @@ public class U {
 		@Override
 		public void run() {
 		
-			DaPaoMain.text.append("================================================\r\n");
-			DaPaoMain.text.append(DateUtil.getCurDate()+":"+str+"\r\n");
+			DaPaoMain4321.text.append("================================================\r\n");
+			DaPaoMain4321.text.append(DateUtil.getCurDate()+":"+str+"\r\n");
 			
 		}
 	};
@@ -21,23 +21,27 @@ public class U {
 		
 		@Override
 		public void run() {
-			DaPaoMain.lblip.setText(Statistics.INDEPENDENT_IP_BY_DAY+"");
-			DaPaoMain.lblip_1.setText(Statistics.INDEPENDENT_IP_TOTAL+"");
+			DaPaoMain4321.lblip.setText(Statistics.INDEPENDENT_IP_BY_DAY+"");
+			DaPaoMain4321.lblip_1.setText(Statistics.INDEPENDENT_IP_TOTAL+"");
 		}
 	};
 	public static void info(String str)
 	{
-		DaPaoMain.text.append("================================================\r\n");
-		DaPaoMain.text.append(DateUtil.getCurDate()+":"+str+"\r\n");
+//		DaPaoMain.text.append("================================================\r\n");
+		System.out.println("================================================\r\n");
+		System.out.println(DateUtil.getCurDate()+":"+str+"\r\n");
+//		DaPaoMain.text.append(DateUtil.getCurDate()+":"+str+"\r\n");
 	}
 	public static void infoQueue(String str)
 	{
-		U.str=str;
-		Display.getDefault().asyncExec(r);
+//		U.str=str;
+		System.out.println(str);
+//		Display.getDefault().asyncExec(r);
 	}
 	public static void infoQueueIP()
 	{
-		Display.getDefault().asyncExec(r1);
+		
+//		Display.getDefault().asyncExec(r1);
 	}
 	
 }

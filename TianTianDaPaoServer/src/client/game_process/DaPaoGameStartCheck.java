@@ -76,7 +76,7 @@ public class DaPaoGameStartCheck extends Check {
 							+ channel.getRemoteAddress().toString());
 					return jsonObject;
 				}
-				
+				params.put("cur_role_level", role_value+"");
 			} catch (Exception e) {
 				jsonObject.put(Constant.RET, Constant.RET_GAME_START_FAILED_ARG_INVALID);
 				jsonObject
@@ -87,7 +87,7 @@ public class DaPaoGameStartCheck extends Check {
 				return jsonObject;
 			}
 			
-			
+		
 			long last_tili_send_time=(long) gameMap.get("last_tili_send_time");
 			
 			long hours=DateUtil.getHoursBetween(last_tili_send_time*1000l, System.currentTimeMillis());
@@ -137,7 +137,12 @@ public class DaPaoGameStartCheck extends Check {
 				sqlSession.commit();
 			}
 			//更新数据库last_tili_send_time和tili字段
-			loginDao.updateUserGameByTili(params);
+			loginDao.updateUserGameByCur(params);
+			//插入战斗日志
+			params.put("start_time", System.currentTimeMillis()/1000+"");
+			params.put("type", 0+"");
+			loginDao.insertUserFight20140609(params);
+			long fightID=loginDao.selectLastInsertID20140609();
 			sqlSession.commit();
 			
 			U.infoQueue("id:" + id + "游戏正常开始请求成功，数据更新!" + "ip:"
@@ -147,6 +152,7 @@ public class DaPaoGameStartCheck extends Check {
 			{
 				gameMap.put("remain", sec);
 			}
+			gameMap.put("fightID", fightID);
 			jsonObject.put("userInfo", gameMap);
 			jsonObject.put(Constant.RET, Constant.RET_GAME_START_SUCCESS);
 			jsonObject.put(Constant.MSG,

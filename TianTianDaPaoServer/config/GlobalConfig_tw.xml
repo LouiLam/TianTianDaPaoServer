@@ -50,4 +50,6 @@
 	<getNoticeConfig>config/GetNoticeConfig_tw.xml</getNoticeConfig>
 
 	<getSystemInfoConfig>config/GetSystemInfoConfig.xml</getSystemInfoConfig>
+	
+	<jjcEntryTypeConfig>config/JJCEntryTypeConfig.xml</jjcEntryTypeConfig>
 </globalConfig>

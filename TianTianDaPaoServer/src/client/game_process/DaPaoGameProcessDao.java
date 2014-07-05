@@ -53,10 +53,10 @@ public interface DaPaoGameProcessDao   {
 	public void updateGoldByUserGameAndDiamond(Map<? extends Object,? extends Object> params);
 	
 	/**
-	 * 开始游戏更新体力
+	 * 开始游戏更新当前参数
 	 * @param params
 	 */
-	public void updateUserGameByTili(Map<? extends Object,? extends Object> params);
+	public void updateUserGameByCur(Map<? extends Object,? extends Object> params);
 	/**
 	 * 获取体力信息时 更新体力和最近获取体力的时间
 	 * @param params
@@ -75,4 +75,15 @@ public interface DaPaoGameProcessDao   {
 	 */
 	public void updateUserTaskRunning(Map<? extends Object,? extends Object> params);
 	
+	/**
+	 * 插入战斗记录
+	 * @param params
+	 */
+	public void insertUserFight20140609(Map<? extends Object,? extends Object> params);
+	/**
+	 * 更新战斗记录
+	 * @param params
+	 */
+	public void updateUserFight20140609(Map<? extends Object,? extends Object> params);
+	public long selectLastInsertID20140609();
 }

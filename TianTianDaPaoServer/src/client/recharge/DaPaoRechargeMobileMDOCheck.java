@@ -39,6 +39,19 @@ public class DaPaoRechargeMobileMDOCheck extends Check {
 			int TotalPrice=Integer.parseInt(params.get("price"))/100;
 			params.put("uid", uid);
 			Map<Object, Object> selectMap = loginDao.selectRechargeByUID(params);
+			//获取订单状态
+			params.put("order", order);
+			Map<Object, Object> selectStateMap = loginDao.selectOrderState(params);
+			if(selectStateMap==null||(boolean)selectStateMap.get("state"))
+			{
+				jsonObject.put(Constant.RET, Constant.RET_RECHARGE_CALLBACK_FAILED_ORDER);
+				jsonObject
+						.put(Constant.MSG, ConfigFactory
+								.getRetMsg(Constant.RET_RECHARGE_CALLBACK_FAILED_ORDER));
+				U.infoQueue("MDO游戏充值回调失败：订单号不存在或订单已完成"
+						+ channel.getRemoteAddress().toString());
+				return jsonObject;
+			}
 			if(selectMap==null)
 			{
 				jsonObject.put(Constant.RET, Constant.RET_RECHARGE_CALLBACK_FAILED_MISS_ARG);
@@ -49,7 +62,8 @@ public class DaPaoRechargeMobileMDOCheck extends Check {
 						+ channel.getRemoteAddress().toString());
 				return jsonObject;
 			}
-			selectMap.put("diamond", TotalPrice * MoneyAppendConfig.getInstance().ratioDiamond + "");
+			
+			selectMap.put("diamond", (TotalPrice * MoneyAppendConfig.getInstance().ratioDiamond+RechargeGiveConfigMgr.getInstance().taskObjMap.get(TotalPrice).giveDiamond) + "");
 			// 更新钻石
 			loginDao.updateDiamondByUserGame(selectMap);
 

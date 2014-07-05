@@ -17,6 +17,7 @@ import util.AES;
 import util.Dom4jTest;
 import client.money_append.MoneyAppendConfig;
 import client.recharge.DaPaoRechargeDao;
+import client.recharge.RechargeGiveConfigMgr;
 import config.ConfigFactory;
 import config.Constant;
 import database.DatabaseConnector;
@@ -44,6 +45,7 @@ public class RechargeMobileMMHttpPostRequestHandler extends
 			// queryStringDecoder.getParameters();
 			// Map<String, String> paramClone = new HashMap<String, String>();
 			// Iterator<String> it = params.keySet().iterator();
+			System.out.println(decodeuri);
 			Document documentCharge = Dom4jTest
 					.getDocumentByString(decodeuri);
 			Element root = (Element) documentCharge.getRootElement();
@@ -51,15 +53,17 @@ public class RechargeMobileMMHttpPostRequestHandler extends
 			String OrderID = root.element("OrderID").getText();
 			String ChannelID = root.element("ChannelID").getText();
 			String PayCode = root.element("PayCode").getText();
-			String appKey = "F5A12F2B2F319F93";
+//			String appKey = "E354F54D162DF3AD";
+			String appKey = "EB66FDD1A8C1B886";
 			String TransactionID = root.element("TransactionID").getText();
 			String uidAndOrderNum[] = root.element("ExData").getText().split("#");
 			String uid=uidAndOrderNum[0];
 			String orderNum=uidAndOrderNum[1];
-			System.out.println("uid:"+uid+"orderNum:"+orderNum);
+		
 			// 单位分/100=元
 			int TotalPrice = Integer.parseInt(root.element("TotalPrice")
 					.getText()) / 100;
+			System.out.println("uid:"+uid+"orderNum:"+orderNum+"TotalPrice"+TotalPrice);
 			String We = AES.getMD5Str(
 					OrderID + "#" + ChannelID + "#" + PayCode + "#" + appKey)
 					.toUpperCase();
@@ -80,10 +84,25 @@ public class RechargeMobileMMHttpPostRequestHandler extends
 				if(selectMap==null)
 				{
 					result="移动MM回调充值请求发生错误，缺少参数";
+					U.infoQueue("移动MM回调充值请求发生错误，缺少参数"
+							+ channel.getRemoteAddress().toString());
+					sendResponse(result, channel);
+					
+					return ;
+				}
+				//获取订单状态
+				map.put("order", orderNum);
+				Map<Object, Object> selectStateMap = loginDao.selectOrderState(map);
+				if(selectStateMap==null||(boolean)selectStateMap.get("state"))
+				{
+					result="移动MM游戏充值回调失败：订单号不存在或订单已完成";
+					U.infoQueue("MDO游戏充值回调失败：订单号不存在或订单已完成"
+							+ channel.getRemoteAddress().toString());
 					sendResponse(result, channel);
 					return ;
 				}
-				selectMap.put("diamond", TotalPrice * MoneyAppendConfig.getInstance().ratioDiamond + "");
+				
+				selectMap.put("diamond", (TotalPrice * MoneyAppendConfig.getInstance().ratioDiamond+RechargeGiveConfigMgr.getInstance().taskObjMap.get(TotalPrice).giveDiamond)+ "");
 				// 更新钻石
 				loginDao.updateDiamondByUserGame(selectMap);
 

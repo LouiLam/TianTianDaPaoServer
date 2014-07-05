@@ -23,4 +23,7 @@ public interface DaPaoModifyUserProfileDao   {
 	 * @return 
 	 */
 	public Map<Object,Object> selectIDByUserInfo(Map<? extends Object,? extends Object> params);
+	
+	public Map<Object,Object> updateByUserGame(Map<? extends Object,? extends Object> params);
+	
 }

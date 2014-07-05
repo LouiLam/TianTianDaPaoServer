@@ -17,8 +17,8 @@
 		value="prop6" />
 	<scoreExchangeItems id="8" des="4號寵物" consume="29999"
 		value="prop7" />
-	<scoreExchangeItems id="9" des="能量之星" consume="50"
-		value="prop13" />
+	<!-- <scoreExchangeItems id="9" des="能量之星" consume="50"
+		value="prop13" /> -->
 	<!-- 	<scoreExchangeItems id="10" des="水晶護甲" consume="30"
 		value="prop15" /> -->
 

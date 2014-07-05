@@ -7,9 +7,9 @@
 
 	<select id="selectRechargeByUID" parameterType="Map"
 		resultType="Map">
-		select userinfo.id,userinfo.uid from
-		userinfo where
-		userinfo.uid=#{uid} 
+		select userinfo.id,userinfo.uid,usergame.diamond from
+		userinfo,usergame where
+		userinfo.uid=#{uid}  and usergame.uid=#{uid}
 	</select>
 		<select id="selectRechargeByToken" parameterType="Map"
 		resultType="Map">
@@ -19,16 +19,22 @@
 		#{utoken} and userinfo.uid =usergame.uid
 	</select>
 	
+		
+		
+		
 	<select id="updateDiamondByUserGame" parameterType="Map">
-	   update usergame set diamond=diamond+#{diamond} where usergame.uid=#{uid}
+	   update usergame set diamond=diamond+#{diamond},recharge_count=recharge_count+1 where usergame.uid=#{uid}
 	</select>
 
 	<select id="insertRMBrecord" parameterType="Map"
 		>
-		 insert into rmbrecord(id,generate_time,channelID) VALUES (#{id},#{generate_time},#{channelID})
+		 insert into rmbrecord(id_uid,generate_time,channelID) VALUES (#{uid},#{generate_time},#{channelID})
 		  </select>
    <select id="selectOrder" parameterType="Map" resultType="Map" >
        select  rmbrecord.uid,rmbrecord.generate_time from rmbrecord WHERE uid=LAST_INSERT_ID()
+    </select>
+     <select id="selectOrderState" parameterType="Map" resultType="Map" >
+       select  rmbrecord.state,rmbrecord.channelID from rmbrecord WHERE uid=#{order}
     </select>
     <select id="updateRMBrecord" parameterType="Map">
 	   update rmbrecord set state=1,finish_time=#{finish_time},value=#{value},channelID=#{channelID} where rmbrecord.uid=#{uid}

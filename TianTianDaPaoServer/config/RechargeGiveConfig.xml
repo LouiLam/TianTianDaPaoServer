@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  
+送钻石
+ -->
+<rechargeGiveConfigMgr >
+	<rechargeGive id="1" des="2元送0钻" rmb="2"
+		 giveDiamond="0"></rechargeGive>
+	<rechargeGive id="2" des="5元送5钻" rmb="5"
+		 giveDiamond="5"></rechargeGive>
+	<rechargeGive id="3" des="10元送15钻" rmb="10"
+		 giveDiamond="15"></rechargeGive>
+	<rechargeGive id="4" des="20元送35钻" rmb="20"
+		 giveDiamond="35"></rechargeGive>
+	<rechargeGive id="5" des="30元送60钻" rmb="30"
+		 giveDiamond="60"></rechargeGive>
+
+</rechargeGiveConfigMgr>

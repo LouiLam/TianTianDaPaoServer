@@ -1,81 +1,205 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="client.jjc.DaPaoJJCDao">
-	 
-	 
-	<select id="selectJJCUserByUtoken" parameterType="Map"
+
+
+		<select id="selectJJCUserByUtoken" parameterType="Map"
 		resultType="Map">
-		select userjjc.* ,userinfo.id,select_gameover_task.* from userinfo,userjjc,select_gameover_task where userinfo.uid =
-		userjjc.uid and userinfo.utoken= #{utoken} and select_gameover_task.uid=userinfo.uid
+		select userjjc.* ,userprop.*,userinfo.id,select_gameover_task.*,usergame.max_range,usergame.tili,usergame.last_tili_send_time from
+		userinfo,userjjc,select_gameover_task,usergame,userprop where userinfo.uid =
+		userjjc.uid and usergame.uid=userjjc.uid
+		and userinfo.utoken= #{utoken} and
+		select_gameover_task.uid=userinfo.uid and userinfo.uid=userprop.uid
 	</select>
+
 	<select id="selectJJC3DayUserByUtoken" parameterType="Map"
 		resultType="Map">
-		select userjjc.score ,userinfo.uid,userjjc.score_3day,userjjc.charge_3day,userjjc.diamond_3day,userinfo.id,usergame.ucharge,usergame.diamond from userjjc,usergame,userinfo where userinfo.uid =
-		userjjc.uid and userinfo.utoken= #{utoken} and usergame.uid=userinfo.uid
+		select userjjc.score
+		,userinfo.uid,userjjc.score_3day,userjjc.charge_3day,userjjc.diamond_3day,userinfo.id,usergame.ucharge,usergame.diamond
+		from userjjc,usergame,userinfo where userinfo.uid =
+		userjjc.uid and
+		userinfo.utoken= #{utoken} and usergame.uid=userinfo.uid
 	</select>
-	
-	<select id="selectJJCUserByUID" parameterType="Map"
-		resultType="Map">
-		select userjjc.* ,userinfo.id from userinfo,userjjc where userjjc.uid =
-		#{uid} and userinfo.uid=#{uid} 
+	<select id="selectJJCUserCount" resultType="Long">
+		SELECT COUNT(uid)
+		from userjjc
 	</select>
-	
-	<select id="selectJJCUserByRank" parameterType="Map" resultType="Map">
-		select userjjc.* ,userinfo.id,usergame.cur_role from userinfo,userjjc,usergame where userinfo.uid
-		= userjjc.uid and userinfo.uid= usergame.uid and (userjjc.rank BETWEEN 1 and 50 or in(#{one},#{two},#{three},#{four})) ) order by userjjc.rank
+	<select id="selectJJCUserByUID" parameterType="Map" resultType="Map">
+		select userjjc.* ,userinfo.id from userinfo,userjjc where userjjc.uid
+		=
+		#{uid} and userinfo.uid=#{uid}
 	</select>
-	<select id="selectJJCUserByWorldRank" parameterType="Map" resultType="Map">
-		select userjjc.* ,userinfo.id,usergame.cur_role from userinfo,userjjc,usergame where userinfo.uid
-		= userjjc.uid and  userinfo.uid= usergame.uid and (userjjc.rank BETWEEN 1 and 50 ) order by userjjc.rank
-	</select>
-	<!--<select id="selectJJCUserByWorldRankNew" parameterType="Map" resultType="Map">
-		select userjjc.* ,userinfo.id  from userinfo,userjjc where userinfo.uid
-		= userjjc.uid  order by userjjc.jjc_max_record DESC
-	</select>  -->
-		
 
-	<select id="selectJJCUserByMyRank" parameterType="Map" resultType="Map">
-		select userjjc.* ,userinfo.id from userinfo,userjjc where userinfo.uid
+	<select id="selectJJCUserByRank" parameterType="Map" resultType="Map">
+		select userjjc.*
+		,userinfo.id,usergame.cur_role,usergame.cur_role_level,usergame.cur_airship,usergame.cur_pet
+		from userinfo,userjjc,usergame where userinfo.uid
+		= userjjc.uid and
+		userinfo.uid= usergame.uid and (userjjc.rank BETWEEN 1 and 50 or
+		in(#{one},#{two},#{three},#{four})) ) order by userjjc.rank
+	</select>
+	<select id="selectJJCUserByWorldRank" parameterType="Map"
+		resultType="Map">
+		select userjjc.*
+		,userinfo.id,usergame.cur_role,usergame.cur_role_level,usergame.cur_airship,usergame.cur_pet
+		from userinfo,userjjc,usergame where userinfo.uid
+		= userjjc.uid and
+		userinfo.uid= usergame.uid and (userjjc.rank BETWEEN 1 and 50 ) order
+		by userjjc.rank
+	</select>
+	<select id="selectJJCUserByWorldRank20140609" parameterType="Map"
+		resultType="Map">
+		select userjjc.*
+		,userinfo.id,usergame.cur_role,usergame.cur_airship,usergame.cur_pet,usergame.cur_role_level
+		from userinfo,userjjc,usergame where userinfo.uid
+		= userjjc.uid and
+		userinfo.uid=usergame.uid order by userjjc.jjc_max_record DESC LIMIT
+		50
+	</select>
+
+
+	<select id="selectJJCUserByMyRank" parameterType="Map"
+		resultType="Map">
+		select userjjc.* ,userinfo.id from userinfo,userjjc where
+		userinfo.uid
 		= userjjc.uid and (userjjc.rank
 		in(#{one},#{two},#{three},#{four})) order by userjjc.rank
 	</select>
 
 	<select id="selectJJC_PKUser" parameterType="Map" resultType="Map">
-		select userjjc.jjc_max_record,userjjc.rank from userjjc where userjjc.uid = #{pk_player_uid}
+		select userjjc.jjc_max_record,userjjc.rank from userjjc where
+		userjjc.uid = #{pk_player_uid}
 	</select>
 
 	<select id="updateJJC_RankWin" parameterType="Map">
-		update userjjc set jjc_max_record=#{record},rank=#{rank_beidong},day_cur_times=day_cur_times+1,pk_win_count=pk_win_count+1,score=score+10 where userjjc.uid = #{uid} 
-	</select>
-	<select id="updateJJC_RankBeidong" parameterType="Map">
-		update userjjc set rank=#{rank_zhudong}
-		where uid = #{uid_beidong} 
-	</select>
-	<select id="updateJJC_RankLose" parameterType="Map">
-		update userjjc set jjc_max_record=#{record},day_cur_times=day_cur_times+1,pk_lost_count=pk_lost_count+1,score=score+5 where userjjc.uid = #{uid} 
-	</select>
-	<select id="updateJJC_RankDraw" parameterType="Map">
-		update userjjc set jjc_max_record=#{record},day_cur_times=day_cur_times+1,pk_draw_count=pk_draw_count+1,score=score+5 where userjjc.uid = #{uid} 
-	</select>
-	
-	<select id="updateJJC_Get3DayReward" parameterType="Map">	
-	   update usergame,userjjc set usergame.diamond=usergame.diamond+userjjc.diamond_3day,usergame.ucharge=usergame.ucharge+userjjc.charge_3day, userjjc.score=userjjc.score_3day+userjjc.score,userjjc.score_3day=0 ,userjjc.charge_3day=0,userjjc.diamond_3day=0  where userjjc.uid =#{uid} and usergame.uid=#{uid}
+		update userjjc set
+		jjc_max_record=#{record},rank=#{rank_beidong},day_cur_times=day_cur_times+1,pk_win_count=pk_win_count+1,score=score+10
+		where userjjc.uid = #{uid}
 	</select>
 
-		<select id="selectLastExecutedByResetScore" resultType="Map">
-	    ${paramSQL}
+	<select id="updateJJC_RankBeidong" parameterType="Map">
+		update userjjc
+		set rank=#{rank_zhudong}
+		where uid = #{uid_beidong}
 	</select>
-		<select id="updateGoldAndDiamondByUserGame" parameterType="Map">
-		update usergame set ugold=ugold+#{gold},diamond=diamond-(5*#{item0_count}+20*#{item1_count}) where
+	<select id="updateJJC_RankLose" parameterType="Map">
+		update userjjc set
+		jjc_max_record=#{record},day_cur_times=day_cur_times+1,pk_lost_count=pk_lost_count+1,score=score+5
+		where userjjc.uid = #{uid}
+	</select>
+	<select id="updateJJC_RankDraw" parameterType="Map">
+		update userjjc set
+		jjc_max_record=#{record},day_cur_times=day_cur_times+1,pk_draw_count=pk_draw_count+1,score=score+5
+		where userjjc.uid = #{uid}
+	</select>
+
+	<select id="updateJJC_Get3DayReward" parameterType="Map">
+		update usergame,userjjc set
+		usergame.diamond=usergame.diamond+userjjc.diamond_3day,usergame.ucharge=usergame.ucharge+userjjc.charge_3day,
+		userjjc.score=userjjc.score_3day+userjjc.score,userjjc.score_3day=0
+		,userjjc.charge_3day=0,userjjc.diamond_3day=0 where userjjc.uid
+		=#{uid} and usergame.uid=#{uid}
+	</select>
+
+	<select id="selectLastExecutedByResetScore" resultType="Map">
+		${paramSQL}
+	</select>
+	<select id="updateGoldAndDiamondByUserGame" parameterType="Map">
+		update usergame set
+		max_range=#{max_range},ugold=ugold+#{gold},diamond=diamond-(5*#{item0_count}+20*#{item1_count}+20*#{item2_count})
+		where
 		usergame.uid =#{uid}
 	</select>
-	  <select id="updateUserTaskRunning" resultType="Map" parameterType="Map">
-		update usertask set gold_count=gold_count+#{gold},game_count=game_count+1,record_count=record_count+#{record},jjc_pk_count=jjc_pk_count+1
-		where uid = #{uid} 
+	<select id="updateUserTaskRunning" resultType="Map"
+		parameterType="Map">
+		update usertask set
+		gold_count=gold_count+#{gold},game_count=game_count+1,record_count=record_count+#{record},jjc_pk_count=jjc_pk_count+1
+		where uid = #{uid}
 	</select>
-	  <select id="updateUserTaskFinish" resultType="Map" parameterType="Map">
-		update usergame,usertask set usertask.running_task_id=#{running_task_id}, usergame.ucharge= usergame.ucharge+#{reward_charge},usergame.ugold=usergame.ugold+#{reward_gold},usergame.diamond=usergame.diamond+#{reward_diamond}
-		,usertask.finish_task_count=finish_task_count+1,usertask.cur_day_finish_task_count=cur_day_finish_task_count+1,usertask.jjc_pk_count= default(usertask.jjc_pk_count),usertask.gold_count= default(usertask.gold_count), usertask.game_count= default(usertask.game_count),usertask.record_count=default(usertask.record_count) 	 
+	<select id="updateUserTaskFinish" resultType="Map"
+		parameterType="Map">
+		update usergame,usertask set
+		usertask.running_task_id=#{running_task_id}, usergame.ucharge=
+		usergame.ucharge+#{reward_charge},usergame.ugold=usergame.ugold+#{reward_gold},usergame.diamond=usergame.diamond+#{reward_diamond}
+		,usertask.finish_task_count=finish_task_count+1,usertask.cur_day_finish_task_count=cur_day_finish_task_count+1,usertask.jjc_pk_count=
+		default(usertask.jjc_pk_count),usertask.gold_count=
+		default(usertask.gold_count), usertask.game_count=
+		default(usertask.game_count),usertask.record_count=default(usertask.record_count)
 		where usergame.uid = #{uid} and usertask.uid=#{uid}
+	</select>
+
+	<select id="updateJJC_RankWin20140609" parameterType="Map">
+		update
+		userjjc,usergame set
+		jjc_max_record=#{record},day_cur_times=day_cur_times+1,pk_win_count=pk_win_count+1,score=score+#{jjcScore},diamond=diamond+#{jjcDiamond},ucharge=ucharge+#{jjcCharge},ugold=ugold+#{jjcGold}
+		where userjjc.uid = #{uid} and usergame.uid=#{uid}
+	</select>
+	<select id="updateJJC_RankDraw20140609" parameterType="Map">
+		update
+		userjjc,usergame set
+		jjc_max_record=#{record},day_cur_times=day_cur_times+1,pk_draw_count=pk_draw_count+1,score=score+#{jjcScore},diamond=diamond-#{consumeDiamond},ucharge=ucharge-#{consumeCharge},ugold=ugold-#{consumeGold}
+		where userjjc.uid = #{uid} and usergame.uid=#{uid}
+	</select>
+	<select id="updateJJC_RankLose20140609" parameterType="Map">
+		update
+		userjjc,usergame set
+		jjc_max_record=#{record},day_cur_times=day_cur_times+1,pk_lost_count=pk_lost_count+1,score=score+#{jjcScore},diamond=diamond-#{consumeDiamond},ucharge=ucharge-#{consumeCharge},ugold=ugold-#{consumeGold}
+		where userjjc.uid = #{uid} and usergame.uid=#{uid}
+	</select>
+	<select id="selectJJCUserByUID20140609" parameterType="Map"
+		resultType="Map">
+		select userjjc.*
+		,usergame.diamond,usergame.max_range,usergame.ucharge,usergame.ugold from
+		userjjc,usergame where userjjc.uid =
+		#{uid} and usergame.uid=#{uid}
+	</select>
+	<select id="selectJJCUserByMaxScore20140609" parameterType="Map"
+		resultType="Map">
+		select userjjc.* from userjjc where userjjc.jjc_max_record
+		>=#{jjc_max_record} LIMIT 50
+	</select>
+	<select id="selectJJCUserByMaxScoreNull20140609" parameterType="Map"
+		resultType="Map">
+		select userjjc.* from userjjc order by
+		userjjc.jjc_max_record desc LIMIT 10
+	</select>
+
+	<select id="selectJJCPickUpUserByUID20140609" parameterType="Map"
+		resultType="Map">
+		select userjjc.*
+		,userinfo.id,usergame.cur_role,usergame.cur_role_level,usergame.cur_pet,usergame.cur_airship from
+		userinfo,userjjc,usergame where userinfo.uid =#{pickUpUid}
+		and
+		userjjc.uid =#{pickUpUid} and usergame.uid=#{pickUpUid}
+	</select>
+
+	<select id="insertUserFight20140609" parameterType="Map">
+		insert into
+		userfight (start_time,user_uid,type)
+		values(#{start_time},#{uid},#{type});
+	</select>
+		<select id="updateUserFight20140609" parameterType="Map">
+		update userfight set finish_time=#{finish_time}  where userfight.uid = #{fightID};
+	
+	</select>
+	
+		<select id="selectLastInsertID20140609"  resultType="Long">
+		select LAST_INSERT_ID() from userfight WHERE uid=LAST_INSERT_ID()
+	</select>
+			<select id="updateUserGameByCur20140609" parameterType="Map">
+		update usergame
+		set cur_role_level=#{cur_role_level},cur_role=#{cur_role},cur_pet=#{cur_pet},cur_airship=#{cur_airship}where
+		usergame.uid =#{uid}
+	</select>	
+		<select id="updateGetTiliUserGameByTiliAndTime" parameterType="Map">
+		update usergame set
+		tili=#{tili},last_tili_send_time=#{last_tili_send_time} where
+		usergame.uid =#{uid}
+	</select>
+		<select id="updateUserGameByCur" parameterType="Map">
+		update usergame
+		set
+		tili=tili-1,cur_role_level=#{cur_role_level},cur_role=#{cur_role},cur_pet=#{cur_pet},cur_airship=#{cur_airship}where
+		usergame.uid =#{uid}
 	</select>
 </mapper>

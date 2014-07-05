@@ -52,6 +52,7 @@ public class DaPaoLoginMacCheck extends Check {
 				U.infoQueue("登录请求失败：缺少参数MAC或参数值非法"+channel.getRemoteAddress().toString());
 				return jsonObject;
 			}
+		
 			// 登录检测
 			Map<Object,Object> userMap = loginDao.selectUserByLoginMac(params);
 			// 如果userMap不存在 表示第一次使用设备游客登录,执行注册逻辑
@@ -65,6 +66,14 @@ public class DaPaoLoginMacCheck extends Check {
 				params.put("running_task_id", RandomUtil.getRan(1, TaskConfigMgr.Size+1)+"");
 				params.put("last_tili_send_time", "" + urtime);
 				params.put("password", "123456");
+				if(params.get("channelID")!=null)
+				{
+					params.put("channelID", params.get("channelID"));
+				}
+				else
+				{
+					params.put("channelID", 908000+"");
+				}
 				regDao.insertUserInfoByMac(params);
 				regDao.updateIDIntoUserInfo(params);
 				regDao.insertUserIntoUserJJC(params);
@@ -143,7 +152,7 @@ public class DaPaoLoginMacCheck extends Check {
 		userMap.put("ultime", "" + ultime);
 		userMap.put("utoken", AES.generateSessionKey());
 		userMap.put("uconsecutive", uconsecutive+"");
-		
+		userMap.put("ip", channel.getRemoteAddress().toString().substring(1));
 		loginDao.updateUserInfoUltime(userMap);
 
 		jsonObject.put("userInfo", userMap);

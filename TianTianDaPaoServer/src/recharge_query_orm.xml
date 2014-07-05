@@ -5,7 +5,7 @@
 	<select id="selectOrderByUID" parameterType="Map"
 		resultType="Map">
 		select
-		usergame.diamond,rmbrecord.value,rmbrecord.id,rmbrecord.state,rmbrecord.finish_time from
+		usergame.diamond,rmbrecord.value,rmbrecord.id_uid,rmbrecord.state,rmbrecord.finish_time from
 		rmbrecord,usergame where rmbrecord.uid=
 		#{orderID} and usergame.uid=#{uid}
 	</select>

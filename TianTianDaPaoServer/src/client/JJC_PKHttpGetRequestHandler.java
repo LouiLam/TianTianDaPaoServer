@@ -43,10 +43,12 @@ public class JJC_PKHttpGetRequestHandler extends AbstractHttpRequestHandler {
 			}
 			
 
-			JSONObject jsonObj = ConfigFactory
-					.getCheck("4").check(paramClone,channel);
-			//返回
-			sendResponse(jsonObj.toString(), channel);
+//			JSONObject jsonObj = ConfigFactory
+//					.getCheck("4").check(paramClone,channel);
+//			//返回
+//			sendResponse(jsonObj.toString(), channel);
+			
+			sendResponse("此接口已禁用，请您更新客户端", channel);
 		}catch(Exception e){	
 			e.printStackTrace();
 			U.infoQueue("竞技场挑战请求发生异常： "+e.getMessage()+"ip地址："

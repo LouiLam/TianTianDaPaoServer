@@ -16,7 +16,7 @@
 	<select id="updateUserInfoUltime" parameterType="Map">
 		update userinfo,usergame
 		set userinfo.utoken=#{utoken}, userinfo.ultime=#{ultime}
-		,usergame.uconsecutive=#{uconsecutive}
+		,usergame.uconsecutive=#{uconsecutive},usergame.login_count=usergame.login_count+1
 		where userinfo.uid = #{uid} and usergame.uid=#{uid}
 	</select>
 

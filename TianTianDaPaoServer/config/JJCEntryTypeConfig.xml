@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+竞技场入场配置信息
+//500金币入场，胜利奖励1500金币5积分；
+//2000金币入场，赠送6000金币，30积分；
+//10话费点入场，胜利获得20话费，20积分，
+//40话费点入场，胜利送100话费点，30积分；
+//20钻石入场，胜利获得30钻石，赠送积分100；
+//200钻石入场，胜利送300钻石，888积分
+ -->
+<jjcEntryTypeConfig>
+	<JJCEntryType id="1" des="500金币入场" consumeGold="500" consumeCharge="0" consumeDiamond="0" gold="1500"  charge="0" score="5" diamond="0"></JJCEntryType>
+	<JJCEntryType id="2" des="2000金币入场"  consumeGold="2000" consumeCharge="0" consumeDiamond="0" gold="6000"  charge="0" score="30"  diamond="0"></JJCEntryType>
+	<JJCEntryType id="3" des="10话费点入场"  consumeGold="0" consumeCharge="10" consumeDiamond="0" gold="0"  charge="20" score="20"  diamond="0"></JJCEntryType>
+	<JJCEntryType id="4" des="40话费点入场"  consumeGold="0" consumeCharge="40" consumeDiamond="0" gold="0"  charge="100" score="30"  diamond="0"></JJCEntryType>
+	<JJCEntryType id="5" des="20钻石入场"   consumeGold="0" consumeCharge="0" consumeDiamond="20" gold="0"  charge="0" score="100"  diamond="30"></JJCEntryType>
+	<JJCEntryType id="6" des="200钻石入场"  consumeGold="0" consumeCharge="0" consumeDiamond="200" gold="0"  charge="0" score="888"  diamond="300"></JJCEntryType>
+</jjcEntryTypeConfig>

@@ -39,9 +39,10 @@ public class DaPaoGenerateOrdersCheck extends Check {
 						+ channel.getRemoteAddress().toString());
 				return jsonObject;
 			}
+			int channelID=1;
 			try {
-				int channelID=Integer.parseInt(params.get("channelID"));
-				if(channelID<0||channelID>2)
+				 channelID=Integer.parseInt(params.get("channelID"));
+				if(channelID<0)
 				{
 					return valueInvalid(jsonObject, channel);
 				}
@@ -54,7 +55,7 @@ public class DaPaoGenerateOrdersCheck extends Check {
 			}
 			String id=(String) selectMap.get("id");
 			selectMap.put("generate_time", System.currentTimeMillis() / 1000);
-			selectMap.put("channelID", 1);
+			selectMap.put("channelID", channelID);
 			//生成订单
 			loginDao.insertRMBrecord(selectMap);
 			selectMap=loginDao.selectOrder(params);

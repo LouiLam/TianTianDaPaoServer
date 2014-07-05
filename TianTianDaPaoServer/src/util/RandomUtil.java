@@ -18,4 +18,18 @@ public class RandomUtil {
 	public static int getRan(int n, int m) {
 		return getRan(m - n) + n;
 	}
+	
+	public static long getRan(long num) {
+		return Math.abs(r.nextLong() % num);
+	}
+
+	/**
+	 * 
+	 * @param n  包含n
+	 * @param m  不包含m
+	 * @return
+	 */
+	public static long getRan(long n, long m) {
+		return getRan(m - n) + n;
+	}
 }

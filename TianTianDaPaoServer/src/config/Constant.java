@@ -26,7 +26,7 @@ public class Constant {
 	public static final int RET_JJC_PK_FAILED = 14;//竞技场挑战请求失败：utoken非法或不存在
 	public static final int RET_JJC_PK_FAILED_UID_NOT_EXIST = 15;//竞技场挑战请求失败：被pk的用户uid不存在
 	public static final int RET_JJC_PK_FAILED_UID_MYSELF = 16;//竞技场挑战请求失败：被pk的用户为自己的uid
-	public static final int RET_JJC_PK_SUCCESS = 17;//竞技场挑战请求成功,数据更新
+	public static final int RET_JJC_PK_SUCCESS = 17;//竞技场挑战结束请求成功,数据更新
 	public static final int RET_JJC_GET_3DAY_REWARD_FAILED = 18;//竞技场获取三日奖励请求失败：utoken非法或不存在
 	public static final int RET_JJC_GET_3DAY_REWARD_FAILED_HAVE_DONE = 19;//竞技场获取三日奖励请求失败：该用户已领取过三日奖励
 	public static final int RET_JJC_GET_3DAY_REWARD_SUCCESS = 20;//竞技场获取三日奖励请求成功
@@ -36,7 +36,7 @@ public class Constant {
 	public static final int RET_JJC_PK_FAILED_UID_COUNT_LIMIT = 24;//竞技场非法请求：今天挑战次数已到上限
 	public static final int RET_GAME_OVER_FAILED = 25;//游戏正常结束请求失败：utoken非法或不存在
 	public static final int RET_GAME_OVER_SUCCESS = 26;//游戏正常结束请求成功
-	public static final int RET_GAME_OVER_FAILED_MISS_ARG = 27;//游戏正常结束请求失败：缺少参数record或gold
+	public static final int RET_GAME_OVER_FAILED_MISS_ARG = 27;//游戏正常结束请求失败：缺少参数record或gold或item0_count或item1_count或item2_count或fightID
 	public static final int RET_GAME_START_FAILED = 28;//游戏正常开始请求失败：utoken非法或不存在
 	public static final int RET_GAME_START_FAILED_TILI_NOT_ENOUGH = 29;//游戏正常开始请求失败：体力不够
 	public static final int RET_GAME_START_SUCCESS = 30;//游戏正常开始请求成功
@@ -117,6 +117,8 @@ public class Constant {
 	public static final int RET_RECHARGE_TEST_SUCCESS= 105;//游戏测试充值回调成功
 	public static final int RET_RECHARGE_TEST_FAILED_OVER_MAX_VALUE= 106;//游戏测试充值回调失败：玩家钻石超过最大值
 	public static final int RET_RECHARGE_TEST_FAILED= 107;//游戏测试充值回调失败：此接口已禁用
+	public static final int RET_RECHARGE_CALLBACK_FAILED_ORDER =108;//游戏充值回调失败：订单号不存在或订单已完成
+	public static final int RET_JJC_PK_BEGIN_SUCCESS = 109;//竞技场挑战开始请求成功,数据更新
 	public final static String RET = "ret";
 	public final static String MSG = "msg";
 	

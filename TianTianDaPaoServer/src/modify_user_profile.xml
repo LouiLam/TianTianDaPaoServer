@@ -9,14 +9,18 @@
 		<select id="selectModifyByUtoken" parameterType="Map"
 		resultType="Map">
 		select
-		userinfo.id,userinfo.uid from
-		userinfo where userinfo.utoken=#{utoken} 
+		userinfo.id,userinfo.uid ,userprop.prop0,userprop.prop1,userprop.prop2,userprop.prop3 from
+		userinfo,userprop where userinfo.utoken=#{utoken} and userinfo.uid=userprop.uid
 	</select>
 	
 
 	<select id="updateIDByUserInfo" parameterType="Map">
 		update userinfo set id=#{id},modify_user_profile_count=modify_user_profile_count+1 where
 		userinfo.uid =#{uid}
+	</select>
+	<select id="updateByUserGame" parameterType="Map">
+		update usergame set cur_role=#{cur_role},cur_pet=#{cur_pet},cur_airship=#{cur_airship},cur_role_level=#{cur_role_level} where
+		usergame.uid =#{uid}
 	</select>
 		<select id="selectIDByUserInfo" parameterType="Map"
 		resultType="Map">

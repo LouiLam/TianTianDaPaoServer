@@ -3,8 +3,7 @@
 注：目前服务端后台最多同时有4个系统奖励，如需要大于4个奖励，请联系服务端开发人员扩容
  -->
 <getSystemInfoConfig>
-	<getSystemInfo id="1" title="系统信息标题" content="系统信息内容奖励10金币，10钻石，10积分，10话费点" ugold="10" diamond="10" score="10" ucharge="10" prop12="0" prop13="0" prop14="0" prop15="0" prop16="0"></getSystemInfo>
-	<getSystemInfo id="2" title="系统信息标题" content="系统信息内容" ugold="0" diamond="0" score="0" ucharge="0" prop12="0" prop13="0" prop14="0" prop15="0" prop16="0"></getSystemInfo>
-	<getSystemInfo id="3" title="系统信息标题" content="系统信息内容" ugold="0" diamond="0" score="0" ucharge="0" prop12="0" prop13="0" prop14="0" prop15="0" prop16="0"></getSystemInfo>
+	<getSystemInfo id="1" title="登陆就送礼" content="首次进入游戏，领取“2000金币，50钻石”新手礼包！" ugold="2000" diamond="50" score="0" ucharge="0" prop12="0" prop13="0" prop14="0" prop15="0" prop16="0"></getSystemInfo>
+<!-- 	<getSystemInfo id="2" title="开服送礼" content="活动期间每天登陆即可获得 20钻石、50抽奖" ugold="0" diamond="20" score="50" ucharge="0" prop12="0" prop13="0" prop14="0" prop15="0" prop16="0"></getSystemInfo> -->
 </getSystemInfoConfig>
 
