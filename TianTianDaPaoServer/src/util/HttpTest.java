@@ -83,7 +83,7 @@ public static void  httpGet() throws Exception {
 public static void httpPost() {
 	CloseableHttpClient httpClient = HttpClients.createDefault();
 	HttpPost httpPost = new HttpPost(
-			"http://218.76.35.162:4321/v1/user/recharge_mobile_mm?");
+			"http://121.127.253.207:4321/v1/user/recharge_mobile_mm?");
 
 	List<NameValuePair> nvps = new ArrayList<NameValuePair>();
 	nvps.add(new BasicNameValuePair("uid","10000001"));

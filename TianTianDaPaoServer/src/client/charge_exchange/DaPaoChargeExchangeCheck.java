@@ -34,7 +34,7 @@ public class DaPaoChargeExchangeCheck extends Check {
 
 	int count;
 	String phone;
-	long value = 0;
+	long value ;
 	String notify_url;
 
 	@Override
@@ -84,6 +84,7 @@ public class DaPaoChargeExchangeCheck extends Check {
 			}
 			long ucharge = (long) selectMap.get("ucharge");
 			value = ucharge / ChargeExchangeConfig.getInstance().ratio;
+			System.out.println("兑换话费value:"+value);
 			if (value < 1) {
 				jsonObject.put(Constant.RET,
 						Constant.RET_CHARGE_EXCHANGE_FAILED_CHARGE_NOT_ENOUGH);
@@ -134,8 +135,11 @@ public class DaPaoChargeExchangeCheck extends Check {
 		return jsonObject;
 
 	}
-
-	public int httpGet() {
+public static void main(String[] args) {
+	int result=new DaPaoChargeExchangeCheck().httpGet();
+	System.out.println(result);
+}
+	public  int httpGet() {
 		String decodeString = "partner=11588&out_trade_id=dapao" + count
 				+ "&mobile=" + phone + "&value=" + value + "&type=0"
 				+ "&notify_url=" + notify_url + "&" + KEY;
@@ -153,12 +157,14 @@ public class DaPaoChargeExchangeCheck extends Check {
 
 		
 			HttpGet httpGet = new HttpGet(url.toString());
+			System.out.println(url.toString());
 			CloseableHttpResponse response1;
 
 			response1 = httpclient.execute(httpGet);
 
 			try {
 				String strResult = EntityUtils.toString(response1.getEntity());
+				System.out.println(strResult);
 				HttpEntity entity1 = response1.getEntity();
 				if (response1.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
 

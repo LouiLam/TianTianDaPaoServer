@@ -106,10 +106,18 @@
 	</select>
 	<select id="updateGoldAndDiamondByUserGame" parameterType="Map">
 		update usergame set
-		max_range=#{max_range},ugold=ugold+#{gold},diamond=diamond-(5*#{item0_count}+20*#{item1_count}+20*#{item2_count})
+		max_range=#{max_range},ugold=ugold+#{gold},diamond=diamond-(5*#{item0_count}+20*#{item1_count}+50*#{item2_count})
 		where
 		usergame.uid =#{uid}
 	</select>
+	<select id="updateGoldAndDiamondByUserGameMM" parameterType="Map">
+		update usergame set
+		max_range=#{max_range},ugold=ugold+#{gold},diamond=diamond-(20*#{item0_count}+50*#{item1_count}+50*#{item2_count})
+		where
+		usergame.uid =#{uid}
+	</select>
+	
+	
 	<select id="updateUserTaskRunning" resultType="Map"
 		parameterType="Map">
 		update usertask set

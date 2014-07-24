@@ -21,8 +21,8 @@ import database.DatabaseConnector;
 //40话费点入场，胜利送100话费点，30积分；
 //20钻石入场，胜利获得30钻石，赠送积分100；
 //200钻石入场，胜利送300钻石，888积分
-public class DaPaoJJC_PKEndCheck20140609 extends Check {
-	public DaPaoJJC_PKEndCheck20140609() {
+public class DaPaoJJC_PKEndCheck20140609MM extends Check {
+	public DaPaoJJC_PKEndCheck20140609MM() {
 		super();
 	}
 
@@ -152,7 +152,7 @@ public class DaPaoJJC_PKEndCheck20140609 extends Check {
 				params.put("max_range", params.get("maxRange")+"");
 			}
 			loginDao.updateUserTaskRunning(params);
-			loginDao.updateGoldAndDiamondByUserGame(params);
+			loginDao.updateGoldAndDiamondByUserGameMM(params);
 			params.put("finish_time", System.currentTimeMillis()/1000+"");
 			loginDao.updateUserFight20140609(params);
 			sqlSession.commit();

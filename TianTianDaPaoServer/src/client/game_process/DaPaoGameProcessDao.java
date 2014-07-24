@@ -51,6 +51,11 @@ public interface DaPaoGameProcessDao   {
 	 * @param params
 	 */
 	public void updateGoldByUserGameAndDiamond(Map<? extends Object,? extends Object> params);
+	/**
+	 * 更新用户金币
+	 * @param params
+	 */
+	public void updateGoldByUserGameAndDiamondMM(Map<? extends Object,? extends Object> params);
 	
 	/**
 	 * 开始游戏更新当前参数

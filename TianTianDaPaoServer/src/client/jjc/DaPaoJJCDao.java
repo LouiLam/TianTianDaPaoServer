@@ -95,6 +95,11 @@ public interface DaPaoJJCDao   {
 	 */
 	public void updateGoldAndDiamondByUserGame(Map<? extends Object,? extends Object> params);
 	/**
+	 * 更新用户金币
+	 * @param params
+	 */
+	public void updateGoldAndDiamondByUserGameMM(Map<? extends Object,? extends Object> params);
+	/**
 	 * 任务执行中更新
 	 * @param params
 	 */

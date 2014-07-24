@@ -13,8 +13,7 @@
 			<property name="url" value="jdbc:mysql://192.168.1.205:3306/tiantiandapao" />
 				<property name="username" value="root" />
 				<property name="password" value="123456" /> 
-					<!-- <property name="url" value="jdbc:mysql://192.168.0.54:3306/tiantiandapao" 
-					/> 
+					<!-- <property name="url" value="jdbc:mysql://192.168.0.54:3306/tiantiandapao" /> 
 				 	<property name="username" value="zjbuser" /> <property name="password" 
 					value="aaaAAA111peikun!" />-->
 				<property name="poolPingQuery" value="select * from userinfo" />
