@@ -49,4 +49,6 @@ public interface DaPaoRechargeDao   {
 	 */
 	public Map<Object, Object> selectOrderState(Map<? extends Object, ? extends Object> params);
 	
+	public Map<Object, Object> selectUIDByOrder(Map<? extends Object, ? extends Object> params);
+	
 }

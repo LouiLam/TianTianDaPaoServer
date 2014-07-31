@@ -39,5 +39,7 @@
     <select id="updateRMBrecord" parameterType="Map">
 	   update rmbrecord set state=1,finish_time=#{finish_time},value=#{value},channelID=#{channelID} where rmbrecord.uid=#{uid}
 	</select>
-   
+      <select id="selectUIDByOrder" parameterType="Map"  resultType="Map">
+	  select rmbrecord.* from rmbrecord where uid=#{order}
+	</select>
 </mapper>
